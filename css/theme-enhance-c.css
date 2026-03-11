@@ -1,0 +1,1501 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   THEME ENHANCE C — Deep manufacturer immersion layer
+   Each theme section transforms the UI to feel like that manufacturer's
+   actual ship cockpit MFD / HUD interface.
+   Loaded AFTER themes-mfr.css and theme-polish.css
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RSI — ROBERTS SPACE INDUSTRIES
+   Clean aerospace MFD panels. Professional. Patriotic blue.
+   Think: Constellation cockpit — calm, confident, structured readouts.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* --- RSI: Constellation dot pattern on dashboard background --- */
+body.theme-mfr-rsi .main {
+  position: relative;
+}
+body.theme-mfr-rsi .main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle, rgba(68,136,204,.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: 12px 12px;
+}
+
+/* --- RSI: Star-field hero background --- */
+body.theme-mfr-rsi .rec-hero {
+  background:
+    radial-gradient(circle at 15% 40%, rgba(68,136,204,.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 60%, rgba(92,160,224,.05) 0%, transparent 35%),
+    linear-gradient(180deg, #0c1425 0%, #101a30 40%, #0a0f1e 100%) !important;
+  border-left: 3px solid rgba(68,136,204,.4) !important;
+}
+
+/* RSI hero: faint star dots */
+body.theme-mfr-rsi .rec-hero::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image:
+    radial-gradient(circle, rgba(200,220,255,.12) 0.5px, transparent 0.5px),
+    radial-gradient(circle, rgba(200,220,255,.08) 0.5px, transparent 0.5px),
+    radial-gradient(circle, rgba(200,220,255,.05) 0.5px, transparent 0.5px) !important;
+  background-size: 120px 80px, 80px 60px, 200px 100px !important;
+  background-position: 10px 10px, 50px 30px, 30px 50px !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  border-radius: 6px !important;
+}
+
+/* --- RSI: MFD panel cards with left accent bar --- */
+body.theme-mfr-rsi .dash-card {
+  border-left: 3px solid rgba(68,136,204,.35) !important;
+  position: relative !important;
+  transition: border-color .35s var(--ease), box-shadow .35s var(--ease), transform .35s var(--ease) !important;
+}
+body.theme-mfr-rsi .dash-card:hover {
+  border-left-color: #4488cc !important;
+  box-shadow:
+    0 4px 20px rgba(68,136,204,.1),
+    inset 0 0 30px rgba(68,136,204,.03) !important;
+}
+
+/* RSI: Card header — MFD panel title bar with blue tint */
+body.theme-mfr-rsi .dash-card__header {
+  background: linear-gradient(180deg, rgba(68,136,204,.06) 0%, transparent 100%) !important;
+  border-bottom: 1px solid rgba(68,136,204,.15) !important;
+  position: relative !important;
+}
+body.theme-mfr-rsi .dash-card__header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #4488cc, transparent 60%);
+  opacity: .3;
+}
+
+/* RSI: Header section label — MFD readout style */
+body.theme-mfr-rsi .dash-card__header .sec {
+  color: #5ca0e0 !important;
+  text-shadow: 0 0 8px rgba(68,136,204,.15);
+}
+body.theme-mfr-rsi .dash-card__header .sec::before {
+  background: linear-gradient(180deg, #4488cc, #5ca0e0) !important;
+  box-shadow: 0 0 6px rgba(68,136,204,.3);
+}
+
+/* RSI: Footer bar — clean status line */
+body.theme-mfr-rsi .dash-card__footer {
+  background: rgba(20,31,56,.8) !important;
+  border-top: 1px solid rgba(68,136,204,.12) !important;
+}
+
+/* --- RSI: Tab bar — clean sharp active indicator --- */
+body.theme-mfr-rsi .tab-bar {
+  background: rgba(16,26,48,.95) !important;
+  border-top: 1px solid rgba(68,136,204,.15) !important;
+  border-bottom: 1px solid rgba(68,136,204,.15) !important;
+}
+body.theme-mfr-rsi .tab-bar__btn {
+  border-radius: 0 !important;
+  transition: color .25s, background .25s, box-shadow .25s !important;
+  border-right: 1px solid rgba(68,136,204,.1) !important;
+}
+body.theme-mfr-rsi .tab-bar__btn:hover {
+  background: rgba(68,136,204,.06) !important;
+  color: #5ca0e0 !important;
+}
+body.theme-mfr-rsi .tab-bar__btn--active {
+  color: #5ca0e0 !important;
+  background: rgba(68,136,204,.08) !important;
+  box-shadow: inset 0 -2px 0 #4488cc !important;
+}
+body.theme-mfr-rsi .tab-bar__btn--active::after {
+  background: #4488cc !important;
+  height: 2px !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 8px rgba(68,136,204,.4) !important;
+}
+
+/* --- RSI: Stat grid — ship instrument readout panels --- */
+body.theme-mfr-rsi .stat-grid {
+  border: 1px solid rgba(68,136,204,.1) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  background: rgba(20,31,56,.4) !important;
+}
+body.theme-mfr-rsi .sg-item {
+  background: rgba(12,20,37,.6) !important;
+  border: 1px solid rgba(68,136,204,.06) !important;
+  position: relative !important;
+}
+body.theme-mfr-rsi .sg-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(68,136,204,.1);
+}
+body.theme-mfr-rsi .sg-lbl {
+  color: #5ca0e0 !important;
+  text-shadow: 0 0 6px rgba(68,136,204,.1) !important;
+  font-size: 0.55rem !important;
+  letter-spacing: 1.5px !important;
+}
+body.theme-mfr-rsi .sg-val {
+  color: #c8d0e0 !important;
+  text-shadow: 0 0 4px rgba(68,136,204,.08) !important;
+}
+
+/* --- RSI: Goal progress — blue gradient with RSI branding --- */
+body.theme-mfr-rsi .goal-progress-bar {
+  background: rgba(12,20,37,.8) !important;
+  border: 1px solid rgba(68,136,204,.15) !important;
+  border-radius: 3px !important;
+  height: 6px !important;
+  overflow: hidden !important;
+}
+body.theme-mfr-rsi .goal-progress-fill {
+  background: linear-gradient(90deg, #2a5c8c, #4488cc, #5ca0e0) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 0 8px rgba(68,136,204,.3) !important;
+  position: relative !important;
+}
+body.theme-mfr-rsi .goal-progress-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.2));
+  border-radius: 0 2px 2px 0;
+}
+
+/* --- RSI: Goal stats text --- */
+body.theme-mfr-rsi .goal-stat {
+  color: #a8b4cc !important;
+}
+body.theme-mfr-rsi .goal-time {
+  color: #5ca0e0 !important;
+  text-shadow: 0 0 6px rgba(68,136,204,.15) !important;
+}
+
+/* --- RSI: Buttons — clean blue outline aerospace --- */
+body.theme-mfr-rsi .btn-action,
+body.theme-mfr-rsi .btn {
+  border: 1px solid rgba(68,136,204,.4) !important;
+  background: transparent !important;
+  color: #5ca0e0 !important;
+  transition: all .3s var(--ease) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+body.theme-mfr-rsi .btn-action::before,
+body.theme-mfr-rsi .btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(68,136,204,.08) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity .3s;
+}
+body.theme-mfr-rsi .btn-action:hover,
+body.theme-mfr-rsi .btn:hover {
+  border-color: #4488cc !important;
+  color: #e8ecf4 !important;
+  box-shadow: 0 0 12px rgba(68,136,204,.2), inset 0 0 20px rgba(68,136,204,.06) !important;
+}
+body.theme-mfr-rsi .btn-action:hover::before,
+body.theme-mfr-rsi .btn:hover::before {
+  opacity: 1;
+}
+
+/* --- RSI: Price table header — blue tint --- */
+body.theme-mfr-rsi .price-header {
+  background: rgba(68,136,204,.06) !important;
+  color: #5ca0e0 !important;
+  border-bottom: 1px solid rgba(68,136,204,.2) !important;
+}
+body.theme-mfr-rsi .price-row:not(.price-header) {
+  border-bottom: 1px solid rgba(68,136,204,.05) !important;
+}
+body.theme-mfr-rsi .price-row:not(.price-header):hover {
+  background: rgba(68,136,204,.04) !important;
+}
+body.theme-mfr-rsi .price-section-label {
+  color: #5ca0e0 !important;
+  border-bottom: 1px solid rgba(68,136,204,.1) !important;
+}
+body.theme-mfr-rsi .price-tip {
+  background: rgba(68,136,204,.06) !important;
+  border: 1px solid rgba(68,136,204,.12) !important;
+  border-left: 2px solid #4488cc !important;
+}
+
+/* --- RSI: Session mix — instrument panel readout --- */
+body.theme-mfr-rsi .session-mix {
+  background: rgba(12,20,37,.5) !important;
+  border: 1px solid rgba(68,136,204,.12) !important;
+  border-left: 2px solid rgba(68,136,204,.3) !important;
+}
+body.theme-mfr-rsi .session-mix__label {
+  color: #5ca0e0 !important;
+}
+body.theme-mfr-rsi .session-mix__item {
+  border-bottom-color: rgba(68,136,204,.06) !important;
+}
+body.theme-mfr-rsi .session-header {
+  color: #5ca0e0 !important;
+  text-shadow: 0 0 6px rgba(68,136,204,.1) !important;
+}
+
+/* --- RSI: Modal — blue top accent bar --- */
+body.theme-mfr-rsi .modal__panel {
+  position: relative !important;
+  overflow: visible !important;
+}
+body.theme-mfr-rsi .modal__panel::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #4488cc, #5ca0e0, transparent) !important;
+  border-radius: 8px 8px 0 0 !important;
+  z-index: 10 !important;
+}
+
+/* RSI: Tab modal panel styling */
+body.theme-mfr-rsi .tab-modal-panel {
+  background: rgba(16,26,48,.98) !important;
+}
+body.theme-mfr-rsi .tab-modal-close {
+  border: 1px solid rgba(68,136,204,.25) !important;
+  background: rgba(26,39,68,.95) !important;
+}
+body.theme-mfr-rsi .tab-modal-close:hover {
+  border-color: #4488cc !important;
+  color: #5ca0e0 !important;
+}
+
+/* --- RSI: Milestone chips — instrument style --- */
+body.theme-mfr-rsi .goal-ms {
+  background: rgba(12,20,37,.6) !important;
+  border: 1px solid rgba(68,136,204,.12) !important;
+}
+body.theme-mfr-rsi .goal-ms__pct {
+  color: #5ca0e0 !important;
+}
+
+/* --- RSI: Ship card name glow --- */
+body.theme-mfr-rsi .ship-card-name {
+  text-shadow: 0 0 8px rgba(68,136,204,.1);
+}
+
+/* --- RSI: Upgrade hint — professional info panel --- */
+body.theme-mfr-rsi .ship-upgrade-hint {
+  border-top: 1px solid rgba(68,136,204,.12) !important;
+  position: relative !important;
+}
+body.theme-mfr-rsi .ship-upgrade-hint::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 1px;
+  background: #4488cc;
+}
+body.theme-mfr-rsi .upgrade-label {
+  color: #5ca0e0 !important;
+}
+
+/* --- RSI: Intel items — data readout style --- */
+body.theme-mfr-rsi .intel-items .mini-stat {
+  border-bottom: 1px solid rgba(68,136,204,.06) !important;
+}
+body.theme-mfr-rsi .ms-label {
+  color: rgba(92,160,224,.7) !important;
+}
+
+/* --- RSI: Compact row hover --- */
+body.theme-mfr-rsi .compact-row:hover {
+  background: rgba(68,136,204,.04) !important;
+}
+
+/* --- RSI: Ship capabilities --- */
+body.theme-mfr-rsi .ship-cap {
+  background: rgba(68,136,204,.06) !important;
+  border: 1px solid rgba(68,136,204,.12) !important;
+  border-radius: 3px !important;
+}
+
+/* --- RSI: Selection glow animation --- */
+@keyframes rsi-card-scan {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+body.theme-mfr-rsi .dash-card--fresh {
+  animation: rsi-card-scan 2s linear !important;
+  background-size: 200% 100% !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AEGIS DYNAMICS
+   Military defense contractor. Angular, aggressive, precise.
+   Think: Vanguard cockpit — aggressive HUD, chamfered displays,
+   orange threat indicators, rapid target acquisition feel.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* --- Aegis: Angular gradient hero background --- */
+body.theme-mfr-aegis .rec-hero {
+  background:
+    linear-gradient(135deg, rgba(232,125,32,.04) 0%, transparent 40%),
+    linear-gradient(315deg, rgba(232,125,32,.03) 0%, transparent 30%),
+    linear-gradient(145deg, #14171c 0%, #0b0d10 100%) !important;
+  position: relative !important;
+}
+
+/* Aegis hero: angular scan line */
+body.theme-mfr-aegis .rec-hero::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(232,125,32,.015) 3px,
+      rgba(232,125,32,.015) 4px
+    ) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* --- Aegis: Cards with chamfered corners and diagonal line texture --- */
+body.theme-mfr-aegis .dash-card {
+  clip-path: polygon(
+    6px 0, calc(100% - 6px) 0,
+    100% 6px, 100% calc(100% - 6px),
+    calc(100% - 6px) 100%, 6px 100%,
+    0 calc(100% - 6px), 0 6px
+  ) !important;
+  position: relative !important;
+  transition: background .15s ease-out !important;
+}
+
+/* Aegis: Diagonal line pattern overlay on cards */
+body.theme-mfr-aegis .dash-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 6px,
+    rgba(232,125,32,.03) 6px,
+    rgba(232,125,32,.03) 7px
+  );
+  pointer-events: none;
+  z-index: 0;
+  opacity: .7;
+}
+
+/* Aegis: Orange glow sweep animation on card hover */
+@keyframes aegis-card-sweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  100% {
+    transform: translateX(200%);
+    opacity: 0;
+  }
+}
+
+body.theme-mfr-aegis .dash-card {
+  overflow: hidden !important;
+}
+
+/* Sweep light element via box-shadow on hover */
+body.theme-mfr-aegis .dash-card:hover {
+  background: linear-gradient(180deg, #181c22 0%, #14171c 100%) !important;
+  transition: all .15s ease-out !important;
+  box-shadow: inset 0 0 40px rgba(232,125,32,.04) !important;
+}
+body.theme-mfr-aegis .dash-card:hover::before {
+  opacity: 1 !important;
+  box-shadow: 0 0 12px rgba(232,125,32,.15) !important;
+}
+
+/* --- Aegis: Card header — military briefing bar --- */
+body.theme-mfr-aegis .dash-card__header {
+  background: linear-gradient(180deg, rgba(232,125,32,.04) 0%, transparent 100%) !important;
+  border-bottom: 1px solid rgba(232,125,32,.1) !important;
+  position: relative !important;
+}
+body.theme-mfr-aegis .dash-card__header .sec {
+  color: #e87d20 !important;
+  text-shadow: 0 0 6px rgba(232,125,32,.15) !important;
+}
+body.theme-mfr-aegis .dash-card__header .sec::before {
+  background: #e87d20 !important;
+  box-shadow: 0 0 4px rgba(232,125,32,.4) !important;
+  clip-path: polygon(2px 0, 100% 0, calc(100% - 2px) 100%, 0 100%) !important;
+}
+
+/* --- Aegis: Tab bar — angular cuts, orange active with glow --- */
+body.theme-mfr-aegis .tab-bar {
+  background: rgba(11,13,16,.97) !important;
+  border-top: 1px solid rgba(232,125,32,.12) !important;
+  border-bottom: 2px solid rgba(232,125,32,.2) !important;
+}
+body.theme-mfr-aegis .tab-bar__btn {
+  transition: color .15s ease-out, background .15s ease-out !important;
+  clip-path: polygon(4px 0, calc(100% - 4px) 0, 100% 100%, 0 100%) !important;
+  border-right: none !important;
+}
+body.theme-mfr-aegis .tab-bar__btn:hover {
+  background: rgba(232,125,32,.05) !important;
+  color: #f09838 !important;
+}
+body.theme-mfr-aegis .tab-bar__btn--active {
+  color: #f09838 !important;
+  background: rgba(232,125,32,.08) !important;
+}
+body.theme-mfr-aegis .tab-bar__btn--active::after {
+  background: #e87d20 !important;
+  height: 2px !important;
+  box-shadow: 0 0 10px rgba(232,125,32,.5), 0 0 20px rgba(232,125,32,.2) !important;
+}
+
+/* --- Aegis: Stat grid — chamfered readouts --- */
+body.theme-mfr-aegis .stat-grid {
+  background: rgba(20,23,28,.6) !important;
+  border: 1px solid rgba(232,125,32,.08) !important;
+}
+body.theme-mfr-aegis .sg-item {
+  background: rgba(8,9,11,.5) !important;
+  clip-path: polygon(3px 0, calc(100% - 3px) 0, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0 calc(100% - 3px), 0 3px) !important;
+  border: none !important;
+  position: relative !important;
+}
+body.theme-mfr-aegis .sg-lbl {
+  color: #e87d20 !important;
+  text-shadow: 0 0 4px rgba(232,125,32,.12) !important;
+  letter-spacing: 2px !important;
+}
+body.theme-mfr-aegis .sg-val {
+  color: #e0e4e8 !important;
+  text-shadow: 0 0 4px rgba(232,125,32,.08) !important;
+}
+
+/* --- Aegis: Goal progress — sharp orange gradient --- */
+body.theme-mfr-aegis .goal-progress-bar {
+  background: rgba(8,9,11,.8) !important;
+  border: 1px solid rgba(232,125,32,.12) !important;
+  border-radius: 0 !important;
+  height: 5px !important;
+  clip-path: polygon(2px 0, calc(100% - 2px) 0, 100% 50%, calc(100% - 2px) 100%, 2px 100%, 0 50%) !important;
+}
+body.theme-mfr-aegis .goal-progress-fill {
+  background: linear-gradient(90deg, #c06010, #e87d20, #f09838) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 6px rgba(232,125,32,.3) !important;
+}
+
+/* --- Aegis: Session mix — military briefing style --- */
+body.theme-mfr-aegis .session-mix {
+  background: rgba(11,13,16,.5) !important;
+  border: 1px solid rgba(232,125,32,.08) !important;
+  border-left: 2px solid rgba(232,125,32,.25) !important;
+}
+body.theme-mfr-aegis .session-mix__label {
+  color: #e87d20 !important;
+  text-shadow: 0 0 4px rgba(232,125,32,.1) !important;
+}
+body.theme-mfr-aegis .session-mix__item {
+  border-bottom-color: rgba(232,125,32,.05) !important;
+}
+body.theme-mfr-aegis .session-header {
+  color: #e87d20 !important;
+}
+
+/* --- Aegis: Price values — orange monospace --- */
+body.theme-mfr-aegis .price-row .cr-rate,
+body.theme-mfr-aegis .price-row [class*="price"],
+body.theme-mfr-aegis .slr-price {
+  font-family: 'DM Mono', 'Consolas', monospace !important;
+  color: #e87d20 !important;
+}
+body.theme-mfr-aegis .price-header {
+  background: rgba(232,125,32,.04) !important;
+  color: #e87d20 !important;
+  border-bottom: 1px solid rgba(232,125,32,.15) !important;
+}
+body.theme-mfr-aegis .price-row:not(.price-header):hover {
+  background: rgba(232,125,32,.04) !important;
+}
+
+/* --- Aegis: Buttons — angular clip-path --- */
+body.theme-mfr-aegis .btn-action,
+body.theme-mfr-aegis .btn {
+  clip-path: polygon(5px 0, calc(100% - 5px) 0, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px), 0 5px) !important;
+  transition: all .15s ease-out !important;
+  position: relative !important;
+}
+body.theme-mfr-aegis .btn-action:hover,
+body.theme-mfr-aegis .btn:hover {
+  background: #e87d20 !important;
+  color: #08090b !important;
+  box-shadow: 0 0 16px rgba(232,125,32,.35), 0 0 30px rgba(232,125,32,.1) !important;
+  transition: all .15s ease-out !important;
+}
+
+/* --- Aegis: Modal — orange top bar with chamfered corners --- */
+body.theme-mfr-aegis .modal__panel {
+  position: relative !important;
+}
+body.theme-mfr-aegis .modal__panel::before {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 12px !important;
+  right: 12px !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, transparent, #e87d20, transparent) !important;
+  box-shadow: 0 0 12px rgba(232,125,32,.3) !important;
+  z-index: 10 !important;
+}
+
+/* --- Aegis: Card footer — military ops bar --- */
+body.theme-mfr-aegis .dash-card__footer {
+  background: rgba(11,13,16,.6) !important;
+  border-top: 1px solid rgba(232,125,32,.08) !important;
+}
+
+/* --- Aegis: Upgrade hint — threat assessment style --- */
+body.theme-mfr-aegis .ship-upgrade-hint {
+  border-top: 1px solid rgba(232,125,32,.1) !important;
+  border-left: 2px solid rgba(232,125,32,.2) !important;
+  padding-left: 8px !important;
+}
+body.theme-mfr-aegis .upgrade-label {
+  color: #e87d20 !important;
+  text-shadow: 0 0 4px rgba(232,125,32,.12) !important;
+}
+
+/* --- Aegis: Compact rows — snappy transitions --- */
+body.theme-mfr-aegis .compact-row {
+  transition: background .15s ease-out !important;
+}
+body.theme-mfr-aegis .compact-row:hover {
+  background: rgba(232,125,32,.04) !important;
+}
+
+/* --- Aegis: Goal milestones — angular chips --- */
+body.theme-mfr-aegis .goal-ms {
+  clip-path: polygon(3px 0, calc(100% - 3px) 0, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0 calc(100% - 3px), 0 3px) !important;
+  background: rgba(11,13,16,.6) !important;
+  border: 1px solid rgba(232,125,32,.1) !important;
+}
+body.theme-mfr-aegis .goal-ms__pct {
+  color: #e87d20 !important;
+}
+
+/* --- Aegis: Ship capabilities pills --- */
+body.theme-mfr-aegis .ship-cap {
+  clip-path: polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px) !important;
+  background: rgba(232,125,32,.05) !important;
+}
+
+/* --- Aegis: Intel items --- */
+body.theme-mfr-aegis .intel-items .mini-stat {
+  border-bottom: 1px solid rgba(232,125,32,.04) !important;
+}
+body.theme-mfr-aegis .ms-label {
+  color: rgba(232,125,32,.6) !important;
+}
+
+/* --- Aegis: Tab modal --- */
+body.theme-mfr-aegis .tab-modal-panel {
+  background: rgba(11,13,16,.98) !important;
+}
+body.theme-mfr-aegis .tab-modal-close {
+  border: 1px solid rgba(232,125,32,.2) !important;
+  background: rgba(20,23,28,.95) !important;
+}
+body.theme-mfr-aegis .tab-modal-close:hover {
+  border-color: #e87d20 !important;
+  color: #e87d20 !important;
+  box-shadow: 0 0 8px rgba(232,125,32,.2) !important;
+}
+
+/* --- Aegis: Price tip --- */
+body.theme-mfr-aegis .price-tip {
+  background: rgba(232,125,32,.04) !important;
+  border: 1px solid rgba(232,125,32,.1) !important;
+  border-left: 2px solid #e87d20 !important;
+}
+
+/* --- Aegis: Goal verdict text --- */
+body.theme-mfr-aegis .goal-verdict-text {
+  border-left: 2px solid rgba(232,125,32,.2) !important;
+  padding-left: 6px !important;
+}
+
+/* --- Aegis: Scan line overlay on dashboard --- */
+body.theme-mfr-aegis .dashboard-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(232,125,32,.01) 2px,
+    rgba(232,125,32,.01) 3px
+  );
+  z-index: 1;
+}
+
+/* Aegis: Orange target lock animation */
+@keyframes aegis-target-lock {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(232,125,32,.2); }
+  50% { box-shadow: 0 0 0 1px rgba(232,125,32,.5), 0 0 8px rgba(232,125,32,.15); }
+}
+body.theme-mfr-aegis .dash-card--fresh {
+  animation: aegis-target-lock 1s ease 2 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANVIL AEROSPACE
+   Military workhorses. Bronze/tan UI + green accent. Mil-spec equipment.
+   Think: Hornet cockpit — structured, reliable, duty-ready readouts.
+   Stencil text, thick borders, equipment spec sheets.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* --- Anvil: Faint camo pattern on dashboard background --- */
+body.theme-mfr-anvil .main {
+  position: relative;
+}
+body.theme-mfr-anvil .main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80px 60px at 20% 30%, rgba(122,158,90,.03) 0%, transparent 100%),
+    radial-gradient(ellipse 100px 70px at 70% 60%, rgba(71,88,52,.03) 0%, transparent 100%),
+    radial-gradient(ellipse 60px 90px at 45% 80%, rgba(122,158,90,.02) 0%, transparent 100%),
+    radial-gradient(ellipse 90px 50px at 80% 20%, rgba(71,88,52,.025) 0%, transparent 100%);
+}
+
+/* --- Anvil: Hero — mil-spec briefing with camo overlay --- */
+body.theme-mfr-anvil .rec-hero {
+  background: #1c2618 !important;
+  border: 2px solid #475834 !important;
+  position: relative !important;
+}
+body.theme-mfr-anvil .rec-hero::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    radial-gradient(circle 40px at 10% 20%, rgba(94,112,72,.04) 0%, transparent 100%),
+    radial-gradient(circle 60px at 80% 40%, rgba(71,88,52,.03) 0%, transparent 100%),
+    radial-gradient(circle 50px at 40% 70%, rgba(94,112,72,.03) 0%, transparent 100%),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgba(184,169,124,.015) 8px,
+      rgba(184,169,124,.015) 16px
+    ) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* --- Anvil: Cards — thick structured borders with tier indicator bar --- */
+body.theme-mfr-anvil .dash-card {
+  border: 2px solid #475834 !important;
+  border-radius: 0 !important;
+  position: relative !important;
+  transition: background .2s ease, border-color .2s ease !important;
+}
+
+/* Anvil: Left tier indicator bar (green) */
+body.theme-mfr-anvil .dash-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: linear-gradient(180deg, #7a9e5a, #5e8a40);
+  opacity: .4;
+  z-index: 1;
+}
+body.theme-mfr-anvil .dash-card:hover {
+  border-color: #5e7048 !important;
+  background: #212d1c !important;
+}
+body.theme-mfr-anvil .dash-card:hover::after {
+  opacity: .8;
+  background: linear-gradient(180deg, #7a9e5a, #5e8a40);
+  box-shadow: 0 0 6px rgba(122,158,90,.2);
+}
+
+/* --- Anvil: Card header — stencil-like mil-spec label --- */
+body.theme-mfr-anvil .dash-card__header {
+  background: rgba(14,18,9,.6) !important;
+  border-bottom: 2px solid #354428 !important;
+  position: relative !important;
+}
+body.theme-mfr-anvil .dash-card__header .sec {
+  color: #b8a97c !important;
+  font-weight: 700 !important;
+  letter-spacing: 5px !important;
+  text-transform: uppercase !important;
+  font-size: 9px !important;
+}
+body.theme-mfr-anvil .dash-card__header .sec::before {
+  background: #7a9e5a !important;
+  width: 18px !important;
+  height: 3px !important;
+}
+
+/* Anvil: MIL-SPEC watermark on cards */
+body.theme-mfr-anvil .dash-card__body {
+  position: relative !important;
+}
+body.theme-mfr-anvil .dash-card__body::before {
+  content: 'MIL-SPEC';
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  font-family: 'Oswald', 'Impact', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 6px;
+  color: rgba(184,169,124,.03);
+  transform: rotate(-15deg);
+  pointer-events: none;
+  z-index: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* --- Anvil: Card footer --- */
+body.theme-mfr-anvil .dash-card__footer {
+  background: rgba(14,18,9,.5) !important;
+  border-top: 2px solid #354428 !important;
+}
+
+/* --- Anvil: Tab bar — heavy structured, green active indicator --- */
+body.theme-mfr-anvil .tab-bar {
+  background: #0e1209 !important;
+  border-top: 2px solid #475834 !important;
+  border-bottom: 2px solid #475834 !important;
+}
+body.theme-mfr-anvil .tab-bar__btn {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  border-right: 2px solid #354428 !important;
+  transition: color .2s ease, background .2s ease !important;
+}
+body.theme-mfr-anvil .tab-bar__btn:hover {
+  background: rgba(122,158,90,.06) !important;
+  color: #b8a97c !important;
+}
+body.theme-mfr-anvil .tab-bar__btn--active {
+  color: #7a9e5a !important;
+  background: rgba(122,158,90,.06) !important;
+}
+body.theme-mfr-anvil .tab-bar__btn--active::after {
+  background: #7a9e5a !important;
+  height: 3px !important;
+  box-shadow: 0 0 6px rgba(122,158,90,.3) !important;
+}
+
+/* --- Anvil: Stat grid — mil-spec equipment readout --- */
+body.theme-mfr-anvil .stat-grid {
+  border: 2px solid #354428 !important;
+  border-radius: 0 !important;
+  background: rgba(14,18,9,.5) !important;
+  overflow: hidden !important;
+}
+body.theme-mfr-anvil .sg-item {
+  background: rgba(28,38,24,.5) !important;
+  border: 1px solid #354428 !important;
+  border-radius: 0 !important;
+}
+body.theme-mfr-anvil .sg-lbl {
+  color: #7a9e5a !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  letter-spacing: 2px !important;
+  font-weight: 400 !important;
+}
+body.theme-mfr-anvil .sg-val {
+  color: #d4c8a0 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* --- Anvil: Goal progress — green fill on bronze background --- */
+body.theme-mfr-anvil .goal-progress-bar {
+  background: rgba(53,68,40,.4) !important;
+  border: 2px solid #475834 !important;
+  border-radius: 0 !important;
+  height: 8px !important;
+}
+body.theme-mfr-anvil .goal-progress-fill {
+  background: linear-gradient(90deg, #4a7030, #5e8a40, #7a9e5a) !important;
+  border-radius: 0 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1) !important;
+}
+body.theme-mfr-anvil .goal-stat {
+  color: #b8a97c !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+body.theme-mfr-anvil .goal-time {
+  color: #7a9e5a !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* --- Anvil: Price table — structured grid with visible borders --- */
+body.theme-mfr-anvil .price-header {
+  background: rgba(53,68,40,.3) !important;
+  color: #b8a97c !important;
+  border-bottom: 2px solid #475834 !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 2px !important;
+}
+body.theme-mfr-anvil .price-row {
+  border-bottom: 1px solid #354428 !important;
+}
+body.theme-mfr-anvil .price-row:not(.price-header):hover {
+  background: rgba(122,158,90,.04) !important;
+}
+body.theme-mfr-anvil .price-section-label {
+  color: #7a9e5a !important;
+  border-bottom: 2px solid #354428 !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 3px !important;
+}
+
+/* --- Anvil: Session mix — duty roster style --- */
+body.theme-mfr-anvil .session-mix {
+  background: rgba(14,18,9,.5) !important;
+  border: 2px solid #354428 !important;
+  border-left: 3px solid #7a9e5a !important;
+}
+body.theme-mfr-anvil .session-mix__label {
+  color: #7a9e5a !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 3px !important;
+}
+body.theme-mfr-anvil .session-mix__item {
+  border-bottom: 1px dashed #354428 !important;
+}
+body.theme-mfr-anvil .session-header {
+  color: #7a9e5a !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 3px !important;
+}
+
+/* --- Anvil: Buttons — heavy, squared, green border --- */
+body.theme-mfr-anvil .btn-action,
+body.theme-mfr-anvil .btn {
+  border: 2px solid #5e7048 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #b8a97c !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  transition: all .2s ease !important;
+}
+body.theme-mfr-anvil .btn-action:hover,
+body.theme-mfr-anvil .btn:hover {
+  border-color: #7a9e5a !important;
+  background: rgba(122,158,90,.08) !important;
+  color: #ede6cc !important;
+  box-shadow: 0 0 8px rgba(122,158,90,.15) !important;
+}
+
+/* --- Anvil: Upgrade hint — REQUISITION ORDER style --- */
+body.theme-mfr-anvil .ship-upgrade-hint {
+  border-top: 2px solid #475834 !important;
+  position: relative !important;
+  padding-top: 10px !important;
+}
+body.theme-mfr-anvil .ship-upgrade-hint::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #7a9e5a 0px, #7a9e5a 4px,
+    transparent 4px, transparent 8px
+  );
+  opacity: .4;
+}
+body.theme-mfr-anvil .upgrade-label {
+  color: #7a9e5a !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 4px !important;
+  font-weight: 700 !important;
+}
+
+/* --- Anvil: Modal — mil-spec frame --- */
+body.theme-mfr-anvil .modal__panel {
+  border: 2px solid #475834 !important;
+  position: relative !important;
+}
+body.theme-mfr-anvil .modal__panel::before {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, #7a9e5a, #5e8a40) !important;
+  z-index: 10 !important;
+}
+
+/* --- Anvil: Milestone chips — equipment tags --- */
+body.theme-mfr-anvil .goal-ms {
+  background: rgba(14,18,9,.5) !important;
+  border: 1px solid #354428 !important;
+  border-radius: 0 !important;
+}
+body.theme-mfr-anvil .goal-ms__pct {
+  color: #7a9e5a !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+body.theme-mfr-anvil .goal-ms__time {
+  color: #7a8c60 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* --- Anvil: Intel items — spec sheet entries --- */
+body.theme-mfr-anvil .intel-items .mini-stat {
+  border-bottom: 1px solid #354428 !important;
+}
+body.theme-mfr-anvil .ms-label {
+  color: #7a9e5a !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 2px !important;
+}
+body.theme-mfr-anvil .ms-value {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #d4c8a0 !important;
+}
+
+/* --- Anvil: Compact rows --- */
+body.theme-mfr-anvil .compact-row {
+  border-bottom: 1px solid rgba(53,68,40,.3) !important;
+}
+body.theme-mfr-anvil .compact-row:hover {
+  background: rgba(122,158,90,.04) !important;
+}
+
+/* --- Anvil: Ship capabilities --- */
+body.theme-mfr-anvil .ship-cap {
+  background: rgba(53,68,40,.2) !important;
+  border: 1px solid #354428 !important;
+  border-radius: 0 !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 1px !important;
+}
+
+/* --- Anvil: Price tip --- */
+body.theme-mfr-anvil .price-tip {
+  background: rgba(122,158,90,.04) !important;
+  border: 2px solid #354428 !important;
+  border-left: 3px solid #7a9e5a !important;
+}
+
+/* --- Anvil: Tab modal --- */
+body.theme-mfr-anvil .tab-modal-panel {
+  background: rgba(14,18,9,.98) !important;
+}
+body.theme-mfr-anvil .tab-modal-close {
+  border: 2px solid #475834 !important;
+  background: rgba(28,38,24,.95) !important;
+}
+body.theme-mfr-anvil .tab-modal-close:hover {
+  border-color: #7a9e5a !important;
+  color: #7a9e5a !important;
+}
+
+/* --- Anvil: Goal verdict text --- */
+body.theme-mfr-anvil .goal-verdict-text {
+  font-family: 'Share Tech Mono', monospace !important;
+  text-transform: none !important;
+  border-left: 3px solid #475834 !important;
+  padding-left: 6px !important;
+}
+
+/* --- Anvil: Readiness blink animation --- */
+@keyframes anvil-readiness {
+  0%, 49% { opacity: .4; }
+  50%, 100% { opacity: .8; }
+}
+@keyframes anvil-status-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+body.theme-mfr-anvil .dash-card--fresh {
+  animation: anvil-status-blink .8s ease 3 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DRAKE INTERPLANETARY
+   Industrial salvage. Gritty, rough, pirate-adjacent.
+   Think: Cutlass cockpit — exposed wiring, warning labels, everything
+   looks like it was welded together in a junkyard and somehow works.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* --- Drake: Gritty noise texture overlay on main --- */
+body.theme-mfr-drake .main {
+  position: relative;
+}
+body.theme-mfr-drake .main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .3;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* --- Drake: Hero — gritty noise with hazard accents --- */
+body.theme-mfr-drake .rec-hero {
+  background: #1e1910 !important;
+  border: 3px solid #3a3020 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+body.theme-mfr-drake .rec-hero::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(240,165,0,.02) 10px,
+      rgba(240,165,0,.02) 20px
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E") !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* --- Drake: Cards — heavy borders, some dashed, with rivet decoration --- */
+body.theme-mfr-drake .dash-card {
+  border: 3px solid #3a3020 !important;
+  border-radius: 0 !important;
+  position: relative !important;
+  overflow: visible !important;
+  transition: border-color 0s linear, background 0s linear !important;
+}
+
+/* Drake: Rivet decorations at card corners */
+body.theme-mfr-drake .dash-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    /* Top-left rivet */
+    radial-gradient(circle 2.5px at 6px 6px, rgba(240,165,0,.2) 1.5px, transparent 1.5px),
+    /* Top-right rivet */
+    radial-gradient(circle 2.5px at calc(100% - 6px) 6px, rgba(240,165,0,.2) 1.5px, transparent 1.5px),
+    /* Bottom-left rivet */
+    radial-gradient(circle 2.5px at 6px calc(100% - 6px), rgba(240,165,0,.2) 1.5px, transparent 1.5px),
+    /* Bottom-right rivet */
+    radial-gradient(circle 2.5px at calc(100% - 6px) calc(100% - 6px), rgba(240,165,0,.2) 1.5px, transparent 1.5px);
+}
+
+/* Drake: Industrial warning stripe on card headers */
+body.theme-mfr-drake .dash-card__header {
+  border-bottom: 2px dashed #2c2418 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+body.theme-mfr-drake .dash-card__header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 6px,
+    rgba(240,165,0,.025) 6px,
+    rgba(240,165,0,.025) 12px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+body.theme-mfr-drake .dash-card__header .sec {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Drake: Card hover — industrial clank (instant, no ease) */
+body.theme-mfr-drake .dash-card:hover {
+  border-color: #f0a500 !important;
+  transition: border-color 0.1s ease !important;
+}
+body.theme-mfr-drake .dash-card:hover::after {
+  background:
+    radial-gradient(circle 2.5px at 6px 6px, rgba(240,165,0,.4) 1.5px, transparent 1.5px),
+    radial-gradient(circle 2.5px at calc(100% - 6px) 6px, rgba(240,165,0,.4) 1.5px, transparent 1.5px),
+    radial-gradient(circle 2.5px at 6px calc(100% - 6px), rgba(240,165,0,.4) 1.5px, transparent 1.5px),
+    radial-gradient(circle 2.5px at calc(100% - 6px) calc(100% - 6px), rgba(240,165,0,.4) 1.5px, transparent 1.5px);
+}
+
+/* --- Drake: Card footer — heavy dashed --- */
+body.theme-mfr-drake .dash-card__footer {
+  background: rgba(18,16,8,.6) !important;
+  border-top: 2px dashed #2c2418 !important;
+}
+
+/* --- Drake: Rust/patina texture on card backgrounds --- */
+body.theme-mfr-drake .dash-card__body {
+  position: relative !important;
+}
+body.theme-mfr-drake .dash-card__body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60px 40px at 80% 20%, rgba(160,100,30,.04) 0%, transparent 100%),
+    radial-gradient(ellipse 40px 50px at 20% 70%, rgba(140,80,20,.03) 0%, transparent 100%),
+    radial-gradient(ellipse 70px 30px at 50% 50%, rgba(120,70,15,.02) 0%, transparent 100%);
+}
+
+/* --- Drake: Tab bar — heavy industrial with thick bottom --- */
+body.theme-mfr-drake .tab-bar {
+  background: rgba(13,10,7,.97) !important;
+  border-top: 3px solid #3a3020 !important;
+  border-bottom: 3px solid #3a3020 !important;
+}
+body.theme-mfr-drake .tab-bar__btn {
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  border-right: 2px dashed #2c2418 !important;
+  transition: color 0s, background 0s !important;
+}
+body.theme-mfr-drake .tab-bar__btn:hover {
+  background: rgba(240,165,0,.06) !important;
+  color: #f0a500 !important;
+}
+body.theme-mfr-drake .tab-bar__btn--active {
+  color: #f0a500 !important;
+  background: rgba(240,165,0,.08) !important;
+}
+body.theme-mfr-drake .tab-bar__btn--active::after {
+  background: #f0a500 !important;
+  height: 3px !important;
+  box-shadow: 0 0 6px rgba(240,165,0,.3) !important;
+}
+
+/* --- Drake: Stat grid — heavy industrial readout --- */
+body.theme-mfr-drake .stat-grid {
+  border: 2px solid #3a3020 !important;
+  border-radius: 0 !important;
+  background: rgba(18,16,8,.5) !important;
+}
+body.theme-mfr-drake .sg-item {
+  background: rgba(30,25,16,.5) !important;
+  border: 1px solid #2c2418 !important;
+  border-radius: 0 !important;
+}
+body.theme-mfr-drake .sg-lbl {
+  color: #8a7448 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  letter-spacing: 1.5px !important;
+}
+body.theme-mfr-drake .sg-val {
+  color: #f0a500 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  text-shadow: 0 0 4px rgba(240,165,0,.12) !important;
+}
+
+/* --- Drake: Goal progress — orange/yellow with heavy border --- */
+body.theme-mfr-drake .goal-progress-bar {
+  background: rgba(58,48,32,.4) !important;
+  border: 2px solid #3a3020 !important;
+  border-radius: 0 !important;
+  height: 8px !important;
+}
+body.theme-mfr-drake .goal-progress-fill {
+  background: repeating-linear-gradient(
+    90deg,
+    #f0a500 0px, #f0a500 6px,
+    #c88500 6px, #c88500 12px
+  ) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 6px rgba(240,165,0,.2) !important;
+}
+body.theme-mfr-drake .goal-stat {
+  color: #c4a878 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+body.theme-mfr-drake .goal-time {
+  color: #f0a500 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  text-shadow: 0 0 4px rgba(240,165,0,.15) !important;
+}
+
+/* --- Drake: Price table — cargo manifest style --- */
+body.theme-mfr-drake .price-header {
+  background: rgba(58,48,32,.3) !important;
+  color: #f0a500 !important;
+  border-bottom: 2px solid #3a3020 !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 3px !important;
+}
+body.theme-mfr-drake .price-row {
+  border-bottom: 1px dashed #2c2418 !important;
+  padding: 3px 0 !important;
+}
+body.theme-mfr-drake .price-row:not(.price-header):hover {
+  background: rgba(240,165,0,.04) !important;
+}
+body.theme-mfr-drake .price-section-label {
+  color: #f0a500 !important;
+  border-bottom: 2px dashed #3a3020 !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 3px !important;
+}
+
+/* --- Drake: Session mix — work order form --- */
+body.theme-mfr-drake .session-mix {
+  background: rgba(18,16,8,.5) !important;
+  border: 2px solid #3a3020 !important;
+  border-left: 3px solid #f0a500 !important;
+}
+body.theme-mfr-drake .session-mix__label {
+  color: #f0a500 !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 3px !important;
+}
+body.theme-mfr-drake .session-mix__item {
+  border-bottom: 1px dashed #2c2418 !important;
+}
+body.theme-mfr-drake .session-header {
+  color: #f0a500 !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 3px !important;
+  position: relative !important;
+}
+
+/* --- Drake: Buttons — heavy, blocky, orange --- */
+body.theme-mfr-drake .btn-action,
+body.theme-mfr-drake .btn {
+  border: 3px solid #f0a500 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #f0a500 !important;
+  font-weight: 700 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  transition: all 0s linear !important;
+  position: relative !important;
+}
+body.theme-mfr-drake .btn-action:hover,
+body.theme-mfr-drake .btn:hover {
+  background: #f0a500 !important;
+  color: #0d0a07 !important;
+  box-shadow: 0 0 20px rgba(240,165,0,.3) !important;
+  transition: all 0s linear !important;
+}
+
+/* --- Drake: Modal — industrial warning header --- */
+body.theme-mfr-drake .modal__panel {
+  position: relative !important;
+  overflow: visible !important;
+}
+body.theme-mfr-drake .modal__panel::before {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 6px !important;
+  background: repeating-linear-gradient(
+    -45deg,
+    #f0a500 0px, #f0a500 5px,
+    #0d0a07 5px, #0d0a07 10px
+  ) !important;
+  z-index: 10 !important;
+}
+
+/* --- Drake: Upgrade hint — salvage requisition style --- */
+body.theme-mfr-drake .ship-upgrade-hint {
+  border-top: 2px dashed #3a3020 !important;
+  position: relative !important;
+}
+body.theme-mfr-drake .ship-upgrade-hint::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f0a500 0px, #f0a500 4px,
+    transparent 4px, transparent 8px
+  );
+  opacity: .3;
+}
+body.theme-mfr-drake .upgrade-label {
+  color: #f0a500 !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 3px !important;
+}
+
+/* --- Drake: Milestone chips — industrial tags --- */
+body.theme-mfr-drake .goal-ms {
+  background: rgba(18,16,8,.6) !important;
+  border: 1px solid #3a3020 !important;
+  border-radius: 0 !important;
+}
+body.theme-mfr-drake .goal-ms__pct {
+  color: #f0a500 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* --- Drake: Intel items — work order entries --- */
+body.theme-mfr-drake .intel-items .mini-stat {
+  border-bottom: 1px dashed #2c2418 !important;
+}
+body.theme-mfr-drake .ms-label {
+  color: #8a7448 !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 2px !important;
+}
+body.theme-mfr-drake .ms-value {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #f0a500 !important;
+}
+
+/* --- Drake: Compact rows — rough hover --- */
+body.theme-mfr-drake .compact-row {
+  border-bottom: 1px dashed rgba(58,48,32,.3) !important;
+  transition: background 0s !important;
+}
+body.theme-mfr-drake .compact-row:hover {
+  background: rgba(240,165,0,.04) !important;
+}
+
+/* --- Drake: Ship capabilities --- */
+body.theme-mfr-drake .ship-cap {
+  background: rgba(58,48,32,.2) !important;
+  border: 1px solid #3a3020 !important;
+  border-radius: 0 !important;
+}
+
+/* --- Drake: Price tip — warning style --- */
+body.theme-mfr-drake .price-tip {
+  background: rgba(240,165,0,.04) !important;
+  border: 2px solid #3a3020 !important;
+  border-left: 3px solid #f0a500 !important;
+}
+
+/* --- Drake: Tab modal --- */
+body.theme-mfr-drake .tab-modal-panel {
+  background: rgba(13,10,7,.98) !important;
+}
+body.theme-mfr-drake .tab-modal-close {
+  border: 2px solid #3a3020 !important;
+  background: rgba(30,25,16,.95) !important;
+}
+body.theme-mfr-drake .tab-modal-close:hover {
+  border-color: #f0a500 !important;
+  color: #f0a500 !important;
+}
+
+/* --- Drake: Goal verdict text --- */
+body.theme-mfr-drake .goal-verdict-text {
+  font-family: 'Rajdhani', sans-serif !important;
+  border-left: 3px solid #3a3020 !important;
+  padding-left: 6px !important;
+}
+
+/* --- Drake: Ship card name — industrial bold --- */
+body.theme-mfr-drake .ship-card-name {
+  text-shadow: 0 0 4px rgba(240,165,0,.08);
+}
+body.theme-mfr-drake .ship-card-mfr {
+  color: #8a7448 !important;
+  letter-spacing: 2px !important;
+}
+
+/* --- Drake: Warning strobe variations --- */
+@keyframes drake-warning-flash {
+  0%, 100% { border-color: #3a3020; }
+  50% { border-color: #f0a500; }
+}
+body.theme-mfr-drake .dash-card--fresh {
+  animation: drake-warning-flash .4s linear 3 !important;
+}
+
+/* --- Drake: Industrial marker on dashboard grid --- */
+body.theme-mfr-drake .dashboard-grid {
+  position: relative !important;
+}
+body.theme-mfr-drake .dashboard-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  background-size: 200px;
+  opacity: .5;
+}

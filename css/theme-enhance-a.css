@@ -1,0 +1,1331 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   THEME ENHANCE A — Premium visual upgrades for Void, Arctic, Corporate
+   Loaded LAST after theme-polish.css. Makes everything look $100M.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║  VOID THEME (default) — Premium Dark Experience                             ║
+   ║  Subtle gold accents, inner glows, refined depth, elegant transitions       ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+/* ── Void: Dashboard card inner glow + refined border ── */
+.dash-card {
+  box-shadow:
+    inset 0 1px 0 rgba(201,170,110,.04),
+    inset 0 0 30px rgba(201,170,110,.015),
+    0 1px 3px rgba(0,0,0,.4) !important;
+  border: 1px solid rgba(201,170,110,.06) !important;
+  transition:
+    box-shadow .4s var(--ease),
+    border-color .4s var(--ease) !important;
+}
+
+/* ── Void: Card hover — border brightens (lift removed — caused invisible card bug) ── */
+.dash-card:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(201,170,110,.07),
+    inset 0 0 30px rgba(201,170,110,.025),
+    0 4px 16px rgba(0,0,0,.35),
+    0 0 0 1px rgba(201,170,110,.1) !important;
+  border-color: rgba(201,170,110,.12) !important;
+}
+
+/* ── Void: Card header micro-gradient ── */
+.dash-card__header {
+  background: linear-gradient(180deg,
+    rgba(20,20,20,.95) 0%,
+    rgba(14,14,14,.98) 100%) !important;
+  border-bottom: 1px solid rgba(201,170,110,.04) !important;
+}
+
+/* ── Void: Section headers — refined letter-spacing ── */
+.dash-card__header .sec {
+  letter-spacing: 3.5px !important;
+  text-shadow: 0 0 20px rgba(201,170,110,.1);
+}
+.section-header .sec {
+  letter-spacing: 3px;
+}
+
+/* ── Void: Hero section radial gradient from rate ── */
+.rec-hero {
+  background:
+    radial-gradient(ellipse 50% 120% at 50% 40%, rgba(201,170,110,.04) 0%, transparent 70%),
+    var(--c) !important;
+  border-bottom: 1px solid rgba(201,170,110,.08) !important;
+}
+.rec-hero::before {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(201,170,110,.06) 0%, transparent 50%) !important;
+}
+
+/* ── Void: Hero rate number — subtle gold presence ── */
+.hero-rate-big {
+  text-shadow: 0 0 40px rgba(201,170,110,.15), 0 0 80px rgba(201,170,110,.05) !important;
+  position: relative;
+}
+
+/* ── Void: Tab bar — glowing active indicator ── */
+.tab-bar {
+  background: linear-gradient(180deg, var(--dp), rgba(10,10,10,.98)) !important;
+  border-top: 1px solid rgba(201,170,110,.06) !important;
+  border-bottom: 1px solid rgba(201,170,110,.04) !important;
+}
+.tab-bar__btn {
+  transition: color .3s var(--ease), background .3s var(--ease), text-shadow .3s var(--ease) !important;
+  border-right: 1px solid rgba(201,170,110,.04) !important;
+}
+.tab-bar__btn:hover {
+  text-shadow: 0 0 12px rgba(201,170,110,.2);
+}
+.tab-bar__btn--active {
+  color: var(--g) !important;
+  text-shadow: 0 0 16px rgba(201,170,110,.25);
+  background: rgba(201,170,110,.03) !important;
+}
+.tab-bar__btn--active::after {
+  height: 2px !important;
+  background: var(--g) !important;
+  box-shadow: 0 0 8px rgba(201,170,110,.4), 0 0 20px rgba(201,170,110,.15) !important;
+  border-radius: 1px 1px 0 0;
+}
+
+/* ── Void: Mini-stat values — visual hierarchy ── */
+.ms-value {
+  color: var(--wh) !important;
+  font-weight: 500 !important;
+  letter-spacing: -.02em;
+}
+.ms-label {
+  color: var(--mt) !important;
+  font-weight: 300 !important;
+  letter-spacing: 2.5px !important;
+}
+
+/* ── Void: Stat grid items — depth hierarchy ── */
+.sg-val {
+  text-shadow: 0 0 20px rgba(201,170,110,.08);
+}
+.sg-item {
+  background: rgba(10,10,10,.6) !important;
+  border: 1px solid rgba(201,170,110,.03) !important;
+  transition: border-color .3s var(--ease), background .3s var(--ease) !important;
+}
+.sg-item:hover {
+  border-color: rgba(201,170,110,.08) !important;
+  background: rgba(15,15,15,.8) !important;
+}
+
+/* ── Void: Goal progress bar — inner shadow for depth ── */
+.goal-progress-bar {
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.5), inset 0 0 0 1px rgba(201,170,110,.03) !important;
+  background: rgba(6,6,6,.8) !important;
+}
+.goal-progress-fill {
+  box-shadow: 0 0 8px rgba(201,170,110,.2), inset 0 1px 0 rgba(255,255,255,.1) !important;
+}
+
+/* ── Void: Card body scrollbar — fade in on hover ── */
+.dash-card__body {
+  scrollbar-color: transparent transparent !important;
+  transition: scrollbar-color .4s var(--ease) !important;
+}
+.dash-card__body:hover {
+  scrollbar-color: var(--dv) transparent !important;
+}
+.dash-card__body::-webkit-scrollbar-thumb {
+  background: rgba(42,42,42,0) !important;
+  transition: background .4s var(--ease) !important;
+  border-radius: 2px;
+}
+.dash-card:hover .dash-card__body::-webkit-scrollbar-thumb {
+  background: rgba(42,42,42,.6) !important;
+}
+
+/* ── Void: Footer — subtle top-glow line ── */
+.footer {
+  border-top: none !important;
+  position: relative !important;
+}
+.footer::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 10% !important;
+  right: 10% !important;
+  height: 1px !important;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(201,170,110,.15) 20%,
+    rgba(201,170,110,.3) 50%,
+    rgba(201,170,110,.15) 80%,
+    transparent 100%) !important;
+  display: block !important;
+}
+.footer::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 20%;
+  right: 20%;
+  height: 8px;
+  background: radial-gradient(ellipse at center, rgba(201,170,110,.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Void: Session mix — elevated card appearance ── */
+.session-mix {
+  background: rgba(6,6,6,.5) !important;
+  border: 1px solid rgba(201,170,110,.04) !important;
+  box-shadow: inset 0 1px 0 rgba(201,170,110,.02);
+}
+
+/* ── Void: Price rows — subtle hover glow ── */
+.price-row:not(.price-header):hover {
+  background: rgba(201,170,110,.02) !important;
+  box-shadow: inset 2px 0 0 rgba(201,170,110,.15);
+}
+
+/* ── Void: Buttons — refined interaction ── */
+.btn-action, .btn {
+  transition: all .3s var(--ease) !important;
+  border: 1px solid rgba(201,170,110,.12);
+}
+.btn-action:hover, .btn:hover {
+  box-shadow: 0 0 12px rgba(201,170,110,.1), 0 4px 16px rgba(0,0,0,.3) !important;
+  border-color: rgba(201,170,110,.2);
+}
+
+/* ── Void: Alternative rows — gold accent on hover ── */
+.alt-row--action:hover {
+  border-left-color: rgba(201,170,110,.3) !important;
+  background: rgba(201,170,110,.02) !important;
+}
+.alt-row--action:hover .cr-rate {
+  text-shadow: 0 0 12px rgba(201,170,110,.2);
+}
+
+/* ── Void: Milestone chips — refined look ── */
+.goal-ms {
+  background: rgba(6,6,6,.6) !important;
+  border: 1px solid rgba(201,170,110,.06) !important;
+  transition: border-color .25s var(--ease) !important;
+}
+.goal-ms:hover {
+  border-color: rgba(201,170,110,.12) !important;
+}
+.goal-ms__pct {
+  text-shadow: 0 0 8px rgba(201,170,110,.15);
+}
+
+/* ── Void: Upgrade hint — premium outline ── */
+.ship-upgrade-hint {
+  border: 1px solid rgba(201,170,110,.06) !important;
+  background: rgba(6,6,6,.4) !important;
+  box-shadow: inset 0 1px 0 rgba(201,170,110,.02);
+  transition: border-color .3s var(--ease) !important;
+}
+.ship-upgrade-hint:hover {
+  border-color: rgba(201,170,110,.1) !important;
+}
+.upgrade-name {
+  text-shadow: 0 0 12px rgba(201,170,110,.1);
+}
+
+/* ── Void: Tab modal overlay — deeper atmosphere ── */
+.tab-modal-overlay {
+  background: rgba(3,3,3,.95) !important;
+  backdrop-filter: blur(12px) saturate(150%) !important;
+}
+
+/* ── Void: Intel items — refined separators ── */
+.intel-items .mini-stat {
+  border-bottom: 1px solid rgba(201,170,110,.03) !important;
+  transition: background .2s var(--ease) !important;
+}
+.intel-items .mini-stat:hover {
+  background: rgba(201,170,110,.015);
+}
+
+/* ── Void: Price tip — refined callout ── */
+.price-tip {
+  border-left: 2px solid rgba(201,170,110,.2) !important;
+  background: rgba(201,170,110,.02) !important;
+  box-shadow: inset 0 0 20px rgba(201,170,110,.01);
+}
+
+/* ── Void: Card footer — subtle gradient ── */
+.dash-card__footer {
+  background: linear-gradient(180deg, rgba(10,10,10,.3), rgba(6,6,6,.5)) !important;
+  border-top: 1px solid rgba(201,170,110,.03) !important;
+}
+.dash-card__link {
+  transition: color .25s var(--ease), text-shadow .25s var(--ease) !important;
+}
+.dash-card__link:hover {
+  text-shadow: 0 0 12px rgba(201,170,110,.2);
+}
+
+/* ── Void: Card action buttons — premium feel ── */
+.dash-card__action {
+  transition: all .25s var(--ease) !important;
+  border: 1px solid rgba(201,170,110,.06) !important;
+}
+.dash-card__action:hover {
+  box-shadow: 0 0 12px rgba(201,170,110,.08) !important;
+  border-color: rgba(201,170,110,.15) !important;
+}
+
+/* ── Void: Quick nav — refined ── */
+.quick-nav {
+  border: 1px solid rgba(201,170,110,.06);
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+.qn-link--active::after {
+  box-shadow: 0 0 6px rgba(201,170,110,.3);
+}
+
+/* ── Void: Header — premium treatment ── */
+.header {
+  box-shadow: 0 1px 0 rgba(201,170,110,.04), 0 4px 20px rgba(0,0,0,.4) !important;
+  border-bottom: 1px solid rgba(201,170,110,.04) !important;
+}
+
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║  ARCTIC THEME — Apple-Level Gorgeous                                        ║
+   ║  Frosted glass, layered shadows, pill tabs, breathing UI, iOS feel          ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+/* ── Arctic: Cards — beautiful layered shadows + inner highlight ── */
+body.theme-arctic .dash-card {
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.03),
+    0 1px 2px rgba(0,0,0,.04),
+    0 4px 16px rgba(0,0,0,.04),
+    0 12px 48px rgba(0,0,0,.03),
+    inset 0 1px 0 rgba(255,255,255,.9) !important;
+  border: none !important;
+  border-radius: 20px !important;
+  background: rgba(255,255,255,.92) !important;
+  backdrop-filter: blur(8px) !important;
+  transition:
+    box-shadow .5s cubic-bezier(.25,.46,.45,.94),
+    transform .5s cubic-bezier(.25,.46,.45,.94) !important;
+}
+
+/* ── Arctic: Card hover — smooth elevation increase ── */
+body.theme-arctic .dash-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(43,125,233,.08),
+    0 2px 4px rgba(0,0,0,.04),
+    0 8px 24px rgba(43,125,233,.06),
+    inset 0 1px 0 rgba(255,255,255,.95) !important;
+}
+
+/* ── Arctic: Card header — blue gradient top-line ── */
+body.theme-arctic .dash-card__header {
+  background: rgba(255,255,255,.5) !important;
+  border-bottom: none !important;
+  position: relative !important;
+  padding: 18px 20px 6px !important;
+}
+body.theme-arctic .dash-card__header::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg,
+    rgba(43,125,233,.5) 0%,
+    rgba(74,158,255,.3) 40%,
+    rgba(43,125,233,.05) 100%) !important;
+  border-radius: 20px 20px 0 0 !important;
+  display: block !important;
+  transform: none !important;
+  opacity: 1 !important;
+  width: auto !important;
+}
+
+/* ── Arctic: Header — stronger frosted glass ── */
+body.theme-arctic .header {
+  background: rgba(255,255,255,.85) !important;
+  backdrop-filter: blur(60px) saturate(250%) brightness(105%) !important;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,.04),
+    0 4px 32px rgba(0,0,0,.05) !important;
+}
+
+/* ── Arctic: Tab bar — pill-shaped with sliding indicator ── */
+body.theme-arctic .tab-bar {
+  background: rgba(255,255,255,.6) !important;
+  backdrop-filter: blur(20px) !important;
+  border: none !important;
+  border-top: 1px solid rgba(0,0,0,.04) !important;
+  padding: 6px 8px !important;
+  gap: 2px !important;
+}
+body.theme-arctic .tab-bar__btn {
+  border: none !important;
+  border-radius: 10px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: .8px !important;
+  font-size: 9px !important;
+  color: rgba(0,0,0,.45) !important;
+  padding: 7px 14px !important;
+  transition: all .35s cubic-bezier(.25,.46,.45,.94) !important;
+  background: transparent !important;
+}
+body.theme-arctic .tab-bar__btn:hover {
+  color: rgba(0,0,0,.7) !important;
+  background: rgba(0,0,0,.04) !important;
+}
+body.theme-arctic .tab-bar__btn--active {
+  background: #2b7de9 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(43,125,233,.25), 0 1px 2px rgba(43,125,233,.2) !important;
+}
+body.theme-arctic .tab-bar__btn--active::after {
+  display: none !important;
+}
+body.theme-arctic .tab-bar__btn--active:hover {
+  background: #2b7de9 !important;
+  color: #ffffff !important;
+}
+
+/* ── Arctic: Progress bars — rounded with inner highlight ── */
+body.theme-arctic .goal-progress-bar {
+  background: rgba(0,0,0,.06) !important;
+  border-radius: 10px !important;
+  height: 8px !important;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.06) !important;
+  overflow: hidden !important;
+}
+body.theme-arctic .goal-progress-fill {
+  border-radius: 10px !important;
+  background: linear-gradient(90deg, #2b7de9, #4a9eff) !important;
+  box-shadow: 0 0 8px rgba(43,125,233,.2) !important;
+  position: relative !important;
+}
+body.theme-arctic .goal-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,0) 100%);
+  border-radius: 10px 10px 0 0;
+}
+
+/* ── Arctic: Buttons — subtle gradient ── */
+body.theme-arctic .btn-action,
+body.theme-arctic .btn {
+  background: linear-gradient(180deg, #ffffff 0%, #f0f4fa 100%) !important;
+  border: 1px solid rgba(0,0,0,.08) !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04), inset 0 1px 0 rgba(255,255,255,.8) !important;
+  transition: all .3s cubic-bezier(.25,.46,.45,.94) !important;
+}
+body.theme-arctic .btn-action:hover,
+body.theme-arctic .btn:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #e8eef8 100%) !important;
+  box-shadow: 0 2px 8px rgba(43,125,233,.12), 0 1px 2px rgba(0,0,0,.06) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── Arctic: Price table — alternating blue-tint rows ── */
+body.theme-arctic .price-row:nth-child(even) {
+  background: rgba(43,125,233,.015);
+}
+body.theme-arctic .price-row:not(.price-header):hover {
+  background: rgba(43,125,233,.04) !important;
+}
+body.theme-arctic .price-header {
+  border-bottom: 1px solid rgba(43,125,233,.1) !important;
+  color: rgba(0,0,0,.45) !important;
+}
+
+/* ── Arctic: Goal milestones — iOS segment chips ── */
+body.theme-arctic .goal-ms {
+  background: rgba(0,0,0,.03) !important;
+  border: 1px solid rgba(0,0,0,.06) !important;
+  border-radius: 20px !important;
+  padding: 3px 10px !important;
+  transition: all .25s cubic-bezier(.25,.46,.45,.94) !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,.02) !important;
+}
+body.theme-arctic .goal-ms:hover {
+  background: rgba(43,125,233,.06) !important;
+  border-color: rgba(43,125,233,.12) !important;
+}
+body.theme-arctic .goal-ms__pct {
+  color: #2b7de9 !important;
+  font-weight: 600 !important;
+}
+
+/* ── Arctic: Stat grid items — inset feel ── */
+body.theme-arctic .sg-item {
+  background: rgba(0,0,0,.025) !important;
+  border-radius: 12px !important;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.04), inset 0 0 0 1px rgba(0,0,0,.02) !important;
+  transition: all .25s cubic-bezier(.25,.46,.45,.94) !important;
+}
+body.theme-arctic .sg-item:hover {
+  background: rgba(0,0,0,.04) !important;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.06), inset 0 0 0 1px rgba(0,0,0,.03) !important;
+}
+
+/* ── Arctic: Session mix — card-like appearance ── */
+body.theme-arctic .session-mix {
+  background: rgba(255,255,255,.7) !important;
+  border: none !important;
+  border-radius: 14px !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04), inset 0 1px 0 rgba(255,255,255,.8) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* ── Arctic: Hero — breathing animation ── */
+@keyframes arctic-breathe-enhanced {
+  0%, 100% {
+    box-shadow:
+      0 4px 32px rgba(43,125,233,.04),
+      0 0 0 1px rgba(0,0,0,.02),
+      inset 0 1px 0 rgba(255,255,255,.5);
+  }
+  50% {
+    box-shadow:
+      0 8px 48px rgba(43,125,233,.08),
+      0 0 0 1px rgba(43,125,233,.04),
+      inset 0 1px 0 rgba(255,255,255,.6);
+  }
+}
+body.theme-arctic .rec-hero {
+  animation: arctic-breathe-enhanced 5s ease-in-out infinite !important;
+  background: rgba(255,255,255,.95) !important;
+  border: none !important;
+  border-radius: 24px !important;
+}
+
+/* ── Arctic: Hero rate — subtle breathing scale ── */
+@keyframes arctic-rate-breathe {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: .95; }
+}
+body.theme-arctic .hero-rate-big {
+  animation: arctic-rate-breathe 6s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* ── Arctic: Modal — heavier frosted glass ── */
+body.theme-arctic .modal__backdrop {
+  background: rgba(245,247,250,.75) !important;
+  backdrop-filter: blur(40px) saturate(200%) !important;
+}
+body.theme-arctic .modal__panel {
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.04),
+    0 8px 32px rgba(0,0,0,.06),
+    0 32px 80px rgba(0,0,0,.08) !important;
+}
+body.theme-arctic .tab-modal-overlay {
+  background: rgba(245,247,250,.8) !important;
+  backdrop-filter: blur(40px) saturate(200%) !important;
+}
+
+/* ── Arctic: Scrollbar — nearly invisible, appears on hover ── */
+body.theme-arctic ::-webkit-scrollbar {
+  width: 2px !important;
+}
+body.theme-arctic ::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.08) !important;
+  border-radius: 4px !important;
+}
+body.theme-arctic ::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+body.theme-arctic .dash-card__body::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0) !important;
+  transition: background .4s !important;
+}
+body.theme-arctic .dash-card:hover .dash-card__body::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.1) !important;
+}
+
+/* ── Arctic: Card footer — cleaner ── */
+body.theme-arctic .dash-card__footer {
+  background: rgba(0,0,0,.015) !important;
+  border-top: 1px solid rgba(0,0,0,.04) !important;
+  border-radius: 0 0 20px 20px !important;
+}
+
+/* ── Arctic: Card action buttons — pill style ── */
+body.theme-arctic .dash-card__action {
+  border-radius: 8px !important;
+  border: 1px solid rgba(0,0,0,.08) !important;
+  background: rgba(255,255,255,.6) !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,.02) !important;
+  transition: all .25s cubic-bezier(.25,.46,.45,.94) !important;
+}
+body.theme-arctic .dash-card__action:hover {
+  background: rgba(43,125,233,.06) !important;
+  border-color: rgba(43,125,233,.12) !important;
+  box-shadow: 0 2px 8px rgba(43,125,233,.08) !important;
+  transform: translateY(-1px);
+}
+
+/* ── Arctic: Price tip — refined callout ── */
+body.theme-arctic .price-tip {
+  background: rgba(43,125,233,.04) !important;
+  border-left: 2px solid rgba(43,125,233,.3) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.02) !important;
+}
+
+/* ── Arctic: Upgrade hint — clean card ── */
+body.theme-arctic .ship-upgrade-hint {
+  background: rgba(255,255,255,.6) !important;
+  border: none !important;
+  border-radius: 14px !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04), inset 0 1px 0 rgba(255,255,255,.6) !important;
+}
+
+/* ── Arctic: Alternative rows — refined hover ── */
+body.theme-arctic .alt-row--action {
+  border-radius: 8px;
+  transition: all .2s cubic-bezier(.25,.46,.45,.94) !important;
+}
+body.theme-arctic .alt-row--action:hover {
+  background: rgba(43,125,233,.04) !important;
+  transform: translateX(2px) !important;
+}
+
+/* ── Arctic: Section header dot — refined ── */
+body.theme-arctic .dash-card__header .sec::before {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #2b7de9 !important;
+  box-shadow: 0 0 6px rgba(43,125,233,.3) !important;
+}
+
+/* ── Arctic: Intel mini-stats — cleaner dividers ── */
+body.theme-arctic .intel-items .mini-stat {
+  border-bottom: 1px solid rgba(0,0,0,.04) !important;
+  padding: 5px 0 !important;
+  transition: background .2s !important;
+}
+body.theme-arctic .intel-items .mini-stat:hover {
+  background: rgba(43,125,233,.02);
+}
+
+/* ── Arctic: Quick nav — frosted pill ── */
+body.theme-arctic .quick-nav {
+  background: rgba(255,255,255,.85) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04), 0 0 0 1px rgba(0,0,0,.03) !important;
+  border-radius: 16px !important;
+}
+
+/* ── Arctic: Footer — clean with subtle separator ── */
+body.theme-arctic .footer {
+  border-top: none !important;
+  position: relative !important;
+}
+body.theme-arctic .footer::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 15% !important;
+  right: 15% !important;
+  height: 1px !important;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(0,0,0,.06) 30%,
+    rgba(0,0,0,.08) 50%,
+    rgba(0,0,0,.06) 70%,
+    transparent) !important;
+  display: block !important;
+}
+
+/* ── Arctic: Patch ticker — lighter frosted ── */
+body.theme-arctic .patch-ticker {
+  background: rgba(255,255,255,.85) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 1px 0 rgba(0,0,0,.04) !important;
+}
+
+/* ── Arctic: Ship picker — glass panel ── */
+body.theme-arctic .ship-picker__display {
+  background: rgba(255,255,255,.7) !important;
+  border: 1px solid rgba(0,0,0,.06) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,.03) !important;
+  border-radius: 14px !important;
+}
+
+/* ── Arctic: Selection color ── */
+body.theme-arctic ::selection {
+  background: rgba(43,125,233,.15) !important;
+  color: #0a0e14 !important;
+}
+
+/* ── Arctic: Stat values — refined typography ── */
+body.theme-arctic .sg-val {
+  font-weight: 700 !important;
+  color: #1a202c !important;
+}
+body.theme-arctic .sg-lbl {
+  color: rgba(0,0,0,.4) !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+}
+
+/* ── Arctic: CR rates — blue accent ── */
+body.theme-arctic .cr-rate {
+  color: #2b7de9 !important;
+  font-weight: 700 !important;
+}
+
+/* ── Arctic: Tab modal close — pill button ── */
+body.theme-arctic .tab-modal-close {
+  border-radius: 12px !important;
+  background: rgba(255,255,255,.8) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0,0,0,.06) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06) !important;
+}
+
+/* ── Arctic: Method cards — glass feel ── */
+body.theme-arctic .method-card {
+  backdrop-filter: blur(4px) !important;
+  background: rgba(255,255,255,.9) !important;
+  transition: all .35s cubic-bezier(.25,.46,.45,.94) !important;
+}
+body.theme-arctic .method-card:hover {
+  box-shadow:
+    0 4px 16px rgba(43,125,233,.06),
+    0 12px 40px rgba(0,0,0,.04),
+    inset 0 1px 0 rgba(255,255,255,.9) !important;
+  transform: translateY(-2px) !important;
+}
+
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║  CORPORATE THEME — Bloomberg Terminal Quality                               ║
+   ║  MD3 elevation, financial data grid, KPI cards, material interactions       ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+/* ── Corporate: Cards — MD3 elevation with colored top-border ── */
+body.theme-corporate .dash-card {
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.06),
+    0 2px 6px rgba(0,0,0,.04),
+    0 8px 24px rgba(0,0,0,.03) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition:
+    box-shadow .35s cubic-bezier(.4,0,.2,1),
+    transform .35s cubic-bezier(.4,0,.2,1) !important;
+}
+
+/* ── Corporate: Card top-border — 2px blue gradient ── */
+body.theme-corporate .dash-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #1a73e8, #4285f4, rgba(66,133,244,.3)) !important;
+  z-index: 1 !important;
+  display: block !important;
+  transform: none !important;
+  opacity: 1 !important;
+  width: auto !important;
+}
+
+/* ── Corporate: Card hover — MD3 lift animation ── */
+body.theme-corporate .dash-card:hover {
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.06),
+    0 4px 12px rgba(0,0,0,.06),
+    0 16px 48px rgba(0,0,0,.06) !important;
+}
+
+/* ── Corporate: Stat values — tabular-nums for aligned numbers ── */
+body.theme-corporate .sg-val {
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: 'tnum' !important;
+  font-weight: 700 !important;
+  color: #06101e !important;
+}
+body.theme-corporate .ms-value {
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: 'tnum' !important;
+}
+body.theme-corporate .cr-rate {
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: 'tnum' !important;
+}
+body.theme-corporate .hero-rate-big {
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: 'tnum' !important;
+}
+
+/* ── Corporate: Price table — financial data grid ── */
+body.theme-corporate .price-row {
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: 'tnum' !important;
+  border-bottom: 1px solid rgba(0,0,0,.04) !important;
+  transition: background .15s cubic-bezier(.4,0,.2,1) !important;
+}
+body.theme-corporate .price-row:nth-child(even) {
+  background: rgba(26,115,232,.015);
+}
+body.theme-corporate .price-row:not(.price-header):hover {
+  background: rgba(26,115,232,.04) !important;
+}
+body.theme-corporate .price-header {
+  border-bottom: 2px solid rgba(26,115,232,.12) !important;
+  font-weight: 600 !important;
+  color: #566080 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+/* ── Corporate: Hero — subtle diagonal gradient ── */
+body.theme-corporate .rec-hero {
+  background:
+    linear-gradient(135deg,
+      rgba(26,115,232,.02) 0%,
+      rgba(255,255,255,0) 40%,
+      rgba(66,133,244,.015) 100%),
+    #ffffff !important;
+  border-bottom: 1px solid rgba(0,0,0,.06) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,.03) !important;
+}
+
+/* ── Corporate: Tab bar — sliding bottom indicator ── */
+body.theme-corporate .tab-bar {
+  background: #ffffff !important;
+  border-top: 1px solid rgba(0,0,0,.06) !important;
+  border-bottom: 1px solid rgba(0,0,0,.04) !important;
+  box-shadow: 0 -1px 4px rgba(0,0,0,.02) !important;
+}
+body.theme-corporate .tab-bar__btn {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: .8px !important;
+  font-size: 9px !important;
+  color: #7882a0 !important;
+  border: none !important;
+  border-right: none !important;
+  padding: 10px 16px !important;
+  position: relative !important;
+  transition: color .3s cubic-bezier(.4,0,.2,1) !important;
+}
+body.theme-corporate .tab-bar__btn::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 20% !important;
+  right: 20% !important;
+  height: 2px !important;
+  background: transparent !important;
+  border-radius: 2px 2px 0 0 !important;
+  transition: all .35s cubic-bezier(.4,0,.2,1) !important;
+}
+body.theme-corporate .tab-bar__btn:hover {
+  color: #3a4460 !important;
+  background: rgba(26,115,232,.02) !important;
+}
+body.theme-corporate .tab-bar__btn:hover::after {
+  background: rgba(26,115,232,.15) !important;
+  left: 15% !important;
+  right: 15% !important;
+}
+body.theme-corporate .tab-bar__btn--active {
+  color: #1a73e8 !important;
+  background: transparent !important;
+}
+body.theme-corporate .tab-bar__btn--active::after {
+  background: #1a73e8 !important;
+  left: 10% !important;
+  right: 10% !important;
+  height: 2px !important;
+  box-shadow: 0 -1px 4px rgba(26,115,232,.2) !important;
+}
+
+/* ── Corporate: Progress bar — segmented appearance ── */
+body.theme-corporate .goal-progress-bar {
+  background: #e8ebf2 !important;
+  border-radius: 8px !important;
+  height: 8px !important;
+  position: relative !important;
+  overflow: visible !important;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.06) !important;
+}
+body.theme-corporate .goal-progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25%;
+  width: 1px;
+  background: rgba(0,0,0,.06);
+  z-index: 2;
+}
+body.theme-corporate .goal-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(0,0,0,.06);
+  z-index: 2;
+}
+body.theme-corporate .goal-progress-fill {
+  border-radius: 8px !important;
+  background: linear-gradient(90deg, #1a73e8, #4285f4) !important;
+  box-shadow: 0 1px 4px rgba(26,115,232,.25) !important;
+  position: relative !important;
+}
+body.theme-corporate .goal-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 100%);
+  border-radius: 8px 8px 0 0;
+}
+
+/* ── Corporate: Goal milestones — KPI cards ── */
+body.theme-corporate .goal-ms {
+  background: rgba(255,255,255,.8) !important;
+  border: 1px solid rgba(0,0,0,.06) !important;
+  border-radius: 8px !important;
+  padding: 4px 10px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.03) !important;
+  transition: all .25s cubic-bezier(.4,0,.2,1) !important;
+}
+body.theme-corporate .goal-ms:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,.06) !important;
+  border-color: rgba(26,115,232,.12) !important;
+  transform: translateY(-1px);
+}
+body.theme-corporate .goal-ms__pct {
+  color: #1a73e8 !important;
+  font-weight: 700 !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* ── Corporate: Buttons — MD ripple-like hover ── */
+body.theme-corporate .btn-action,
+body.theme-corporate .btn {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all .3s cubic-bezier(.4,0,.2,1) !important;
+}
+body.theme-corporate .btn-action::before,
+body.theme-corporate .btn::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-radius: 50% !important;
+  background: rgba(26,115,232,.08) !important;
+  transform: translate(-50%, -50%) !important;
+  transition: width .5s cubic-bezier(.4,0,.2,1), height .5s cubic-bezier(.4,0,.2,1) !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+body.theme-corporate .btn-action:hover::before,
+body.theme-corporate .btn:hover::before {
+  width: 300% !important;
+  height: 300% !important;
+}
+
+/* ── Corporate: Modal — clean elevation, no frosted glass ── */
+body.theme-corporate .modal__backdrop {
+  background: rgba(6,16,30,.3) !important;
+  backdrop-filter: none !important;
+}
+body.theme-corporate .modal__panel {
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.04),
+    0 4px 12px rgba(0,0,0,.06),
+    0 16px 48px rgba(0,0,0,.08),
+    0 32px 80px rgba(0,0,0,.06) !important;
+  border-radius: 16px !important;
+}
+body.theme-corporate .tab-modal-overlay {
+  background: rgba(6,16,30,.35) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* ── Corporate: Card backgrounds — subtle grid pattern ── */
+body.theme-corporate .dash-card__body {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 23px,
+      rgba(0,0,0,.012) 23px,
+      rgba(0,0,0,.012) 24px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 23px,
+      rgba(0,0,0,.008) 23px,
+      rgba(0,0,0,.008) 24px
+    ) !important;
+}
+
+/* ── Corporate: Card header — clean with left accent ── */
+body.theme-corporate .dash-card__header {
+  background: rgba(255,255,255,.7) !important;
+  padding: 14px 20px 6px !important;
+  border-bottom: 1px solid rgba(0,0,0,.04) !important;
+}
+body.theme-corporate .dash-card__header .sec {
+  font-weight: 600 !important;
+  letter-spacing: 1.2px !important;
+  color: #3a4460 !important;
+}
+body.theme-corporate .dash-card__header .sec::before {
+  width: 3px !important;
+  height: 14px !important;
+  border-radius: 2px !important;
+  background: linear-gradient(180deg, #1a73e8, #4285f4) !important;
+  box-shadow: 0 0 4px rgba(26,115,232,.2) !important;
+}
+
+/* ── Corporate: Stat grid — structured data feel ── */
+body.theme-corporate .sg-item {
+  background: rgba(0,0,0,.018) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(0,0,0,.03) !important;
+  transition: all .2s cubic-bezier(.4,0,.2,1) !important;
+}
+body.theme-corporate .sg-item:hover {
+  background: rgba(26,115,232,.03) !important;
+  border-color: rgba(26,115,232,.08) !important;
+}
+body.theme-corporate .sg-lbl {
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  font-size: 0.55rem !important;
+  color: #7882a0 !important;
+}
+
+/* ── Corporate: Session mix — structured panel ── */
+body.theme-corporate .session-mix {
+  background: rgba(0,0,0,.015) !important;
+  border: 1px solid rgba(0,0,0,.04) !important;
+  border-radius: 10px !important;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.02) !important;
+}
+body.theme-corporate .session-mix__label {
+  color: #7882a0 !important;
+  font-weight: 600 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  font-size: 0.58rem !important;
+}
+
+/* ── Corporate: Card footer — structured ── */
+body.theme-corporate .dash-card__footer {
+  background: rgba(0,0,0,.012) !important;
+  border-top: 1px solid rgba(0,0,0,.04) !important;
+  border-radius: 0 0 12px 12px !important;
+}
+
+/* ── Corporate: Action buttons — clean interaction ── */
+body.theme-corporate .dash-card__action {
+  border: 1px solid rgba(0,0,0,.08) !important;
+  border-radius: 8px !important;
+  background: rgba(255,255,255,.5) !important;
+  transition: all .25s cubic-bezier(.4,0,.2,1) !important;
+  font-weight: 500 !important;
+}
+body.theme-corporate .dash-card__action:hover {
+  background: rgba(26,115,232,.05) !important;
+  border-color: rgba(26,115,232,.12) !important;
+  box-shadow: 0 1px 4px rgba(26,115,232,.06) !important;
+  color: #1a73e8 !important;
+}
+
+/* ── Corporate: Upgrade hint — clean card ── */
+body.theme-corporate .ship-upgrade-hint {
+  background: rgba(0,0,0,.018) !important;
+  border: 1px solid rgba(0,0,0,.04) !important;
+  border-radius: 10px !important;
+  border-left: 3px solid #1a73e8 !important;
+  transition: all .25s cubic-bezier(.4,0,.2,1) !important;
+}
+body.theme-corporate .ship-upgrade-hint:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,.04) !important;
+  background: rgba(26,115,232,.015) !important;
+}
+
+/* ── Corporate: Price tip — structured callout ── */
+body.theme-corporate .price-tip {
+  background: rgba(26,115,232,.03) !important;
+  border-left: 3px solid #1a73e8 !important;
+  border-radius: 0 8px 8px 0 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.02) !important;
+}
+
+/* ── Corporate: Alternative rows — data-grid hover ── */
+body.theme-corporate .alt-row--action {
+  transition: all .2s cubic-bezier(.4,0,.2,1) !important;
+  border-radius: 6px;
+}
+body.theme-corporate .alt-row--action:hover {
+  background: rgba(26,115,232,.03) !important;
+  border-left-color: #1a73e8 !important;
+}
+body.theme-corporate .cr-rate {
+  color: #1a73e8 !important;
+  font-weight: 700 !important;
+}
+
+/* ── Corporate: Footer — structured separator ── */
+body.theme-corporate .footer {
+  border-top: none !important;
+  position: relative !important;
+}
+body.theme-corporate .footer::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 1px !important;
+  background: linear-gradient(90deg,
+    rgba(26,115,232,.05),
+    rgba(26,115,232,.15) 30%,
+    rgba(26,115,232,.15) 70%,
+    rgba(26,115,232,.05)) !important;
+  display: block !important;
+}
+
+/* ── Corporate: Header — refined ── */
+body.theme-corporate .header {
+  box-shadow:
+    0 1px 0 rgba(0,0,0,.06),
+    0 2px 12px rgba(0,0,0,.04) !important;
+}
+
+/* ── Corporate: Quick nav — structured navigation ── */
+body.theme-corporate .quick-nav {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,.06) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,.03) !important;
+}
+body.theme-corporate .qn-link {
+  transition: all .25s cubic-bezier(.4,0,.2,1) !important;
+}
+body.theme-corporate .qn-link:hover {
+  background: rgba(26,115,232,.03) !important;
+}
+
+/* ── Corporate: Ships table — financial grid ── */
+body.theme-corporate .ship-list-item {
+  border-bottom: 1px solid rgba(0,0,0,.04) !important;
+  transition: background .15s cubic-bezier(.4,0,.2,1) !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.theme-corporate .ship-list-item:nth-child(even) {
+  background: rgba(26,115,232,.01);
+}
+body.theme-corporate .ship-list-item:hover {
+  background: rgba(26,115,232,.03) !important;
+}
+
+/* ── Corporate: Scrollbar — thin professional ── */
+body.theme-corporate ::-webkit-scrollbar {
+  width: 3px !important;
+}
+body.theme-corporate ::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.1) !important;
+  border-radius: 3px !important;
+}
+body.theme-corporate .dash-card__body::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0) !important;
+}
+body.theme-corporate .dash-card:hover .dash-card__body::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.08) !important;
+}
+
+/* ── Corporate: Intel mini-stats — structured rows ── */
+body.theme-corporate .intel-items .mini-stat {
+  border-bottom: 1px solid rgba(0,0,0,.03) !important;
+  transition: background .15s !important;
+}
+body.theme-corporate .intel-items .mini-stat:hover {
+  background: rgba(26,115,232,.015);
+}
+
+/* ── Corporate: Tab modal close ── */
+body.theme-corporate .tab-modal-close {
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,.08) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06) !important;
+}
+
+/* ── Corporate: Method cards — structured data cards ── */
+body.theme-corporate .method-card {
+  transition: all .3s cubic-bezier(.4,0,.2,1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+body.theme-corporate .method-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #1a73e8, #4285f4) !important;
+  display: block !important;
+  transform: none !important;
+  opacity: .5 !important;
+  transition: opacity .3s !important;
+}
+body.theme-corporate .method-card:hover::before {
+  opacity: 1 !important;
+}
+body.theme-corporate .method-card:hover {
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.06),
+    0 12px 32px rgba(0,0,0,.04) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── Corporate: Hero rate — professional typography ── */
+body.theme-corporate .hero-rate-big {
+  color: #1a73e8 !important;
+  font-weight: 700 !important;
+  letter-spacing: -1px;
+}
+
+/* ── Corporate: Onboard modal — clean material ── */
+body.theme-corporate .onboard__panel {
+  border-radius: 16px !important;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.08),
+    0 32px 80px rgba(0,0,0,.06) !important;
+}
+
+/* ── Corporate: Session activity — structured look ── */
+body.theme-corporate .session-mix__item {
+  border-bottom: 1px solid rgba(0,0,0,.03) !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.theme-corporate .session-mix__time,
+body.theme-corporate .session-mix__earn {
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: 'tnum' !important;
+}
+
+/* ── Corporate: Ship picker — structured dropdown ── */
+body.theme-corporate .ship-picker__display {
+  border: 1px solid rgba(0,0,0,.08) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.03) !important;
+  transition: all .25s cubic-bezier(.4,0,.2,1) !important;
+}
+body.theme-corporate .ship-picker__display:hover {
+  border-color: rgba(26,115,232,.15) !important;
+  box-shadow: 0 2px 8px rgba(26,115,232,.06) !important;
+}
+
+/* ── Corporate: Selection color ── */
+body.theme-corporate ::selection {
+  background: rgba(26,115,232,.15) !important;
+  color: #06101e !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SHARED KEYFRAMES
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Smooth fade-in for card body scrollbars */
+@keyframes scrollbar-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE REFINEMENTS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  /* Arctic: Tighter pills on mobile */
+  body.theme-arctic .tab-bar__btn {
+    padding: 5px 8px !important;
+    font-size: 7px !important;
+    border-radius: 8px !important;
+  }
+  body.theme-arctic .tab-bar {
+    padding: 4px 4px !important;
+    gap: 1px !important;
+  }
+
+  /* Corporate: Compact tabs on mobile */
+  body.theme-corporate .tab-bar__btn {
+    padding: 6px 8px !important;
+    font-size: 7px !important;
+  }
+
+  /* All themes: Reduce card hover lift on mobile (touch devices) */
+  .dash-card:hover {
+    transform: none !important;
+  }
+  body.theme-arctic .dash-card:hover {
+    transform: none !important;
+  }
+  body.theme-corporate .dash-card:hover {
+    transform: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PRINT / REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .dash-card,
+  body.theme-arctic .dash-card,
+  body.theme-corporate .dash-card {
+    transition: none !important;
+  }
+  body.theme-arctic .rec-hero {
+    animation: none !important;
+  }
+  body.theme-arctic .hero-rate-big {
+    animation: none !important;
+  }
+  .tab-bar__btn,
+  body.theme-arctic .tab-bar__btn,
+  body.theme-corporate .tab-bar__btn {
+    transition: none !important;
+  }
+  .tab-bar__btn::after,
+  body.theme-arctic .tab-bar__btn::after,
+  body.theme-corporate .tab-bar__btn::after {
+    transition: none !important;
+  }
+}

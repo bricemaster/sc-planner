@@ -1,0 +1,8 @@
+node_modules/
+v*-screenshots/
+.claude/
+*.log
+debug.html
+debug-screenshot.js
+fresh.html
+1000-IMPROVEMENTS.md

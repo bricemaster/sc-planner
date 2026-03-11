@@ -1,0 +1,1002 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   THEME POLISH — Top-tier visual refinements for every theme.
+   Loaded LAST. Fixes hardcoded colors, adds theme-aware interactions,
+   and elevates visual quality across all 14 themes.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── UNIVERSAL FIXES: Replace hardcoded rgba with theme variables ─── */
+
+/* Card header — was rgba(10,10,10,0.5) which is invisible on light themes */
+.dash-card__header {
+  background: var(--dp) !important;
+}
+
+/* Skeleton shimmer — was rgba(255,255,255,...) which is invisible on light themes */
+/* Overridden in micro-interactions section below */
+
+/* Session mix item border — was rgba(255,255,255,0.04) */
+.session-mix__item {
+  border-bottom-color: var(--dp) !important;
+}
+
+/* Card footer — was rgba(10,10,10,0.3) which is invisible on light themes */
+.dash-card__footer {
+  border-top: 1px solid var(--rl) !important;
+  background: var(--dp) !important;
+  padding: 6px 10px !important;
+}
+
+/* Action buttons — was rgba(255,255,255,0.08) which is invisible on light themes */
+.dash-card__action {
+  border-color: var(--rl) !important;
+  color: var(--dm) !important;
+}
+.dash-card__action:hover {
+  color: var(--g) !important;
+  border-color: var(--g) !important;
+  background: var(--gd) !important;
+}
+
+/* Refresh button — same fix */
+.dash-card__refresh {
+  border-color: var(--rl) !important;
+  color: var(--dm) !important;
+}
+.dash-card__refresh:hover {
+  color: var(--g) !important;
+  border-color: var(--g) !important;
+}
+
+/* Upgrade hint hover — was hardcoded gold rgba */
+.ship-upgrade-hint--clickable:hover {
+  background: var(--gd) !important;
+}
+
+/* Fresh data glow — use theme accent */
+@keyframes fresh-glow-themed {
+  0%   { box-shadow: 0 0 0 0 var(--gl); }
+  50%  { box-shadow: 0 0 10px 2px var(--gd); }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.dash-card--fresh {
+  animation: fresh-glow-themed 1.5s ease !important;
+}
+
+/* Price arrows — use theme success/danger */
+.price-arrow--up { color: var(--green) !important; }
+.price-arrow--down { color: var(--red) !important; }
+
+/* ─── UNIVERSAL QUALITY UPGRADES ─── */
+
+/* Smoother card borders */
+.dash-card {
+  border-color: var(--rl) !important;
+  background: var(--c) !important;
+}
+
+/* Better card header line */
+.dash-card__header .sec {
+  font-size: 0.65rem !important;
+  letter-spacing: 1.5px !important;
+}
+.dash-card__header .sec::before {
+  width: 14px !important;
+  background: var(--g) !important;
+}
+
+/* Stat grid in ship card — more polish */
+.stat-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(55px, 1fr)) !important;
+  gap: 2px !important;
+}
+.sg-item {
+  text-align: center !important;
+  padding: 4px 2px !important;
+  background: var(--dp) !important;
+  border-radius: var(--radius-sm, 3px) !important;
+}
+.sg-val {
+  font-family: var(--mono) !important;
+  font-size: 0.85rem !important;
+  color: var(--wh) !important;
+  font-weight: 600 !important;
+}
+.sg-lbl {
+  font-size: 0.6rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  color: var(--dm) !important;
+}
+
+/* Intel items grid */
+.intel-items {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1px !important;
+}
+.intel-items .mini-stat {
+  padding: 4px 0 !important;
+  border-bottom: 1px solid var(--dp) !important;
+}
+.intel-items .mini-stat:last-child {
+  border-bottom: none !important;
+}
+
+/* Price table polish */
+.price-table {
+  border-collapse: separate !important;
+  border-spacing: 0 1px !important;
+}
+.price-row {
+  transition: background 0.1s !important;
+}
+.price-row:not(.price-header):hover {
+  background: var(--dp) !important;
+}
+.price-header {
+  color: var(--dm) !important;
+  border-bottom: 1px solid var(--rl) !important;
+}
+
+/* Session planner polish */
+.session-header {
+  font-family: var(--mono) !important;
+  text-transform: uppercase !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 1px !important;
+  color: var(--dm) !important;
+  margin-bottom: 6px !important;
+}
+
+/* Goal tracker bar polish */
+.goal-progress-bar {
+  height: 6px !important;
+  background: var(--dp) !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+  margin: 6px 0 !important;
+}
+.goal-progress-fill {
+  height: 100% !important;
+  border-radius: 3px !important;
+  background: linear-gradient(90deg, var(--g), var(--ghi)) !important;
+  transition: width 0.6s var(--ease) !important;
+}
+
+/* Milestone chips */
+.goal-milestones {
+  display: flex !important;
+  gap: 6px !important;
+  flex-wrap: wrap !important;
+  margin-top: 6px !important;
+}
+.goal-ms {
+  background: var(--dp) !important;
+  border: 1px solid var(--rl) !important;
+  border-radius: var(--radius-sm, 3px) !important;
+  padding: 2px 6px !important;
+  font-size: 0.68rem !important;
+  font-family: var(--mono) !important;
+}
+.goal-ms__pct {
+  color: var(--g) !important;
+  margin-right: 4px !important;
+}
+.goal-ms__time {
+  color: var(--dm) !important;
+}
+
+/* Session mix polish */
+.session-mix {
+  background: var(--dp) !important;
+  border: 1px solid var(--rl) !important;
+  border-radius: var(--radius-sm, 3px) !important;
+  padding: 6px 8px !important;
+  margin-top: 6px !important;
+}
+.session-mix__label {
+  font-family: var(--mono) !important;
+  text-transform: uppercase !important;
+  font-size: 0.6rem !important;
+  letter-spacing: 1px !important;
+  color: var(--dm) !important;
+  margin-bottom: 4px !important;
+}
+.session-mix__item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 2px 0 !important;
+}
+.session-mix__method {
+  color: var(--lt) !important;
+  flex: 1 !important;
+}
+.session-mix__time {
+  font-family: var(--mono) !important;
+  color: var(--dm) !important;
+  font-size: 0.75rem !important;
+}
+.session-mix__earn {
+  font-family: var(--mono) !important;
+  color: var(--g) !important;
+  font-size: 0.75rem !important;
+}
+
+/* Alternatives row polish */
+.alt-row {
+  display: flex !important;
+  align-items: center !important;
+  padding: 4px 6px !important;
+  border-left: 2px solid transparent !important;
+  transition: all 0.15s !important;
+}
+.cr-name {
+  flex: 1 !important;
+  color: var(--lt) !important;
+  font-size: 0.78rem !important;
+}
+.cr-rate {
+  font-family: var(--mono) !important;
+  color: var(--g) !important;
+  font-size: 0.75rem !important;
+  margin-right: 6px !important;
+}
+
+/* Price tip polish */
+.price-tip {
+  padding: 6px 8px !important;
+  margin-top: 6px !important;
+  font-size: 0.75rem !important;
+}
+
+/* Capabilities text */
+.ship-cap {
+  font-size: 0.72rem !important;
+  display: inline-block !important;
+}
+.ship-cap--good {
+  color: var(--lt) !important;
+}
+.ship-cap--bad {
+  color: var(--dm) !important;
+  font-style: italic !important;
+}
+
+/* Ship unlocks text */
+.ship-unlocks-text {
+  font-size: 0.72rem !important;
+  color: var(--sv) !important;
+  margin-top: 4px !important;
+  padding-top: 4px !important;
+  border-top: 1px solid var(--dp) !important;
+}
+
+/* Upgrade hint */
+.ship-upgrade-hint {
+  background: var(--dp) !important;
+  border: 1px solid var(--rl) !important;
+  border-radius: var(--radius-sm, 3px) !important;
+  padding: 6px 8px !important;
+  margin-top: 6px !important;
+}
+.upgrade-label {
+  font-family: var(--mono) !important;
+  text-transform: uppercase !important;
+  font-size: 0.58rem !important;
+  letter-spacing: 1px !important;
+  color: var(--dm) !important;
+  display: block !important;
+}
+.upgrade-name {
+  color: var(--g) !important;
+  font-weight: 500 !important;
+  font-size: 0.82rem !important;
+  display: block !important;
+}
+.upgrade-meta {
+  font-size: 0.68rem !important;
+  color: var(--sv) !important;
+  font-family: var(--mono) !important;
+  display: block !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ARCTIC THEME — Light, airy, Apple-esque
+   ═══════════════════════════════════════════════════════════════════════════ */
+body.theme-arctic .dash-card {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04) !important;
+  border: none !important;
+}
+body.theme-arctic .dash-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.06) !important;
+}
+body.theme-arctic .dash-card__footer {
+  background: rgba(0,0,0,0.02) !important;
+  border-color: rgba(0,0,0,0.06) !important;
+}
+body.theme-arctic .dash-card__action {
+  border-color: rgba(0,0,0,0.1) !important;
+  color: var(--dm) !important;
+  border-radius: 10px !important;
+}
+body.theme-arctic .dash-card__action:hover {
+  background: rgba(43,125,233,0.08) !important;
+  border-color: var(--g) !important;
+}
+body.theme-arctic .dash-card__refresh {
+  border-color: rgba(0,0,0,0.1) !important;
+  border-radius: 10px !important;
+}
+body.theme-arctic .sg-item {
+  background: rgba(0,0,0,0.03) !important;
+  border-radius: 8px !important;
+}
+body.theme-arctic .ship-upgrade-hint {
+  background: rgba(0,0,0,0.03) !important;
+  border-color: rgba(0,0,0,0.06) !important;
+  border-radius: 10px !important;
+}
+body.theme-arctic .session-mix {
+  background: rgba(0,0,0,0.02) !important;
+  border-color: rgba(0,0,0,0.06) !important;
+  border-radius: 10px !important;
+}
+body.theme-arctic .goal-ms {
+  background: rgba(0,0,0,0.03) !important;
+  border-color: rgba(0,0,0,0.06) !important;
+  border-radius: 8px !important;
+}
+body.theme-arctic .goal-progress-bar {
+  background: rgba(0,0,0,0.06) !important;
+  border-radius: 10px !important;
+}
+body.theme-arctic .goal-progress-fill {
+  border-radius: 10px !important;
+}
+body.theme-arctic .price-tip {
+  background: rgba(43,125,233,0.06) !important;
+  border-left-color: var(--g) !important;
+  border-radius: 8px !important;
+}
+body.theme-arctic .price-row:not(.price-header):hover {
+  background: rgba(0,0,0,0.03) !important;
+}
+body.theme-arctic .alt-row--action:hover {
+  background: rgba(43,125,233,0.05) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CORPORATE THEME — Bloomberg financial dashboard
+   ═══════════════════════════════════════════════════════════════════════════ */
+body.theme-corporate .dash-card {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.03) !important;
+  border: none !important;
+  border-radius: 12px !important;
+}
+body.theme-corporate .dash-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05) !important;
+}
+body.theme-corporate .dash-card__footer {
+  background: rgba(0,0,0,0.015) !important;
+  border-color: rgba(0,0,0,0.06) !important;
+}
+body.theme-corporate .dash-card__action {
+  border-color: rgba(0,0,0,0.1) !important;
+  border-radius: 8px !important;
+}
+body.theme-corporate .dash-card__action:hover {
+  background: rgba(26,115,232,0.06) !important;
+}
+body.theme-corporate .dash-card__refresh {
+  border-color: rgba(0,0,0,0.1) !important;
+  border-radius: 8px !important;
+}
+body.theme-corporate .sg-item {
+  background: rgba(0,0,0,0.025) !important;
+  border-radius: 8px !important;
+}
+body.theme-corporate .ship-upgrade-hint {
+  background: rgba(0,0,0,0.025) !important;
+  border-color: rgba(0,0,0,0.06) !important;
+  border-radius: 8px !important;
+}
+body.theme-corporate .session-mix {
+  background: rgba(0,0,0,0.02) !important;
+  border-color: rgba(0,0,0,0.05) !important;
+  border-radius: 10px !important;
+}
+body.theme-corporate .goal-ms {
+  background: rgba(0,0,0,0.03) !important;
+  border-radius: 8px !important;
+}
+body.theme-corporate .price-tip {
+  background: rgba(26,115,232,0.05) !important;
+  border-radius: 8px !important;
+}
+body.theme-corporate .price-row:not(.price-header):hover {
+  background: rgba(0,0,0,0.025) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CRIMSON FLEET THEME — Aggressive, militant, angular
+   ═══════════════════════════════════════════════════════════════════════════ */
+body.theme-crimson .dash-card__action {
+  border-radius: 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  font-weight: 700 !important;
+}
+body.theme-crimson .dash-card__action:hover {
+  background: rgba(232,64,64,0.12) !important;
+  border-color: var(--g) !important;
+  box-shadow: 0 0 6px rgba(232,64,64,0.3) !important;
+}
+body.theme-crimson .dash-card__refresh {
+  border-radius: 0 !important;
+}
+body.theme-crimson .sg-item {
+  border-radius: 0 !important;
+  border: 1px solid var(--rl) !important;
+}
+body.theme-crimson .ship-upgrade-hint {
+  border-radius: 0 !important;
+  border-left: 3px solid var(--g) !important;
+}
+body.theme-crimson .session-mix {
+  border-radius: 0 !important;
+  border-left: 2px solid var(--g) !important;
+}
+body.theme-crimson .goal-ms {
+  border-radius: 0 !important;
+}
+body.theme-crimson .goal-progress-bar {
+  border-radius: 0 !important;
+}
+body.theme-crimson .goal-progress-fill {
+  border-radius: 0 !important;
+  background: linear-gradient(90deg, var(--g), var(--ghi)) !important;
+}
+body.theme-crimson .price-tip {
+  border-radius: 0 !important;
+  border-left-width: 3px !important;
+}
+body.theme-crimson .alt-row--action:hover {
+  border-left-width: 3px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEON DISTRICT THEME — Cyberpunk, glowing edges, scanlines
+   ═══════════════════════════════════════════════════════════════════════════ */
+body.theme-neon .dash-card {
+  border: 1px solid rgba(200,80,255,0.2) !important;
+  box-shadow: 0 0 6px rgba(200,80,255,0.08), inset 0 0 20px rgba(200,80,255,0.02) !important;
+}
+body.theme-neon .dash-card:hover {
+  border-color: rgba(200,80,255,0.35) !important;
+  box-shadow: 0 0 12px rgba(200,80,255,0.15), inset 0 0 20px rgba(200,80,255,0.03) !important;
+}
+body.theme-neon .dash-card__action {
+  border-radius: 0 !important;
+  border-color: rgba(200,80,255,0.2) !important;
+  text-shadow: 0 0 4px currentColor !important;
+}
+body.theme-neon .dash-card__action:hover {
+  border-color: var(--cyan) !important;
+  color: var(--cyan) !important;
+  box-shadow: 0 0 8px rgba(0,229,255,0.25) !important;
+  text-shadow: 0 0 6px var(--cyan) !important;
+}
+body.theme-neon .dash-card__refresh {
+  border-radius: 0 !important;
+  border-color: rgba(200,80,255,0.2) !important;
+}
+body.theme-neon .dash-card__refresh:hover {
+  color: var(--cyan) !important;
+  border-color: var(--cyan) !important;
+  box-shadow: 0 0 8px rgba(0,229,255,0.2) !important;
+}
+body.theme-neon .sg-item {
+  border-radius: 0 !important;
+  border: 1px solid rgba(200,80,255,0.15) !important;
+}
+body.theme-neon .sg-val {
+  text-shadow: 0 0 6px var(--g) !important;
+}
+body.theme-neon .ship-upgrade-hint {
+  border-radius: 0 !important;
+  border-color: rgba(200,80,255,0.2) !important;
+  border-left: 2px solid var(--cyan) !important;
+}
+body.theme-neon .session-mix {
+  border-radius: 0 !important;
+  border-color: rgba(200,80,255,0.15) !important;
+}
+body.theme-neon .goal-progress-bar {
+  border-radius: 0 !important;
+  border: 1px solid rgba(200,80,255,0.2) !important;
+}
+body.theme-neon .goal-progress-fill {
+  border-radius: 0 !important;
+  box-shadow: 0 0 8px var(--g) !important;
+}
+body.theme-neon .price-tip {
+  border-radius: 0 !important;
+  border-left-color: var(--cyan) !important;
+  background: rgba(0,229,255,0.05) !important;
+}
+body.theme-neon .cr-rate {
+  text-shadow: 0 0 4px var(--g) !important;
+}
+body.theme-neon .goal-ms {
+  border-radius: 0 !important;
+  border-color: rgba(200,80,255,0.15) !important;
+}
+body.theme-neon .alt-row--action:hover {
+  border-left-color: var(--cyan) !important;
+  background: rgba(0,229,255,0.06) !important;
+}
+body.theme-neon .upgrade-name {
+  text-shadow: 0 0 6px var(--g) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TACTICIAN THEME — Military HUD, monospace, dense
+   ═══════════════════════════════════════════════════════════════════════════ */
+body.theme-tactical .dash-card {
+  border: 1px solid rgba(124,179,66,0.2) !important;
+}
+body.theme-tactical .dash-card__action {
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+}
+body.theme-tactical .dash-card__action:hover {
+  background: rgba(124,179,66,0.1) !important;
+  box-shadow: 0 0 4px rgba(124,179,66,0.2) !important;
+}
+body.theme-tactical .dash-card__refresh {
+  border-radius: 0 !important;
+}
+body.theme-tactical .sg-item {
+  border-radius: 0 !important;
+  border: 1px solid rgba(124,179,66,0.15) !important;
+}
+body.theme-tactical .ship-upgrade-hint {
+  border-radius: 0 !important;
+  border-left: 2px solid var(--g) !important;
+}
+body.theme-tactical .session-mix {
+  border-radius: 0 !important;
+}
+body.theme-tactical .goal-ms {
+  border-radius: 0 !important;
+}
+body.theme-tactical .goal-progress-bar {
+  border-radius: 0 !important;
+}
+body.theme-tactical .goal-progress-fill {
+  border-radius: 0 !important;
+}
+body.theme-tactical .price-tip {
+  border-radius: 0 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MANUFACTURER THEMES — Brand-specific refinements
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── RSI — Professional aerospace ── */
+body.theme-mfr-rsi .dash-card__action {
+  border-radius: 3px !important;
+}
+body.theme-mfr-rsi .sg-item {
+  border-radius: 3px !important;
+}
+body.theme-mfr-rsi .ship-upgrade-hint {
+  border-radius: 3px !important;
+  border-left: 2px solid var(--g) !important;
+}
+
+/* ── AEGIS — Sharp military, angular ── */
+body.theme-mfr-aegis .dash-card__action {
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+}
+body.theme-mfr-aegis .dash-card__action:hover {
+  box-shadow: 0 0 6px rgba(232,125,32,0.3) !important;
+}
+body.theme-mfr-aegis .dash-card__refresh {
+  border-radius: 0 !important;
+}
+body.theme-mfr-aegis .sg-item {
+  border-radius: 0 !important;
+}
+body.theme-mfr-aegis .ship-upgrade-hint {
+  border-radius: 0 !important;
+  border-left: 3px solid var(--g) !important;
+}
+body.theme-mfr-aegis .session-mix {
+  border-radius: 0 !important;
+}
+body.theme-mfr-aegis .goal-ms {
+  border-radius: 0 !important;
+}
+body.theme-mfr-aegis .goal-progress-bar,
+body.theme-mfr-aegis .goal-progress-fill {
+  border-radius: 0 !important;
+}
+body.theme-mfr-aegis .price-tip {
+  border-radius: 0 !important;
+}
+
+/* ── DRAKE — Heavy industrial, dashed borders ── */
+body.theme-mfr-drake .dash-card__action {
+  border-radius: 0 !important;
+  border-style: dashed !important;
+  font-weight: 700 !important;
+}
+body.theme-mfr-drake .dash-card__action:hover {
+  border-style: solid !important;
+}
+body.theme-mfr-drake .dash-card__refresh {
+  border-radius: 0 !important;
+  border-style: dashed !important;
+}
+body.theme-mfr-drake .sg-item {
+  border-radius: 0 !important;
+  border: 1px dashed var(--rl) !important;
+}
+body.theme-mfr-drake .ship-upgrade-hint {
+  border-radius: 0 !important;
+  border-style: dashed !important;
+  border-left: 3px solid var(--g) !important;
+}
+body.theme-mfr-drake .session-mix {
+  border-radius: 0 !important;
+  border-style: dashed !important;
+}
+body.theme-mfr-drake .goal-ms {
+  border-radius: 0 !important;
+  border-style: dashed !important;
+}
+body.theme-mfr-drake .goal-progress-bar,
+body.theme-mfr-drake .goal-progress-fill {
+  border-radius: 0 !important;
+}
+body.theme-mfr-drake .price-tip {
+  border-radius: 0 !important;
+}
+
+/* ── ORIGIN — Luxury, elegant, serif, generous spacing ── */
+body.theme-mfr-origin .dash-card {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
+  border: 1px solid rgba(196,149,106,0.15) !important;
+  border-radius: 12px !important;
+}
+body.theme-mfr-origin .dash-card:hover {
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1) !important;
+}
+body.theme-mfr-origin .dash-card__action {
+  border-radius: 12px !important;
+  font-family: var(--serif, Georgia) !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  font-style: italic !important;
+}
+body.theme-mfr-origin .dash-card__refresh {
+  border-radius: 12px !important;
+}
+body.theme-mfr-origin .sg-item {
+  border-radius: 8px !important;
+}
+body.theme-mfr-origin .ship-upgrade-hint {
+  border-radius: 10px !important;
+  border-left: 2px solid var(--g) !important;
+}
+body.theme-mfr-origin .upgrade-label {
+  font-family: var(--serif, Georgia) !important;
+  font-style: italic !important;
+  text-transform: none !important;
+}
+body.theme-mfr-origin .session-mix {
+  border-radius: 10px !important;
+}
+body.theme-mfr-origin .session-mix__label {
+  font-family: var(--serif, Georgia) !important;
+  font-style: italic !important;
+  text-transform: none !important;
+}
+body.theme-mfr-origin .goal-ms {
+  border-radius: 8px !important;
+}
+body.theme-mfr-origin .goal-progress-bar {
+  border-radius: 6px !important;
+  height: 4px !important;
+}
+body.theme-mfr-origin .goal-progress-fill {
+  border-radius: 6px !important;
+}
+body.theme-mfr-origin .price-tip {
+  border-radius: 8px !important;
+}
+body.theme-mfr-origin .dash-card__header .sec {
+  font-family: var(--serif, Georgia) !important;
+  font-style: italic !important;
+  text-transform: none !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* ── MISC — Utilitarian, technical, dense data ── */
+body.theme-mfr-misc .dash-card__action {
+  border-radius: 2px !important;
+  font-size: 0.62rem !important;
+  padding: 2px 6px !important;
+}
+body.theme-mfr-misc .sg-item {
+  border-radius: 2px !important;
+  padding: 2px !important;
+}
+body.theme-mfr-misc .ship-upgrade-hint {
+  border-radius: 2px !important;
+  padding: 4px 6px !important;
+}
+body.theme-mfr-misc .session-mix {
+  border-radius: 2px !important;
+  padding: 4px 6px !important;
+}
+body.theme-mfr-misc .goal-ms {
+  border-radius: 2px !important;
+  padding: 1px 4px !important;
+}
+
+/* ── ANVIL — Military bronze, angular structured ── */
+body.theme-mfr-anvil .dash-card__action {
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+}
+body.theme-mfr-anvil .dash-card__refresh {
+  border-radius: 0 !important;
+}
+body.theme-mfr-anvil .sg-item {
+  border-radius: 0 !important;
+}
+body.theme-mfr-anvil .ship-upgrade-hint {
+  border-radius: 0 !important;
+  border-left: 3px solid var(--green, #7a9e5a) !important;
+}
+body.theme-mfr-anvil .session-mix {
+  border-radius: 0 !important;
+}
+body.theme-mfr-anvil .goal-ms {
+  border-radius: 0 !important;
+}
+body.theme-mfr-anvil .goal-progress-bar,
+body.theme-mfr-anvil .goal-progress-fill {
+  border-radius: 0 !important;
+}
+body.theme-mfr-anvil .price-tip {
+  border-radius: 0 !important;
+}
+
+/* ── CRUSADER — Clean SaaS, rounded, elevated ── */
+body.theme-mfr-crusader .dash-card {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,102,255,0.06) !important;
+  border: none !important;
+  border-radius: 14px !important;
+}
+body.theme-mfr-crusader .dash-card:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,102,255,0.1) !important;
+}
+body.theme-mfr-crusader .dash-card__footer {
+  background: rgba(0,0,0,0.015) !important;
+  border-color: rgba(0,0,0,0.05) !important;
+}
+body.theme-mfr-crusader .dash-card__action {
+  border-radius: 10px !important;
+  border-color: rgba(0,0,0,0.1) !important;
+}
+body.theme-mfr-crusader .dash-card__action:hover {
+  background: rgba(0,102,255,0.06) !important;
+}
+body.theme-mfr-crusader .dash-card__refresh {
+  border-radius: 10px !important;
+  border-color: rgba(0,0,0,0.1) !important;
+}
+body.theme-mfr-crusader .sg-item {
+  border-radius: 8px !important;
+  background: rgba(0,0,0,0.025) !important;
+}
+body.theme-mfr-crusader .ship-upgrade-hint {
+  border-radius: 10px !important;
+  border-color: rgba(0,0,0,0.06) !important;
+  background: rgba(0,0,0,0.02) !important;
+}
+body.theme-mfr-crusader .session-mix {
+  border-radius: 10px !important;
+  background: rgba(0,0,0,0.02) !important;
+  border-color: rgba(0,0,0,0.05) !important;
+}
+body.theme-mfr-crusader .goal-ms {
+  border-radius: 8px !important;
+  background: rgba(0,0,0,0.025) !important;
+}
+body.theme-mfr-crusader .goal-progress-bar {
+  border-radius: 8px !important;
+}
+body.theme-mfr-crusader .goal-progress-fill {
+  border-radius: 8px !important;
+}
+body.theme-mfr-crusader .price-tip {
+  border-radius: 8px !important;
+  background: rgba(0,102,255,0.04) !important;
+}
+body.theme-mfr-crusader .price-row:not(.price-header):hover {
+  background: rgba(0,0,0,0.025) !important;
+}
+
+/* ── CONSOLIDATED OUTLAND — Warm frontier, craftsman ── */
+body.theme-mfr-co .dash-card__action {
+  border-radius: 4px !important;
+}
+body.theme-mfr-co .sg-item {
+  border-radius: 4px !important;
+}
+body.theme-mfr-co .ship-upgrade-hint {
+  border-radius: 4px !important;
+}
+body.theme-mfr-co .session-mix {
+  border-radius: 4px !important;
+}
+
+/* ── ARGO — Construction yellow, heavy industrial ── */
+body.theme-mfr-argo .dash-card__action {
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  border-width: 2px !important;
+}
+body.theme-mfr-argo .dash-card__action:hover {
+  box-shadow: 0 0 6px rgba(255,204,0,0.3) !important;
+}
+body.theme-mfr-argo .dash-card__refresh {
+  border-radius: 0 !important;
+  border-width: 2px !important;
+}
+body.theme-mfr-argo .sg-item {
+  border-radius: 0 !important;
+  border: 2px solid var(--rl) !important;
+}
+body.theme-mfr-argo .ship-upgrade-hint {
+  border-radius: 0 !important;
+  border-left: 3px solid var(--g) !important;
+  border-left-width: 3px !important;
+}
+body.theme-mfr-argo .session-mix {
+  border-radius: 0 !important;
+  border-width: 2px !important;
+}
+body.theme-mfr-argo .goal-ms {
+  border-radius: 0 !important;
+  border-width: 2px !important;
+}
+body.theme-mfr-argo .goal-progress-bar,
+body.theme-mfr-argo .goal-progress-fill {
+  border-radius: 0 !important;
+}
+body.theme-mfr-argo .price-tip {
+  border-radius: 0 !important;
+  border-left-width: 3px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MICRO-INTERACTIONS — Subtle, theme-aware motion
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Smooth card transitions for all themes */
+.dash-card {
+  transition: box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+/* Active state for action buttons — brief flash */
+.dash-card__action:active {
+  transform: scale(0.95) !important;
+  transition: transform 0.05s !important;
+}
+
+/* Interactive elements — subtle lift on hover */
+.alt-row--action:hover {
+  transform: translateX(2px) !important;
+}
+
+/* Goal completion — use theme success color */
+.goal-complete .goal-progress-fill {
+  background: linear-gradient(90deg, var(--green), var(--green)) !important;
+  box-shadow: 0 0 8px var(--green) !important;
+}
+
+/* Skeleton shimmer — theme-aware gradient */
+@keyframes shimmer-themed {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--dp) 25%, var(--rl) 50%, var(--dp) 75%) !important;
+  background-size: 200% 100% !important;
+  animation: shimmer-themed 1.5s ease infinite !important;
+  border-radius: var(--radius-sm, 3px) !important;
+  display: inline-block !important;
+  height: 12px !important;
+}
+.skeleton--wide { width: 80% !important; }
+.skeleton--med  { width: 55% !important; margin-top: 6px !important; }
+.skeleton--short { width: 35% !important; margin-top: 6px !important; }
+
+/* Empty state hints — theme-aware */
+.empty-hint {
+  color: var(--dm) !important;
+  font-size: 0.78rem !important;
+  line-height: 1.6 !important;
+  padding: 8px 0 !important;
+}
+.empty-hint strong {
+  color: var(--g) !important;
+}
+
+/* Rate pulse — theme-aware */
+@keyframes rate-pulse-themed {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.06); color: var(--ghi); }
+  100% { transform: scale(1); }
+}
+.hero-rate-big.updated {
+  animation: rate-pulse-themed 0.5s ease !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE — Theme-aware mobile refinements
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .dash-card__action {
+    font-size: 0.62rem !important;
+    padding: 2px 6px !important;
+  }
+  .dash-card__footer {
+    padding: 4px 8px !important;
+  }
+  .stat-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2px !important;
+  }
+  .sg-item {
+    padding: 3px 2px !important;
+  }
+  .sg-val {
+    font-size: 0.78rem !important;
+  }
+  .session-mix {
+    padding: 4px 6px !important;
+  }
+  .ship-upgrade-hint {
+    padding: 4px 6px !important;
+  }
+  .goal-milestones {
+    gap: 4px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLLBAR — Theme-aware per-theme
+   ═══════════════════════════════════════════════════════════════════════════ */
+body.theme-arctic ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15) !important; }
+body.theme-arctic ::-webkit-scrollbar-track { background: transparent !important; }
+body.theme-corporate ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12) !important; }
+body.theme-corporate ::-webkit-scrollbar-track { background: transparent !important; }
+body.theme-mfr-crusader ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12) !important; }
+body.theme-mfr-crusader ::-webkit-scrollbar-track { background: transparent !important; }
+body.theme-mfr-origin ::-webkit-scrollbar-thumb { background: rgba(196,149,106,0.2) !important; }
+body.theme-neon ::-webkit-scrollbar-thumb { background: rgba(200,80,255,0.3) !important; }
+body.theme-crimson ::-webkit-scrollbar-thumb { background: rgba(232,64,64,0.3) !important; }
+body.theme-tactical ::-webkit-scrollbar-thumb { background: rgba(124,179,66,0.3) !important; }

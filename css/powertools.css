@@ -1,0 +1,339 @@
+/* ═══ POWER TOOLS ═══ */
+
+/* ── Toast Notifications ── */
+.pt-toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.pt-toast {
+  background: var(--card, #1a1a2e);
+  color: var(--fg, #e0e0e0);
+  border: 1px solid var(--ac, #c9aa6e);
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 0.875rem;
+  font-family: var(--ff-body, 'Inter', sans-serif);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  pointer-events: auto;
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.35s ease;
+  max-width: 360px;
+}
+
+.pt-toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.pt-toast.hide {
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+@keyframes toast-slide-in { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.pt-toast { animation: toast-slide-in 0.25s ease both; }
+
+/* ── Keyboard Shortcuts Modal ── */
+.pt-shortcuts {
+  max-width: 560px;
+}
+
+.pt-shortcuts h2 {
+  font-family: var(--ff-heading, 'Montserrat', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ac, #c9aa6e);
+  margin: 0 0 8px 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pt-shortcuts p.pt-subtitle {
+  color: var(--fg2, #888);
+  font-size: 0.8rem;
+  margin: 0 0 20px 0;
+}
+
+.pt-shortcut-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 32px;
+}
+
+.pt-shortcut-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rl, rgba(255,255,255,0.06));
+}
+
+.pt-shortcut-row:last-child {
+  border-bottom: none;
+}
+
+.pt-shortcut-label {
+  font-size: 0.85rem;
+  color: var(--fg, #e0e0e0);
+}
+
+.pt-shortcut-keys {
+  display: flex;
+  gap: 4px;
+}
+
+.pt-shortcut-keys kbd {
+  display: inline-block;
+  background: var(--bg2, rgba(255,255,255,0.06));
+  color: var(--ac, #c9aa6e);
+  border: 1px solid var(--rl, rgba(255,255,255,0.1));
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: var(--ff-mono, 'DM Mono', monospace);
+  font-size: 0.75rem;
+  min-width: 24px;
+  text-align: center;
+}
+
+/* ── Comparison Panel ── */
+.pt-compare h2,
+.pt-earncalc h2 {
+  font-family: var(--ff-heading, 'Montserrat', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ac, #c9aa6e);
+  margin: 0 0 16px 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pt-compare-selectors {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.pt-compare-selectors select {
+  flex: 1;
+  min-width: 160px;
+  padding: 8px 12px;
+  background: var(--bg2, rgba(255,255,255,0.06));
+  color: var(--fg, #e0e0e0);
+  border: 1px solid var(--rl, rgba(255,255,255,0.1));
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: var(--ff-body, 'Inter', sans-serif);
+}
+
+.pt-compare-selectors select:focus {
+  outline: none;
+  border-color: var(--ac, #c9aa6e);
+}
+
+.pt-stats-grid {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--rl, rgba(255,255,255,0.1));
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pt-stats-row {
+  display: grid;
+  gap: 0;
+}
+
+.pt-stats-row.pt-stats-header {
+  background: var(--bg2, rgba(255,255,255,0.06));
+}
+
+.pt-stats-cell {
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--rl, rgba(255,255,255,0.06));
+  text-align: center;
+}
+
+.pt-stats-cell:first-child {
+  text-align: left;
+  color: var(--fg2, #888);
+  font-weight: 500;
+}
+
+.pt-stats-header .pt-stats-cell {
+  font-weight: 600;
+  color: var(--ac, #c9aa6e);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.pt-stats-cell.pt-best {
+  color: var(--green, #4caf50);
+  font-weight: 600;
+}
+
+.pt-stats-cell.pt-worst {
+  opacity: 0.45;
+}
+
+.pt-stats-row:last-child .pt-stats-cell {
+  border-bottom: none;
+}
+
+/* ── Earning Calculator ── */
+.pt-earncalc {
+  max-width: 480px;
+}
+
+.pt-earncalc-inputs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.pt-earncalc-field {
+  flex: 1;
+  min-width: 120px;
+}
+
+.pt-earncalc-field label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--fg2, #888);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pt-earncalc-field input {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg2, rgba(255,255,255,0.06));
+  color: var(--fg, #e0e0e0);
+  border: 1px solid var(--rl, rgba(255,255,255,0.1));
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: var(--ff-mono, 'DM Mono', monospace);
+  box-sizing: border-box;
+}
+
+.pt-earncalc-field input:focus {
+  outline: none;
+  border-color: var(--ac, #c9aa6e);
+}
+
+.pt-earncalc-result {
+  background: var(--bg2, rgba(255,255,255,0.04));
+  border: 1px solid var(--rl, rgba(255,255,255,0.08));
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.pt-earncalc-total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ac, #c9aa6e);
+  font-family: var(--ff-mono, 'DM Mono', monospace);
+  margin-bottom: 4px;
+}
+
+.pt-earncalc-label {
+  font-size: 0.8rem;
+  color: var(--fg2, #888);
+  margin-bottom: 16px;
+}
+
+.pt-earncalc-goal {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rl, rgba(255,255,255,0.08));
+}
+
+.pt-earncalc-goal-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--fg, #e0e0e0);
+  margin-bottom: 8px;
+}
+
+.pt-progress-track {
+  height: 8px;
+  background: var(--bg2, rgba(255,255,255,0.06));
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.pt-progress-fill {
+  height: 100%;
+  background: var(--ac, #c9aa6e);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.pt-progress-fill.pt-complete {
+  background: var(--green, #4caf50);
+}
+
+.pt-progress-text {
+  font-size: 0.75rem;
+  color: var(--fg2, #888);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ── Trade / Refinery / Fleet ── */
+.pt-tradecalc, .pt-refinery, .pt-fleet { max-width: 540px; }
+
+.pt-refinery-grid {
+  margin-top: 16px;
+  font-size: 0.8rem;
+}
+
+.pt-fleet-rm {
+  background: none;
+  border: 1px solid rgba(239,83,80,0.3);
+  color: #ef5350;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 2px 6px;
+  transition: background 0.15s;
+}
+.pt-fleet-rm:hover {
+  background: rgba(239,83,80,0.15);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .pt-shortcut-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pt-toast-container {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+  }
+
+  .pt-toast {
+    max-width: 100%;
+  }
+
+  .pt-compare-selectors {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,450 @@
+/* ============================================================
+   effects.css — Visual polish layer (items 1-20)
+   Keep subtle. Enhance, don't distract.
+   ============================================================ */
+
+/* === 20. Theme transition ================================= */
+body {
+  transition: background-color 0.6s ease, color 0.4s ease;
+}
+
+/* === 1. Loading screen ==================================== */
+#loadingScreen {
+  position: fixed; inset: 0; z-index: 99999;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: var(--v, #030303);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  animation: loading-fallback 3s forwards;
+}
+
+@keyframes loading-fallback {
+  0%, 80% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+body.loading-done #loadingScreen {
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+
+.loading-ship {
+  width: 80px; height: 40px; position: relative; margin-bottom: 32px;
+}
+
+.loading-ship::before,
+.loading-ship::after {
+  content: ''; position: absolute;
+}
+
+/* Ship body */
+.loading-ship::before {
+  width: 60px; height: 16px; left: 10px; top: 12px;
+  background: var(--g, #c9aa6e);
+  clip-path: polygon(0 50%, 20% 0, 100% 0, 100% 100%, 20% 100%);
+  animation: shipGlow 2s ease-in-out infinite;
+}
+
+/* Wing */
+.loading-ship::after {
+  width: 40px; height: 40px; left: 20px; top: 0;
+  border-left: 2px solid var(--g, #c9aa6e);
+  border-bottom: 2px solid transparent;
+  clip-path: polygon(0 50%, 100% 0, 80% 50%, 100% 100%);
+  background: rgba(201,170,110,.15);
+  animation: shipGlow 2s ease-in-out infinite 0.3s;
+}
+
+@keyframes shipGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.loading-bar-track {
+  width: 160px; height: 2px;
+  background: var(--rl, #202020);
+  border-radius: 1px; overflow: hidden;
+}
+
+.loading-bar-fill {
+  height: 100%; width: 0;
+  background: var(--g, #c9aa6e);
+  border-radius: 1px;
+  animation: loadFill 2.5s var(--ease, ease) forwards;
+}
+
+@keyframes loadFill {
+  to { width: 100%; }
+}
+
+/* === 2. Particle canvas =================================== */
+#particleCanvas {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none; opacity: 0.4;
+}
+
+/* === 3. Cursor trail ====================================== */
+body.has-cursor-trail::after {
+  content: '';
+  position: fixed; z-index: 1;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(201,170,110,.06) 0%, transparent 70%);
+  transform: translate(
+    calc(var(--mx, -9999px) - 110px),
+    calc(var(--my, -9999px) - 110px)
+  );
+  will-change: transform;
+  transition: opacity 0.3s ease;
+}
+
+/* === 4. Section transitions =============================== */
+.section-transition {
+  animation: sectionIn 0.4s var(--ease, ease) both;
+}
+
+@keyframes sectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === 5. Glassmorphism cards ================================ */
+.glass-card {
+  background: rgba(14,14,14,.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201,170,110,.08);
+  border-radius: 12px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(201,170,110,.18);
+  box-shadow: 0 4px 24px rgba(0,0,0,.3);
+}
+
+/* === 6. Animated gradient borders ========================= */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  padding: 1px; border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 40%,
+    var(--g, #c9aa6e) 50%,
+    transparent 60%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotateBorder 4s linear infinite;
+}
+
+@keyframes rotateBorder {
+  to { --border-angle: 360deg; }
+}
+
+/* === 7. Fluid typography ================================== */
+.fluid-xs   { font-size: clamp(0.625rem, 0.5rem + 0.4vw, 0.75rem); }
+.fluid-sm   { font-size: clamp(0.75rem, 0.65rem + 0.5vw, 0.875rem); }
+.fluid-base { font-size: clamp(0.875rem, 0.75rem + 0.5vw, 1rem); }
+.fluid-md   { font-size: clamp(1rem, 0.85rem + 0.6vw, 1.25rem); }
+.fluid-lg   { font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem); }
+.fluid-xl   { font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.5rem); }
+.fluid-2xl  { font-size: clamp(2rem, 1.4rem + 1.8vw, 3.5rem); }
+
+/* === 8. Custom scrollbar ================================== */
+::-webkit-scrollbar {
+  width: 6px; height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mt, #404040);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--g, #c9aa6e);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--mt, #404040) transparent;
+}
+
+/* === 9. Floating action button ============================ */
+.fab {
+  position: fixed; bottom: 24px; right: 24px;
+  z-index: 900;
+}
+
+.fab__trigger {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--g, #c9aa6e); color: var(--v, #030303);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,.4);
+  transition: transform 0.3s var(--ease, ease), box-shadow 0.3s ease;
+  position: relative; z-index: 2;
+}
+
+.fab__trigger:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(0,0,0,.5);
+}
+
+.fab.open .fab__trigger {
+  transform: rotate(45deg);
+}
+
+.fab__menu {
+  position: absolute; bottom: 56px; right: 4px;
+  display: flex; flex-direction: column-reverse;
+  gap: 10px; pointer-events: none;
+}
+
+.fab__item {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--rl, #202020); color: var(--tx, #f2f2f2);
+  border: 1px solid var(--dv, #2a2a2a);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; cursor: pointer;
+  opacity: 0; transform: scale(0.5) translateY(8px);
+  transition: all 0.25s var(--ease, ease);
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+
+.fab.open .fab__menu {
+  pointer-events: auto;
+}
+
+.fab.open .fab__item {
+  opacity: 1; transform: scale(1) translateY(0);
+}
+
+.fab.open .fab__item:nth-child(1) { transition-delay: 0s; }
+.fab.open .fab__item:nth-child(2) { transition-delay: 0.05s; }
+.fab.open .fab__item:nth-child(3) { transition-delay: 0.1s; }
+
+/* === 10. Parallax layers ================================== */
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* === 11. Animated SVG icons =============================== */
+.icon-pulse {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.icon-spin {
+  animation: iconSpin 2s linear infinite;
+}
+
+@keyframes iconSpin {
+  to { transform: rotate(360deg); }
+}
+
+.icon-bounce {
+  animation: iconBounce 1.5s ease infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+  60% { transform: translateY(-3px); }
+}
+
+/* === 12. Risk indicators ================================== */
+.risk-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--mt, #404040);
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.risk-dot--low {
+  background: var(--green, #6eb88a);
+  box-shadow: 0 0 6px rgba(110,184,138,.4);
+  animation: riskPulse 2.5s ease-in-out infinite;
+}
+
+.risk-dot--medium {
+  background: #d4a843;
+  box-shadow: 0 0 6px rgba(212,168,67,.4);
+  animation: riskPulse 2s ease-in-out infinite;
+}
+
+.risk-dot--high {
+  background: var(--red, #c46e6e);
+  box-shadow: 0 0 6px rgba(196,110,110,.4);
+  animation: riskPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes riskPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* === 13. Card flip ======================================== */
+.flip-card {
+  perspective: 800px;
+}
+
+.flip-card__inner {
+  position: relative;
+  transition: transform 0.6s var(--ease, ease);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card__inner,
+.flip-card.flipped .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card__front,
+.flip-card__back {
+  backface-visibility: hidden;
+}
+
+.flip-card__back {
+  position: absolute; inset: 0;
+  transform: rotateY(180deg);
+}
+
+/* === 14. Neon text glow =================================== */
+.neon-text {
+  color: var(--g, #c9aa6e);
+  text-shadow:
+    0 0 4px rgba(201,170,110,.3),
+    0 0 12px rgba(201,170,110,.15);
+  animation: neonPulse 3s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(201,170,110,.3), 0 0 12px rgba(201,170,110,.15); }
+  50% { text-shadow: 0 0 6px rgba(201,170,110,.5), 0 0 20px rgba(201,170,110,.25); }
+}
+
+/* === 15. Ambient background =============================== */
+.ambient-bg {
+  position: fixed; inset: 0; z-index: -1;
+  overflow: hidden; pointer-events: none;
+}
+
+.ambient-bg::before,
+.ambient-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.035;
+  will-change: transform;
+}
+
+.ambient-bg::before {
+  width: 500px; height: 500px;
+  background: var(--g, #c9aa6e);
+  top: -10%; left: -5%;
+  animation: ambientDrift1 25s ease-in-out infinite alternate;
+}
+
+.ambient-bg::after {
+  width: 400px; height: 400px;
+  background: var(--g, #c9aa6e);
+  bottom: -10%; right: -5%;
+  animation: ambientDrift2 20s ease-in-out infinite alternate;
+}
+
+@keyframes ambientDrift1 {
+  to { transform: translate(15vw, 10vh); }
+}
+
+@keyframes ambientDrift2 {
+  to { transform: translate(-12vw, -8vh); }
+}
+
+/* === 16. Animated logo ==================================== */
+.logo-animate {
+  display: inline-block;
+  clip-path: inset(0 100% 0 0);
+  animation: logoReveal 0.8s var(--ease, ease) 0.3s forwards;
+}
+
+@keyframes logoReveal {
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* === 17. Sound hover (visual ripple) ====================== */
+.sound-hover {
+  position: relative; overflow: hidden;
+}
+
+.sound-hover::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at var(--rx, 50%) var(--ry, 50%),
+    rgba(201,170,110,.12) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.sound-hover:hover::after {
+  opacity: 1;
+}
+
+/* === 18. Confetti ========================================= */
+.confetti-piece {
+  position: fixed; z-index: 99998;
+  width: 6px; height: 6px;
+  pointer-events: none;
+  will-change: transform, opacity;
+  border-radius: 1px;
+}
+
+/* === Reduced motion ======================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  #loadingScreen { transition-duration: 0.01ms !important; }
+  #particleCanvas { display: none; }
+  body.has-cursor-trail::after { display: none; }
+  .ambient-bg::before, .ambient-bg::after { animation: none !important; }
+  .gradient-border::before { animation: none !important; }
+}

@@ -1,0 +1,554 @@
+{
+  "timestamp": "2026-03-10T02:32:24.827Z",
+  "fetchedAt": 1773109944828,
+  "source": "uex-api",
+  "patchVersion": "4.6",
+  "commodityCount": 109,
+  "commodities": [
+    {
+      "name": "Aluminum",
+      "buyAvg": 0,
+      "sellAvg": 1628
+    },
+    {
+      "name": "Titanium",
+      "buyAvg": 0,
+      "sellAvg": 2055
+    },
+    {
+      "name": "Agricium",
+      "buyAvg": 0,
+      "sellAvg": 4168
+    },
+    {
+      "name": "Corundum",
+      "buyAvg": 0,
+      "sellAvg": 1719
+    },
+    {
+      "name": "Diamond",
+      "buyAvg": 0,
+      "sellAvg": 7403
+    },
+    {
+      "name": "Quartz",
+      "buyAvg": 0,
+      "sellAvg": 1751
+    },
+    {
+      "name": "Laranite",
+      "buyAvg": 0,
+      "sellAvg": 5040
+    },
+    {
+      "name": "Medical Supplies",
+      "buyAvg": 0,
+      "sellAvg": 5559
+    },
+    {
+      "name": "Distilled Spirits",
+      "buyAvg": 0,
+      "sellAvg": 1977
+    },
+    {
+      "name": "Stims",
+      "buyAvg": 0,
+      "sellAvg": 5077
+    },
+    {
+      "name": "Astatine",
+      "buyAvg": 0,
+      "sellAvg": 3576
+    },
+    {
+      "name": "Chlorine",
+      "buyAvg": 0,
+      "sellAvg": 1568
+    },
+    {
+      "name": "Fluorine",
+      "buyAvg": 0,
+      "sellAvg": 1224
+    },
+    {
+      "name": "Iodine",
+      "buyAvg": 0,
+      "sellAvg": 11999
+    },
+    {
+      "name": "Gold",
+      "buyAvg": 0,
+      "sellAvg": 8085
+    },
+    {
+      "name": "Tungsten",
+      "buyAvg": 0,
+      "sellAvg": 2187
+    },
+    {
+      "name": "Beryl",
+      "buyAvg": 0,
+      "sellAvg": 4827
+    },
+    {
+      "name": "Revenant Tree Pollen",
+      "buyAvg": 0,
+      "sellAvg": 1311
+    },
+    {
+      "name": "Borase",
+      "buyAvg": 0,
+      "sellAvg": 6725
+    },
+    {
+      "name": "Copper",
+      "buyAvg": 0,
+      "sellAvg": 1633
+    },
+    {
+      "name": "Bexalite",
+      "buyAvg": 0,
+      "sellAvg": 18396
+    },
+    {
+      "name": "Hephaestanite",
+      "buyAvg": 0,
+      "sellAvg": 4040
+    },
+    {
+      "name": "Quantainium",
+      "buyAvg": 0,
+      "sellAvg": 85389
+    },
+    {
+      "name": "Taranite",
+      "buyAvg": 0,
+      "sellAvg": 22076
+    },
+    {
+      "name": "Hadanite",
+      "buyAvg": 0,
+      "sellAvg": 416000
+    },
+    {
+      "name": "Agricultural Supplies",
+      "buyAvg": 0,
+      "sellAvg": 1325
+    },
+    {
+      "name": "Processed Food",
+      "buyAvg": 0,
+      "sellAvg": 1514
+    },
+    {
+      "name": "Hydrogen",
+      "buyAvg": 0,
+      "sellAvg": 1055
+    },
+    {
+      "name": "Iron",
+      "buyAvg": 0,
+      "sellAvg": 2020
+    },
+    {
+      "name": "Audio Visual Equipment",
+      "buyAvg": 0,
+      "sellAvg": 35532
+    },
+    {
+      "name": "Party Favors",
+      "buyAvg": 0,
+      "sellAvg": 5445
+    },
+    {
+      "name": "Souvenirs",
+      "buyAvg": 0,
+      "sellAvg": 22905
+    },
+    {
+      "name": "Altruciatoxin",
+      "buyAvg": 0,
+      "sellAvg": 6975
+    },
+    {
+      "name": "E'tam",
+      "buyAvg": 0,
+      "sellAvg": 26576
+    },
+    {
+      "name": "Gasping Weevil Eggs",
+      "buyAvg": 0,
+      "sellAvg": 65948
+    },
+    {
+      "name": "Maze",
+      "buyAvg": 0,
+      "sellAvg": 237000
+    },
+    {
+      "name": "Neon",
+      "buyAvg": 0,
+      "sellAvg": 19065
+    },
+    {
+      "name": "SLAM",
+      "buyAvg": 0,
+      "sellAvg": 46516
+    },
+    {
+      "name": "WiDoW",
+      "buyAvg": 0,
+      "sellAvg": 7665
+    },
+    {
+      "name": "Dolivine",
+      "buyAvg": 0,
+      "sellAvg": 113750
+    },
+    {
+      "name": "Revenant Pod",
+      "buyAvg": 0,
+      "sellAvg": 6762
+    },
+    {
+      "name": "Recycled Material Composite",
+      "buyAvg": 0,
+      "sellAvg": 6426
+    },
+    {
+      "name": "Waste",
+      "buyAvg": 229,
+      "sellAvg": 0
+    },
+    {
+      "name": "Aphorite",
+      "buyAvg": 0,
+      "sellAvg": 228750
+    },
+    {
+      "name": "Scrap",
+      "buyAvg": 3147,
+      "sellAvg": 0
+    },
+    {
+      "name": "Construction Materials",
+      "buyAvg": 0,
+      "sellAvg": 15875
+    },
+    {
+      "name": "Compboard",
+      "buyAvg": 0,
+      "sellAvg": 34695
+    },
+    {
+      "name": "Degnous Root",
+      "buyAvg": 0,
+      "sellAvg": 63903
+    },
+    {
+      "name": "Helium",
+      "buyAvg": 819,
+      "sellAvg": 0
+    },
+    {
+      "name": "Luminalia Gift",
+      "buyAvg": 0,
+      "sellAvg": 5000000
+    },
+    {
+      "name": "Janalite",
+      "buyAvg": 0,
+      "sellAvg": 18559800
+    },
+    {
+      "name": "Pitambu",
+      "buyAvg": 0,
+      "sellAvg": 63145
+    },
+    {
+      "name": "Osoian Hides",
+      "buyAvg": 0,
+      "sellAvg": 877500
+    },
+    {
+      "name": "Amioshi Plague",
+      "buyAvg": 0,
+      "sellAvg": 24710
+    },
+    {
+      "name": "Ranta Dung",
+      "buyAvg": 0,
+      "sellAvg": 41220
+    },
+    {
+      "name": "Sunset Berries",
+      "buyAvg": 0,
+      "sellAvg": 69943
+    },
+    {
+      "name": "Copper (Ore)",
+      "buyAvg": 0,
+      "sellAvg": 435
+    },
+    {
+      "name": "Iron (Ore)",
+      "buyAvg": 0,
+      "sellAvg": 532
+    },
+    {
+      "name": "Golden Medmon",
+      "buyAvg": 0,
+      "sellAvg": 64268
+    },
+    {
+      "name": "Prota",
+      "buyAvg": 0,
+      "sellAvg": 68725
+    },
+    {
+      "name": "Marok Gem",
+      "buyAvg": 0,
+      "sellAvg": 60500
+    },
+    {
+      "name": "Tin",
+      "buyAvg": 0,
+      "sellAvg": 1004
+    },
+    {
+      "name": "Nitrogen",
+      "buyAvg": 0,
+      "sellAvg": 3102
+    },
+    {
+      "name": "Potassium",
+      "buyAvg": 430,
+      "sellAvg": 0
+    },
+    {
+      "name": "Pressurized Ice",
+      "buyAvg": 2216,
+      "sellAvg": 0
+    },
+    {
+      "name": "Silicon",
+      "buyAvg": 748,
+      "sellAvg": 0
+    },
+    {
+      "name": "Argon",
+      "buyAvg": 0,
+      "sellAvg": 425
+    },
+    {
+      "name": "Bioplastic",
+      "buyAvg": 0,
+      "sellAvg": 6956
+    },
+    {
+      "name": "DynaFlex",
+      "buyAvg": 0,
+      "sellAvg": 1918
+    },
+    {
+      "name": "Human Food Bars",
+      "buyAvg": 0,
+      "sellAvg": 471
+    },
+    {
+      "name": "Mercury",
+      "buyAvg": 0,
+      "sellAvg": 1135
+    },
+    {
+      "name": "Methane",
+      "buyAvg": 0,
+      "sellAvg": 3585
+    },
+    {
+      "name": "Omnapoxy",
+      "buyAvg": 0,
+      "sellAvg": 4248
+    },
+    {
+      "name": "Quantum Fuel",
+      "buyAvg": 0,
+      "sellAvg": 2336
+    },
+    {
+      "name": "Steel",
+      "buyAvg": 0,
+      "sellAvg": 1857
+    },
+    {
+      "name": "Xa'Pyen",
+      "buyAvg": 0,
+      "sellAvg": 4626
+    },
+    {
+      "name": "Dymantium",
+      "buyAvg": 0,
+      "sellAvg": 21140
+    },
+    {
+      "name": "Fresh Food",
+      "buyAvg": 0,
+      "sellAvg": 24132
+    },
+    {
+      "name": "Heart of the Woods",
+      "buyAvg": 0,
+      "sellAvg": 38521
+    },
+    {
+      "name": "Partillium",
+      "buyAvg": 0,
+      "sellAvg": 85740
+    },
+    {
+      "name": "Riccite",
+      "buyAvg": 0,
+      "sellAvg": 71894
+    },
+    {
+      "name": "Ship Ammunition",
+      "buyAvg": 0,
+      "sellAvg": 9
+    },
+    {
+      "name": "Inert Materials",
+      "buyAvg": 0,
+      "sellAvg": 4
+    },
+    {
+      "name": "HexaPolyMesh Coating",
+      "buyAvg": 0,
+      "sellAvg": 1
+    },
+    {
+      "name": "Carbon",
+      "buyAvg": 235,
+      "sellAvg": 0
+    },
+    {
+      "name": "CK13-GID Seed Blend",
+      "buyAvg": 0,
+      "sellAvg": 540
+    },
+    {
+      "name": "Carbon-Silk",
+      "buyAvg": 0,
+      "sellAvg": 21211
+    },
+    {
+      "name": "Cobalt",
+      "buyAvg": 0,
+      "sellAvg": 23223
+    },
+    {
+      "name": "Ammonia",
+      "buyAvg": 747,
+      "sellAvg": 0
+    },
+    {
+      "name": "Diamond Laminate",
+      "buyAvg": 0,
+      "sellAvg": 100320
+    },
+    {
+      "name": "Stileron",
+      "buyAvg": 0,
+      "sellAvg": 82044
+    },
+    {
+      "name": "Atlasium",
+      "buyAvg": 82826,
+      "sellAvg": 0
+    },
+    {
+      "name": "Kopion Horn",
+      "buyAvg": 0,
+      "sellAvg": 44000
+    },
+    {
+      "name": "Thermalfoam",
+      "buyAvg": 0,
+      "sellAvg": 7418
+    },
+    {
+      "name": "Neograph",
+      "buyAvg": 0,
+      "sellAvg": 97010
+    },
+    {
+      "name": "DCSR2",
+      "buyAvg": 0,
+      "sellAvg": 1275
+    },
+    {
+      "name": "Hydrogen Fuel",
+      "buyAvg": 0,
+      "sellAvg": 56
+    },
+    {
+      "name": "Detatrine",
+      "buyAvg": 3600,
+      "sellAvg": 0
+    },
+    {
+      "name": "Beradom",
+      "buyAvg": 0,
+      "sellAvg": 157500
+    },
+    {
+      "name": "Feynmaline",
+      "buyAvg": 0,
+      "sellAvg": 357000
+    },
+    {
+      "name": "Glacosite",
+      "buyAvg": 0,
+      "sellAvg": 105000
+    },
+    {
+      "name": "Tritium",
+      "buyAvg": 0,
+      "sellAvg": 35040
+    },
+    {
+      "name": "Savrilium",
+      "buyAvg": 0,
+      "sellAvg": 75907
+    },
+    {
+      "name": "Lindinium",
+      "buyAvg": 0,
+      "sellAvg": 20822
+    },
+    {
+      "name": "Torite",
+      "buyAvg": 0,
+      "sellAvg": 1865
+    },
+    {
+      "name": "Organics",
+      "buyAvg": 0,
+      "sellAvg": 11431
+    },
+    {
+      "name": "Jaclium (Ore)",
+      "buyAvg": 0,
+      "sellAvg": 22680000
+    },
+    {
+      "name": "Saldynium (Ore)",
+      "buyAvg": 0,
+      "sellAvg": 34020000
+    },
+    {
+      "name": "Year of the Rat Envelope",
+      "buyAvg": 0,
+      "sellAvg": 2200000
+    }
+  ]
+}

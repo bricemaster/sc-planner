@@ -1,0 +1,2048 @@
+/* =====================================================================================
+   THEME ENHANCE-D -- Deep manufacturer identity overhaul
+   Loaded AFTER theme-polish.css. Each theme section transforms the UI
+   to feel like it was designed in-house by that manufacturer.
+   ===================================================================================== */
+
+
+/* =====================================================================================
+   ORIGIN JUMPWORKS (body.theme-mfr-origin)
+   Luxury automotive. BMW / Bentley / Lexus of space.
+   Warm gold, ivory, generous whitespace, serif typography, premium feel.
+   ===================================================================================== */
+
+/* --- Origin: Keyframes --- */
+@keyframes origin-pearl-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes origin-warm-glow {
+  0%, 100% { box-shadow: 0 2px 20px rgba(196,149,106,.03), 0 0 0 1px rgba(196,149,106,.06); }
+  50%      { box-shadow: 0 4px 30px rgba(196,149,106,.07), 0 0 0 1px rgba(196,149,106,.10); }
+}
+@keyframes origin-pinstripe-reveal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* --- Origin: Dashboard background --- */
+body.theme-mfr-origin {
+  background: linear-gradient(170deg, #fafbfc 0%, #f6f3ee 40%, #faf8f5 100%) !important;
+}
+
+/* --- Origin: Card luxury overhaul --- */
+body.theme-mfr-origin .dash-card {
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 2px 20px rgba(196,149,106,.03),
+    0 0 0 1px rgba(196,149,106,.06),
+    inset 0 0 0 4px #ffffff,
+    inset 0 0 0 5px rgba(196,149,106,.12) !important;
+  overflow: hidden !important;
+  transition: all .4s ease !important;
+  position: relative !important;
+}
+/* Diamond/chevron luxury fabric pattern on cards */
+body.theme-mfr-origin .dash-card::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  opacity: .03 !important;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 12px,
+    rgba(196,149,106,.5) 12px,
+    rgba(196,149,106,.5) 13px,
+    transparent 13px,
+    transparent 25px
+  ),
+  repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 12px,
+    rgba(196,149,106,.5) 12px,
+    rgba(196,149,106,.5) 13px,
+    transparent 13px,
+    transparent 25px
+  ) !important;
+  z-index: 0 !important;
+}
+body.theme-mfr-origin .dash-card:hover {
+  box-shadow:
+    0 8px 40px rgba(196,149,106,.08),
+    0 0 0 1px rgba(196,149,106,.12),
+    inset 0 0 0 4px #ffffff,
+    inset 0 0 0 5px rgba(196,149,106,.20),
+    0 0 60px rgba(196,149,106,.04) !important;
+  transition: all .4s ease !important;
+}
+
+/* --- Origin: Card header --- */
+body.theme-mfr-origin .dash-card__header {
+  border-bottom: none !important;
+  padding: 20px 24px 6px !important;
+  background: transparent !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+body.theme-mfr-origin .dash-card__header .sec {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+  letter-spacing: 1.5px !important;
+  font-size: 12px !important;
+  color: #5c524a !important;
+  text-transform: uppercase !important;
+}
+body.theme-mfr-origin .dash-card__header .sec::before {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #c4956a, #d4a87e) !important;
+}
+
+/* --- Origin: Card body --- */
+body.theme-mfr-origin .dash-card__body {
+  padding: 10px 24px 18px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* --- Origin: Card footer --- */
+body.theme-mfr-origin .dash-card__footer {
+  border-top: 1px solid rgba(196,149,106,.08) !important;
+  background: rgba(248,246,243,.6) !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+body.theme-mfr-origin .dash-card__link {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  color: #c4956a !important;
+}
+
+/* --- Origin: Hero premium gradient --- */
+body.theme-mfr-origin .rec-hero {
+  background: linear-gradient(160deg,
+    #ffffff 0%,
+    #faf8f5 30%,
+    #f5efe8 60%,
+    #faf8f5 100%
+  ) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 4px 40px rgba(196,149,106,.05),
+    0 0 0 1px rgba(196,149,106,.08),
+    inset 0 0 0 4px rgba(255,255,255,.8),
+    inset 0 0 0 5px rgba(196,149,106,.10) !important;
+}
+body.theme-mfr-origin .rec-hero__method {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+  letter-spacing: .5px !important;
+  color: #3e342e !important;
+}
+body.theme-mfr-origin .rec-hero__reasoning {
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  font-weight: 300 !important;
+  line-height: 1.8 !important;
+  color: #7a7068 !important;
+  letter-spacing: .02em !important;
+}
+
+/* --- Origin: Tab bar elegant --- */
+body.theme-mfr-origin .tab-bar {
+  background: rgba(255,255,255,.9) !important;
+  border-top: 1px solid rgba(196,149,106,.06) !important;
+  border-bottom: 1px solid rgba(196,149,106,.06) !important;
+  backdrop-filter: blur(20px) !important;
+}
+body.theme-mfr-origin .tab-bar__btn {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  letter-spacing: 1.5px !important;
+  font-size: 10px !important;
+  color: #9a9088 !important;
+  border-right: none !important;
+  transition: color .3s ease !important;
+}
+body.theme-mfr-origin .tab-bar__btn:hover {
+  color: #5c524a !important;
+  background: transparent !important;
+}
+body.theme-mfr-origin .tab-bar__btn--active {
+  color: #c4956a !important;
+  background: transparent !important;
+}
+body.theme-mfr-origin .tab-bar__btn--active::after {
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, #c4956a, transparent) !important;
+}
+
+/* --- Origin: Stat grid generous spacing, serif --- */
+body.theme-mfr-origin .stat-grid {
+  gap: 6px !important;
+}
+body.theme-mfr-origin .sg-item {
+  background: rgba(196,149,106,.03) !important;
+  border-radius: 10px !important;
+  padding: 6px 4px !important;
+}
+body.theme-mfr-origin .sg-val {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  color: #3e342e !important;
+}
+body.theme-mfr-origin .sg-lbl {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
+  font-size: 0.58rem !important;
+  color: #9a9088 !important;
+  text-transform: uppercase !important;
+}
+
+/* --- Origin: Goal progress thin gold with pearl shimmer --- */
+body.theme-mfr-origin .goal-progress-bar {
+  height: 4px !important;
+  background: rgba(196,149,106,.06) !important;
+  border-radius: 4px !important;
+}
+body.theme-mfr-origin .goal-progress-fill {
+  border-radius: 4px !important;
+  background: linear-gradient(90deg, #c4956a, #d4a87e, #e8c8a0, #d4a87e, #c4956a) !important;
+  background-size: 200% 100% !important;
+  animation: origin-pearl-shimmer 4s ease-in-out infinite !important;
+}
+body.theme-mfr-origin .goal-ms {
+  background: rgba(196,149,106,.04) !important;
+  border: 1px solid rgba(196,149,106,.08) !important;
+  border-radius: 8px !important;
+}
+body.theme-mfr-origin .goal-ms__pct {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  color: #c4956a !important;
+}
+body.theme-mfr-origin .goal-ship-name {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+}
+body.theme-mfr-origin .goal-time {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 300 !important;
+  color: #7a7068 !important;
+}
+
+/* --- Origin: Price table elegant thin separators --- */
+body.theme-mfr-origin .price-row {
+  border-bottom: 1px solid rgba(196,149,106,.05) !important;
+  padding: 4px 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 300 !important;
+}
+body.theme-mfr-origin .price-row:not(.price-header):hover {
+  background: rgba(196,149,106,.03) !important;
+}
+body.theme-mfr-origin .price-header {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
+  color: #9a9088 !important;
+  border-bottom: 1px solid rgba(196,149,106,.10) !important;
+}
+body.theme-mfr-origin .price-tip {
+  background: rgba(196,149,106,.04) !important;
+  border-left: 2px solid rgba(196,149,106,.20) !important;
+  border-radius: 0 8px 8px 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 300 !important;
+  font-style: italic !important;
+}
+
+/* --- Origin: Session mix wine-menu style --- */
+body.theme-mfr-origin .session-mix {
+  background: rgba(196,149,106,.02) !important;
+  border: 1px solid rgba(196,149,106,.06) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+}
+body.theme-mfr-origin .session-mix__label {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: 2px !important;
+  color: #9a9088 !important;
+}
+body.theme-mfr-origin .session-mix__item {
+  padding: 4px 0 !important;
+  border-bottom-color: rgba(196,149,106,.04) !important;
+}
+body.theme-mfr-origin .session-mix__method {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  color: #3e342e !important;
+}
+body.theme-mfr-origin .session-mix__time {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 300 !important;
+  color: #9a9088 !important;
+}
+body.theme-mfr-origin .session-mix__earn {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  color: #c4956a !important;
+}
+
+/* --- Origin: Buttons pill-shaped, gold outline, serif italic --- */
+body.theme-mfr-origin .btn-action,
+body.theme-mfr-origin .btn {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  border-radius: 100px !important;
+  border: 1px solid rgba(196,149,106,.25) !important;
+  background: transparent !important;
+  color: #c4956a !important;
+  transition: all .3s ease !important;
+}
+body.theme-mfr-origin .btn-action:hover,
+body.theme-mfr-origin .btn:hover {
+  background: rgba(196,149,106,.06) !important;
+  border-color: #c4956a !important;
+  box-shadow: 0 2px 16px rgba(196,149,106,.10) !important;
+}
+body.theme-mfr-origin .dash-card__action {
+  border-radius: 100px !important;
+  border-color: rgba(196,149,106,.12) !important;
+}
+body.theme-mfr-origin .dash-card__action:hover {
+  border-color: #c4956a !important;
+  color: #c4956a !important;
+  background: rgba(196,149,106,.04) !important;
+}
+
+/* --- Origin: Modal luxury feel --- */
+body.theme-mfr-origin .tab-modal-panel {
+  background: linear-gradient(180deg, #faf8f5, #ffffff) !important;
+  padding: 32px clamp(24px, 5vw, 64px) !important;
+}
+body.theme-mfr-origin .tab-modal-overlay {
+  background: rgba(14,10,8,.6) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+}
+body.theme-mfr-origin .tab-modal-close {
+  border-radius: 50% !important;
+  border-color: rgba(196,149,106,.15) !important;
+  background: #ffffff !important;
+  color: #9a9088 !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06) !important;
+}
+body.theme-mfr-origin .tab-modal-close:hover {
+  color: #c4956a !important;
+  border-color: #c4956a !important;
+}
+
+/* --- Origin: Typography refinements --- */
+body.theme-mfr-origin .ship-card-name {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+  letter-spacing: .5px !important;
+}
+body.theme-mfr-origin .ship-card-mfr {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 300 !important;
+  letter-spacing: 2px !important;
+  color: #9a9088 !important;
+}
+body.theme-mfr-origin .cr-name {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+}
+body.theme-mfr-origin .cr-rate {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400 !important;
+  color: #c4956a !important;
+}
+body.theme-mfr-origin .mini-stat .ms-label {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  letter-spacing: 1px !important;
+}
+body.theme-mfr-origin .mini-stat .ms-value {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  color: #3e342e !important;
+}
+body.theme-mfr-origin .session-header {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  color: #9a9088 !important;
+}
+
+/* --- Origin: Upgrade hint --- */
+body.theme-mfr-origin .ship-upgrade-hint {
+  background: rgba(196,149,106,.03) !important;
+  border: 1px solid rgba(196,149,106,.08) !important;
+  border-radius: 12px !important;
+}
+body.theme-mfr-origin .upgrade-name {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  color: #c4956a !important;
+}
+
+/* --- Origin: Scrollbar invisible luxury --- */
+body.theme-mfr-origin .dash-card__body::-webkit-scrollbar { width: 2px !important; }
+body.theme-mfr-origin .dash-card__body::-webkit-scrollbar-thumb { background: rgba(196,149,106,.15) !important; border-radius: 2px !important; }
+body.theme-mfr-origin .dash-card__body::-webkit-scrollbar-track { background: transparent !important; }
+
+/* --- Origin: Selection color --- */
+body.theme-mfr-origin ::selection {
+  background: rgba(196,149,106,.2) !important;
+  color: #3e342e !important;
+}
+
+/* --- Origin: Footer elegance --- */
+body.theme-mfr-origin .footer {
+  background: rgba(250,248,245,.8) !important;
+  border-top: 1px solid rgba(196,149,106,.06) !important;
+}
+body.theme-mfr-origin .footer::before {
+  background: linear-gradient(to right, transparent, rgba(196,149,106,.2), transparent) !important;
+}
+
+
+/* =====================================================================================
+   MISC -- Musashi Industrial & Starflight Concern (body.theme-mfr-misc)
+   Utilitarian workhorse. Data-dense engineering diagnostic screens.
+   Orange primary, monospace everything, compact, functional.
+   ===================================================================================== */
+
+/* --- MISC: Keyframes --- */
+@keyframes misc-scan-line {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+@keyframes misc-data-blink {
+  0%, 90% { opacity: 1; }
+  95%     { opacity: .4; }
+  100%    { opacity: 1; }
+}
+
+/* --- MISC: Dashboard background --- */
+body.theme-mfr-misc {
+  background: #121518 !important;
+}
+
+/* --- MISC: Card compact data-dense overhaul --- */
+body.theme-mfr-misc .dash-card {
+  background: #1a1e24 !important;
+  border: 1px solid #2c333c !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+/* Loading bar animation on card headers */
+body.theme-mfr-misc .dash-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 40% !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, #e07020, transparent) !important;
+  opacity: .4 !important;
+  animation: misc-scan-line 3s ease-in-out infinite !important;
+  z-index: 2 !important;
+}
+body.theme-mfr-misc .dash-card:hover {
+  border-color: #444e5a !important;
+  background: #1e2228 !important;
+  transition: all .15s ease-out !important;
+}
+body.theme-mfr-misc .dash-card:hover::before {
+  opacity: .8 !important;
+}
+
+/* --- MISC: Card header compact --- */
+body.theme-mfr-misc .dash-card__header {
+  background: #161a1e !important;
+  border-bottom: 1px solid #252b34 !important;
+  padding: 6px 10px 4px !important;
+  position: relative !important;
+}
+body.theme-mfr-misc .dash-card__header .sec {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 400 !important;
+  letter-spacing: 2px !important;
+  font-size: 8px !important;
+  color: #728292 !important;
+  text-transform: uppercase !important;
+}
+body.theme-mfr-misc .dash-card__header .sec::before {
+  width: 8px !important;
+  height: 1px !important;
+  border-radius: 0 !important;
+  background: #e07020 !important;
+}
+
+/* --- MISC: Card body compact --- */
+body.theme-mfr-misc .dash-card__body {
+  padding: 4px 10px 6px !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 12px !important;
+}
+
+/* --- MISC: Card footer --- */
+body.theme-mfr-misc .dash-card__footer {
+  border-top: 1px solid #252b34 !important;
+  background: #161a1e !important;
+  padding: 3px 10px !important;
+}
+body.theme-mfr-misc .dash-card__link {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 400 !important;
+  letter-spacing: 2px !important;
+  font-size: 8px !important;
+  color: #5a6878 !important;
+}
+
+/* --- MISC: Hero compact technical layout --- */
+body.theme-mfr-misc .rec-hero {
+  background: #1a1e24 !important;
+  border: 1px solid #363e48 !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  padding: 6px 16px !important;
+}
+body.theme-mfr-misc .rec-hero__label {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 9px !important;
+  letter-spacing: 3px !important;
+  color: #5a6878 !important;
+}
+body.theme-mfr-misc .rec-hero__method {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+}
+body.theme-mfr-misc .hero-rate-big {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 400 !important;
+  color: #f08838 !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* --- MISC: Tab bar minimal --- */
+body.theme-mfr-misc .tab-bar {
+  background: #161a1e !important;
+  border-top: 1px solid #252b34 !important;
+  border-bottom: 1px solid #252b34 !important;
+}
+body.theme-mfr-misc .tab-bar__btn {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 8px !important;
+  letter-spacing: 2px !important;
+  color: #5a6878 !important;
+  border-right: 1px solid #252b34 !important;
+  padding: 5px 8px !important;
+}
+body.theme-mfr-misc .tab-bar__btn:hover {
+  color: #a8b4c0 !important;
+  background: #1a1e24 !important;
+}
+body.theme-mfr-misc .tab-bar__btn--active {
+  color: #e07020 !important;
+  background: rgba(224,112,32,.03) !important;
+}
+body.theme-mfr-misc .tab-bar__btn--active::after {
+  height: 1px !important;
+  background: #e07020 !important;
+}
+
+/* --- MISC: Stat grid ultra-compact, monospace --- */
+body.theme-mfr-misc .stat-grid {
+  gap: 2px !important;
+}
+body.theme-mfr-misc .sg-item {
+  background: #161a1e !important;
+  border-radius: 0 !important;
+  padding: 3px 2px !important;
+  border: 1px solid #252b34 !important;
+}
+body.theme-mfr-misc .sg-val {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 400 !important;
+  font-size: 0.8rem !important;
+  color: #e0e4e8 !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.theme-mfr-misc .sg-lbl {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 0.5rem !important;
+  letter-spacing: 1px !important;
+  color: #5a6878 !important;
+}
+
+/* --- MISC: Goal progress thin with percentage text --- */
+body.theme-mfr-misc .goal-progress-bar {
+  height: 3px !important;
+  background: #252b34 !important;
+  border-radius: 0 !important;
+  position: relative !important;
+}
+body.theme-mfr-misc .goal-progress-fill {
+  border-radius: 0 !important;
+  background: #e07020 !important;
+}
+body.theme-mfr-misc .goal-ms {
+  background: #161a1e !important;
+  border: 1px solid #2c333c !important;
+  border-radius: 0 !important;
+  padding: 2px 4px !important;
+}
+body.theme-mfr-misc .goal-ms__pct {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 8px !important;
+  color: #e07020 !important;
+}
+body.theme-mfr-misc .goal-ms__time {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 7px !important;
+}
+body.theme-mfr-misc .goal-ship-name {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+body.theme-mfr-misc .goal-time {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.theme-mfr-misc .goal-stat {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* --- MISC: Price table stock-ticker style --- */
+body.theme-mfr-misc .price-row {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 11px !important;
+  padding: 2px 0 !important;
+  border-bottom: 1px solid #1a1e24 !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.theme-mfr-misc .price-row:not(.price-header):hover {
+  background: rgba(224,112,32,.03) !important;
+}
+body.theme-mfr-misc .price-header {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 8px !important;
+  letter-spacing: 2px !important;
+  color: #5a6878 !important;
+  border-bottom: 1px solid #363e48 !important;
+}
+body.theme-mfr-misc .price-tip {
+  background: #161a1e !important;
+  border-left: 2px solid #e07020 !important;
+  border-radius: 0 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 10px !important;
+}
+
+/* --- MISC: Session mix compressed one-line --- */
+body.theme-mfr-misc .session-mix {
+  background: #161a1e !important;
+  border: 1px solid #252b34 !important;
+  border-radius: 0 !important;
+  padding: 4px 8px !important;
+}
+body.theme-mfr-misc .session-mix__label {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 7px !important;
+  letter-spacing: 2px !important;
+  color: #5a6878 !important;
+  margin-bottom: 2px !important;
+}
+body.theme-mfr-misc .session-mix__item {
+  padding: 1px 0 !important;
+  border-bottom-color: #1a1e24 !important;
+  gap: 4px !important;
+}
+body.theme-mfr-misc .session-mix__method {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 11px !important;
+  color: #a8b4c0 !important;
+}
+body.theme-mfr-misc .session-mix__time {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 10px !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.theme-mfr-misc .session-mix__earn {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 10px !important;
+  font-variant-numeric: tabular-nums !important;
+  color: #e07020 !important;
+}
+
+/* --- MISC: Session header compact --- */
+body.theme-mfr-misc .session-header {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 10px !important;
+  letter-spacing: 2px !important;
+  color: #5a6878 !important;
+  margin-bottom: 2px !important;
+}
+
+/* --- MISC: Buttons minimal technical --- */
+body.theme-mfr-misc .btn-action,
+body.theme-mfr-misc .btn {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
+  border-radius: 2px !important;
+  font-size: 9px !important;
+  padding: 4px 10px !important;
+  border: 1px solid #363e48 !important;
+  background: #1a1e24 !important;
+  color: #a8b4c0 !important;
+  text-transform: uppercase !important;
+}
+body.theme-mfr-misc .btn-action:hover,
+body.theme-mfr-misc .btn:hover {
+  border-color: #e07020 !important;
+  color: #e07020 !important;
+  background: rgba(224,112,32,.04) !important;
+}
+body.theme-mfr-misc .dash-card__action {
+  border-radius: 2px !important;
+  border-color: #2c333c !important;
+}
+
+/* --- MISC: All numbers tabular --- */
+body.theme-mfr-misc .ms-value,
+body.theme-mfr-misc .cr-rate,
+body.theme-mfr-misc .hero-rate-big,
+body.theme-mfr-misc .slr-price {
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* --- MISC: Compact typography --- */
+body.theme-mfr-misc .ship-card-name {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .5px !important;
+}
+body.theme-mfr-misc .ship-card-mfr {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 7px !important;
+  letter-spacing: 2px !important;
+  color: #5a6878 !important;
+}
+body.theme-mfr-misc .cr-name {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 11px !important;
+}
+body.theme-mfr-misc .cr-rate {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 11px !important;
+  color: #e07020 !important;
+}
+body.theme-mfr-misc .mini-stat .ms-label {
+  font-family: 'Share Tech Mono', monospace !important;
+  letter-spacing: 1px !important;
+  font-size: 7px !important;
+}
+body.theme-mfr-misc .mini-stat .ms-value {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 12px !important;
+}
+
+/* --- MISC: Upgrade hint --- */
+body.theme-mfr-misc .ship-upgrade-hint {
+  background: #161a1e !important;
+  border: 1px solid #2c333c !important;
+  border-radius: 0 !important;
+}
+body.theme-mfr-misc .upgrade-label {
+  font-family: 'Share Tech Mono', monospace !important;
+}
+body.theme-mfr-misc .upgrade-name {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #e07020 !important;
+}
+body.theme-mfr-misc .upgrade-meta {
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* --- MISC: Modal diagnostic --- */
+body.theme-mfr-misc .tab-modal-panel {
+  background: #121518 !important;
+}
+body.theme-mfr-misc .tab-modal-overlay {
+  background: rgba(18,21,24,.92) !important;
+}
+body.theme-mfr-misc .tab-modal-close {
+  border-radius: 0 !important;
+  border: 1px solid #363e48 !important;
+  background: #1a1e24 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* --- MISC: Footer compact --- */
+body.theme-mfr-misc .footer {
+  background: #121518 !important;
+  border-top: 1px solid #252b34 !important;
+}
+body.theme-mfr-misc .footer::before {
+  background: linear-gradient(to right, transparent, rgba(224,112,32,.15), transparent) !important;
+}
+
+/* --- MISC: Scrollbar minimal --- */
+body.theme-mfr-misc .dash-card__body::-webkit-scrollbar { width: 2px !important; }
+body.theme-mfr-misc .dash-card__body::-webkit-scrollbar-thumb { background: #363e48 !important; border-radius: 0 !important; }
+
+/* --- MISC: Selection --- */
+body.theme-mfr-misc ::selection {
+  background: rgba(224,112,32,.25) !important;
+  color: #e0e4e8 !important;
+}
+
+
+/* =====================================================================================
+   CRUSADER INDUSTRIES (body.theme-mfr-crusader)
+   Cloud computing SaaS. Stripe / Linear / Notion aesthetic.
+   Blue primary, light background, floating cards, modern and clean.
+   ===================================================================================== */
+
+/* --- Crusader: Keyframes --- */
+@keyframes crusader-lift {
+  0%   { transform: translateY(0); box-shadow: 0 4px 24px rgba(0,102,255,.04), 0 0 0 1px rgba(0,102,255,.03); }
+  100% { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,102,255,.10), 0 0 0 1px rgba(0,102,255,.06); }
+}
+@keyframes crusader-gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes crusader-progress-glow {
+  0%, 100% { filter: brightness(1); }
+  50%      { filter: brightness(1.15); }
+}
+
+/* --- Crusader: Dashboard background with subtle mesh gradient --- */
+body.theme-mfr-crusader {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(0,102,255,.03) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0,102,255,.02) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 60% at 50% 90%, rgba(51,136,255,.02) 0%, transparent 50%),
+    #f0f5ff !important;
+}
+
+/* --- Crusader: Card floating with layered shadows --- */
+body.theme-mfr-crusader .dash-card {
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 1px 2px rgba(0,102,255,.02),
+    0 4px 12px rgba(0,102,255,.03),
+    0 12px 36px rgba(0,102,255,.04) !important;
+  overflow: hidden !important;
+  transition: all .35s cubic-bezier(.25,.46,.45,.94) !important;
+  position: relative !important;
+}
+/* Blue gradient top-border */
+body.theme-mfr-crusader .dash-card::before {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 30% !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #0066ff, rgba(0,102,255,.0)) !important;
+  opacity: .5 !important;
+  z-index: 2 !important;
+  transform: none !important;
+}
+body.theme-mfr-crusader .dash-card:hover {
+  box-shadow:
+    0 2px 4px rgba(0,102,255,.03),
+    0 8px 24px rgba(0,102,255,.06),
+    0 20px 60px rgba(0,102,255,.08) !important;
+}
+body.theme-mfr-crusader .dash-card:hover::before {
+  opacity: .9 !important;
+}
+
+/* --- Crusader: Card header --- */
+body.theme-mfr-crusader .dash-card__header {
+  background: transparent !important;
+  border-bottom: none !important;
+  padding: 18px 22px 6px !important;
+}
+body.theme-mfr-crusader .dash-card__header .sec {
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: .3px !important;
+  font-size: 11px !important;
+  text-transform: none !important;
+  color: #5a6a88 !important;
+}
+body.theme-mfr-crusader .dash-card__header .sec::before {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #0066ff !important;
+}
+
+/* --- Crusader: Card body --- */
+body.theme-mfr-crusader .dash-card__body {
+  padding: 8px 22px 16px !important;
+}
+
+/* --- Crusader: Card footer --- */
+body.theme-mfr-crusader .dash-card__footer {
+  border-top: 1px solid #e8edf8 !important;
+  background: rgba(240,245,255,.5) !important;
+}
+body.theme-mfr-crusader .dash-card__link {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: .3px !important;
+  color: #0066ff !important;
+  font-size: 9px !important;
+}
+
+/* --- Crusader: Hero cloud gradient --- */
+body.theme-mfr-crusader .rec-hero {
+  background: linear-gradient(160deg,
+    #ffffff 0%,
+    #f5f8ff 30%,
+    #edf2ff 60%,
+    #f5f8ff 100%
+  ) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 4px 24px rgba(0,102,255,.04),
+    0 12px 48px rgba(0,102,255,.06) !important;
+}
+
+/* --- Crusader: Tab bar pill/segment control --- */
+body.theme-mfr-crusader .tab-bar {
+  background: rgba(255,255,255,.85) !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  backdrop-filter: blur(20px) !important;
+  padding: 4px 8px !important;
+  gap: 2px !important;
+}
+body.theme-mfr-crusader .tab-bar__btn {
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 10px !important;
+  letter-spacing: .3px !important;
+  text-transform: none !important;
+  color: #5a6a88 !important;
+  border-right: none !important;
+  border-radius: 8px !important;
+  padding: 6px 12px !important;
+  transition: all .2s ease !important;
+}
+body.theme-mfr-crusader .tab-bar__btn:hover {
+  color: #101e3a !important;
+  background: rgba(0,102,255,.04) !important;
+}
+body.theme-mfr-crusader .tab-bar__btn--active {
+  color: #ffffff !important;
+  background: #0066ff !important;
+  border-radius: 8px !important;
+}
+body.theme-mfr-crusader .tab-bar__btn--active::after {
+  display: none !important;
+}
+
+/* --- Crusader: Stat grid rounded chips --- */
+body.theme-mfr-crusader .stat-grid {
+  gap: 4px !important;
+}
+body.theme-mfr-crusader .sg-item {
+  background: #f0f5ff !important;
+  border-radius: 10px !important;
+  padding: 5px 4px !important;
+}
+body.theme-mfr-crusader .sg-val {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  color: #101e3a !important;
+  font-size: 0.9rem !important;
+}
+body.theme-mfr-crusader .sg-lbl {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 0.55rem !important;
+  color: #7888a8 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .5px !important;
+}
+
+/* --- Crusader: Goal progress thick rounded blue gradient --- */
+body.theme-mfr-crusader .goal-progress-bar {
+  height: 8px !important;
+  background: #e8edf8 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+body.theme-mfr-crusader .goal-progress-fill {
+  border-radius: 8px !important;
+  background: linear-gradient(90deg, #0066ff, #3388ff, #55aaff) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25) !important;
+  animation: crusader-progress-glow 3s ease-in-out infinite !important;
+}
+body.theme-mfr-crusader .goal-ms {
+  background: #f0f5ff !important;
+  border: 1px solid #dfe6f4 !important;
+  border-radius: 8px !important;
+}
+body.theme-mfr-crusader .goal-ms__pct {
+  color: #0066ff !important;
+  font-weight: 600 !important;
+}
+body.theme-mfr-crusader .goal-ship-name {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  color: #101e3a !important;
+}
+
+/* --- Crusader: Price table clean generous spacing --- */
+body.theme-mfr-crusader .price-row {
+  padding: 4px 0 !important;
+  border-bottom: 1px solid #edf2ff !important;
+  font-family: 'Inter', sans-serif !important;
+}
+body.theme-mfr-crusader .price-row:not(.price-header):hover {
+  background: rgba(0,102,255,.02) !important;
+}
+body.theme-mfr-crusader .price-header {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 9px !important;
+  color: #7888a8 !important;
+  border-bottom: 1px solid #dfe6f4 !important;
+}
+body.theme-mfr-crusader .price-tip {
+  background: rgba(0,102,255,.04) !important;
+  border-left: 2px solid #0066ff !important;
+  border-radius: 0 10px 10px 0 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* --- Crusader: Session mix Notion/Linear feature cards --- */
+body.theme-mfr-crusader .session-mix {
+  background: #f5f8ff !important;
+  border: 1px solid #e8edf8 !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+}
+body.theme-mfr-crusader .session-mix__label {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 9px !important;
+  letter-spacing: .5px !important;
+  color: #7888a8 !important;
+  text-transform: uppercase !important;
+}
+body.theme-mfr-crusader .session-mix__item {
+  padding: 3px 0 !important;
+  border-bottom-color: #edf2ff !important;
+}
+body.theme-mfr-crusader .session-mix__method {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  color: #101e3a !important;
+}
+body.theme-mfr-crusader .session-mix__earn {
+  color: #0066ff !important;
+  font-weight: 600 !important;
+}
+
+/* --- Crusader: Session header --- */
+body.theme-mfr-crusader .session-header {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: .3px !important;
+  color: #5a6a88 !important;
+}
+
+/* --- Crusader: Buttons rounded pill blue --- */
+body.theme-mfr-crusader .btn-action,
+body.theme-mfr-crusader .btn {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: .3px !important;
+  border-radius: 100px !important;
+  background: #0066ff !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(0,102,255,.15) !important;
+  transition: all .2s ease !important;
+}
+body.theme-mfr-crusader .btn-action:hover,
+body.theme-mfr-crusader .btn:hover {
+  background: #0055dd !important;
+  box-shadow: 0 4px 16px rgba(0,102,255,.25) !important;
+  transform: translateY(-1px) !important;
+}
+body.theme-mfr-crusader .dash-card__action {
+  border-radius: 8px !important;
+  border: 1px solid #dfe6f4 !important;
+  background: transparent !important;
+  color: #5a6a88 !important;
+  box-shadow: none !important;
+}
+body.theme-mfr-crusader .dash-card__action:hover {
+  border-color: #0066ff !important;
+  color: #0066ff !important;
+  background: rgba(0,102,255,.04) !important;
+}
+
+/* --- Crusader: Modal clean large radius --- */
+body.theme-mfr-crusader .tab-modal-panel {
+  background: #f5f8ff !important;
+  border-radius: 20px 20px 0 0 !important;
+  box-shadow: 0 -8px 40px rgba(0,102,255,.06) !important;
+  padding: 32px clamp(24px, 5vw, 64px) !important;
+}
+body.theme-mfr-crusader .tab-modal-overlay {
+  background: rgba(6,14,32,.5) !important;
+  backdrop-filter: blur(16px) !important;
+}
+body.theme-mfr-crusader .tab-modal-close {
+  border-radius: 50% !important;
+  border: none !important;
+  background: #ffffff !important;
+  box-shadow: 0 2px 12px rgba(0,102,255,.08) !important;
+  color: #7888a8 !important;
+}
+body.theme-mfr-crusader .tab-modal-close:hover {
+  color: #0066ff !important;
+  box-shadow: 0 4px 16px rgba(0,102,255,.12) !important;
+}
+
+/* --- Crusader: Typography --- */
+body.theme-mfr-crusader .ship-card-name {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  color: #101e3a !important;
+}
+body.theme-mfr-crusader .ship-card-mfr {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  color: #7888a8 !important;
+}
+body.theme-mfr-crusader .cr-name {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  color: #243050 !important;
+}
+body.theme-mfr-crusader .cr-rate {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  color: #0066ff !important;
+}
+body.theme-mfr-crusader .mini-stat .ms-label {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .5px !important;
+  color: #7888a8 !important;
+}
+body.theme-mfr-crusader .mini-stat .ms-value {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  color: #101e3a !important;
+}
+
+/* --- Crusader: Upgrade hint --- */
+body.theme-mfr-crusader .ship-upgrade-hint {
+  background: #f0f5ff !important;
+  border: 1px solid #e8edf8 !important;
+  border-radius: 12px !important;
+}
+body.theme-mfr-crusader .upgrade-name {
+  color: #0066ff !important;
+  font-weight: 600 !important;
+}
+
+/* --- Crusader: Scrollbar nearly invisible --- */
+body.theme-mfr-crusader .dash-card__body::-webkit-scrollbar { width: 2px !important; }
+body.theme-mfr-crusader .dash-card__body::-webkit-scrollbar-thumb { background: rgba(0,102,255,.1) !important; border-radius: 2px !important; }
+body.theme-mfr-crusader .dash-card__body::-webkit-scrollbar-track { background: transparent !important; }
+body.theme-mfr-crusader::-webkit-scrollbar { width: 2px !important; }
+body.theme-mfr-crusader::-webkit-scrollbar-thumb { background: rgba(0,102,255,.08) !important; }
+
+/* --- Crusader: Selection --- */
+body.theme-mfr-crusader ::selection {
+  background: rgba(0,102,255,.15) !important;
+  color: #101e3a !important;
+}
+
+/* --- Crusader: Footer clean --- */
+body.theme-mfr-crusader .footer {
+  background: rgba(255,255,255,.8) !important;
+  border-top: 1px solid #e8edf8 !important;
+  backdrop-filter: blur(20px) !important;
+}
+body.theme-mfr-crusader .footer::before {
+  background: linear-gradient(to right, transparent, rgba(0,102,255,.10), transparent) !important;
+}
+
+
+/* =====================================================================================
+   CONSOLIDATED OUTLAND (body.theme-mfr-co)
+   Frontier pioneer, indie craftsman. Warm terracotta, handcrafted feel.
+   ===================================================================================== */
+
+/* --- CO: Keyframes --- */
+@keyframes co-warm-pulse {
+  0%, 100% { box-shadow: 0 2px 12px rgba(204,119,68,.06); }
+  50%      { box-shadow: 0 4px 24px rgba(204,119,68,.12); }
+}
+@keyframes co-topo-drift {
+  0%   { background-position: 0px 0px; }
+  100% { background-position: 50px 50px; }
+}
+
+/* --- CO: Dashboard background warm --- */
+body.theme-mfr-co {
+  background: linear-gradient(170deg, #0f0c08 0%, #12100a 50%, #0f0c08 100%) !important;
+}
+
+/* --- CO: Card handcrafted feel --- */
+body.theme-mfr-co .dash-card {
+  background: #211b14 !important;
+  border: 1px solid #3e3224 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,.2), inset 0 1px 0 rgba(204,119,68,.04) !important;
+  overflow: hidden !important;
+  transition: all .35s ease !important;
+  position: relative !important;
+}
+/* Topographic contour pattern on cards */
+body.theme-mfr-co .dash-card::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  opacity: .025 !important;
+  background-image:
+    repeating-radial-gradient(
+      ellipse 120px 120px at 30% 40%,
+      transparent 0px,
+      transparent 18px,
+      rgba(204,119,68,.4) 18px,
+      rgba(204,119,68,.4) 19px,
+      transparent 19px,
+      transparent 36px,
+      rgba(204,119,68,.3) 36px,
+      rgba(204,119,68,.3) 37px,
+      transparent 37px,
+      transparent 54px,
+      rgba(204,119,68,.2) 54px,
+      rgba(204,119,68,.2) 55px,
+      transparent 55px
+    ) !important;
+  z-index: 0 !important;
+  animation: co-topo-drift 60s linear infinite !important;
+}
+body.theme-mfr-co .dash-card:hover {
+  border-color: rgba(204,119,68,.35) !important;
+  box-shadow:
+    0 4px 24px rgba(204,119,68,.08),
+    0 0 30px rgba(204,119,68,.04),
+    inset 0 1px 0 rgba(204,119,68,.08) !important;
+}
+
+/* --- CO: Card header warm accent line --- */
+body.theme-mfr-co .dash-card__header {
+  background: rgba(26,21,16,.6) !important;
+  border-bottom: 1px solid rgba(62,50,36,.5) !important;
+  padding: 12px 14px 5px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+body.theme-mfr-co .dash-card__header::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 14px !important;
+  width: 30px !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #cc7744, transparent) !important;
+  opacity: .5 !important;
+}
+body.theme-mfr-co .dash-card__header .sec {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  font-size: 9px !important;
+  color: #a89070 !important;
+}
+body.theme-mfr-co .dash-card__header .sec::before {
+  width: 12px !important;
+  height: 2px !important;
+  border-radius: 1px !important;
+  background: #cc7744 !important;
+}
+
+/* --- CO: Card body --- */
+body.theme-mfr-co .dash-card__body {
+  padding: 8px 14px 12px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* --- CO: Card footer --- */
+body.theme-mfr-co .dash-card__footer {
+  border-top: 1px solid rgba(62,50,36,.4) !important;
+  background: rgba(26,21,16,.5) !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* --- CO: Hero warm gradient --- */
+body.theme-mfr-co .rec-hero {
+  background: linear-gradient(160deg, #282018 0%, #1a1510 50%, #211b14 100%) !important;
+  border: 1px solid #3e3224 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,.3), inset 0 1px 0 rgba(204,119,68,.06) !important;
+}
+
+/* --- CO: Tab bar warm thick bottom border --- */
+body.theme-mfr-co .tab-bar {
+  background: #141008 !important;
+  border-top: 1px solid #3e3224 !important;
+  border-bottom: 2px solid #3e3224 !important;
+}
+body.theme-mfr-co .tab-bar__btn {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 9px !important;
+  letter-spacing: 2px !important;
+  color: #6e5c42 !important;
+  border-right: 1px solid #282018 !important;
+}
+body.theme-mfr-co .tab-bar__btn:hover {
+  color: #c4a888 !important;
+  background: rgba(204,119,68,.03) !important;
+}
+body.theme-mfr-co .tab-bar__btn--active {
+  color: #cc7744 !important;
+  background: rgba(204,119,68,.05) !important;
+}
+body.theme-mfr-co .tab-bar__btn--active::after {
+  height: 2px !important;
+  background: #cc7744 !important;
+}
+
+/* --- CO: Stat grid warm handmade feel --- */
+body.theme-mfr-co .stat-grid {
+  gap: 3px !important;
+}
+body.theme-mfr-co .sg-item {
+  background: rgba(204,119,68,.03) !important;
+  border-radius: 4px !important;
+  padding: 4px 3px !important;
+  box-shadow: inset 0 0 0 1px rgba(62,50,36,.4) !important;
+}
+body.theme-mfr-co .sg-val {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  color: #f0e4d0 !important;
+}
+body.theme-mfr-co .sg-lbl {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 500 !important;
+  color: #8c7858 !important;
+  letter-spacing: 1px !important;
+}
+
+/* --- CO: Goal progress warm gradient --- */
+body.theme-mfr-co .goal-progress-bar {
+  height: 5px !important;
+  background: #1a1510 !important;
+  border-radius: 3px !important;
+}
+body.theme-mfr-co .goal-progress-fill {
+  border-radius: 3px !important;
+  background: linear-gradient(90deg, #cc7744, #d4a060, #e0b878) !important;
+}
+body.theme-mfr-co .goal-ms {
+  background: rgba(204,119,68,.04) !important;
+  border: 1px solid rgba(62,50,36,.5) !important;
+  border-radius: 4px !important;
+}
+body.theme-mfr-co .goal-ms__pct {
+  color: #cc7744 !important;
+}
+body.theme-mfr-co .goal-ship-name {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  color: #dcc4a4 !important;
+}
+
+/* --- CO: Price table warm row hover --- */
+body.theme-mfr-co .price-row {
+  font-family: 'Space Grotesk', sans-serif !important;
+  border-bottom: 1px solid rgba(62,50,36,.3) !important;
+}
+body.theme-mfr-co .price-row:not(.price-header):hover {
+  background: rgba(204,119,68,.04) !important;
+}
+body.theme-mfr-co .price-header {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  color: #8c7858 !important;
+}
+body.theme-mfr-co .price-tip {
+  background: rgba(204,119,68,.04) !important;
+  border-left: 2px solid rgba(204,119,68,.3) !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+/* --- CO: Session mix journal/logbook feel --- */
+body.theme-mfr-co .session-mix {
+  background: rgba(26,21,16,.6) !important;
+  border: 1px solid rgba(62,50,36,.4) !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+}
+body.theme-mfr-co .session-mix__label {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  color: #8c7858 !important;
+}
+body.theme-mfr-co .session-mix__item {
+  padding: 3px 0 !important;
+  border-bottom-color: rgba(62,50,36,.25) !important;
+}
+body.theme-mfr-co .session-mix__method {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 500 !important;
+  color: #dcc4a4 !important;
+}
+body.theme-mfr-co .session-mix__time {
+  font-family: 'Space Grotesk', sans-serif !important;
+  color: #6e5c42 !important;
+}
+body.theme-mfr-co .session-mix__earn {
+  font-family: 'Space Grotesk', sans-serif !important;
+  color: #cc7744 !important;
+  font-weight: 600 !important;
+}
+
+/* --- CO: Session header --- */
+body.theme-mfr-co .session-header {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  color: #8c7858 !important;
+}
+
+/* --- CO: Buttons handcrafted --- */
+body.theme-mfr-co .btn-action,
+body.theme-mfr-co .btn {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(204,119,68,.25) !important;
+  background: transparent !important;
+  color: #cc7744 !important;
+  transition: all .25s ease !important;
+}
+body.theme-mfr-co .btn-action:hover,
+body.theme-mfr-co .btn:hover {
+  background: rgba(204,119,68,.06) !important;
+  border-color: #cc7744 !important;
+  box-shadow: 0 2px 12px rgba(204,119,68,.10) !important;
+}
+body.theme-mfr-co .dash-card__action {
+  border-radius: 4px !important;
+  border-color: rgba(62,50,36,.5) !important;
+}
+body.theme-mfr-co .dash-card__action:hover {
+  border-color: #cc7744 !important;
+  color: #cc7744 !important;
+  background: rgba(204,119,68,.04) !important;
+}
+
+/* --- CO: Typography mixing technical + warm --- */
+body.theme-mfr-co .ship-card-name {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  color: #dcc4a4 !important;
+}
+body.theme-mfr-co .ship-card-mfr {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 2px !important;
+  color: #6e5c42 !important;
+}
+body.theme-mfr-co .cr-name {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 500 !important;
+  color: #c4a888 !important;
+}
+body.theme-mfr-co .cr-rate {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  color: #cc7744 !important;
+}
+body.theme-mfr-co .mini-stat .ms-label {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 2px !important;
+  color: #6e5c42 !important;
+}
+body.theme-mfr-co .mini-stat .ms-value {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  color: #dcc4a4 !important;
+}
+
+/* --- CO: Upgrade hint --- */
+body.theme-mfr-co .ship-upgrade-hint {
+  background: rgba(204,119,68,.03) !important;
+  border: 1px solid rgba(62,50,36,.5) !important;
+  border-radius: 6px !important;
+}
+body.theme-mfr-co .upgrade-name {
+  color: #cc7744 !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+/* --- CO: Modal warm --- */
+body.theme-mfr-co .tab-modal-panel {
+  background: #141008 !important;
+}
+body.theme-mfr-co .tab-modal-overlay {
+  background: rgba(15,12,8,.85) !important;
+  backdrop-filter: blur(12px) !important;
+}
+body.theme-mfr-co .tab-modal-close {
+  border-radius: 4px !important;
+  border: 1px solid #3e3224 !important;
+  background: #1a1510 !important;
+}
+body.theme-mfr-co .tab-modal-close:hover {
+  color: #cc7744 !important;
+  border-color: #cc7744 !important;
+}
+
+/* --- CO: Scrollbar warm --- */
+body.theme-mfr-co .dash-card__body::-webkit-scrollbar { width: 3px !important; }
+body.theme-mfr-co .dash-card__body::-webkit-scrollbar-thumb { background: rgba(204,119,68,.2) !important; border-radius: 2px !important; }
+body.theme-mfr-co .dash-card__body::-webkit-scrollbar-track { background: transparent !important; }
+
+/* --- CO: Selection --- */
+body.theme-mfr-co ::selection {
+  background: rgba(204,119,68,.25) !important;
+  color: #f0e4d0 !important;
+}
+
+/* --- CO: Footer frontier --- */
+body.theme-mfr-co .footer {
+  background: #0f0c08 !important;
+  border-top: 1px solid #3e3224 !important;
+}
+body.theme-mfr-co .footer::before {
+  background: linear-gradient(to right, transparent, rgba(204,119,68,.15), transparent) !important;
+}
+
+
+/* =====================================================================================
+   ARGO ASTRONAUTICS (body.theme-mfr-argo)
+   Heavy construction equipment. CAT / Komatsu / heavy machinery.
+   Construction yellow primary, dark background, squared, heavy, industrial.
+   ===================================================================================== */
+
+/* --- ARGO: Keyframes --- */
+@keyframes argo-hazard-sweep {
+  0%   { background-position: 0px 0px; }
+  100% { background-position: 28px 0px; }
+}
+@keyframes argo-power-pulse {
+  0%, 100% { border-color: rgba(255,204,0,.3); }
+  50%      { border-color: rgba(255,204,0,.6); }
+}
+@keyframes argo-load-bar {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(300%); }
+}
+
+/* --- ARGO: Dashboard background --- */
+body.theme-mfr-argo {
+  background: #08080a !important;
+}
+
+/* --- ARGO: Card heavy machinery control panel --- */
+body.theme-mfr-argo .dash-card {
+  background: #161618 !important;
+  border: 3px solid #2c2c32 !important;
+  border-radius: 0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.4) !important;
+  overflow: hidden !important;
+  transition: border-color .2s ease !important;
+  position: relative !important;
+}
+/* Hazard stripe on card headers */
+body.theme-mfr-argo .dash-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 28px !important;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 5px,
+    rgba(255,204,0,.06) 5px,
+    rgba(255,204,0,.06) 10px
+  ) !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+/* Equipment serial number decoration on corners */
+body.theme-mfr-argo .dash-card::after {
+  content: 'ARGO-SYS' !important;
+  position: absolute !important;
+  bottom: 4px !important;
+  right: 6px !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 6px !important;
+  letter-spacing: 2px !important;
+  color: rgba(255,204,0,.08) !important;
+  text-transform: uppercase !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+body.theme-mfr-argo .dash-card:hover {
+  border-color: #ffcc00 !important;
+  background: #1a1a1e !important;
+  box-shadow: 0 4px 16px rgba(255,204,0,.06), 0 0 20px rgba(255,204,0,.03) !important;
+}
+
+/* --- ARGO: Card header industrial --- */
+body.theme-mfr-argo .dash-card__header {
+  background: rgba(12,12,14,.7) !important;
+  border-bottom: 2px solid #2c2c32 !important;
+  padding: 8px 12px 5px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+body.theme-mfr-argo .dash-card__header .sec {
+  font-family: 'Oswald', 'Impact', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 4px !important;
+  font-size: 9px !important;
+  color: #ffcc00 !important;
+  text-transform: uppercase !important;
+}
+body.theme-mfr-argo .dash-card__header .sec::before {
+  width: 16px !important;
+  height: 3px !important;
+  border-radius: 0 !important;
+  background: #ffcc00 !important;
+}
+
+/* --- ARGO: Card body --- */
+body.theme-mfr-argo .dash-card__body {
+  padding: 8px 12px 10px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* --- ARGO: Card footer --- */
+body.theme-mfr-argo .dash-card__footer {
+  border-top: 2px solid #2c2c32 !important;
+  background: rgba(12,12,14,.6) !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+body.theme-mfr-argo .dash-card__link {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 3px !important;
+  font-size: 8px !important;
+  color: #ffcc00 !important;
+}
+
+/* --- ARGO: Hero industrial with yellow accent lines --- */
+body.theme-mfr-argo .rec-hero {
+  background: #161618 !important;
+  border: 3px solid #2c2c32 !important;
+  border-radius: 0 !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,.5) !important;
+  position: relative !important;
+}
+body.theme-mfr-argo .rec-hero::before {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    rgba(255,204,0,.03) 10px,
+    rgba(255,204,0,.03) 20px
+  ) !important;
+}
+
+/* --- ARGO: Tab bar heavy thick yellow --- */
+body.theme-mfr-argo .tab-bar {
+  background: #0c0c0e !important;
+  border-top: 2px solid #2c2c32 !important;
+  border-bottom: 2px solid #2c2c32 !important;
+}
+body.theme-mfr-argo .tab-bar__btn {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 9px !important;
+  letter-spacing: 3px !important;
+  color: #56565e !important;
+  border-right: 2px solid #2c2c32 !important;
+  padding: 8px 12px !important;
+  text-transform: uppercase !important;
+}
+body.theme-mfr-argo .tab-bar__btn:hover {
+  color: #b0b0b8 !important;
+  background: rgba(255,204,0,.02) !important;
+}
+body.theme-mfr-argo .tab-bar__btn--active {
+  color: #ffcc00 !important;
+  background: rgba(255,204,0,.04) !important;
+}
+body.theme-mfr-argo .tab-bar__btn--active::after {
+  height: 3px !important;
+  background: #ffcc00 !important;
+}
+
+/* --- ARGO: Stat grid equipment gauges --- */
+body.theme-mfr-argo .stat-grid {
+  gap: 2px !important;
+}
+body.theme-mfr-argo .sg-item {
+  background: #101012 !important;
+  border-radius: 0 !important;
+  padding: 4px 3px !important;
+  border: 2px solid #2c2c32 !important;
+}
+body.theme-mfr-argo .sg-val {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 700 !important;
+  color: #eeeeef !important;
+  font-size: 0.9rem !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.theme-mfr-argo .sg-lbl {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 0.5rem !important;
+  letter-spacing: 2px !important;
+  color: #56565e !important;
+  text-transform: uppercase !important;
+}
+
+/* --- ARGO: Goal progress yellow chunky squared --- */
+body.theme-mfr-argo .goal-progress-bar {
+  height: 8px !important;
+  background: #101012 !important;
+  border-radius: 0 !important;
+  border: 1px solid #2c2c32 !important;
+}
+body.theme-mfr-argo .goal-progress-fill {
+  border-radius: 0 !important;
+  background: linear-gradient(90deg, #cc9900, #ffcc00, #ffe044) !important;
+  box-shadow: 0 0 8px rgba(255,204,0,.2) !important;
+}
+body.theme-mfr-argo .goal-ms {
+  background: #101012 !important;
+  border: 2px solid #2c2c32 !important;
+  border-radius: 0 !important;
+  padding: 2px 4px !important;
+}
+body.theme-mfr-argo .goal-ms__pct {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #ffcc00 !important;
+  font-weight: 700 !important;
+}
+body.theme-mfr-argo .goal-ship-name {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: #d0d0d6 !important;
+}
+body.theme-mfr-argo .goal-time {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.theme-mfr-argo .goal-stat {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* --- ARGO: Price table inventory management heavy grid --- */
+body.theme-mfr-argo .price-row {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 11px !important;
+  padding: 3px 0 !important;
+  border-bottom: 2px solid #1a1a1e !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.theme-mfr-argo .price-row:not(.price-header):hover {
+  background: rgba(255,204,0,.03) !important;
+}
+body.theme-mfr-argo .price-header {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 8px !important;
+  letter-spacing: 3px !important;
+  color: #ffcc00 !important;
+  border-bottom: 2px solid #2c2c32 !important;
+  text-transform: uppercase !important;
+}
+body.theme-mfr-argo .price-tip {
+  background: rgba(255,204,0,.04) !important;
+  border-left: 3px solid #ffcc00 !important;
+  border-radius: 0 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* --- ARGO: Session mix work shift schedule --- */
+body.theme-mfr-argo .session-mix {
+  background: #101012 !important;
+  border: 2px solid #2c2c32 !important;
+  border-radius: 0 !important;
+  padding: 6px 10px !important;
+}
+body.theme-mfr-argo .session-mix__label {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 3px !important;
+  font-size: 7px !important;
+  color: #ffcc00 !important;
+  text-transform: uppercase !important;
+}
+body.theme-mfr-argo .session-mix__item {
+  padding: 2px 0 !important;
+  border-bottom-color: #1a1a1e !important;
+}
+body.theme-mfr-argo .session-mix__method {
+  font-family: 'Share Tech Mono', monospace !important;
+  text-transform: uppercase !important;
+  color: #b0b0b8 !important;
+  font-size: 11px !important;
+}
+body.theme-mfr-argo .session-mix__time {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-variant-numeric: tabular-nums !important;
+  color: #56565e !important;
+}
+body.theme-mfr-argo .session-mix__earn {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-variant-numeric: tabular-nums !important;
+  color: #ffcc00 !important;
+  font-weight: 700 !important;
+}
+
+/* --- ARGO: Session header --- */
+body.theme-mfr-argo .session-header {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 3px !important;
+  color: #ffcc00 !important;
+  text-transform: uppercase !important;
+}
+
+/* --- ARGO: Buttons heavy squared yellow border --- */
+body.theme-mfr-argo .btn-action,
+body.theme-mfr-argo .btn {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  border-radius: 0 !important;
+  border: 2px solid rgba(255,204,0,.3) !important;
+  background: transparent !important;
+  color: #ffcc00 !important;
+  text-transform: uppercase !important;
+  transition: all .2s ease !important;
+}
+body.theme-mfr-argo .btn-action:hover,
+body.theme-mfr-argo .btn:hover {
+  background: rgba(255,204,0,.06) !important;
+  border-color: #ffcc00 !important;
+  box-shadow: 0 0 16px rgba(255,204,0,.10) !important;
+}
+body.theme-mfr-argo .dash-card__action {
+  border-radius: 0 !important;
+  border: 2px solid #2c2c32 !important;
+}
+body.theme-mfr-argo .dash-card__action:hover {
+  border-color: #ffcc00 !important;
+  color: #ffcc00 !important;
+  background: rgba(255,204,0,.04) !important;
+}
+
+/* --- ARGO: Modal with yellow warning bar --- */
+body.theme-mfr-argo .tab-modal-panel {
+  background: #0c0c0e !important;
+  position: relative !important;
+}
+body.theme-mfr-argo .tab-modal-panel::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: repeating-linear-gradient(
+    90deg,
+    #ffcc00 0px,
+    #ffcc00 10px,
+    #0c0c0e 10px,
+    #0c0c0e 20px
+  ) !important;
+  z-index: 10 !important;
+}
+body.theme-mfr-argo .tab-modal-overlay {
+  background: rgba(8,8,10,.92) !important;
+}
+body.theme-mfr-argo .tab-modal-close {
+  border-radius: 0 !important;
+  border: 2px solid #2c2c32 !important;
+  background: #161618 !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+}
+body.theme-mfr-argo .tab-modal-close:hover {
+  border-color: #ffcc00 !important;
+  color: #ffcc00 !important;
+}
+
+/* --- ARGO: Typography heavy industrial --- */
+body.theme-mfr-argo .ship-card-name {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: #d0d0d6 !important;
+}
+body.theme-mfr-argo .ship-card-mfr {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 7px !important;
+  letter-spacing: 3px !important;
+  color: #56565e !important;
+  text-transform: uppercase !important;
+}
+body.theme-mfr-argo .cr-name {
+  font-family: 'Share Tech Mono', monospace !important;
+  text-transform: uppercase !important;
+  letter-spacing: .5px !important;
+  color: #b0b0b8 !important;
+}
+body.theme-mfr-argo .cr-rate {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 700 !important;
+  color: #ffcc00 !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.theme-mfr-argo .mini-stat .ms-label {
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 2px !important;
+  font-size: 7px !important;
+  color: #56565e !important;
+}
+body.theme-mfr-argo .mini-stat .ms-value {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-weight: 700 !important;
+  color: #d0d0d6 !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* --- ARGO: Upgrade hint --- */
+body.theme-mfr-argo .ship-upgrade-hint {
+  background: rgba(255,204,0,.03) !important;
+  border: 2px solid #2c2c32 !important;
+  border-radius: 0 !important;
+}
+body.theme-mfr-argo .upgrade-label {
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 2px !important;
+  color: #56565e !important;
+}
+body.theme-mfr-argo .upgrade-name {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #ffcc00 !important;
+  font-weight: 700 !important;
+}
+body.theme-mfr-argo .upgrade-meta {
+  font-family: 'Share Tech Mono', monospace !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* --- ARGO: Scrollbar industrial --- */
+body.theme-mfr-argo .dash-card__body::-webkit-scrollbar { width: 4px !important; }
+body.theme-mfr-argo .dash-card__body::-webkit-scrollbar-thumb { background: #2c2c32 !important; border-radius: 0 !important; }
+body.theme-mfr-argo .dash-card__body::-webkit-scrollbar-track { background: #101012 !important; }
+
+/* --- ARGO: Selection --- */
+body.theme-mfr-argo ::selection {
+  background: rgba(255,204,0,.25) !important;
+  color: #eeeeef !important;
+}
+
+/* --- ARGO: Footer industrial --- */
+body.theme-mfr-argo .footer {
+  background: #08080a !important;
+  border-top: 2px solid #2c2c32 !important;
+}
+body.theme-mfr-argo .footer::before {
+  background: linear-gradient(to right, transparent, rgba(255,204,0,.15), transparent) !important;
+}
+
+/* --- ARGO: Grid gap welded seam --- */
+body.theme-mfr-argo .dashboard-grid {
+  gap: 3px !important;
+  background: rgba(255,204,0,.15) !important;
+}

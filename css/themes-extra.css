@@ -1,0 +1,1280 @@
+/* ═══════════════════════════════════════════════════════════
+   THEME: NEON DISTRICT
+   Identity: Cyberpunk, Night City, hacker terminal
+   Fonts: Orbitron (display), Rajdhani (body), Share Tech Mono (data)
+   Layout: Overlapping glow borders, stacked cards, wide spacing
+   Animations: Glitch, scanlines, neon flicker, typing cursor
+   ═══════════════════════════════════════════════════════════ */
+body.theme-neon {
+  --v: #08020e;
+  --ab: #0c0416;
+  --dp: #10061e;
+  --c: #160826;
+  --pl: #1a0a2e;
+  --ir: #200e36;
+  --rl: #301848;
+  --dv: #402060;
+  --mt: #604080;
+  --dm: #8060a0;
+  --md: #a080c0;
+  --sv: #c0a0e0;
+  --lt: #e0c8ff;
+  --wh: #f4eaff;
+
+  --g: #c850ff;
+  --ghi: #e080ff;
+  --glo: rgba(200,80,255,.1);
+  --gd: rgba(200,80,255,.06);
+  --gl: rgba(200,80,255,.16);
+
+  --cyan: #00e5ff;
+  --amber: #ffab40;
+  --green: #69f0ae;
+  --red: #ff5252;
+
+  --bg: #08020e;
+  --bg2: #0c0416;
+  --s1: #160826;
+  --s2: #301848;
+  --tx: #f4eaff;
+  --tx2: #e0c8ff;
+  --tx3: #c0a0e0;
+  --tx4: #8060a0;
+
+  /* Neon custom tokens */
+  --serif: 'Orbitron', monospace;
+  --sans: 'Rajdhani', 'Share Tech Mono', sans-serif;
+  --mono: 'Share Tech Mono', monospace;
+  --card-chamfer: 0px;
+  --grid-gap: 16px;
+
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+/* Neon: Scanline overlay instead of grain */
+body.theme-neon #grain {
+  opacity: .04;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(200,80,255,.03) 2px,
+    rgba(200,80,255,.03) 4px
+  );
+  background-size: 100% 4px;
+  animation: neon-scanline 8s linear infinite;
+}
+@keyframes neon-scanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100vh; }
+}
+
+/* Neon: Header with neon underline glow */
+body.theme-neon .header {
+  background: rgba(8,2,14,.96);
+  backdrop-filter: blur(24px);
+  border-bottom: 2px solid #c850ff;
+  box-shadow: 0 4px 32px rgba(200,80,255,.12), 0 0 1px #c850ff;
+}
+body.theme-neon .header__title {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0,229,255,.4);
+}
+body.theme-neon .header__title span { color: #c850ff; font-style: normal; text-shadow: 0 0 10px rgba(200,80,255,.4); }
+body.theme-neon .header__label {
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 3px;
+  font-size: 9px;
+  color: #c850ff;
+}
+
+/* Neon: Glowing inputs */
+body.theme-neon .header-input {
+  font-family: 'Share Tech Mono', monospace;
+  background: rgba(200,80,255,.04);
+  border: 1px solid rgba(200,80,255,.3);
+}
+body.theme-neon .header-input:focus {
+  border-color: #00e5ff;
+  box-shadow: 0 0 12px rgba(0,229,255,.2);
+}
+body.theme-neon .tbtn {
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 2px;
+}
+body.theme-neon .tbtn.active {
+  color: #00e5ff;
+  border-color: #c850ff;
+  background: rgba(200,80,255,.08);
+  box-shadow: 0 0 8px rgba(200,80,255,.15);
+}
+
+/* Neon: Hero — massive neon glow border */
+body.theme-neon .rec-hero {
+  background: linear-gradient(180deg, rgba(22,8,38,.95) 0%, rgba(8,2,14,.98) 100%);
+  border: 1px solid rgba(200,80,255,.3);
+  box-shadow: 0 0 40px rgba(200,80,255,.08), inset 0 0 60px rgba(200,80,255,.02);
+  position: relative;
+}
+body.theme-neon .rec-hero::after {
+  background: linear-gradient(to right, transparent, #c850ff, #00e5ff, transparent);
+  height: 2px;
+  box-shadow: 0 0 12px rgba(200,80,255,.5);
+}
+body.theme-neon .rec-hero::before {
+  background: radial-gradient(ellipse 60% 80% at 30% 50%, rgba(200,80,255,.06) 0%, transparent 65%);
+}
+body.theme-neon .rec-hero__label {
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  letter-spacing: 6px;
+  font-size: 10px;
+  color: #c850ff;
+}
+body.theme-neon .rec-hero__label::before { background: #c850ff; box-shadow: 0 0 8px rgba(200,80,255,.5); }
+body.theme-neon .rec-hero__method {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #f4eaff;
+  text-shadow: 0 0 20px rgba(200,80,255,.2);
+}
+body.theme-neon .hero-rate-big {
+  font-family: 'Orbitron', monospace;
+  font-weight: 800;
+  color: #00e5ff !important;
+  text-shadow: 0 0 30px rgba(0,229,255,.4), 0 0 60px rgba(0,229,255,.1);
+  animation: neon-flicker 3s ease-in-out infinite;
+}
+body.theme-neon .rec-hero__reasoning {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+/* Neon: Dashboard — glow-bordered cards */
+body.theme-neon .dashboard-grid {
+  gap: 16px;
+  background: none;
+}
+body.theme-neon .dash-card {
+  background: linear-gradient(180deg, rgba(22,8,38,.9) 0%, rgba(12,4,22,.95) 100%);
+  border: 1px solid rgba(200,80,255,.15);
+  box-shadow: 0 0 16px rgba(200,80,255,.04);
+  position: relative;
+  overflow: visible;
+}
+body.theme-neon .dash-card::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px; right: -1px; bottom: -1px;
+  background: linear-gradient(135deg, rgba(200,80,255,.2), transparent 50%, rgba(0,229,255,.2));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .5s;
+}
+body.theme-neon .dash-card:hover::before { opacity: 1; transform: none; }
+body.theme-neon .dash-card:hover {
+  border-color: rgba(200,80,255,.3);
+  box-shadow: 0 0 32px rgba(200,80,255,.08);
+}
+body.theme-neon .dash-card__header .sec {
+  font-family: 'Orbitron', monospace;
+  font-weight: 500;
+  letter-spacing: 4px;
+  font-size: 9px;
+  color: #c850ff;
+}
+body.theme-neon .dash-card__header .sec::before { background: #c850ff; box-shadow: 0 0 6px rgba(200,80,255,.5); }
+body.theme-neon .dash-card__link {
+  font-family: 'Share Tech Mono', monospace;
+  color: #00e5ff;
+}
+body.theme-neon .dash-card__link:hover { color: #c850ff; }
+
+/* Neon: Quick nav — glowing bar */
+body.theme-neon .quick-nav {
+  background: rgba(22,8,38,.9);
+  border: 1px solid rgba(200,80,255,.2);
+  box-shadow: 0 0 16px rgba(200,80,255,.06);
+}
+body.theme-neon .qn-link {
+  font-family: 'Orbitron', monospace;
+  font-weight: 500;
+  letter-spacing: 3px;
+  font-size: 9px;
+}
+body.theme-neon .qn-link--active {
+  color: #00e5ff;
+  background: rgba(0,229,255,.06);
+  text-shadow: 0 0 8px rgba(0,229,255,.3);
+}
+body.theme-neon .qn-link--active::after { background: #00e5ff; box-shadow: 0 0 6px rgba(0,229,255,.5); }
+
+/* Neon: Methods — glowing cards */
+body.theme-neon .methods-grid {
+  gap: 12px;
+  background: none;
+}
+body.theme-neon .method-card {
+  background: rgba(16,6,30,.9);
+  border: 1px solid rgba(200,80,255,.1);
+}
+body.theme-neon .method-card::before {
+  background: linear-gradient(to right, transparent, #c850ff, #00e5ff, transparent);
+  box-shadow: 0 0 8px rgba(200,80,255,.3);
+}
+body.theme-neon .method-card:hover {
+  background: rgba(22,8,38,.9);
+  border-color: rgba(200,80,255,.25);
+  box-shadow: 0 0 20px rgba(200,80,255,.06);
+}
+body.theme-neon .method-card__name {
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+body.theme-neon .method-card__rate {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 15px;
+}
+body.theme-neon .method-card--tier-s {
+  border-left: 3px solid #c850ff;
+  background: linear-gradient(135deg, rgba(200,80,255,.08) 0%, rgba(16,6,30,.9) 50%);
+  box-shadow: 0 0 20px rgba(200,80,255,.06);
+}
+body.theme-neon .method-card--tier-s .method-card__name { color: #e080ff; text-shadow: 0 0 10px rgba(200,80,255,.3); }
+body.theme-neon .method-card--tier-s .method-card__rate { color: #00e5ff; text-shadow: 0 0 10px rgba(0,229,255,.3); font-size: 16px; }
+body.theme-neon .method-card--tier-a { border-left: 3px solid #00e5ff; }
+body.theme-neon .method-card--tier-a .method-card__rate { color: #00e5ff; }
+
+/* Neon: Ships table */
+body.theme-neon .ships-table {
+  background: rgba(16,6,30,.9);
+  border: 1px solid rgba(200,80,255,.15);
+}
+body.theme-neon .ship-list-item:hover { background: rgba(22,8,38,.9); }
+body.theme-neon .slr-name { font-family: 'Orbitron', monospace; font-size: 14px; font-weight: 500; letter-spacing: 1px; }
+body.theme-neon .slr-price { font-family: 'Share Tech Mono', monospace; font-style: normal; color: #00e5ff; text-shadow: 0 0 6px rgba(0,229,255,.2); }
+
+/* Neon: Buttons — gradient neon CTA */
+body.theme-neon .btn-action, body.theme-neon .btn {
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 3px;
+  border: 1px solid rgba(200,80,255,.3);
+  position: relative;
+}
+body.theme-neon .btn-action:hover, body.theme-neon .btn:hover {
+  background: linear-gradient(135deg, #c850ff, #00e5ff);
+  color: #08020e;
+  border-color: transparent;
+  box-shadow: 0 0 24px rgba(200,80,255,.3), 0 0 8px rgba(0,229,255,.2);
+  transform: translateY(-2px);
+}
+
+/* Neon: Section labels with glow */
+body.theme-neon .sec::before { background: #c850ff; box-shadow: 0 0 6px rgba(200,80,255,.5); }
+body.theme-neon .section-header .sec {
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 5px;
+}
+body.theme-neon .section-header .sec::before { background: #c850ff; box-shadow: 0 0 6px rgba(200,80,255,.5); }
+body.theme-neon .section-header { border-bottom: 1px solid rgba(200,80,255,.15); }
+
+/* Neon: Pills — glowing */
+body.theme-neon .pill {
+  font-family: 'Share Tech Mono', monospace;
+}
+body.theme-neon .pill--filter, body.theme-neon .pill--smart {
+  font-family: 'Share Tech Mono', monospace;
+  border: 1px solid rgba(200,80,255,.2);
+}
+body.theme-neon .pill--active {
+  color: #00e5ff !important;
+  border-color: #00e5ff !important;
+  background: rgba(0,229,255,.06) !important;
+  box-shadow: 0 0 8px rgba(0,229,255,.15) !important;
+}
+
+/* Neon: Stats */
+body.theme-neon .sg-val { font-family: 'Orbitron', monospace; font-weight: 600; color: #00e5ff; text-shadow: 0 0 6px rgba(0,229,255,.2); }
+body.theme-neon .sg-lbl { font-family: 'Share Tech Mono', monospace; }
+body.theme-neon .ms-label { font-family: 'Share Tech Mono', monospace; color: #c850ff; }
+body.theme-neon .ms-value { font-family: 'Share Tech Mono', monospace; color: #00e5ff; }
+body.theme-neon .cr-rate { font-family: 'Share Tech Mono', monospace; color: #00e5ff; }
+body.theme-neon .goal-ship-name { font-family: 'Orbitron', monospace; font-weight: 600; font-size: 14px; }
+body.theme-neon .goal-progress-fill { background: linear-gradient(90deg, #c850ff, #00e5ff); box-shadow: 0 0 8px rgba(200,80,255,.3); }
+
+/* Neon: Plan */
+body.theme-neon .plan-title { font-family: 'Orbitron', monospace; font-weight: 700; letter-spacing: 2px; font-size: 22px; }
+body.theme-neon .plan-step { border: 1px solid rgba(200,80,255,.15); }
+body.theme-neon .plan-verdict { border-color: rgba(200,80,255,.2); background: rgba(200,80,255,.04); }
+
+/* Neon: Footer */
+body.theme-neon .footer::before { background: linear-gradient(to right, transparent, #c850ff, #00e5ff, transparent); box-shadow: 0 0 8px rgba(200,80,255,.3); }
+body.theme-neon .footer__logo {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  letter-spacing: 4px;
+  font-size: 14px;
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0,229,255,.3);
+}
+body.theme-neon .footer__logo span { color: #c850ff; font-style: normal; text-shadow: 0 0 10px rgba(200,80,255,.3); }
+body.theme-neon .footer__tagline { font-family: 'Share Tech Mono', monospace; }
+
+/* Neon: Modals */
+body.theme-neon .modal__panel {
+  border: 1px solid rgba(200,80,255,.2);
+  box-shadow: 0 0 40px rgba(200,80,255,.1);
+}
+body.theme-neon .gsearch__panel {
+  border: 1px solid rgba(200,80,255,.2);
+  box-shadow: 0 0 40px rgba(200,80,255,.1);
+}
+body.theme-neon .gsearch__input { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 500; }
+body.theme-neon .onboard__panel {
+  border: 1px solid rgba(200,80,255,.2);
+  box-shadow: 0 0 40px rgba(200,80,255,.1);
+}
+body.theme-neon .onboard__panel::before { background: linear-gradient(to right, transparent, #c850ff, #00e5ff, transparent); box-shadow: 0 0 8px rgba(200,80,255,.4); }
+body.theme-neon .onboard__title { font-family: 'Orbitron', monospace; font-weight: 700; letter-spacing: 3px; }
+body.theme-neon .onboard__cta { background: linear-gradient(135deg, #c850ff, #00e5ff); font-family: 'Orbitron', monospace; font-weight: 600; font-size: 10px; letter-spacing: 3px; }
+body.theme-neon .onboard__cta:hover { box-shadow: 0 4px 32px rgba(200,80,255,.4), 0 0 8px rgba(0,229,255,.3); }
+
+/* Neon: Patch ticker */
+body.theme-neon .patch-ticker { background: rgba(8,2,14,.95); border-bottom: 1px solid rgba(200,80,255,.15); }
+body.theme-neon .patch-ticker__item { font-family: 'Share Tech Mono', monospace; color: #c0a0e0; }
+body.theme-neon .patch-ticker__sep { color: #c850ff; text-shadow: 0 0 4px rgba(200,80,255,.5); }
+
+/* Neon: Ship picker */
+body.theme-neon .ship-picker__display { font-family: 'Rajdhani', sans-serif; font-weight: 500; }
+body.theme-neon .ship-picker__display-name { font-family: 'Orbitron', monospace; font-weight: 500; font-size: 12px; }
+body.theme-neon .ship-picker__display-price { font-family: 'Share Tech Mono', monospace; font-style: normal; color: #00e5ff; }
+
+/* Neon: Scroll reveal — glitch snap */
+body.theme-neon .rv {
+  transform: translateY(20px);
+  transition: opacity .5s ease-out, transform .5s ease-out;
+}
+
+/* Neon: Flicker animation */
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: .6; }
+  94% { opacity: 1; }
+  96% { opacity: .8; }
+  97% { opacity: 1; }
+}
+
+/* Neon: Glitch on hero hover */
+@keyframes neon-glitch {
+  0%, 100% { transform: none; }
+  33% { transform: translate(-2px, 1px); }
+  66% { transform: translate(2px, -1px); }
+}
+body.theme-neon .rec-hero:hover .rec-hero__method {
+  animation: neon-glitch .15s ease-in-out;
+}
+
+/* Neon: Various */
+body.theme-neon .gsearch__type { color: #00e5ff; background: rgba(0,229,255,.06); border: 1px solid rgba(0,229,255,.15); }
+body.theme-neon .slr-badge--current { color: #c850ff; background: rgba(200,80,255,.08); border: 1px solid rgba(200,80,255,.2); animation: neon-flicker 3s infinite; }
+body.theme-neon .slr-badge--goal { color: #00e5ff; background: rgba(0,229,255,.08); border: 1px solid rgba(0,229,255,.2); }
+body.theme-neon .ship-list-item--current { border-left-color: #c850ff !important; background: rgba(200,80,255,.02) !important; }
+body.theme-neon ::selection { background: #c850ff; color: #08020e; }
+body.theme-neon .sort-opt { font-family: 'Share Tech Mono', monospace; }
+body.theme-neon .sort-opt--active { color: #00e5ff; border-bottom-color: #00e5ff; text-shadow: 0 0 6px rgba(0,229,255,.3); }
+body.theme-neon .ship-cap--good { color: #69f0ae; text-shadow: 0 0 4px rgba(105,240,174,.3); }
+body.theme-neon .price-tip { color: #69f0ae; background: rgba(105,240,174,.06); border-color: rgba(105,240,174,.15); }
+body.theme-neon .price-margin--pos { color: #69f0ae !important; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   THEME: TACTICIAN
+   Identity: Military command center, HUD display
+   Fonts: Share Tech Mono (everything monospace — data-dense)
+   Layout: HUD brackets, corner markers, dense 4-col grid, compact
+   Animations: Radar sweep, data-load flicker, blinking cursor
+   ═══════════════════════════════════════════════════════════ */
+body.theme-tactical {
+  --v: #0a0c08;
+  --ab: #0e100a;
+  --dp: #12160e;
+  --c: #181c14;
+  --pl: #1e2218;
+  --ir: #24281e;
+  --rl: #303828;
+  --dv: #404830;
+  --mt: #586848;
+  --dm: #708860;
+  --md: #90a878;
+  --sv: #b0c898;
+  --lt: #d0e0b8;
+  --wh: #e8f0d8;
+
+  --g: #7cb342;
+  --ghi: #9ccc65;
+  --glo: rgba(124,179,66,.1);
+  --gd: rgba(124,179,66,.06);
+  --gl: rgba(124,179,66,.16);
+
+  --cyan: #7cb342;
+  --amber: #ffa726;
+  --green: #66bb6a;
+  --red: #ef5350;
+
+  --bg: #0a0c08;
+  --bg2: #0e100a;
+  --s1: #181c14;
+  --s2: #303828;
+  --tx: #e8f0d8;
+  --tx2: #d0e0b8;
+  --tx3: #b0c898;
+  --tx4: #708860;
+
+  /* Tactical custom tokens */
+  --serif: 'Share Tech Mono', monospace;
+  --sans: 'Share Tech Mono', monospace;
+  --mono: 'Share Tech Mono', monospace;
+  --card-chamfer: 0px;
+  --grid-gap: 2px;
+
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Tactical: Denser grain like CRT noise */
+body.theme-tactical #grain {
+  opacity: .06;
+  background-size: 100px;
+  animation: gr .3s steps(1) infinite;
+}
+
+/* Tactical: HUD header with corner markers */
+body.theme-tactical .header {
+  background: rgba(10,12,8,.98);
+  border-bottom: 1px solid #303828;
+  box-shadow: none;
+  position: relative;
+}
+body.theme-tactical .header::after {
+  content: '[ TACTICAL COMMAND ]';
+  position: absolute;
+  right: var(--side-pad);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: #586848;
+  pointer-events: none;
+  display: none;
+}
+body.theme-tactical .header__title {
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #7cb342;
+  text-shadow: 0 0 4px rgba(124,179,66,.3);
+}
+body.theme-tactical .header__title span { color: #9ccc65; font-style: normal; }
+body.theme-tactical .header__label {
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 3px;
+  font-size: 8px;
+  color: #586848;
+}
+
+/* Tactical: Minimal inputs */
+body.theme-tactical .header-input {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid #303828;
+  color: #9ccc65;
+  letter-spacing: 2px;
+}
+body.theme-tactical .header-input:focus {
+  border-color: #7cb342;
+  box-shadow: 0 0 4px rgba(124,179,66,.2);
+}
+body.theme-tactical .tbtn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  background: transparent;
+  border: 1px solid #303828;
+}
+body.theme-tactical .tbtn.active {
+  color: #7cb342;
+  border-color: #7cb342;
+  background: rgba(124,179,66,.06);
+  text-shadow: 0 0 4px rgba(124,179,66,.3);
+}
+
+/* Tactical: Hero — HUD briefing with bracket corners */
+body.theme-tactical .rec-hero {
+  background: rgba(14,16,10,.95);
+  border: 1px solid #303828;
+  position: relative;
+}
+/* Corner brackets */
+body.theme-tactical .rec-hero::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(124,179,66,.15);
+  pointer-events: none;
+  background: none;
+}
+body.theme-tactical .rec-hero::after {
+  background: #7cb342;
+  height: 1px;
+  opacity: .5;
+}
+body.theme-tactical .rec-hero__label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: #7cb342;
+}
+body.theme-tactical .rec-hero__label::before { background: #7cb342; width: 16px; }
+body.theme-tactical .rec-hero__method {
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 400;
+  font-size: clamp(20px, 3vw, 32px);
+  letter-spacing: 4px;
+  color: #e8f0d8;
+}
+body.theme-tactical .hero-rate-big {
+  font-family: 'Share Tech Mono', monospace;
+  color: #9ccc65 !important;
+  text-shadow: 0 0 8px rgba(124,179,66,.3);
+  font-size: 28px;
+}
+body.theme-tactical .rec-hero__reasoning {
+  font-size: 12px;
+  text-transform: none;
+  letter-spacing: .5px;
+}
+
+/* Tactical: Dashboard — dense 3x2 with HUD borders */
+body.theme-tactical .dashboard-grid {
+  gap: 1px;
+  background: #303828;
+}
+body.theme-tactical .dash-card {
+  background: rgba(14,16,10,.95);
+  position: relative;
+}
+/* HUD inner border */
+body.theme-tactical .dash-card::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(124,179,66,.08);
+  pointer-events: none;
+  background: none;
+  transform: none;
+  opacity: 1;
+  height: auto;
+}
+body.theme-tactical .dash-card:hover::before {
+  border-color: rgba(124,179,66,.2);
+}
+body.theme-tactical .dash-card__header .sec {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #7cb342;
+}
+body.theme-tactical .dash-card__header .sec::before { background: #7cb342; width: 12px; }
+body.theme-tactical .dash-card__link {
+  font-family: 'Share Tech Mono', monospace;
+  color: #7cb342;
+  font-size: 9px;
+}
+
+/* Tactical: Quick nav — minimal bar */
+body.theme-tactical .quick-nav {
+  background: rgba(14,16,10,.95);
+  border: 1px solid #303828;
+}
+body.theme-tactical .qn-link {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+}
+body.theme-tactical .qn-link--active { color: #7cb342; text-shadow: 0 0 4px rgba(124,179,66,.3); }
+body.theme-tactical .qn-link--active::after { background: #7cb342; }
+
+/* Tactical: Methods — compact, data-dense */
+body.theme-tactical .methods-grid { gap: 1px; background: #303828; }
+body.theme-tactical .method-card {
+  background: rgba(18,22,14,.95);
+  padding: 12px;
+}
+body.theme-tactical .method-card::before {
+  background: #7cb342;
+  height: 1px;
+  opacity: .3;
+}
+body.theme-tactical .method-card:hover { background: rgba(24,28,20,.95); }
+body.theme-tactical .method-card__name {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+body.theme-tactical .method-card__rate {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+}
+body.theme-tactical .method-card--tier-s {
+  border-left: 3px solid #7cb342;
+  background: linear-gradient(135deg, rgba(124,179,66,.06) 0%, rgba(18,22,14,.95) 50%);
+}
+body.theme-tactical .method-card--tier-a { border-left-color: #ffa726; }
+body.theme-tactical .method-card--tier-a .method-card__rate { color: #ffa726; }
+
+/* Tactical: Ships — dense table */
+body.theme-tactical .ships-table {
+  background: rgba(14,16,10,.95);
+  border: 1px solid #303828;
+}
+body.theme-tactical .slr-name { font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 2px; }
+body.theme-tactical .slr-price { font-family: 'Share Tech Mono', monospace; font-style: normal; color: #7cb342; }
+body.theme-tactical .ship-list-item:hover { background: rgba(24,28,20,.95); }
+
+/* Tactical: Buttons — military simple */
+body.theme-tactical .btn-action, body.theme-tactical .btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  border: 1px solid #303828;
+  padding: 10px 20px;
+}
+body.theme-tactical .btn-action:hover, body.theme-tactical .btn:hover {
+  background: #7cb342;
+  color: #0a0c08;
+  border-color: #7cb342;
+  transform: none;
+  text-shadow: none;
+}
+
+/* Tactical: Section labels */
+body.theme-tactical .sec { font-family: 'Share Tech Mono', monospace; }
+body.theme-tactical .sec::before { width: 16px; }
+body.theme-tactical .section-header .sec { font-family: 'Share Tech Mono', monospace; font-size: 10px; }
+body.theme-tactical .section-header { border-bottom: 1px solid #303828; }
+
+/* Tactical: Pills — military tags */
+body.theme-tactical .pill { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; }
+body.theme-tactical .pill--filter, body.theme-tactical .pill--smart {
+  font-family: 'Share Tech Mono', monospace;
+  border: 1px solid #303828;
+  background: transparent;
+}
+body.theme-tactical .pill--active {
+  color: #7cb342 !important;
+  border-color: #7cb342 !important;
+  background: rgba(124,179,66,.06) !important;
+}
+
+/* Tactical: Stats with green glow */
+body.theme-tactical .sg-val { font-family: 'Share Tech Mono', monospace; color: #9ccc65; text-shadow: 0 0 4px rgba(124,179,66,.2); }
+body.theme-tactical .sg-lbl { font-family: 'Share Tech Mono', monospace; font-size: 8px; }
+body.theme-tactical .ms-label { font-family: 'Share Tech Mono', monospace; font-size: 8px; color: #586848; }
+body.theme-tactical .ms-value { font-family: 'Share Tech Mono', monospace; color: #9ccc65; }
+body.theme-tactical .cr-rate { font-family: 'Share Tech Mono', monospace; color: #9ccc65; }
+body.theme-tactical .goal-ship-name { font-family: 'Share Tech Mono', monospace; font-size: 14px; letter-spacing: 2px; }
+body.theme-tactical .goal-progress-fill { background: #7cb342; box-shadow: 0 0 6px rgba(124,179,66,.3); }
+body.theme-tactical .goal-progress-bar { height: 4px; border-radius: 0; }
+body.theme-tactical .goal-progress-fill { border-radius: 0; }
+
+/* Tactical: Plan */
+body.theme-tactical .plan-title { font-family: 'Share Tech Mono', monospace; font-size: 18px; letter-spacing: 4px; }
+body.theme-tactical .plan-step { border: 1px solid #303828; }
+body.theme-tactical .plan-verdict { border-color: rgba(124,179,66,.2); background: rgba(124,179,66,.04); }
+
+/* Tactical: Footer */
+body.theme-tactical .footer::before { background: #7cb342; height: 1px; }
+body.theme-tactical .footer__logo {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: #7cb342;
+  text-shadow: 0 0 4px rgba(124,179,66,.3);
+}
+body.theme-tactical .footer__logo span { font-style: normal; color: #9ccc65; }
+body.theme-tactical .footer__tagline { font-family: 'Share Tech Mono', monospace; font-size: 8px; letter-spacing: 3px; }
+body.theme-tactical .footer__bottom { font-family: 'Share Tech Mono', monospace; font-size: 8px; }
+
+/* Tactical: Modals */
+body.theme-tactical .modal__panel {
+  clip-path: none;
+  border: 1px solid #303828;
+}
+body.theme-tactical .modal__content h2 { font-family: 'Share Tech Mono', monospace; font-size: 20px; letter-spacing: 3px; }
+body.theme-tactical .gsearch__input { font-family: 'Share Tech Mono', monospace; font-size: 14px; letter-spacing: 2px; }
+body.theme-tactical .onboard__panel { border: 1px solid #303828; }
+body.theme-tactical .onboard__title { font-family: 'Share Tech Mono', monospace; font-size: 22px; letter-spacing: 4px; }
+body.theme-tactical .onboard__cta {
+  background: #7cb342;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+body.theme-tactical .onboard__cta:hover { background: #9ccc65; box-shadow: 0 0 12px rgba(124,179,66,.3); }
+
+/* Tactical: Patch ticker */
+body.theme-tactical .patch-ticker { background: rgba(10,12,8,.98); border-bottom: 1px solid #303828; }
+body.theme-tactical .patch-ticker__item { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 3px; color: #586848; }
+body.theme-tactical .patch-ticker__sep { color: #7cb342; }
+
+/* Tactical: Ship picker */
+body.theme-tactical .ship-picker__display { font-family: 'Share Tech Mono', monospace; font-size: 12px; }
+body.theme-tactical .ship-picker__display-name { font-family: 'Share Tech Mono', monospace; letter-spacing: 2px; }
+body.theme-tactical .ship-picker__display-price { font-family: 'Share Tech Mono', monospace; font-style: normal; color: #7cb342; }
+body.theme-tactical .ship-picker__option-name { font-family: 'Share Tech Mono', monospace; }
+body.theme-tactical .ship-picker__option-price { font-family: 'Share Tech Mono', monospace; font-style: normal; }
+
+/* Tactical: Scroll reveal — military snap */
+body.theme-tactical .rv {
+  transform: translateY(16px);
+  transition: opacity .3s ease-out, transform .3s ease-out;
+}
+
+/* Tactical: Radar sweep on hero */
+@keyframes tactical-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes tactical-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+body.theme-tactical .confidence-dot--high {
+  animation: tactical-blink 1.5s infinite;
+}
+
+body.theme-tactical .slr-badge--current { color: #7cb342; background: rgba(124,179,66,.08); border: 1px solid rgba(124,179,66,.2); }
+body.theme-tactical .ship-list-item--current { border-left-color: #7cb342 !important; background: rgba(124,179,66,.02) !important; }
+body.theme-tactical ::selection { background: #7cb342; color: #0a0c08; }
+body.theme-tactical .sort-opt { font-family: 'Share Tech Mono', monospace; font-size: 9px; }
+body.theme-tactical .sort-opt--active { color: #7cb342; border-bottom-color: #7cb342; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   THEME: CORPORATE
+   Identity: Bloomberg meets Material, financial dashboard
+   Fonts: Space Grotesk (modern geometric sans) + Inter
+   Layout: Elevated cards, large radius, generous padding, sidebar feel
+   Animations: Smooth elevation, slide-up, Material ripple feel
+   ═══════════════════════════════════════════════════════════ */
+body.theme-corporate {
+  --v: #f8f9fc;
+  --ab: #f0f2f8;
+  --dp: #e8ebf2;
+  --c: #ffffff;
+  --pl: #f2f4f8;
+  --ir: #dde1ea;
+  --rl: #c4cad6;
+  --dv: #a8b0c0;
+  --mt: #7882a0;
+  --dm: #566080;
+  --md: #3a4460;
+  --sv: #1e2844;
+  --lt: #0f1830;
+  --wh: #06101e;
+
+  --g: #1a73e8;
+  --ghi: #4285f4;
+  --glo: rgba(26,115,232,.1);
+  --gd: rgba(26,115,232,.04);
+  --gl: rgba(26,115,232,.12);
+
+  --cyan: #1a73e8;
+  --amber: #f9ab00;
+  --green: #0d904f;
+  --red: #d93025;
+
+  --bg: #f8f9fc;
+  --bg2: #f0f2f8;
+  --s1: #ffffff;
+  --s2: #c4cad6;
+  --tx: #06101e;
+  --tx2: #0f1830;
+  --tx3: #1e2844;
+  --tx4: #566080;
+
+  /* Corporate custom tokens */
+  --serif: 'Space Grotesk', -apple-system, sans-serif;
+  --sans: 'Space Grotesk', -apple-system, sans-serif;
+  --mono: 'Space Grotesk', -apple-system, sans-serif;
+  --card-chamfer: 0px;
+  --grid-gap: 20px;
+
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: -.01em;
+}
+
+/* Corporate: No grain, clean */
+body.theme-corporate #grain { opacity: 0; }
+
+/* Corporate: Minimal header with bottom shadow */
+body.theme-corporate .header {
+  background: rgba(255,255,255,.98);
+  backdrop-filter: blur(20px);
+  border-bottom: none;
+  box-shadow: 0 1px 0 rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.04);
+  height: 72px;
+}
+body.theme-corporate .header__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -.5px;
+  text-transform: none;
+  font-size: 22px;
+  color: #06101e;
+}
+body.theme-corporate .header__title span {
+  color: #1a73e8;
+  font-style: normal;
+}
+body.theme-corporate .header__label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  letter-spacing: .3px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #7882a0;
+}
+
+/* Corporate: Rounded inputs with soft borders */
+body.theme-corporate .header-input {
+  font-family: 'Space Grotesk', sans-serif;
+  border-radius: 8px;
+  border: 1px solid #dde1ea;
+  background: #f2f4f8;
+  font-size: 13px;
+}
+body.theme-corporate .header-input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 3px rgba(26,115,232,.1);
+}
+body.theme-corporate .tbtn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  letter-spacing: .5px;
+  font-size: 10px;
+  border-radius: 0;
+}
+body.theme-corporate .tbtn:first-child { border-radius: 8px 0 0 8px; }
+body.theme-corporate .tbtn:last-child { border-radius: 0 8px 8px 0; }
+body.theme-corporate .tbtn.active {
+  background: #1a73e8;
+  color: #ffffff;
+  border-color: #1a73e8;
+}
+
+/* Corporate: Hero — elevated card, clean */
+body.theme-corporate .rec-hero {
+  background: #ffffff;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.04);
+  clip-path: none;
+}
+body.theme-corporate .rec-hero::after { display: none; }
+body.theme-corporate .rec-hero::before {
+  background: none;
+}
+body.theme-corporate .rec-hero__inner { padding: 32px; }
+body.theme-corporate .rec-hero__label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  color: #1a73e8;
+}
+body.theme-corporate .rec-hero__label::before {
+  width: 4px; height: 16px; border-radius: 2px; background: #1a73e8;
+}
+body.theme-corporate .rec-hero__method {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -.5px;
+  color: #06101e;
+}
+body.theme-corporate .hero-rate-big {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: #1a73e8 !important;
+  text-shadow: none;
+}
+body.theme-corporate .rec-hero__reasoning {
+  color: #566080;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Corporate: Dashboard — Material elevated cards, generous spacing */
+body.theme-corporate .dashboard-grid {
+  gap: 20px;
+  background: none;
+}
+body.theme-corporate .dash-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+  transition: box-shadow .3s ease, transform .3s ease;
+}
+body.theme-corporate .dash-card::before { display: none; }
+body.theme-corporate .dash-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,.08), 0 16px 48px rgba(0,0,0,.06);
+}
+body.theme-corporate .dash-card__header {
+  padding: 20px 24px 8px;
+  border-bottom: none;
+}
+body.theme-corporate .dash-card__header .sec {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 11px;
+  color: #1a73e8;
+}
+body.theme-corporate .dash-card__header .sec::before {
+  width: 3px; height: 12px; border-radius: 2px;
+}
+body.theme-corporate .dash-card__body { padding: 8px 24px 16px; }
+body.theme-corporate .dash-card__footer {
+  border-top: 1px solid #f0f2f8;
+  padding: 12px 24px;
+}
+body.theme-corporate .dash-card__link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: .5px;
+  font-size: 11px;
+}
+
+/* Corporate: Quick nav — pill-shaped tabs */
+body.theme-corporate .quick-nav {
+  border: none;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  overflow: hidden;
+  padding: 4px;
+  gap: 4px;
+}
+body.theme-corporate .qn-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  letter-spacing: .5px;
+  font-size: 11px;
+  border-right: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+}
+body.theme-corporate .qn-link:hover { background: #f2f4f8; }
+body.theme-corporate .qn-link--active {
+  background: #1a73e8;
+  color: #ffffff;
+}
+body.theme-corporate .qn-link--active::after { display: none; }
+body.theme-corporate .qn-link--active:hover { background: #1a73e8; }
+
+/* Corporate: Methods — clean cards */
+body.theme-corporate .methods-grid {
+  gap: 16px;
+  background: none;
+}
+body.theme-corporate .method-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e8ebf2;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+body.theme-corporate .method-card::before { display: none; }
+body.theme-corporate .method-card:hover {
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+  transform: translateY(-2px);
+}
+body.theme-corporate .method-card__name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+body.theme-corporate .method-card__rate {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+body.theme-corporate .method-card--tier-s {
+  background: linear-gradient(135deg, rgba(26,115,232,.04) 0%, #ffffff 50%);
+  border-left: 3px solid #1a73e8;
+}
+
+/* Corporate: Ships — clean rounded table */
+body.theme-corporate .ships-table {
+  background: #ffffff;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+body.theme-corporate .ship-list-item { border-bottom: 1px solid #f0f2f8; }
+body.theme-corporate .ship-list-item:hover { background: #f8f9fc; }
+body.theme-corporate .slr-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+body.theme-corporate .slr-price { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 600; color: #1a73e8; }
+
+/* Corporate: Buttons — Material filled */
+body.theme-corporate .btn-action, body.theme-corporate .btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: .5px;
+  font-size: 11px;
+  border-radius: 8px;
+  text-transform: none;
+  border: none;
+  background: #1a73e8;
+  color: #ffffff;
+  padding: 12px 24px;
+}
+body.theme-corporate .btn-action:hover, body.theme-corporate .btn:hover {
+  background: #1557b0;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(26,115,232,.25);
+}
+body.theme-corporate .btn-action--secondary {
+  background: transparent !important;
+  color: #1a73e8 !important;
+  border: 1px solid #c4cad6 !important;
+}
+body.theme-corporate .btn-action--secondary:hover {
+  background: rgba(26,115,232,.04) !important;
+  color: #1a73e8 !important;
+  border-color: #1a73e8 !important;
+}
+body.theme-corporate .btn-action--ghost {
+  background: transparent !important;
+  color: #566080 !important;
+  border: none !important;
+}
+body.theme-corporate .btn-action--ghost:hover {
+  color: #1a73e8 !important;
+  background: rgba(26,115,232,.04) !important;
+}
+
+/* Corporate: Section labels — colored bar */
+body.theme-corporate .sec::before { width: 3px; height: 14px; border-radius: 2px; }
+body.theme-corporate .section-header .sec {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+body.theme-corporate .section-header .sec::before { width: 3px; height: 14px; border-radius: 2px; }
+body.theme-corporate .section-header { border-bottom: none; }
+
+/* Corporate: Pills — rounded chips */
+body.theme-corporate .pill {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  border-radius: 20px;
+  letter-spacing: .3px;
+}
+body.theme-corporate .pill--filter, body.theme-corporate .pill--smart {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  border-radius: 20px;
+  letter-spacing: .3px;
+  background: #f2f4f8;
+  border: 1px solid #dde1ea;
+}
+body.theme-corporate .pill--active {
+  color: #ffffff !important;
+  background: #1a73e8 !important;
+  border-color: #1a73e8 !important;
+}
+
+/* Corporate: Stats */
+body.theme-corporate .sg-val { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #06101e; }
+body.theme-corporate .sg-lbl { font-family: 'Space Grotesk', sans-serif; font-weight: 500; color: #7882a0; }
+body.theme-corporate .ms-label { font-family: 'Space Grotesk', sans-serif; font-weight: 500; color: #7882a0; }
+body.theme-corporate .ms-value { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: #06101e; }
+body.theme-corporate .cr-rate { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #1a73e8; }
+body.theme-corporate .goal-ship-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+body.theme-corporate .goal-progress-bar { border-radius: 8px; height: 8px; }
+body.theme-corporate .goal-progress-fill { border-radius: 8px; background: linear-gradient(90deg, #1a73e8, #4285f4); }
+body.theme-corporate .goal-milestones { border-radius: 10px; }
+
+/* Corporate: Plan */
+body.theme-corporate .plan-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+body.theme-corporate .plan-step { border-radius: 10px; border: 1px solid #e8ebf2; }
+body.theme-corporate .plan-verdict { border-radius: 10px; background: rgba(26,115,232,.04); border-color: rgba(26,115,232,.12); }
+body.theme-corporate .plan-step__num { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 700; }
+
+/* Corporate: Footer */
+body.theme-corporate .footer { border-top: none; }
+body.theme-corporate .footer::before { display: none; }
+body.theme-corporate .footer__logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -.5px;
+  text-transform: none;
+  font-size: 18px;
+}
+body.theme-corporate .footer__logo span { font-style: normal; color: #1a73e8; }
+body.theme-corporate .footer__tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 400; letter-spacing: .3px; }
+body.theme-corporate .footer__bottom { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0; }
+
+/* Corporate: Modals — rounded, shadowed */
+body.theme-corporate .modal__backdrop { background: rgba(6,16,30,.3); backdrop-filter: blur(8px); }
+body.theme-corporate .modal__panel {
+  background: #ffffff;
+  border-radius: 20px;
+  clip-path: none;
+  border: none;
+  box-shadow: 0 24px 64px rgba(0,0,0,.12);
+}
+body.theme-corporate .modal__content h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+body.theme-corporate .gsearch__backdrop { background: rgba(6,16,30,.3); backdrop-filter: blur(8px); }
+body.theme-corporate .gsearch__panel {
+  background: #ffffff;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 24px 64px rgba(0,0,0,.12);
+  overflow: hidden;
+}
+body.theme-corporate .gsearch__input {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+body.theme-corporate .onboard__backdrop { background: rgba(6,16,30,.3); backdrop-filter: blur(8px); }
+body.theme-corporate .onboard__panel {
+  background: #ffffff;
+  border: none;
+  border-radius: 24px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.12);
+}
+body.theme-corporate .onboard__panel::before { display: none; }
+body.theme-corporate .onboard__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -.5px;
+}
+body.theme-corporate .onboard__cta {
+  background: #1a73e8;
+  border-radius: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: .3px;
+}
+body.theme-corporate .onboard__cta:hover { background: #1557b0; box-shadow: 0 4px 24px rgba(26,115,232,.3); }
+body.theme-corporate .onboard__field label { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: .5px; }
+
+/* Corporate: Patch ticker */
+body.theme-corporate .patch-ticker {
+  background: rgba(255,255,255,.95);
+  border-bottom: 1px solid #e8ebf2;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+body.theme-corporate .patch-ticker__item { font-family: 'Space Grotesk', sans-serif; font-weight: 400; font-size: 10px; letter-spacing: .3px; text-transform: none; color: #566080; }
+body.theme-corporate .patch-ticker__sep { color: #1a73e8; }
+
+/* Corporate: Ship picker */
+body.theme-corporate .ship-picker__display { border-radius: 10px; font-family: 'Space Grotesk', sans-serif; }
+body.theme-corporate .ship-picker__display-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+body.theme-corporate .ship-picker__display-meta { font-family: 'Space Grotesk', sans-serif; font-weight: 500; }
+body.theme-corporate .ship-picker__display-price { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 600; color: #1a73e8; }
+body.theme-corporate .ship-picker__panel { border-radius: 0 0 10px 10px; }
+body.theme-corporate .ship-picker__option-name { font-family: 'Space Grotesk', sans-serif; }
+body.theme-corporate .ship-picker__option-price { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 600; }
+body.theme-corporate .ship-picker__group-label { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+
+/* Corporate: Scroll reveal — smooth slide up */
+body.theme-corporate .rv {
+  transform: translateY(24px);
+  transition: opacity 1s cubic-bezier(.25,.46,.45,.94), transform 1s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* Corporate: Various */
+body.theme-corporate .slr-badge--current {
+  color: #ffffff;
+  background: #1a73e8;
+  border: none;
+  border-radius: 4px;
+}
+body.theme-corporate .slr-badge--goal {
+  color: #ffffff;
+  background: #0d904f;
+  border: none;
+  border-radius: 4px;
+}
+body.theme-corporate .ship-list-item--current {
+  border-left: 3px solid #1a73e8 !important;
+  background: rgba(26,115,232,.02) !important;
+}
+body.theme-corporate ::selection { background: #1a73e8; color: #ffffff; }
+body.theme-corporate ::-webkit-scrollbar-track { background: #f8f9fc; }
+body.theme-corporate ::-webkit-scrollbar-thumb { background: #a8b0c0; border-radius: 4px; }
+body.theme-corporate ::-webkit-scrollbar { width: 6px; }
+body.theme-corporate .settings-drawer { background: rgba(255,255,255,.97); }
+body.theme-corporate .sort-opt { font-family: 'Space Grotesk', sans-serif; font-weight: 500; letter-spacing: .3px; }
+body.theme-corporate .sort-opt--active { color: #1a73e8; border-bottom-color: #1a73e8; }
+
+/* Corporate: Confidence dots */
+body.theme-corporate .confidence-dot--high { background: #0d904f; }
+body.theme-corporate .confidence-dot--medium { background: #f9ab00; }
+body.theme-corporate .confidence-dot--low { background: #d93025; }
+
+/* Corporate: Category badge */
+body.theme-corporate .method-cat-badge {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: .3px;
+}
+
+/* Corporate: Risk badges */
+body.theme-corporate .rec-hero__risk {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  border-radius: 6px;
+  letter-spacing: .5px;
+}
+
+/* Corporate: Hover animation for cards */
+@keyframes corporate-appear {
+  from { opacity: 0; transform: translateY(16px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}

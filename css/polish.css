@@ -1,0 +1,146 @@
+/* ═══ POLISH.CSS — Visual enhancements ═══ */
+
+/* ─── 1. Count-Up Animation (visual hint) ─────────────────────────────────── */
+.count-up {
+  display: inline-block;
+}
+
+/* ─── 2. Goal Tracker Celebration ──────────────────────────────────────────── */
+.goal-complete {
+  position: relative;
+  border-color: #c9aa6e !important;
+  box-shadow: 0 0 18px rgba(201, 170, 110, 0.35), inset 0 0 12px rgba(201, 170, 110, 0.08);
+  animation: goal-shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes goal-shimmer {
+  0%, 100% { box-shadow: 0 0 18px rgba(201, 170, 110, 0.25), inset 0 0 12px rgba(201, 170, 110, 0.05); }
+  50%      { box-shadow: 0 0 30px rgba(201, 170, 110, 0.55), inset 0 0 20px rgba(201, 170, 110, 0.12); }
+}
+
+.goal-complete::before,
+.goal-complete::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: confetti-burst 2s ease-out forwards;
+}
+
+.goal-complete::before {
+  box-shadow:
+    -30px -20px 0 #c9aa6e,
+     20px -35px 0 #e8c547,
+    -50px -40px 0 #f0d67b,
+     40px -25px 0 #d4a843,
+    -15px -50px 0 #c9aa6e,
+     55px -45px 0 #e8c547,
+    -60px -30px 0 #f0d67b,
+     10px -55px 0 #d4a843;
+}
+
+.goal-complete::after {
+  box-shadow:
+     30px -30px 0 #f0d67b,
+    -40px -45px 0 #d4a843,
+     50px -50px 0 #c9aa6e,
+    -20px -55px 0 #e8c547,
+     60px -35px 0 #f0d67b,
+    -55px -20px 0 #d4a843,
+     15px -60px 0 #c9aa6e,
+    -35px -15px 0 #e8c547;
+  animation-delay: 0.15s;
+}
+
+@keyframes confetti-burst {
+  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  20%  { opacity: 1; transform: translateY(-10px) scale(1); }
+  100% { opacity: 0; transform: translateY(-80px) scale(0.3); }
+}
+
+/* ─── 3. Method Card Tier Rank Number ──────────────────────────────────────── */
+.method-card {
+  position: relative;
+}
+
+.method-rank {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--t3, rgba(255,255,255,0.25));
+  font-family: 'DM Mono', 'Share Tech Mono', monospace;
+  letter-spacing: -0.5px;
+  pointer-events: none;
+  line-height: 1;
+  z-index: 1;
+}
+
+/* ─── 4. Ship Price Comparison Bar ─────────────────────────────────────────── */
+.ship-price-bar-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 6px;
+}
+
+.ship-price-bar {
+  display: inline-block;
+  height: 4px;
+  min-width: 2px;
+  max-width: 80px;
+  border-radius: 2px;
+  background: var(--ac, #c9aa6e);
+  opacity: 0.45;
+  vertical-align: middle;
+  transition: width 0.3s ease;
+}
+
+/* ─── 5. Live Clock ───────────────────────────────────────────────────────── */
+.header__clock {
+  font-family: 'DM Mono', 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--t3, rgba(255,255,255,0.35));
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  padding: 0 6px;
+  user-select: none;
+  line-height: 1;
+}
+
+/* ─── 6. Section Highlight Flash on Nav Jump ───────────────────────────────── */
+@keyframes section-flash {
+  0%   { box-shadow: 0 0 0 2px rgba(201, 170, 110, 0.6); }
+  100% { box-shadow: 0 0 0 2px rgba(201, 170, 110, 0); }
+}
+
+.section-flash {
+  animation: section-flash 1s ease-out forwards;
+  border-radius: 6px;
+}
+
+/* ─── 7. Dashboard Card Stagger Entrance ───────────────────────────────────── */
+@keyframes card-entrance {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dash-card {
+  opacity: 1;
+  transform: translateY(0);
+  animation: card-entrance 0.45s ease-out forwards;
+}
+
+.dash-card:nth-child(1) { animation-delay: 0ms; }
+.dash-card:nth-child(2) { animation-delay: 100ms; }
+.dash-card:nth-child(3) { animation-delay: 200ms; }
+.dash-card:nth-child(4) { animation-delay: 300ms; }
+.dash-card:nth-child(5) { animation-delay: 400ms; }
+.dash-card:nth-child(6) { animation-delay: 500ms; }
+.dash-card:nth-child(7) { animation-delay: 600ms; }
+.dash-card:nth-child(8) { animation-delay: 700ms; }

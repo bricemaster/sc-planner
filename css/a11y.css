@@ -1,0 +1,440 @@
+/* ═══════════════════════════════════════════════════════
+   a11y.css — Accessibility & Performance Styles
+   Items 66, 68, 76-83, 85
+   ═══════════════════════════════════════════════════════ */
+
+/* ── 66. Lazy Loading ─────────────────────────────────── */
+.lazy-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
+}
+
+.lazy-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 68. CSS Containment ──────────────────────────────── */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-strict {
+  contain: strict;
+}
+
+/* ── 71. Font Scale Variable ──────────────────────────── */
+html {
+  --font-scale: 1;
+}
+
+html[style*="--font-scale"] body {
+  font-size: calc(1rem * var(--font-scale));
+}
+
+/* ── 76. Keyboard Navigation ──────────────────────────── */
+.kbd-nav-active *:focus {
+  outline: 3px solid var(--g, #c9aa6e);
+  outline-offset: 2px;
+}
+
+.kbd-nav-active .card:focus,
+.kbd-nav-active .list-item:focus,
+.kbd-nav-active [role="option"]:focus {
+  outline: 3px solid var(--g, #c9aa6e);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(201, 170, 110, 0.15);
+}
+
+/* Tab trap overlay for modals */
+.modal-trap-active {
+  overflow: hidden;
+}
+
+/* ── 80. Focus Indicators ─────────────────────────────── */
+:focus-visible,
+.focus-visible {
+  outline: 3px solid var(--g, #c9aa6e);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--g, #c9aa6e);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Remove default outline when using mouse */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── 81. Skip Navigation ──────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 100000;
+  padding: 12px 24px;
+  background: var(--g, #c9aa6e);
+  color: #030303;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── 77. Screen Reader Support ────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#srAnnounce {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── 78. High Contrast Mode ───────────────────────────── */
+.theme-high-contrast,
+.theme-high-contrast body {
+  --v: #000000;
+  --ab: #000000;
+  --dp: #000000;
+  --c: #000000;
+  --bg: #000000;
+  --bg2: #000000;
+  --s1: #1a1a1a;
+  --s2: #333333;
+  --tx: #ffffff;
+  --tx2: #ffffff;
+  --tx3: #e0e0e0;
+  --tx4: #cccccc;
+  --wh: #ffffff;
+  --lt: #ffffff;
+  --g: #ffdd00;
+  --ghi: #ffee55;
+  --glo: rgba(255, 221, 0, 0.15);
+  --cyan: #ffdd00;
+  --amber: #ffee55;
+  --green: #00ff88;
+  --red: #ff4444;
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+.theme-high-contrast * {
+  background-image: none !important;
+  text-shadow: none !important;
+  border-color: #ffffff !important;
+}
+
+.theme-high-contrast .card,
+.theme-high-contrast .panel,
+.theme-high-contrast section,
+.theme-high-contrast [class*="card"],
+.theme-high-contrast [class*="panel"] {
+  background: #000000 !important;
+  border: 2px solid #ffffff !important;
+}
+
+.theme-high-contrast a,
+.theme-high-contrast button {
+  color: #ffdd00 !important;
+  border-color: #ffdd00 !important;
+}
+
+.theme-high-contrast a:focus,
+.theme-high-contrast button:focus {
+  outline: 3px solid #ffdd00 !important;
+  outline-offset: 2px;
+}
+
+.theme-high-contrast input,
+.theme-high-contrast select,
+.theme-high-contrast textarea {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+/* ── 82. Color-Blind Modes ────────────────────────────── */
+
+/* SVG filters are injected by JS; these classes apply them */
+.cb-deuteranopia {
+  filter: url(#cb-deuteranopia-filter);
+}
+
+.cb-protanopia {
+  filter: url(#cb-protanopia-filter);
+}
+
+.cb-tritanopia {
+  filter: url(#cb-tritanopia-filter);
+}
+
+/* ── 83. Reduced Motion ───────────────────────────────── */
+.reduce-motion,
+.reduce-motion * {
+  animation: none !important;
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition: none !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+  scroll-behavior: auto !important;
+}
+
+.reduce-motion .lazy-section {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respect OS-level preference too */
+@media (prefers-reduced-motion: reduce) {
+  .lazy-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── 85. Dyslexia Font ────────────────────────────────── */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/woff/OpenDyslexic-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/woff/OpenDyslexic-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.dyslexia-font,
+.dyslexia-font * {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', 'Comic Sans', cursive !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.15em !important;
+  line-height: 1.8 !important;
+}
+
+/* ── Accessibility Panel ──────────────────────────────── */
+.a11y-toggle-btn {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 99998;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--g, #c9aa6e);
+  background: var(--c, #0e0e0e);
+  color: var(--g, #c9aa6e);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.a11y-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
+}
+
+.a11y-panel {
+  position: fixed;
+  bottom: 76px;
+  right: 16px;
+  z-index: 99999;
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: var(--c, #0e0e0e);
+  border: 1px solid var(--dv, #2a2a2a);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  display: none;
+}
+
+.a11y-panel.open {
+  display: block;
+}
+
+.a11y-panel__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--g, #c9aa6e);
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--dv, #2a2a2a);
+}
+
+.a11y-panel__group {
+  margin-bottom: 14px;
+}
+
+.a11y-panel__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--lt, #cccccc);
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.a11y-panel__label span {
+  flex: 1;
+}
+
+/* Toggle switch */
+.a11y-switch {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.a11y-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.a11y-switch__track {
+  position: absolute;
+  inset: 0;
+  background: var(--dv, #2a2a2a);
+  border-radius: 11px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.a11y-switch__track::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: var(--lt, #cccccc);
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.a11y-switch input:checked + .a11y-switch__track {
+  background: var(--g, #c9aa6e);
+}
+
+.a11y-switch input:checked + .a11y-switch__track::after {
+  transform: translateX(18px);
+  background: #030303;
+}
+
+.a11y-switch input:focus-visible + .a11y-switch__track {
+  outline: 3px solid var(--g, #c9aa6e);
+  outline-offset: 2px;
+}
+
+/* Font size controls */
+.a11y-font-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.a11y-font-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid var(--dv, #2a2a2a);
+  background: var(--pl, #131313);
+  color: var(--lt, #cccccc);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.a11y-font-btn:hover {
+  border-color: var(--g, #c9aa6e);
+  color: var(--g, #c9aa6e);
+}
+
+.a11y-font-value {
+  font-size: 0.8rem;
+  color: var(--sv, #a8a8a8);
+  min-width: 40px;
+  text-align: center;
+}
+
+/* Color-blind select */
+.a11y-select {
+  width: 100%;
+  padding: 6px 10px;
+  margin-top: 4px;
+  background: var(--pl, #131313);
+  color: var(--lt, #cccccc);
+  border: 1px solid var(--dv, #2a2a2a);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.a11y-select:focus-visible {
+  outline: 3px solid var(--g, #c9aa6e);
+  outline-offset: 2px;
+}
+
+/* Keyboard shortcut hints */
+.a11y-shortcut {
+  font-size: 0.65rem;
+  color: var(--dm, #5c5c5c);
+  margin-left: 4px;
+}

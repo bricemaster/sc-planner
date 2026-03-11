@@ -1,0 +1,400 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   data-views.css — Styles for data display components (items 51-65)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Data Panel Container ────────────────────────────────────────────────── */
+
+.data-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.data-section {
+  background: var(--ab, #060606);
+  border: 1px solid var(--ir, #191919);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.data-section[open] > .data-section-title {
+  border-bottom: 1px solid var(--ir, #191919);
+}
+
+.data-section-title {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--g, #c9aa6e);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.data-section-title::before {
+  content: '\25B6';
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+  color: var(--mt, #404040);
+}
+
+.data-section[open] > .data-section-title::before {
+  transform: rotate(90deg);
+}
+
+.data-section-title::-webkit-details-marker {
+  display: none;
+}
+
+/* ─── Data Table ──────────────────────────────────────────────────────────── */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  color: var(--lt, #cccccc);
+}
+
+.data-table thead {
+  background: var(--dp, #0a0a0a);
+}
+
+.data-table th {
+  font-family: var(--serif, Georgia, serif);
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--dm, #5c5c5c);
+  text-align: left;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--ir, #191919);
+}
+
+.data-table td {
+  padding: 0.4rem 0.75rem;
+  border-bottom: 1px solid var(--pl, #131313);
+  white-space: nowrap;
+}
+
+.data-table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--g, #c9aa6e);
+}
+
+.data-table tbody tr:hover {
+  background: var(--dp, #0a0a0a);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ─── Reputation Tracker ──────────────────────────────────────────────────── */
+
+.rep-tracker {
+  padding: 0.75rem 1rem 1rem;
+}
+
+.rep-tracker .data-section-title {
+  padding: 0 0 0.65rem;
+  border-bottom: 1px solid var(--ir, #191919);
+  margin-bottom: 0.65rem;
+}
+
+.rep-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 48px;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0;
+}
+
+.rep-label {
+  font-size: 0.78rem;
+  color: var(--sv, #a8a8a8);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rep-bar-track {
+  height: 6px;
+  background: var(--pl, #131313);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.rep-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.rep-level {
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--dm, #5c5c5c);
+  text-align: right;
+}
+
+/* ─── Mining Hotspots ─────────────────────────────────────────────────────── */
+
+.hotspot-list {
+  padding: 0.35rem 0.75rem;
+}
+
+.hotspot-row {
+  display: grid;
+  grid-template-columns: 1fr 100px 48px 60px;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--pl, #131313);
+  font-size: 0.78rem;
+}
+
+.hotspot-row:last-child {
+  border-bottom: none;
+}
+
+.hotspot-name {
+  color: var(--lt, #cccccc);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hotspot-ore {
+  color: var(--g, #c9aa6e);
+  font-size: 0.72rem;
+}
+
+.hotspot-yield {
+  font-variant-numeric: tabular-nums;
+  color: var(--green, #6eb88a);
+  text-align: right;
+}
+
+.hotspot-danger {
+  text-align: right;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+}
+
+.hotspot-danger.danger-1 { color: var(--green, #6eb88a); }
+.hotspot-danger.danger-2 { color: var(--g, #c9aa6e); }
+.hotspot-danger.danger-3 { color: var(--amber, #e4c47e); }
+.hotspot-danger.danger-4 { color: #d4845a; }
+.hotspot-danger.danger-5 { color: var(--red, #c46e6e); }
+
+/* ─── Event Cards ─────────────────────────────────────────────────────────── */
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+
+.event-card {
+  background: var(--dp, #0a0a0a);
+  border: 1px solid var(--ir, #191919);
+  border-radius: 4px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.event-name {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--wh, #f2f2f2);
+}
+
+.event-diff {
+  font-size: 0.7rem;
+  color: var(--g, #c9aa6e);
+  letter-spacing: 1px;
+}
+
+.event-desc {
+  font-size: 0.74rem;
+  color: var(--sv, #a8a8a8);
+  line-height: 1.45;
+}
+
+.event-reward {
+  font-size: 0.72rem;
+  color: var(--green, #6eb88a);
+  margin-top: 0.15rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--ir, #191919);
+}
+
+/* ─── Price Trend Sparkline ───────────────────────────────────────────────── */
+
+.price-trend {
+  padding: 0.5rem;
+}
+
+.price-trend-header {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--sv, #a8a8a8);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.spark-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 80px;
+  padding: 0 0.5rem;
+}
+
+.spark-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  max-width: 36px;
+}
+
+.spark-bar {
+  width: 100%;
+  min-height: 2px;
+  background: var(--g, #c9aa6e);
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  transition: height 0.3s ease;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.spark-bar.trend-up {
+  background: var(--green, #6eb88a);
+}
+
+.spark-bar.trend-down {
+  background: var(--red, #c46e6e);
+}
+
+.spark-val {
+  position: absolute;
+  top: -16px;
+  font-size: 0.58rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--dm, #5c5c5c);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.spark-col:hover .spark-val {
+  opacity: 1;
+}
+
+.spark-col:hover .spark-bar {
+  filter: brightness(1.2);
+}
+
+.spark-day {
+  font-size: 0.58rem;
+  color: var(--mt, #404040);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Utility classes for data views ──────────────────────────────────────── */
+
+.data-muted {
+  color: var(--dm, #5c5c5c);
+}
+
+.data-gold {
+  color: var(--g, #c9aa6e);
+}
+
+.data-green {
+  color: var(--green, #6eb88a);
+}
+
+.data-red {
+  color: var(--red, #c46e6e);
+}
+
+.data-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .rep-row {
+    grid-template-columns: 120px 1fr 40px;
+    gap: 0.4rem;
+  }
+
+  .hotspot-row {
+    grid-template-columns: 1fr 80px 40px 50px;
+    font-size: 0.72rem;
+  }
+
+  .event-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spark-chart {
+    height: 60px;
+  }
+
+  .data-table {
+    font-size: 0.72rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.35rem 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .rep-row {
+    grid-template-columns: 1fr 40px;
+  }
+
+  .rep-label {
+    grid-column: 1 / -1;
+    margin-bottom: -0.25rem;
+  }
+
+  .rep-bar-track {
+    grid-column: 1;
+  }
+
+  .hotspot-row {
+    grid-template-columns: 1fr 60px 40px;
+  }
+
+  .hotspot-danger {
+    display: none;
+  }
+}

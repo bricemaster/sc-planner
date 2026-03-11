@@ -1,0 +1,424 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ONBOARDING WIZARD — Multi-step sign-in flow
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Step indicator dots ─────────────────────────────────────────────────── */
+
+.onboard__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.onboard__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--dv, #2a2a2a);
+  transition: background .3s var(--fast), transform .3s var(--fast), box-shadow .3s var(--fast);
+  cursor: default;
+}
+
+.onboard__dot.active {
+  background: var(--g, #c9aa6e);
+  transform: scale(1.25);
+  box-shadow: 0 0 10px rgba(201, 170, 110, .4);
+}
+
+/* ── Step transitions ────────────────────────────────────────────────────── */
+
+.onboard__step {
+  display: none;
+  opacity: 1;
+  transform: none;
+}
+
+.onboard__step.active {
+  display: block;
+  opacity: 1;
+  transform: none;
+  animation: onboard-fade-in .35s ease-out forwards;
+}
+
+@keyframes onboard-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Panel overrides for wizard ──────────────────────────────────────────── */
+
+.onboard__panel {
+  max-width: 560px;
+  width: 92vw;
+}
+
+/* ── Title & text ────────────────────────────────────────────────────────── */
+
+.onboard__text--sub {
+  font-size: 13px;
+  color: var(--dm, #5c5c5c);
+  margin-top: 8px;
+  font-family: var(--mono, monospace);
+  letter-spacing: .3px;
+}
+
+/* ── Ship select dropdown ────────────────────────────────────────────────── */
+
+.onboard__select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--dv, #2a2a2a);
+  border-radius: 6px;
+  background: var(--dp, #0a0a0a);
+  color: var(--wh, #f2f2f2);
+  font-family: var(--mono, monospace);
+  font-size: 14px;
+  letter-spacing: .3px;
+  cursor: pointer;
+  transition: border-color .2s var(--fast), box-shadow .2s var(--fast);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23848484' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.onboard__select:hover {
+  border-color: var(--mt, #404040);
+}
+
+.onboard__select:focus {
+  outline: none;
+  border-color: var(--g, #c9aa6e);
+  box-shadow: 0 0 0 3px rgba(201, 170, 110, .15);
+}
+
+.onboard__select optgroup {
+  font-family: var(--sans, sans-serif);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--g, #c9aa6e);
+  padding: 8px 0 4px;
+}
+
+.onboard__select option {
+  font-family: var(--mono, monospace);
+  font-size: 13px;
+  padding: 6px 12px;
+  background: var(--dp, #0a0a0a);
+  color: var(--lt, #cccccc);
+}
+
+/* ── Profile form layout ─────────────────────────────────────────────────── */
+
+.onboard__profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+  margin: 20px 0 24px;
+}
+
+.onboard__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.onboard__field--wide {
+  grid-column: 1 / -1;
+}
+
+.onboard__label {
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--md, #848484);
+}
+
+.onboard__input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--dv, #2a2a2a);
+  border-radius: 6px;
+  background: var(--dp, #0a0a0a);
+  color: var(--wh, #f2f2f2);
+  font-family: var(--mono, monospace);
+  font-size: 15px;
+  letter-spacing: .5px;
+  transition: border-color .2s var(--fast), box-shadow .2s var(--fast);
+}
+
+.onboard__input:hover {
+  border-color: var(--mt, #404040);
+}
+
+.onboard__input:focus {
+  outline: none;
+  border-color: var(--g, #c9aa6e);
+  box-shadow: 0 0 0 3px rgba(201, 170, 110, .15);
+}
+
+.onboard__input::placeholder {
+  color: var(--mt, #404040);
+}
+
+/* ── Toggle button groups ────────────────────────────────────────────────── */
+
+.onboard__toggle {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--dv, #2a2a2a);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.onboard__tbtn {
+  flex: 1;
+  padding: 9px 0;
+  border: none;
+  background: var(--dp, #0a0a0a);
+  color: var(--dm, #5c5c5c);
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s var(--fast), color .2s var(--fast);
+  position: relative;
+}
+
+.onboard__tbtn:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: var(--dv, #2a2a2a);
+}
+
+.onboard__tbtn:hover {
+  background: var(--ir, #191919);
+  color: var(--sv, #a8a8a8);
+}
+
+.onboard__tbtn.active {
+  background: var(--g, #c9aa6e);
+  color: var(--v, #030303);
+  font-weight: 600;
+}
+
+.onboard__tbtn.active::after {
+  display: none;
+}
+
+/* ── Summary display (step 4) ────────────────────────────────────────────── */
+
+.onboard__summary {
+  background: var(--dp, #0a0a0a);
+  border: 1px solid var(--dv, #2a2a2a);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 20px 0;
+}
+
+.onboard__summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.onboard__summary-row:not(:last-child) {
+  border-bottom: 1px solid var(--ir, #191919);
+}
+
+.onboard__summary-label {
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dm, #5c5c5c);
+}
+
+.onboard__summary-value {
+  font-family: var(--sans, sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--g, #c9aa6e);
+  letter-spacing: .3px;
+}
+
+/* ── Button row ──────────────────────────────────────────────────────────── */
+
+.onboard__actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.onboard__actions--split {
+  justify-content: space-between;
+}
+
+.onboard__btn {
+  padding: 10px 24px;
+  border: 1px solid var(--dv, #2a2a2a);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--md, #848484);
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color .2s var(--fast), color .2s var(--fast), background .2s var(--fast);
+}
+
+.onboard__btn:hover {
+  border-color: var(--mt, #404040);
+  color: var(--lt, #cccccc);
+  background: var(--ir, #191919);
+}
+
+.onboard__btn--back {
+  border-color: transparent;
+}
+
+.onboard__btn--back:hover {
+  border-color: var(--dv, #2a2a2a);
+}
+
+.onboard__btn--skip {
+  border-color: transparent;
+  color: var(--dm, #5c5c5c);
+  font-size: 11px;
+}
+
+.onboard__btn--skip:hover {
+  color: var(--md, #848484);
+  border-color: transparent;
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── CTA button enhancements ─────────────────────────────────────────────── */
+
+.onboard__step .onboard__cta {
+  min-width: 180px;
+}
+
+/* Theme picker removed — single theme */
+
+/* ── Ship preview in step 2 ──────────────────────────────────────────────── */
+
+.onboard__ship-preview {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--dv, #2a2a2a);
+  border-radius: 6px;
+  background: var(--dp, #0a0a0a);
+  min-height: 48px;
+  transition: all 0.3s var(--fast);
+}
+
+.onboard__ship-preview:not(:empty) {
+  animation: onboard-fade-in 0.3s ease-out forwards;
+}
+
+.onboard__ship-preview-empty {
+  color: var(--dm, #5c5c5c);
+  font-size: 12px;
+  font-family: var(--mono, monospace);
+  text-align: center;
+  margin: 0;
+}
+
+.onboard__ship-preview .ship-preview-stats {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.onboard__ship-preview .sp-stat {
+  text-align: center;
+}
+
+.onboard__ship-preview .sp-val {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--g, #c9aa6e);
+  font-family: var(--sans, sans-serif);
+}
+
+.onboard__ship-preview .sp-lbl {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dm, #5c5c5c);
+  font-family: var(--mono, monospace);
+}
+
+.onboard__ship-preview .sp-caps {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--md, #848484);
+  text-align: center;
+  font-family: var(--mono, monospace);
+}
+
+/* ── Field hints ─────────────────────────────────────────────────────────── */
+
+.onboard__hint {
+  font-size: 11px;
+  color: var(--dm, #5c5c5c);
+  font-family: var(--mono, monospace);
+  margin-top: -2px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 560px) {
+  .onboard__profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .onboard__panel {
+    width: 96vw;
+    padding: 28px 20px;
+  }
+
+  .onboard__summary {
+    padding: 16px;
+  }
+
+  .onboard__actions--split {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .onboard__actions--split .onboard__btn,
+  .onboard__actions--split .onboard__cta {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
+/* End of onboarding styles */

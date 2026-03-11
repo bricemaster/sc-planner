@@ -1,0 +1,1396 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   THEME ENHANCE B — AAA Game UI Visual Upgrades
+   Loaded AFTER theme-polish.css
+   Three themes: Crimson Fleet, Neon District, Tactician
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+
+/* ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+   ██  CRIMSON FLEET — PIRATE WAR MACHINE
+   ██  Terrifying. Aggressive. Armor-plated UI.
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ */
+
+/* ── Keyframes ── */
+
+@keyframes crimson-scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes crimson-tab-flash {
+  0%   { opacity: 1; }
+  25%  { opacity: 0.7; }
+  50%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes crimson-blood-fill {
+  0%   { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+
+@keyframes crimson-header-pulse {
+  0%, 100% { opacity: 0.5; box-shadow: 0 0 4px rgba(232,64,64,0.2); }
+  50%      { opacity: 1; box-shadow: 0 0 8px rgba(232,64,64,0.5); }
+}
+
+@keyframes crimson-border-pulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(232,64,64,0.1), inset 0 0 4px rgba(232,64,64,0.02); }
+  50%      { box-shadow: 0 0 14px rgba(232,64,64,0.3), inset 0 0 8px rgba(232,64,64,0.05); }
+}
+
+@keyframes crimson-warning-scroll {
+  0%   { background-position: 0 0; }
+  100% { background-position: 28.28px 28.28px; }
+}
+
+@keyframes crimson-card-corner-glow {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 0.7; }
+}
+
+/* ── Crimson: Cards — Angular armor-plated cuts ── */
+body.theme-crimson .dash-card {
+  clip-path: polygon(
+    12px 0, calc(100% - 12px) 0,
+    100% 12px, 100% calc(100% - 12px),
+    calc(100% - 12px) 100%, 12px 100%,
+    0 calc(100% - 12px), 0 12px
+  ) !important;
+  transition: box-shadow 0.1s ease, background 0.1s ease !important;
+  position: relative !important;
+}
+
+/* Diagonal warning stripe pattern on card backgrounds */
+body.theme-crimson .dash-card::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    rgba(232,64,64,0.04) 10px,
+    rgba(232,64,64,0.04) 20px
+  ) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  animation: crimson-warning-scroll 4s linear infinite !important;
+}
+
+/* Card hover — subtle red glow (pulsing animation removed — caused rendering conflicts) */
+body.theme-crimson .dash-card:hover {
+  box-shadow:
+    0 0 8px rgba(232,64,64,0.20),
+    0 0 16px rgba(232,64,64,0.08),
+    inset 0 0 12px rgba(232,64,64,0.04) !important;
+}
+
+/* ── Crimson: Hero section — red scan-line sweep ── */
+body.theme-crimson .rec-hero {
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* Glowing scanline that sweeps across the hero */
+body.theme-crimson .rec-hero .rec-hero__inner::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(232,64,64,0.3) 20%,
+    rgba(255,96,96,0.8) 50%,
+    rgba(232,64,64,0.3) 80%,
+    transparent 100%
+  ) !important;
+  box-shadow: 0 0 12px rgba(232,64,64,0.6), 0 0 30px rgba(232,64,64,0.2) !important;
+  z-index: 10 !important;
+  pointer-events: none !important;
+  animation: crimson-scanline 3s linear infinite !important;
+}
+
+/* ── Crimson: Tab bar — aggressive angular shape ── */
+body.theme-crimson .tab-bar {
+  background: #0a0000 !important;
+  border-top: 2px solid rgba(232,64,64,0.4) !important;
+  border-bottom: none !important;
+}
+
+body.theme-crimson .tab-bar__btn {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 3px !important;
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%) !important;
+  transition: color 0.1s, background 0.1s !important;
+  border-right: none !important;
+  margin-right: 1px !important;
+}
+
+body.theme-crimson .tab-bar__btn:hover {
+  color: #ff6060 !important;
+  background: rgba(232,64,64,0.08) !important;
+}
+
+body.theme-crimson .tab-bar__btn--active {
+  color: #ff6060 !important;
+  background: rgba(232,64,64,0.1) !important;
+  animation: crimson-tab-flash 0.3s ease-out !important;
+}
+
+/* Red glowing underline on active tab */
+body.theme-crimson .tab-bar__btn--active::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 6px !important;
+  right: 6px !important;
+  height: 2px !important;
+  background: #e84040 !important;
+  box-shadow: 0 0 8px rgba(232,64,64,0.6), 0 0 16px rgba(232,64,64,0.3) !important;
+}
+
+/* ── Crimson: Price values — red text-shadow ── */
+body.theme-crimson .slr-price,
+body.theme-crimson .price-cell,
+body.theme-crimson .cr-rate,
+body.theme-crimson .hero-rate-big,
+body.theme-crimson .sg-val {
+  text-shadow: 0 0 6px rgba(232,64,64,0.35), 0 0 12px rgba(232,64,64,0.12) !important;
+}
+
+/* ── Crimson: Goal progress bar — blood fill effect ── */
+body.theme-crimson .goal-progress-fill {
+  background:
+    linear-gradient(90deg, #8b0000 0%, #e84040 40%, #ff6060 70%, #e84040 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 8px,
+      rgba(139,0,0,0.4) 8px,
+      rgba(139,0,0,0.4) 16px
+    ) !important;
+  background-size: 100% 100%, 40px 100% !important;
+  animation: crimson-blood-fill 1s linear infinite !important;
+}
+
+body.theme-crimson .goal-progress-bar {
+  background: rgba(58,16,16,0.8) !important;
+  border: 1px solid rgba(232,64,64,0.2) !important;
+}
+
+/* ── Crimson: Stat grid items — red bottom border ── */
+body.theme-crimson .sg-item {
+  border-bottom: 1px solid rgba(232,64,64,0.3) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  background: rgba(26,6,6,0.6) !important;
+}
+
+/* ── Crimson: Session mix — red left accent bar ── */
+body.theme-crimson .session-mix {
+  border-left: 3px solid #e84040 !important;
+  background: rgba(26,6,6,0.5) !important;
+  box-shadow: -2px 0 8px rgba(232,64,64,0.15) !important;
+}
+
+body.theme-crimson .session-mix__item {
+  border-bottom-color: rgba(232,64,64,0.1) !important;
+}
+
+/* ── Crimson: Upgrade hint — angular cut corners ── */
+body.theme-crimson .ship-upgrade-hint {
+  clip-path: polygon(
+    8px 0, calc(100% - 8px) 0,
+    100% 8px, 100% calc(100% - 8px),
+    calc(100% - 8px) 100%, 8px 100%,
+    0 calc(100% - 8px), 0 8px
+  ) !important;
+  border-left: 3px solid #e84040 !important;
+  background: rgba(26,6,6,0.6) !important;
+}
+
+body.theme-crimson .upgrade-label {
+  color: #e84040 !important;
+  text-shadow: 0 0 4px rgba(232,64,64,0.3) !important;
+}
+
+/* ── Crimson: Modal backdrop — red tint ── */
+body.theme-crimson .modal__backdrop,
+body.theme-crimson .tab-modal-overlay {
+  background: rgba(20,0,0,0.92) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+body.theme-crimson .tab-modal-panel {
+  background: rgba(10,0,0,0.98) !important;
+  border-left: 2px solid rgba(232,64,64,0.2) !important;
+}
+
+/* ── Crimson: Header — pulsing red line at bottom ── */
+body.theme-crimson .header::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, #e84040, #ff6060, #e84040, transparent) !important;
+  animation: crimson-header-pulse 2s ease-in-out infinite !important;
+}
+
+/* ── Crimson: FAST hover transitions ── */
+body.theme-crimson .dash-card,
+body.theme-crimson .tab-bar__btn,
+body.theme-crimson .method-card,
+body.theme-crimson .btn-action,
+body.theme-crimson .btn,
+body.theme-crimson .qn-link,
+body.theme-crimson .ship-list-item,
+body.theme-crimson .alt-row {
+  transition: all 0.1s ease !important;
+}
+
+/* ── Crimson: Price table rows — angular feel ── */
+body.theme-crimson .price-row:not(.price-header):hover {
+  background: rgba(232,64,64,0.06) !important;
+  border-left: 2px solid #e84040 !important;
+}
+
+body.theme-crimson .price-header {
+  border-bottom: 2px solid rgba(232,64,64,0.3) !important;
+  color: #e84040 !important;
+}
+
+/* ── Crimson: Alt rows — mission target style ── */
+body.theme-crimson .alt-row:hover {
+  background: rgba(232,64,64,0.06) !important;
+  border-left: 3px solid #e84040 !important;
+}
+
+/* ── Crimson: Card header sec marker ── */
+body.theme-crimson .dash-card__header .sec::before {
+  background: #e84040 !important;
+  box-shadow: 0 0 6px rgba(232,64,64,0.5) !important;
+}
+
+/* ── Crimson: Milestone chips ── */
+body.theme-crimson .goal-ms {
+  background: rgba(26,6,6,0.8) !important;
+  border: 1px solid rgba(232,64,64,0.25) !important;
+}
+
+body.theme-crimson .goal-ms__pct {
+  color: #ff6060 !important;
+  text-shadow: 0 0 4px rgba(232,64,64,0.4) !important;
+}
+
+/* ── Crimson: Footer pulse line ── */
+body.theme-crimson .footer {
+  border-top: 1px solid rgba(232,64,64,0.3) !important;
+}
+
+body.theme-crimson .footer::before {
+  background: linear-gradient(to right, transparent, #e84040, transparent) !important;
+  animation: crimson-header-pulse 3s ease-in-out infinite !important;
+}
+
+/* ── Crimson: Scrollbar ── */
+body.theme-crimson ::-webkit-scrollbar-thumb {
+  background: rgba(232,64,64,0.4) !important;
+  border: 1px solid rgba(232,64,64,0.2) !important;
+}
+
+body.theme-crimson ::-webkit-scrollbar-track {
+  background: rgba(10,0,0,0.5) !important;
+}
+
+/* ── Crimson: Intel items — danger zone styling ── */
+body.theme-crimson .intel-items .mini-stat {
+  border-bottom: 1px solid rgba(232,64,64,0.1) !important;
+}
+
+body.theme-crimson .ms-label {
+  color: rgba(232,64,64,0.6) !important;
+}
+
+/* ── Crimson: Selection ── */
+body.theme-crimson ::selection {
+  background: #e84040 !important;
+  color: #0a0000 !important;
+  text-shadow: none !important;
+}
+
+/* ── Crimson: Dashboard grid bg matches ── */
+body.theme-crimson .dashboard-grid {
+  gap: 2px !important;
+  background: rgba(232,64,64,0.3) !important;
+}
+
+/* ── Crimson: Card body position context ── */
+body.theme-crimson .dash-card__body {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+body.theme-crimson .dash-card__header {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+body.theme-crimson .dash-card__footer {
+  position: relative !important;
+  z-index: 1 !important;
+  border-top: 1px solid rgba(232,64,64,0.15) !important;
+}
+
+/* ── Crimson: Ship card name emphasis ── */
+body.theme-crimson .ship-card-name {
+  text-shadow: 0 0 4px rgba(232,64,64,0.2) !important;
+}
+
+/* ── Crimson: Price tip ── */
+body.theme-crimson .price-tip {
+  border-left: 3px solid #e84040 !important;
+  background: rgba(232,64,64,0.06) !important;
+  color: #e0a0a0 !important;
+}
+
+
+/* ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+   ██  NEON DISTRICT — CYBERPUNK NIGHT CITY
+   ██  Breathtaking. Glitch. Neon-drenched.
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ */
+
+/* ── Keyframes ── */
+
+@keyframes neon-dashboard-scanlines {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 200px; }
+}
+
+@keyframes neon-glitch {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(200,80,255,0.3);
+    transform: none;
+  }
+  20% {
+    text-shadow: -2px 0 #ff0055, 2px 0 #00e5ff, 0 0 20px rgba(200,80,255,0.5);
+    transform: skewX(-0.5deg);
+  }
+  40% {
+    text-shadow: 2px 0 #ff0055, -2px 0 #00e5ff, 0 0 30px rgba(0,229,255,0.5);
+    transform: skewX(0.5deg);
+  }
+  60% {
+    text-shadow: -1px 0 #c850ff, 1px 0 #00e5ff;
+    transform: none;
+  }
+}
+
+@keyframes neon-flicker-line {
+  0%, 100% { opacity: 0.7; }
+  10%  { opacity: 1; }
+  15%  { opacity: 0.4; }
+  20%  { opacity: 0.9; }
+  50%  { opacity: 1; }
+  55%  { opacity: 0.5; }
+  60%  { opacity: 1; }
+  90%  { opacity: 0.8; }
+}
+
+@keyframes neon-tab-glow-pulse {
+  0%, 100% { box-shadow: 0 4px 8px rgba(200,80,255,0.2); }
+  50%      { box-shadow: 0 4px 16px rgba(200,80,255,0.45), 0 2px 30px rgba(0,229,255,0.15); }
+}
+
+@keyframes neon-progress-streak {
+  0%   { left: -30%; }
+  100% { left: 130%; }
+}
+
+@keyframes neon-modal-border-rotate {
+  0%   { border-color: rgba(200,80,255,0.5); box-shadow: 0 0 20px rgba(200,80,255,0.2); }
+  33%  { border-color: rgba(0,229,255,0.5); box-shadow: 0 0 20px rgba(0,229,255,0.2); }
+  66%  { border-color: rgba(200,80,255,0.5); box-shadow: 0 0 20px rgba(200,80,255,0.2); }
+  100% { border-color: rgba(0,229,255,0.5); box-shadow: 0 0 20px rgba(0,229,255,0.2); }
+}
+
+@keyframes neon-cursor-blink {
+  0%, 100% { border-right-color: rgba(0,229,255,0.8); }
+  50%      { border-right-color: transparent; }
+}
+
+@keyframes neon-btn-glow {
+  0%, 100% { box-shadow: 0 0 4px rgba(200,80,255,0.2), inset 0 0 4px rgba(200,80,255,0.05); }
+  50%      { box-shadow: 0 0 12px rgba(200,80,255,0.35), inset 0 0 8px rgba(200,80,255,0.08); }
+}
+
+@keyframes neon-noise {
+  0%   { background-position: 0 0; }
+  25%  { background-position: -3px 2px; }
+  50%  { background-position: 2px -1px; }
+  75%  { background-position: -1px -3px; }
+  100% { background-position: 0 0; }
+}
+
+/* ── Neon: Cards — double-border with outer glow ── */
+body.theme-neon .dash-card {
+  border: 1px solid rgba(200,80,255,0.25) !important;
+  box-shadow:
+    0 0 12px rgba(200,80,255,0.1),
+    0 0 1px rgba(0,229,255,0.3),
+    inset 0 0 30px rgba(200,80,255,0.03) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Inner border effect via outline */
+body.theme-neon .dash-card::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 3px !important;
+  border: 1px solid rgba(0,229,255,0.1) !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+/* CRT screen curvature on cards */
+body.theme-neon .dash-card {
+  border-radius: 2px !important;
+  box-shadow:
+    0 0 12px rgba(200,80,255,0.1),
+    0 0 1px rgba(0,229,255,0.3),
+    inset 0 1px 3px rgba(0,0,0,0.5),
+    inset 0 -1px 3px rgba(0,0,0,0.3),
+    inset 1px 0 3px rgba(0,0,0,0.3),
+    inset -1px 0 3px rgba(0,0,0,0.3) !important;
+}
+
+body.theme-neon .dash-card:hover {
+  border-color: rgba(200,80,255,0.45) !important;
+  box-shadow:
+    0 0 20px rgba(200,80,255,0.2),
+    0 0 2px rgba(0,229,255,0.5),
+    inset 0 0 30px rgba(200,80,255,0.04),
+    inset 0 1px 3px rgba(0,0,0,0.5),
+    inset 0 -1px 3px rgba(0,0,0,0.3) !important;
+}
+
+body.theme-neon .dash-card:hover::after {
+  border-color: rgba(0,229,255,0.2) !important;
+}
+
+/* ── Neon: Dashboard scanline overlay ── */
+body.theme-neon .dashboard-grid {
+  position: relative !important;
+}
+
+body.theme-neon .dashboard-grid::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(200,80,255,0.015) 3px,
+    rgba(200,80,255,0.015) 4px
+  ) !important;
+  background-size: 100% 4px !important;
+  pointer-events: none !important;
+  z-index: 5 !important;
+  animation: neon-dashboard-scanlines 6s linear infinite !important;
+}
+
+/* ── Neon: Noise/grain texture overlay (CSS only) ── */
+body.theme-neon .main::after {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(200,80,255,0.01) 0px,
+      transparent 1px,
+      transparent 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,229,255,0.008) 0px,
+      transparent 1px,
+      transparent 3px
+    ) !important;
+  pointer-events: none !important;
+  z-index: 4 !important;
+  opacity: 0.6 !important;
+  animation: neon-noise 0.5s steps(1) infinite !important;
+}
+
+/* ── Neon: Hero method name — glitch effect on hover ── */
+body.theme-neon .rec-hero__method {
+  transition: text-shadow 0.1s !important;
+  position: relative !important;
+}
+
+body.theme-neon .rec-hero__method:hover {
+  animation: neon-glitch 0.4s ease-in-out !important;
+}
+
+/* ── Neon: Card headers — flickering neon underline ── */
+body.theme-neon .dash-card__header {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+body.theme-neon .dash-card__header::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 12px !important;
+  right: 12px !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, #c850ff, #00e5ff, transparent) !important;
+  animation: neon-flicker-line 4s ease-in-out infinite !important;
+}
+
+/* ── Neon: Tab bar — neon glow on active ── */
+body.theme-neon .tab-bar {
+  background: rgba(8,2,14,0.98) !important;
+  border-top: 1px solid rgba(200,80,255,0.3) !important;
+  border-bottom: none !important;
+}
+
+body.theme-neon .tab-bar__btn {
+  font-family: 'Share Tech Mono', monospace !important;
+  letter-spacing: 2px !important;
+  transition: all 0.2s !important;
+  border-right: 1px solid rgba(200,80,255,0.1) !important;
+}
+
+body.theme-neon .tab-bar__btn:hover {
+  color: #00e5ff !important;
+  text-shadow: 0 0 8px rgba(0,229,255,0.4) !important;
+  background: rgba(0,229,255,0.04) !important;
+}
+
+/* Active tab — full neon border with glow */
+body.theme-neon .tab-bar__btn--active {
+  color: #00e5ff !important;
+  background: rgba(200,80,255,0.06) !important;
+  box-shadow: inset 0 -2px 0 #c850ff, inset 0 0 12px rgba(200,80,255,0.08) !important;
+  text-shadow: 0 0 10px rgba(0,229,255,0.5) !important;
+  animation: neon-tab-glow-pulse 2s ease-in-out infinite !important;
+}
+
+body.theme-neon .tab-bar__btn--active::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #c850ff, #00e5ff) !important;
+  box-shadow: 0 0 12px rgba(200,80,255,0.6), 0 0 24px rgba(0,229,255,0.3) !important;
+}
+
+/* ── Neon: Price values glow cyan ── */
+body.theme-neon .slr-price,
+body.theme-neon .price-cell,
+body.theme-neon .cr-rate {
+  color: #00e5ff !important;
+  text-shadow: 0 0 8px rgba(0,229,255,0.5), 0 0 20px rgba(0,229,255,0.15) !important;
+}
+
+/* ── Neon: Stat values — typing cursor blink ── */
+body.theme-neon .sg-val {
+  border-right: 2px solid rgba(0,229,255,0.8) !important;
+  padding-right: 4px !important;
+  animation: neon-cursor-blink 1s step-end infinite !important;
+  text-shadow: 0 0 6px rgba(200,80,255,0.4) !important;
+}
+
+/* ── Neon: Goal progress bar — magenta to cyan with glow ── */
+body.theme-neon .goal-progress-fill {
+  background: linear-gradient(90deg, #c850ff, #8844cc, #00e5ff) !important;
+  box-shadow: 0 0 8px rgba(200,80,255,0.4), 0 0 16px rgba(0,229,255,0.2) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Animated light streak on progress bar */
+body.theme-neon .goal-progress-fill::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  width: 30% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent) !important;
+  animation: neon-progress-streak 2s ease-in-out infinite !important;
+}
+
+body.theme-neon .goal-progress-bar {
+  background: rgba(16,6,30,0.8) !important;
+  border: 1px solid rgba(200,80,255,0.25) !important;
+  overflow: hidden !important;
+}
+
+/* ── Neon: Session mix — terminal style ── */
+body.theme-neon .session-mix {
+  background: rgba(8,2,14,0.9) !important;
+  border: 1px solid rgba(0,229,255,0.15) !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+body.theme-neon .session-mix__label {
+  color: #00e5ff !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  text-shadow: 0 0 4px rgba(0,229,255,0.3) !important;
+}
+
+body.theme-neon .session-mix__method {
+  color: #69f0ae !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+body.theme-neon .session-mix__time {
+  color: #00e5ff !important;
+}
+
+body.theme-neon .session-mix__earn {
+  color: #c850ff !important;
+  text-shadow: 0 0 4px rgba(200,80,255,0.3) !important;
+}
+
+body.theme-neon .session-mix__item {
+  border-bottom-color: rgba(0,229,255,0.08) !important;
+}
+
+/* ── Neon: Modal — animated color-rotating border ── */
+body.theme-neon .modal__panel,
+body.theme-neon .tab-modal-panel {
+  border: 2px solid rgba(200,80,255,0.4) !important;
+  animation: neon-modal-border-rotate 4s linear infinite !important;
+  background: rgba(8,2,14,0.97) !important;
+}
+
+body.theme-neon .tab-modal-overlay {
+  background: rgba(8,2,14,0.88) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* ── Neon: Scrollbar glows purple ── */
+body.theme-neon ::-webkit-scrollbar {
+  width: 4px !important;
+}
+
+body.theme-neon ::-webkit-scrollbar-thumb {
+  background: rgba(200,80,255,0.5) !important;
+  box-shadow: 0 0 6px rgba(200,80,255,0.4) !important;
+}
+
+body.theme-neon ::-webkit-scrollbar-track {
+  background: rgba(8,2,14,0.8) !important;
+}
+
+/* ── Neon: Buttons — neon outline glow on hover ── */
+body.theme-neon .btn-action,
+body.theme-neon .btn,
+body.theme-neon .btn-intel-modal {
+  border: 1px solid rgba(200,80,255,0.3) !important;
+  transition: all 0.2s ease !important;
+}
+
+body.theme-neon .btn-action:hover,
+body.theme-neon .btn:hover,
+body.theme-neon .btn-intel-modal:hover {
+  border-color: #00e5ff !important;
+  color: #00e5ff !important;
+  box-shadow:
+    0 0 8px rgba(0,229,255,0.3),
+    0 0 20px rgba(0,229,255,0.1),
+    inset 0 0 8px rgba(0,229,255,0.05) !important;
+  text-shadow: 0 0 8px rgba(0,229,255,0.5) !important;
+}
+
+/* ── Neon: Ship upgrade hint — neon accented ── */
+body.theme-neon .ship-upgrade-hint {
+  border: 1px solid rgba(200,80,255,0.2) !important;
+  border-left: 2px solid #00e5ff !important;
+  background: rgba(8,2,14,0.7) !important;
+}
+
+body.theme-neon .upgrade-name {
+  color: #00e5ff !important;
+  text-shadow: 0 0 8px rgba(0,229,255,0.4) !important;
+}
+
+body.theme-neon .upgrade-label {
+  color: #c850ff !important;
+}
+
+/* ── Neon: Milestone chips ── */
+body.theme-neon .goal-ms {
+  background: rgba(16,6,30,0.8) !important;
+  border: 1px solid rgba(200,80,255,0.2) !important;
+}
+
+body.theme-neon .goal-ms__pct {
+  color: #00e5ff !important;
+  text-shadow: 0 0 4px rgba(0,229,255,0.4) !important;
+}
+
+/* ── Neon: Card body z-index ── */
+body.theme-neon .dash-card__body {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+body.theme-neon .dash-card__header {
+  z-index: 3 !important;
+}
+
+body.theme-neon .dash-card__footer {
+  position: relative !important;
+  z-index: 1 !important;
+  border-top: 1px solid rgba(200,80,255,0.15) !important;
+}
+
+/* ── Neon: Footer — neon glow ── */
+body.theme-neon .footer {
+  border-top: 1px solid rgba(200,80,255,0.2) !important;
+}
+
+body.theme-neon .footer::before {
+  background: linear-gradient(to right, transparent, #c850ff, #00e5ff, transparent) !important;
+  box-shadow: 0 0 8px rgba(200,80,255,0.3) !important;
+}
+
+/* ── Neon: Price table ── */
+body.theme-neon .price-header {
+  color: #c850ff !important;
+  border-bottom: 1px solid rgba(200,80,255,0.2) !important;
+  text-shadow: 0 0 4px rgba(200,80,255,0.3) !important;
+}
+
+body.theme-neon .price-row:not(.price-header):hover {
+  background: rgba(0,229,255,0.04) !important;
+}
+
+/* ── Neon: Alt rows ── */
+body.theme-neon .alt-row:hover {
+  border-left-color: #00e5ff !important;
+  background: rgba(0,229,255,0.04) !important;
+  box-shadow: -2px 0 8px rgba(0,229,255,0.15) !important;
+}
+
+/* ── Neon: Intel items ── */
+body.theme-neon .intel-items .mini-stat {
+  border-bottom: 1px solid rgba(200,80,255,0.08) !important;
+}
+
+body.theme-neon .ms-label {
+  color: rgba(200,80,255,0.6) !important;
+  text-shadow: 0 0 3px rgba(200,80,255,0.2) !important;
+}
+
+body.theme-neon .ms-value {
+  text-shadow: 0 0 4px rgba(0,229,255,0.3) !important;
+}
+
+/* ── Neon: Hero rate ── */
+body.theme-neon .hero-rate-big {
+  text-shadow: 0 0 30px rgba(0,229,255,0.5), 0 0 60px rgba(0,229,255,0.15) !important;
+}
+
+/* ── Neon: Selection ── */
+body.theme-neon ::selection {
+  background: #c850ff !important;
+  color: #08020e !important;
+}
+
+
+/* ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+   ██  TACTICIAN — MILITARY COMMAND CENTER HUD
+   ██  Insanely detailed. Precision. Intelligence.
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ */
+
+/* ── Keyframes ── */
+
+@keyframes tactical-radar-sweep {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes tactical-data-flicker {
+  0%   { opacity: 0.3; }
+  10%  { opacity: 0.8; }
+  20%  { opacity: 0.5; }
+  40%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes tactical-bracket-draw {
+  0%   { width: 0; height: 0; opacity: 0; }
+  50%  { width: 12px; height: 12px; opacity: 0.5; }
+  100% { width: 12px; height: 12px; opacity: 1; }
+}
+
+@keyframes tactical-bracket-draw-hover {
+  0%   { width: 12px; height: 12px; }
+  50%  { width: 16px; height: 16px; }
+  100% { width: 16px; height: 16px; }
+}
+
+@keyframes tactical-blink-live {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@keyframes tactical-crosshair-pulse {
+  0%, 100% { opacity: 0.15; }
+  50%      { opacity: 0.3; }
+}
+
+@keyframes tactical-grid-scroll {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 20px; }
+}
+
+/* ── Tactical: Cards — HUD corner brackets ── */
+body.theme-tactical .dash-card {
+  position: relative !important;
+  background: rgba(12,16,10,0.95) !important;
+  border: 1px solid rgba(124,179,66,0.15) !important;
+  overflow: visible !important;
+}
+
+/* Top-left bracket */
+body.theme-tactical .dash-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -1px !important;
+  left: -1px !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-top: 2px solid rgba(124,179,66,0.6) !important;
+  border-left: 2px solid rgba(124,179,66,0.6) !important;
+  border-bottom: none !important;
+  border-right: none !important;
+  background: none !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* Bottom-right bracket */
+body.theme-tactical .dash-card::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -1px !important;
+  right: -1px !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-bottom: 2px solid rgba(124,179,66,0.6) !important;
+  border-right: 2px solid rgba(124,179,66,0.6) !important;
+  border-top: none !important;
+  border-left: none !important;
+  background: none !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Animated bracket growth on hover */
+body.theme-tactical .dash-card:hover::before {
+  width: 18px !important;
+  height: 18px !important;
+  border-color: rgba(124,179,66,0.9) !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+body.theme-tactical .dash-card:hover::after {
+  width: 18px !important;
+  height: 18px !important;
+  border-color: rgba(124,179,66,0.9) !important;
+}
+
+body.theme-tactical .dash-card:hover {
+  border-color: rgba(124,179,66,0.3) !important;
+  box-shadow: 0 0 8px rgba(124,179,66,0.1) !important;
+}
+
+/* Subtle grid pattern overlay on cards (via box-shadow workaround) */
+body.theme-tactical .dash-card__body {
+  position: relative !important;
+  z-index: 1 !important;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 19px,
+      rgba(124,179,66,0.025) 19px,
+      rgba(124,179,66,0.025) 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 19px,
+      rgba(124,179,66,0.025) 19px,
+      rgba(124,179,66,0.025) 20px
+    ) !important;
+}
+
+/* ── Tactical: Hero — radar sweep + crosshair ── */
+body.theme-tactical .rec-hero {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Radar sweep — rotating gradient */
+body.theme-tactical .rec-hero .rec-hero__inner::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 200px !important;
+  height: 200px !important;
+  margin-top: -100px !important;
+  margin-left: -100px !important;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(124,179,66,0.06) 30deg,
+    transparent 60deg
+  ) !important;
+  border-radius: 50% !important;
+  animation: tactical-radar-sweep 6s linear infinite !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  opacity: 0.5 !important;
+}
+
+/* Crosshair horizontal line */
+body.theme-tactical .rec-hero::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 60px !important;
+  height: 1px !important;
+  margin-left: -30px !important;
+  background: rgba(124,179,66,0.15) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  animation: tactical-crosshair-pulse 3s ease-in-out infinite !important;
+  box-shadow:
+    0 -30px 0 0 rgba(124,179,66,0.08),
+    0 30px 0 0 rgba(124,179,66,0.08) !important;
+}
+
+/* ── Tactical: Data values — loading flicker ── */
+body.theme-tactical .sg-val,
+body.theme-tactical .cr-rate,
+body.theme-tactical .ms-value,
+body.theme-tactical .hero-rate-big {
+  animation: tactical-data-flicker 0.6s ease-out !important;
+}
+
+/* ── Tactical: Stat values — monospace with green glow ── */
+body.theme-tactical .sg-val {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #9ccc65 !important;
+  text-shadow: 0 0 6px rgba(124,179,66,0.35) !important;
+}
+
+body.theme-tactical .sg-lbl {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: rgba(124,179,66,0.5) !important;
+  letter-spacing: 2px !important;
+}
+
+/* ── Tactical: Tab bar — command center style ── */
+body.theme-tactical .tab-bar {
+  background: rgba(8,12,6,0.98) !important;
+  border-top: 2px solid rgba(124,179,66,0.3) !important;
+  border-bottom: none !important;
+}
+
+body.theme-tactical .tab-bar__btn {
+  font-family: 'Share Tech Mono', monospace !important;
+  letter-spacing: 2px !important;
+  border-radius: 0 !important;
+  border-right: 1px solid rgba(124,179,66,0.1) !important;
+  transition: all 0.15s !important;
+}
+
+body.theme-tactical .tab-bar__btn:hover {
+  color: #9ccc65 !important;
+  background: rgba(124,179,66,0.06) !important;
+}
+
+body.theme-tactical .tab-bar__btn--active {
+  color: #9ccc65 !important;
+  background: rgba(124,179,66,0.08) !important;
+  border-bottom: 2px solid #7cb342 !important;
+  text-shadow: 0 0 4px rgba(124,179,66,0.3) !important;
+}
+
+body.theme-tactical .tab-bar__btn--active::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: #7cb342 !important;
+  box-shadow: 0 0 6px rgba(124,179,66,0.4) !important;
+}
+
+/* ── Tactical: Goal progress bar — segmented ── */
+body.theme-tactical .goal-progress-bar {
+  background: rgba(12,16,10,0.8) !important;
+  border: 1px solid rgba(124,179,66,0.2) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+body.theme-tactical .goal-progress-fill {
+  background: linear-gradient(90deg, #4a6b2a, #7cb342, #9ccc65) !important;
+  /* Segmented look with repeating mask */
+  -webkit-mask-image: repeating-linear-gradient(
+    90deg,
+    #000 0px,
+    #000 18%,
+    transparent 18%,
+    transparent 20%,
+    #000 20%,
+    #000 38%,
+    transparent 38%,
+    transparent 40%,
+    #000 40%,
+    #000 58%,
+    transparent 58%,
+    transparent 60%,
+    #000 60%,
+    #000 78%,
+    transparent 78%,
+    transparent 80%,
+    #000 80%,
+    #000 100%
+  ) !important;
+  mask-image: repeating-linear-gradient(
+    90deg,
+    #000 0px,
+    #000 18%,
+    transparent 18%,
+    transparent 20%,
+    #000 20%,
+    #000 38%,
+    transparent 38%,
+    transparent 40%,
+    #000 40%,
+    #000 58%,
+    transparent 58%,
+    transparent 60%,
+    #000 60%,
+    #000 78%,
+    transparent 78%,
+    transparent 80%,
+    #000 80%,
+    #000 100%
+  ) !important;
+  box-shadow: 0 0 6px rgba(124,179,66,0.3) !important;
+}
+
+/* ── Tactical: Session mix — mission briefing style ── */
+body.theme-tactical .session-mix {
+  background: rgba(8,12,6,0.7) !important;
+  border: 1px solid rgba(124,179,66,0.15) !important;
+  border-left: 3px solid rgba(124,179,66,0.4) !important;
+  padding-left: 12px !important;
+}
+
+body.theme-tactical .session-mix__label {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #7cb342 !important;
+  text-shadow: 0 0 3px rgba(124,179,66,0.25) !important;
+}
+
+body.theme-tactical .session-mix__item {
+  border-bottom-color: rgba(124,179,66,0.08) !important;
+  padding-left: 8px !important;
+  border-left: 1px solid rgba(124,179,66,0.1) !important;
+}
+
+body.theme-tactical .session-mix__method {
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* ── Tactical: Price table — military intelligence ── */
+body.theme-tactical .price-header {
+  color: #7cb342 !important;
+  border-bottom: 2px solid rgba(124,179,66,0.3) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  text-shadow: 0 0 3px rgba(124,179,66,0.2) !important;
+}
+
+body.theme-tactical .price-row:not(.price-header) {
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+body.theme-tactical .price-row:not(.price-header):hover {
+  background: rgba(124,179,66,0.04) !important;
+  border-left: 2px solid rgba(124,179,66,0.4) !important;
+}
+
+/* ── Tactical: Card headers — CLASSIFIED style ── */
+body.theme-tactical .dash-card__header .sec {
+  font-family: 'Share Tech Mono', monospace !important;
+  letter-spacing: 4px !important;
+  text-transform: uppercase !important;
+  color: #7cb342 !important;
+}
+
+body.theme-tactical .dash-card__header .sec::before {
+  background: #7cb342 !important;
+  box-shadow: 0 0 4px rgba(124,179,66,0.4) !important;
+}
+
+body.theme-tactical .dash-card__header {
+  position: relative !important;
+  z-index: 1 !important;
+  border-bottom: 1px solid rgba(124,179,66,0.1) !important;
+}
+
+/* ── Tactical: Modal — military header bar ── */
+body.theme-tactical .modal__panel,
+body.theme-tactical .tab-modal-panel {
+  border: 1px solid rgba(124,179,66,0.2) !important;
+  border-top: 4px solid #7cb342 !important;
+  background: rgba(8,12,6,0.98) !important;
+}
+
+body.theme-tactical .tab-modal-overlay {
+  background: rgba(4,8,2,0.92) !important;
+}
+
+/* ── Tactical: Upgrade hint — REQUISITION style ── */
+body.theme-tactical .ship-upgrade-hint {
+  border-left: 3px solid #7cb342 !important;
+  background: rgba(8,12,6,0.7) !important;
+  border: 1px solid rgba(124,179,66,0.15) !important;
+  border-left-width: 3px !important;
+  border-left-color: #7cb342 !important;
+}
+
+body.theme-tactical .upgrade-label {
+  color: #7cb342 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  letter-spacing: 2px !important;
+  text-shadow: 0 0 3px rgba(124,179,66,0.2) !important;
+}
+
+body.theme-tactical .upgrade-name {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #9ccc65 !important;
+}
+
+body.theme-tactical .upgrade-meta {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: rgba(124,179,66,0.5) !important;
+}
+
+/* ── Tactical: Blinking LIVE indicator next to live prices card ── */
+body.theme-tactical .dash-card__header .sec::after {
+  content: '' !important;
+  display: inline-block !important;
+  width: 5px !important;
+  height: 5px !important;
+  background: #7cb342 !important;
+  border-radius: 50% !important;
+  margin-left: 6px !important;
+  vertical-align: middle !important;
+  box-shadow: 0 0 6px rgba(124,179,66,0.6) !important;
+  animation: tactical-blink-live 1.5s ease-in-out infinite !important;
+}
+
+/* ── Tactical: Stat grid items ── */
+body.theme-tactical .sg-item {
+  background: rgba(12,16,10,0.6) !important;
+  border: 1px solid rgba(124,179,66,0.12) !important;
+}
+
+/* ── Tactical: Milestone chips ── */
+body.theme-tactical .goal-ms {
+  background: rgba(8,12,6,0.7) !important;
+  border: 1px solid rgba(124,179,66,0.2) !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+body.theme-tactical .goal-ms__pct {
+  color: #9ccc65 !important;
+  text-shadow: 0 0 3px rgba(124,179,66,0.3) !important;
+}
+
+/* ── Tactical: Scrollbar ── */
+body.theme-tactical ::-webkit-scrollbar-thumb {
+  background: rgba(124,179,66,0.35) !important;
+}
+
+body.theme-tactical ::-webkit-scrollbar-track {
+  background: rgba(4,8,2,0.5) !important;
+}
+
+/* ── Tactical: Intel items ── */
+body.theme-tactical .intel-items .mini-stat {
+  border-bottom: 1px solid rgba(124,179,66,0.08) !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+body.theme-tactical .ms-label {
+  color: rgba(124,179,66,0.5) !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  letter-spacing: 2px !important;
+}
+
+body.theme-tactical .ms-value {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #9ccc65 !important;
+  text-shadow: 0 0 4px rgba(124,179,66,0.25) !important;
+}
+
+/* ── Tactical: Hero rate ── */
+body.theme-tactical .hero-rate-big {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #9ccc65 !important;
+  text-shadow: 0 0 10px rgba(124,179,66,0.4) !important;
+}
+
+/* ── Tactical: Alt rows — mission entries ── */
+body.theme-tactical .alt-row {
+  font-family: 'Share Tech Mono', monospace !important;
+  border-left: 2px solid transparent !important;
+  padding-left: 8px !important;
+}
+
+body.theme-tactical .alt-row:hover {
+  border-left-color: #7cb342 !important;
+  background: rgba(124,179,66,0.04) !important;
+}
+
+body.theme-tactical .cr-name {
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+body.theme-tactical .cr-rate {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #9ccc65 !important;
+  text-shadow: 0 0 4px rgba(124,179,66,0.3) !important;
+}
+
+/* ── Tactical: Price tip — briefing note ── */
+body.theme-tactical .price-tip {
+  border-left: 3px solid #7cb342 !important;
+  background: rgba(124,179,66,0.04) !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* ── Tactical: Footer ── */
+body.theme-tactical .footer {
+  border-top: 1px solid rgba(124,179,66,0.2) !important;
+}
+
+body.theme-tactical .footer::before {
+  background: linear-gradient(to right, transparent, rgba(124,179,66,0.3), transparent) !important;
+}
+
+/* ── Tactical: Ship card ── */
+body.theme-tactical .ship-card-name {
+  font-family: 'Share Tech Mono', monospace !important;
+  text-shadow: 0 0 3px rgba(124,179,66,0.15) !important;
+}
+
+body.theme-tactical .ship-card-mfr {
+  font-family: 'Share Tech Mono', monospace !important;
+  letter-spacing: 2px !important;
+}
+
+/* ── Tactical: Card footer ── */
+body.theme-tactical .dash-card__footer {
+  position: relative !important;
+  z-index: 1 !important;
+  border-top: 1px solid rgba(124,179,66,0.1) !important;
+  background: rgba(8,12,6,0.5) !important;
+}
+
+/* ── Tactical: Selection ── */
+body.theme-tactical ::selection {
+  background: #7cb342 !important;
+  color: #040802 !important;
+}
+
+/* ── Tactical: Header ── */
+body.theme-tactical .header::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, #7cb342, transparent) !important;
+  box-shadow: 0 0 6px rgba(124,179,66,0.3) !important;
+}
+
+/* ── Tactical: Dashboard grid ── */
+body.theme-tactical .dashboard-grid {
+  gap: 1px !important;
+  background: rgba(124,179,66,0.15) !important;
+}
+
+/* ── Tactical: Buttons ── */
+body.theme-tactical .btn-action:hover,
+body.theme-tactical .btn:hover,
+body.theme-tactical .btn-intel-modal:hover {
+  box-shadow: 0 0 6px rgba(124,179,66,0.25) !important;
+  text-shadow: 0 0 4px rgba(124,179,66,0.3) !important;
+}
+
+/* ── Tactical: Session header ── */
+body.theme-tactical .session-header {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #7cb342 !important;
+  border-bottom: 1px solid rgba(124,179,66,0.1) !important;
+  padding-bottom: 4px !important;
+}
+
+/* ── Tactical: Goal ship name ── */
+body.theme-tactical .goal-ship-name {
+  font-family: 'Share Tech Mono', monospace !important;
+  letter-spacing: 2px !important;
+  text-shadow: 0 0 4px rgba(124,179,66,0.2) !important;
+}
+
+/* ── Tactical: Goal time/stats ── */
+body.theme-tactical .goal-time {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: #9ccc65 !important;
+}
+
+body.theme-tactical .goal-stat {
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+body.theme-tactical .goal-verdict-text {
+  font-family: 'Share Tech Mono', monospace !important;
+  color: rgba(156,204,101,0.8) !important;
+}

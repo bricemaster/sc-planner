@@ -1,0 +1,351 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Favorites, Wishlist, History & Notes
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Favorite Star Button ────────────────────────────────────────────────── */
+
+.fav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.15rem;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: transform 0.2s ease, color 0.2s ease, background 0.15s ease;
+  color: var(--t3, #666);
+  flex-shrink: 0;
+  z-index: 2;
+  position: relative;
+}
+
+.fav-btn:hover {
+  transform: scale(1.25);
+  background: rgba(255, 215, 0, 0.08);
+  color: var(--t1, #ccc);
+}
+
+.fav-btn--active {
+  color: #d4a017;
+  text-shadow: 0 0 6px rgba(212, 160, 23, 0.35);
+}
+
+.fav-btn--active:hover {
+  color: #e6b422;
+  background: rgba(255, 215, 0, 0.12);
+}
+
+/* Gold shimmer on favorited method cards */
+.method-card--favorited {
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.04) 0%, transparent 60%);
+  border-color: rgba(212, 160, 23, 0.2);
+}
+
+.method-card--favorited .method-card__header {
+  border-image: linear-gradient(90deg, rgba(212, 160, 23, 0.3), transparent) 1;
+}
+
+/* Inject star into the method card header */
+.method-card__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.method-card__name {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─── Notes Button & Inline Area ──────────────────────────────────────────── */
+
+.notes-btn {
+  background: none;
+  border: 1px solid var(--rl, rgba(255,255,255,0.08));
+  color: var(--t3, #888);
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+}
+
+.notes-btn:hover {
+  color: var(--t1, #fff);
+  border-color: var(--acc, #c9aa6e);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.notes-btn--has-note {
+  color: var(--acc, #c9aa6e);
+  border-color: rgba(212, 160, 23, 0.25);
+}
+
+.note-icon {
+  font-size: 0.85rem;
+}
+
+.method-notes-area {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rl, rgba(255,255,255,0.06));
+}
+
+.method-notes-area textarea {
+  width: 100%;
+  min-height: 60px;
+  max-height: 160px;
+  resize: vertical;
+  background: var(--bg2, rgba(0,0,0,0.2));
+  border: 1px solid var(--rl, rgba(255,255,255,0.1));
+  border-radius: 6px;
+  color: var(--t1, #eee);
+  font-family: inherit;
+  font-size: 0.8rem;
+  padding: 8px 10px;
+  transition: border-color 0.15s;
+  line-height: 1.5;
+}
+
+.method-notes-area textarea:focus {
+  outline: none;
+  border-color: var(--acc, #c9aa6e);
+}
+
+.method-notes-area textarea::placeholder {
+  color: var(--t3, #666);
+}
+
+.notes-save-hint {
+  font-size: 0.65rem;
+  color: var(--t3, #666);
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* ─── Wishlist Bookmark Button ────────────────────────────────────────────── */
+
+.wishlist-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 3px;
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: var(--t3, #666);
+  flex-shrink: 0;
+  z-index: 2;
+  position: relative;
+}
+
+.wishlist-btn:hover {
+  transform: scale(1.2);
+  color: var(--acc, #c9aa6e);
+}
+
+.wishlist-btn--active {
+  color: var(--acc, #c9aa6e);
+  text-shadow: 0 0 5px rgba(201, 170, 110, 0.3);
+}
+
+/* Wishlisted ship row styling */
+.ship-list-item--wishlisted {
+  border-left: 3px solid var(--acc, #c9aa6e) !important;
+}
+
+.ship-list-item--wishlisted .ship-list-row {
+  padding-left: calc(var(--ship-row-pl, 12px) - 3px);
+}
+
+/* Inject bookmark into ship row */
+.ship-list-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ─── Favorites Filter Pill ───────────────────────────────────────────────── */
+
+.pill--favorites {
+  border-color: rgba(212, 160, 23, 0.35);
+  color: #d4a017;
+}
+
+.pill--favorites.pill--active {
+  background: rgba(212, 160, 23, 0.15);
+  border-color: #d4a017;
+  color: #e6b422;
+}
+
+/* ─── History Modal ───────────────────────────────────────────────────────── */
+
+.history-modal {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.history-modal__title {
+  font-family: var(--ff-display, 'Montserrat', sans-serif);
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 0 0 20px;
+  color: var(--t1, #eee);
+  letter-spacing: 0.5px;
+}
+
+.history-modal__empty {
+  color: var(--t3, #888);
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.85rem;
+}
+
+.history-modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.history-entry {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--bg2, rgba(255,255,255,0.02));
+  transition: background 0.15s;
+}
+
+.history-entry:hover {
+  background: var(--bg3, rgba(255,255,255,0.05));
+}
+
+.history-entry__time {
+  font-size: 0.75rem;
+  color: var(--t3, #888);
+  white-space: nowrap;
+}
+
+.history-entry__time span {
+  display: block;
+  font-size: 0.65rem;
+  opacity: 0.7;
+}
+
+.history-entry__details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.history-entry__ship {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--t1, #eee);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-entry__method {
+  font-size: 0.7rem;
+  color: var(--t2, #aaa);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-entry__numbers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.history-entry__rate {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--acc, #c9aa6e);
+  font-family: var(--ff-mono, 'DM Mono', monospace);
+}
+
+.history-entry__budget {
+  font-size: 0.65rem;
+  color: var(--t3, #888);
+}
+
+/* ─── History Button in Footer ────────────────────────────────────────────── */
+
+.footer-history-btn {
+  background: none;
+  border: 1px solid var(--rl, rgba(255,255,255,0.1));
+  color: var(--t2, #aaa);
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 5px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0.3px;
+}
+
+.footer-history-btn:hover {
+  color: var(--t1, #fff);
+  border-color: var(--acc, #c9aa6e);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ─── Utility ─────────────────────────────────────────────────────────────── */
+
+.hidden {
+  display: none !important;
+}
+
+/* ─── Method Detail Actions Row ───────────────────────────────────────────── */
+
+.method-detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* ─── Footer Actions Row ──────────────────────────────────────────────────── */
+
+.footer__actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 0 8px;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .history-entry {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .history-entry__time {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+  }
+
+  .history-entry__time span {
+    display: inline;
+  }
+}

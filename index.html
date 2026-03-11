@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SC Planner</title>
+  <meta name="description" content="SC Planner — Star Citizen money-making optimizer. Find the fastest way to earn aUEC based on your ship, budget, and playstyle.">
+  <meta name="theme-color" content="#08090a">
+  <meta property="og:title" content="SC Planner — Star Citizen Earning Optimizer">
+  <meta property="og:description" content="Find the fastest way to earn aUEC in Star Citizen. Personalized recommendations for 55+ ships and 24 earning methods.">
+  <meta property="og:type" content="website">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views.css">
+  <link rel="stylesheet" href="css/onboarding.css">
+  <link rel="stylesheet" href="css/polish.css">
+  <link rel="stylesheet" href="css/micro.css">
+  <link rel="stylesheet" href="css/powertools.css">
+  <link rel="stylesheet" href="css/favorites.css">
+  <link rel="stylesheet" href="css/features-a.css">
+  <link rel="stylesheet" href="css/data-views.css">
+  <link rel="stylesheet" href="css/a11y.css">
+  <link rel="stylesheet" href="css/qol.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/polish-v2.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+  <!-- Skip Navigation (Accessibility) -->
+  <a href="#rec-hero" class="skip-link">Skip to main content</a>
+
+  <!-- Screen Reader Announcements -->
+  <div id="srAnnounce" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <!-- Auto-save Indicator -->
+  <div class="autosave-indicator" id="autosaveIndicator">Saved &#x2713;</div>
+
+  <!-- ═══ PERSISTENT HEADER ═══ -->
+  <header class="header">
+    <div class="header__brand">
+      <span class="header__title">SC <span>&</span> Planner</span>
+    </div>
+
+    <div class="header__ship" id="myShip"></div>
+
+    <div class="header__controls">
+      <div class="header__input-group">
+        <label class="header__label" for="myBudget">Budget</label>
+        <input type="text" id="myBudget" class="header-input header-input--budget" placeholder="10,000" inputmode="numeric">
+      </div>
+
+      <div class="header__input-group">
+        <label class="header__label" for="sessionLen">Session</label>
+        <select id="sessionLen" class="header-input header-input--select">
+          <option value="0.5">0.5h</option>
+          <option value="1">1h</option>
+          <option value="1.5">1.5h</option>
+          <option value="2" selected>2h</option>
+          <option value="3">3h</option>
+          <option value="4">4h</option>
+          <option value="6">6h</option>
+          <option value="8">8h</option>
+        </select>
+      </div>
+
+      <div class="header__input-group">
+        <div class="toggle-compact" id="soloToggle">
+          <button class="tbtn active" data-val="solo">Solo</button>
+          <button class="tbtn" data-val="group">Group</button>
+        </div>
+      </div>
+
+      <div class="header__input-group">
+        <div class="toggle-compact" id="skillToggle">
+          <button class="tbtn active" data-val="beginner">New</button>
+          <button class="tbtn" data-val="intermediate">Mid</button>
+          <button class="tbtn" data-val="advanced">Pro</button>
+        </div>
+      </div>
+
+      <div class="header__input-group">
+        <div class="toggle-compact" id="riskToggle">
+          <button class="tbtn active" data-val="low">Low</button>
+          <button class="tbtn" data-val="medium">Med</button>
+          <button class="tbtn" data-val="high">High</button>
+        </div>
+      </div>
+    </div>
+
+    <span class="header__clock" id="liveClock"></span>
+
+    <button class="header__search-btn" id="globalSearchBtn" aria-label="Search">
+      <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 16l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span class="header__search-hint">Ctrl+K</span>
+    </button>
+
+    <!-- Mobile settings toggle -->
+    <button class="header__settings-toggle" id="settingsToggle" aria-label="Settings">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+  </header>
+
+  <!-- Mobile settings drawer -->
+  <div class="settings-drawer" id="settingsDrawer">
+    <div class="settings-drawer__inner">
+      <div class="header__input-group">
+        <label class="header__label" for="myBudgetMobile">Budget</label>
+        <input type="text" id="myBudgetMobile" class="header-input header-input--budget" placeholder="10,000" inputmode="numeric">
+      </div>
+      <div class="header__input-group">
+        <label class="header__label" for="sessionLenMobile">Session</label>
+        <select id="sessionLenMobile" class="header-input header-input--select">
+          <option value="0.5">0.5h</option>
+          <option value="1">1h</option>
+          <option value="1.5">1.5h</option>
+          <option value="2" selected>2h</option>
+          <option value="3">3h</option>
+          <option value="4">4h</option>
+          <option value="6">6h</option>
+          <option value="8">8h</option>
+        </select>
+      </div>
+      <div class="header__input-group">
+        <div class="toggle-compact" id="soloToggleMobile">
+          <button class="tbtn active" data-val="solo">Solo</button>
+          <button class="tbtn" data-val="group">Group</button>
+        </div>
+      </div>
+      <div class="header__input-group">
+        <div class="toggle-compact" id="skillToggleMobile">
+          <button class="tbtn active" data-val="beginner">New</button>
+          <button class="tbtn" data-val="intermediate">Mid</button>
+          <button class="tbtn" data-val="advanced">Pro</button>
+        </div>
+      </div>
+      <div class="header__input-group">
+        <div class="toggle-compact" id="riskToggleMobile">
+          <button class="tbtn active" data-val="low">Low</button>
+          <button class="tbtn" data-val="medium">Med</button>
+          <button class="tbtn" data-val="high">High</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <main class="main">
+
+    <!-- Section 1: RECOMMENDATION HERO -->
+    <section id="rec-hero" class="rec-hero">
+      <div class="rec-hero__inner">
+        <div class="rec-hero__left">
+          <span class="rec-hero__label">Right Now</span>
+          <h1 class="rec-hero__method" id="heroMethod">Select a ship to begin</h1>
+          <div class="rec-hero__stats" id="heroStats">
+            <span class="rec-hero__rate" id="heroRate"></span>
+            <span class="rec-hero__risk" id="heroRisk"></span>
+            <span class="rec-hero__confidence" id="heroConfidence"></span>
+          </div>
+          <p class="rec-hero__reasoning" id="heroReasoning"></p>
+        </div>
+        <div class="rec-hero__actions">
+          <button class="btn-action" id="btnFullGuide">Guide</button>
+          <button class="btn-action btn-action--secondary" id="btnCompareAlts">Alts</button>
+          <button class="btn-action btn-action--ghost" id="btnShare">Share</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: DASHBOARD GRID -->
+    <section id="dashboard" class="dashboard-grid">
+
+      <!-- Card 1: Alternatives -->
+      <div class="dash-card" id="alt-card">
+        <div class="dash-card__header">
+          <span class="sec">Alternatives</span>
+        </div>
+        <div class="dash-card__body" id="altList">
+          <div class="compact-row compact-row--empty">Configure your setup above</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Your Ship -->
+      <div class="dash-card" id="ship-card">
+        <div class="dash-card__header">
+          <span class="sec">Your Ship</span>
+        </div>
+        <div class="dash-card__body" id="shipInfo">
+          <div class="compact-row compact-row--empty">No ship selected</div>
+        </div>
+        <div class="dash-card__footer">
+          <button class="dash-card__link" id="btnBrowseShips" data-tab="ships">Browse Ships</button>
+          <button class="dash-card__action" id="btnCompareShips">Compare</button>
+          <button class="dash-card__action" id="btnFleetMgr">Fleet</button>
+        </div>
+      </div>
+
+      <!-- Card 3: Goal Tracker -->
+      <div class="dash-card" id="goal-card">
+        <div class="dash-card__header">
+          <span class="sec">Goal Tracker</span>
+        </div>
+        <div class="dash-card__body">
+          <div class="goal-picker-wrap">
+            <label class="header__label" for="goalShip">Goal Ship</label>
+            <div id="goalShip"></div>
+          </div>
+          <div id="goalProgress">
+            <div class="empty-hint">Set a <strong>Goal Ship</strong> above to track your progress and see how many sessions until you can afford it.</div>
+          </div>
+        </div>
+        <div class="dash-card__footer">
+          <button class="dash-card__link" id="btnFullPlan" data-tab="plan">Full Plan</button>
+        </div>
+      </div>
+
+      <!-- Card 4: Live Prices -->
+      <div class="dash-card" id="prices-card">
+        <div class="dash-card__header">
+          <span class="sec">Live Prices</span>
+        </div>
+        <div class="dash-card__body" id="pricesList">
+          <span class="skeleton skeleton--wide"></span><span class="skeleton skeleton--med"></span><span class="skeleton skeleton--short"></span>
+        </div>
+        <div class="dash-card__footer">
+          <span class="dash-card__meta" id="pricesMeta">Fetching live prices...</span>
+          <button class="dash-card__refresh" id="btnRefreshPrices" title="Refresh prices" aria-label="Refresh live prices">↻</button>
+          <button class="dash-card__action" id="btnTradeCalc">Trade Calc</button>
+        </div>
+      </div>
+
+      <!-- Card 5: Quick Intel -->
+      <div class="dash-card" id="intel-card">
+        <div class="dash-card__header">
+          <span class="sec">Quick Intel</span>
+        </div>
+        <div class="dash-card__body" id="intelSummary">
+          <span class="skeleton skeleton--wide"></span><span class="skeleton skeleton--med"></span>
+        </div>
+        <div class="dash-card__footer">
+          <button class="dash-card__action" id="btnRefineryCalc">Refinery Calc</button>
+        </div>
+      </div>
+
+      <!-- Card 6: Session Planner -->
+      <div class="dash-card" id="session-card">
+        <div class="dash-card__header">
+          <span class="sec">Session Planner</span>
+        </div>
+        <div class="dash-card__body" id="sessionPlan">
+          <span class="skeleton skeleton--wide"></span><span class="skeleton skeleton--short"></span>
+        </div>
+        <div class="dash-card__footer">
+          <button class="dash-card__action" id="btnEarnCalc">Earning Calc</button>
+          <button class="dash-card__action" id="btnSessionHistory">History</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Tab Bar -->
+    <nav class="tab-bar" id="tabBar" role="tablist">
+      <button class="tab-bar__btn" data-tab="methods" role="tab" aria-selected="false">Methods</button>
+      <button class="tab-bar__btn" data-tab="ships" role="tab" aria-selected="false">Ships</button>
+      <button class="tab-bar__btn" data-tab="plan" role="tab" aria-selected="false">Plan</button>
+      <button class="tab-bar__btn" data-tab="intel" role="tab" aria-selected="false">Intel</button>
+    </nav>
+
+    <!-- Footer: thin single line -->
+    <footer class="footer">
+      <div class="footer__actions">
+        <button class="footer-history-btn" id="btnHistory">History</button>
+        <button class="footer-history-btn" id="btnDataDash">Data</button>
+        <button class="footer-history-btn" id="btnFeedback">Feedback</button>
+        <button class="footer-history-btn" id="btnChangelog">New</button>
+      </div>
+      <div class="footer__bottom">
+        <span>v7.0</span>
+        <span class="footer__sep">&middot;</span>
+        <span>Not affiliated with CIG</span>
+        <span class="footer__sep">&middot;</span>
+        <span>Patch 4.6.0</span>
+        <span class="footer__sep">&middot;</span>
+        <span>55+ ships &middot; 24 methods &middot; 3 systems</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ═══ TAB OVERLAY (Methods, Ships, Plan, Intel) ═══ -->
+  <div class="tab-modal-overlay" id="tabOverlay">
+    <div class="tab-modal-panel" id="tabPanel">
+      <!-- Methods tab content -->
+      <div class="tab-content-section" id="tab-methods" style="display:none">
+        <section id="methods-section" class="content-section">
+          <div class="section-header">
+            <span class="sec">Method Explorer</span>
+            <div class="section-header__filters" id="methodFilters"></div>
+          </div>
+          <div id="methodSort" class="mb-8"></div>
+          <div class="methods-grid" id="methodList"></div>
+        </section>
+      </div>
+      <!-- Ships tab content -->
+      <div class="tab-content-section" id="tab-ships" style="display:none">
+        <section id="ships-section" class="content-section">
+          <div class="section-header">
+            <span class="sec">Ship Browser</span>
+            <div class="section-header__filters">
+              <input type="text" id="shipSearch" class="header-input header-input--search" placeholder="Search ships...">
+              <div id="shipFilters" class="inline-filters"></div>
+            </div>
+          </div>
+          <div class="ships-table" id="shipList"></div>
+        </section>
+      </div>
+      <!-- Plan tab content -->
+      <div class="tab-content-section" id="tab-plan" style="display:none">
+        <section id="plan-section" class="content-section">
+          <div class="section-header">
+            <span class="sec">Progression Plan</span>
+          </div>
+          <div id="planResults">
+            <div class="compact-row compact-row--empty">Set a goal ship in the Goal Tracker above to see your progression plan.</div>
+          </div>
+        </section>
+      </div>
+      <!-- Intel tab content (challenges + data panel) -->
+      <div class="tab-content-section" id="tab-intel" style="display:none">
+        <div id="challengesWidget" class="challenges-widget"></div>
+        <div id="dataPanel"></div>
+      </div>
+    </div>
+    <button class="tab-modal-close" id="tabClose" aria-label="Close search">&times; Close</button>
+  </div>
+
+  <!-- ═══ GLOBAL SEARCH ═══ -->
+  <div id="globalSearch" class="gsearch">
+    <div class="gsearch__backdrop"></div>
+    <div class="gsearch__panel">
+      <input type="text" id="gsearchInput" class="gsearch__input" placeholder="Search ships, methods, locations..." autocomplete="off">
+      <div class="gsearch__results" id="gsearchResults"></div>
+      <div class="gsearch__hint">
+        <span><kbd>↑↓</kbd> Navigate</span>
+        <span><kbd>Enter</kbd> Select</span>
+        <span><kbd>Esc</kbd> Close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MODAL ═══ -->
+  <div id="modal" class="modal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__panel">
+      <button class="modal__close" aria-label="Close">&times;</button>
+      <div class="modal__content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- ═══ ONBOARDING ═══ -->
+  <div id="onboarding" class="onboard">
+    <div class="onboard__backdrop"></div>
+    <div class="onboard__panel">
+
+      <!-- Step indicator dots -->
+      <div class="onboard__dots">
+        <span class="onboard__dot active" data-dot="1"></span>
+        <span class="onboard__dot" data-dot="2"></span>
+        <span class="onboard__dot" data-dot="3"></span>
+        <span class="onboard__dot" data-dot="4"></span>
+      </div>
+
+      <!-- Step 1: Welcome -->
+      <div class="onboard__step active" data-step="1">
+        <h2 class="onboard__title">Welcome, Citizen</h2>
+        <p class="onboard__text">Your personal Star Citizen money-making command center. We'll analyze your ship, playstyle, and budget to find the fastest path to your dream fleet.</p>
+        <p class="onboard__text onboard__text--sub">30 seconds to set up. Everything adjustable later.</p>
+        <div class="onboard__actions">
+          <button class="onboard__cta" data-onboard-next="2">Begin Setup</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Your Ship -->
+      <div class="onboard__step" data-step="2">
+        <h2 class="onboard__title">What do you fly?</h2>
+        <p class="onboard__text">Pick your primary ship. We'll match you with the best money-making methods it can handle.</p>
+        <div class="onboard__field">
+          <select id="onboardShip" class="onboard__select">
+            <option value="" disabled selected>Choose your ship...</option>
+            <optgroup label="RSI">
+              <option value="aurora-mr">Aurora MR — 186,120 aUEC</option>
+              <option value="aurora-cl">Aurora CL — 235,950 aUEC</option>
+              <option value="constellation-taurus">Constellation Taurus — 2,632,500 aUEC</option>
+              <option value="constellation-andromeda">Constellation Andromeda — 3,498,600 aUEC</option>
+              <option value="constellation-phoenix">Constellation Phoenix — 5,535,000 aUEC</option>
+              <option value="odyssey">Odyssey — 16,500,000 aUEC</option>
+              <option value="perseus">Perseus — 18,000,000 aUEC</option>
+            </optgroup>
+            <optgroup label="Aegis">
+              <option value="avenger-titan">Avenger Titan — 785,600 aUEC</option>
+              <option value="avenger-stalker">Avenger Stalker — 885,000 aUEC</option>
+              <option value="avenger-warlock">Avenger Warlock — 1,050,000 aUEC</option>
+              <option value="gladius">Gladius — 1,102,000 aUEC</option>
+              <option value="sabre">Sabre — 2,135,000 aUEC</option>
+              <option value="vanguard-warden">Vanguard Warden — 2,768,500 aUEC</option>
+              <option value="vanguard-sentinel">Vanguard Sentinel — 2,925,000 aUEC</option>
+              <option value="retaliator">Retaliator — 4,850,000 aUEC</option>
+              <option value="redeemer">Redeemer — 6,100,000 aUEC</option>
+              <option value="reclaimer">Reclaimer — 8,316,900 aUEC</option>
+              <option value="hammerhead">Hammerhead — 14,312,500 aUEC</option>
+            </optgroup>
+            <optgroup label="Drake">
+              <option value="buccaneer">Buccaneer — 1,272,000 aUEC</option>
+              <option value="cutlass-black">Cutlass Black — 1,385,300 aUEC</option>
+              <option value="cutlass-red">Cutlass Red — 1,465,000 aUEC</option>
+              <option value="vulture">Vulture — 1,471,200 aUEC</option>
+              <option value="drake-golem">Drake Golem — 2,500,000 aUEC</option>
+              <option value="drake-corsair">Drake Corsair — 3,375,000 aUEC</option>
+              <option value="caterpillar">Caterpillar — 4,684,800 aUEC</option>
+            </optgroup>
+            <optgroup label="Origin">
+              <option value="100i">100i — 535,600 aUEC</option>
+              <option value="300i">300i — 590,000 aUEC</option>
+              <option value="315p">315p — 650,000 aUEC</option>
+              <option value="600i-explorer">600i Explorer — 6,678,500 aUEC</option>
+              <option value="890-jump">890 Jump — 32,418,700 aUEC</option>
+            </optgroup>
+            <optgroup label="MISC">
+              <option value="reliant-kore">Reliant Kore — 350,400 aUEC</option>
+              <option value="hull-a">Hull A — 1,250,000 aUEC</option>
+              <option value="freelancer">Freelancer — 1,659,200 aUEC</option>
+              <option value="freelancer-max">Freelancer MAX — 1,831,800 aUEC</option>
+              <option value="prospector">Prospector — 2,061,000 aUEC</option>
+            </optgroup>
+            <optgroup label="Anvil">
+              <option value="pisces">C8X Pisces — 406,000 aUEC</option>
+              <option value="arrow">Arrow — 950,000 aUEC</option>
+              <option value="hornet-f7a-mkii">Hornet F7A Mk II — 2,400,000 aUEC</option>
+              <option value="carrack">Carrack — 14,312,500 aUEC</option>
+            </optgroup>
+            <optgroup label="Crusader">
+              <option value="ares-inferno">Ares Inferno — 2,280,000 aUEC</option>
+              <option value="ares-ion">Ares Ion — 2,280,000 aUEC</option>
+              <option value="mercury-star-runner">Mercury Star Runner — 3,165,000 aUEC</option>
+              <option value="c2-hercules">C2 Hercules — 4,962,500 aUEC</option>
+            </optgroup>
+            <optgroup label="Consolidated Outland">
+              <option value="mustang-alpha">Mustang Alpha — 186,120 aUEC</option>
+              <option value="mustang-delta">Mustang Delta — 380,000 aUEC</option>
+              <option value="nomad">Nomad — 952,500 aUEC</option>
+            </optgroup>
+            <optgroup label="ARGO">
+              <option value="mole">MOLE — 5,130,500 aUEC</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="onboard__ship-preview" id="onboardShipPreview">
+          <p class="onboard__ship-preview-empty">Select a ship above to see what it can do</p>
+        </div>
+        <div class="onboard__actions onboard__actions--split">
+          <button class="onboard__btn onboard__btn--skip" data-onboard-next="3">Skip</button>
+          <button class="onboard__cta" data-onboard-next="3">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Your Profile -->
+      <div class="onboard__step" data-step="3">
+        <h2 class="onboard__title">Tell us about you</h2>
+        <p class="onboard__text">Fine-tune your recommendations. All of these can be changed in the header bar later.</p>
+
+        <div class="onboard__profile-grid">
+          <div class="onboard__field onboard__field--wide">
+            <label class="onboard__label" for="onboardBudget">Current aUEC Budget</label>
+            <p class="onboard__hint">How much aUEC do you have right now?</p>
+            <input type="text" id="onboardBudget" class="onboard__input" inputmode="numeric" placeholder="10,000">
+          </div>
+
+          <div class="onboard__field onboard__field--wide">
+            <label class="onboard__label" for="onboardSession">Typical Session Length</label>
+            <p class="onboard__hint">How long do you usually play?</p>
+            <select id="onboardSession" class="onboard__select">
+              <option value="0.5">0.5h</option>
+              <option value="1">1h</option>
+              <option value="1.5">1.5h</option>
+              <option value="2" selected>2h</option>
+              <option value="3">3h</option>
+              <option value="4">4h</option>
+              <option value="6">6h</option>
+              <option value="8">8h</option>
+            </select>
+          </div>
+
+          <div class="onboard__field">
+            <label class="onboard__label">Play Style</label>
+            <p class="onboard__hint">Do you fly solo or with friends?</p>
+            <div class="onboard__toggle" id="onboardSolo">
+              <button class="onboard__tbtn active" data-val="solo">Solo</button>
+              <button class="onboard__tbtn" data-val="group">Group</button>
+            </div>
+          </div>
+
+          <div class="onboard__field">
+            <label class="onboard__label">Skill Level</label>
+            <p class="onboard__hint">How experienced are you with money-making?</p>
+            <div class="onboard__toggle" id="onboardSkill">
+              <button class="onboard__tbtn active" data-val="beginner">New</button>
+              <button class="onboard__tbtn" data-val="intermediate">Mid</button>
+              <button class="onboard__tbtn" data-val="advanced">Pro</button>
+            </div>
+          </div>
+
+          <div class="onboard__field">
+            <label class="onboard__label">Risk Tolerance</label>
+            <p class="onboard__hint">Higher risk = higher potential earnings</p>
+            <div class="onboard__toggle" id="onboardRisk">
+              <button class="onboard__tbtn active" data-val="low">Low</button>
+              <button class="onboard__tbtn" data-val="medium">Med</button>
+              <button class="onboard__tbtn" data-val="high">High</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="onboard__actions onboard__actions--split">
+          <button class="onboard__btn onboard__btn--back" data-onboard-back="2">Back</button>
+          <button class="onboard__cta" data-onboard-next="4">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Ready -->
+      <div class="onboard__step" data-step="4">
+        <h2 class="onboard__title">Ready for Launch</h2>
+        <p class="onboard__text">Your personalized earning strategy:</p>
+
+        <div class="onboard__summary" id="onboardSummary">
+          <div class="onboard__summary-row">
+            <span class="onboard__summary-label">Ship</span>
+            <span class="onboard__summary-value" id="sumShip">Aurora MR</span>
+          </div>
+          <div class="onboard__summary-row">
+            <span class="onboard__summary-label">Budget</span>
+            <span class="onboard__summary-value" id="sumBudget">10,000 aUEC</span>
+          </div>
+          <div class="onboard__summary-row">
+            <span class="onboard__summary-label">Session</span>
+            <span class="onboard__summary-value" id="sumSession">2h</span>
+          </div>
+          <div class="onboard__summary-row">
+            <span class="onboard__summary-label">Style</span>
+            <span class="onboard__summary-value" id="sumSolo">Solo</span>
+          </div>
+          <div class="onboard__summary-row">
+            <span class="onboard__summary-label">Skill</span>
+            <span class="onboard__summary-value" id="sumSkill">New</span>
+          </div>
+          <div class="onboard__summary-row">
+            <span class="onboard__summary-label">Risk</span>
+            <span class="onboard__summary-value" id="sumRisk">Low</span>
+          </div>
+        </div>
+
+        <p class="onboard__text onboard__text--sub">Tweak anything from the header bar. Your dashboard updates instantly.</p>
+
+        <div class="onboard__actions onboard__actions--split">
+          <button class="onboard__btn onboard__btn--back" data-onboard-back="3">Back</button>
+          <button class="onboard__cta" id="onboardDismiss">Launch Dashboard &rarr;</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Session Timer Widget -->
+  <div class="session-timer" id="sessionTimer">
+    <div class="session-timer__display" id="timerDisplay">00:00</div>
+    <div class="session-timer__controls">
+      <button class="session-timer__btn" id="timerStart" title="Start">&#x25B6;</button>
+      <button class="session-timer__btn" id="timerPause" title="Pause">&#x23F8;</button>
+      <button class="session-timer__btn" id="timerReset" title="Reset">&#x23F9;</button>
+    </div>
+  </div>
+
+  <!-- Floating Action Button -->
+  <div class="fab" id="fab">
+    <button class="fab__main" aria-label="Quick actions" title="Quick Actions">+</button>
+    <div class="fab__menu">
+      <button class="fab__item" id="fabTimer" title="Session Timer">&#x23F1;</button>
+      <button class="fab__item" id="fabA11y" title="Accessibility (Ctrl+Shift+A)">&#x267F;</button>
+      <button class="fab__item" id="fabChangelog" title="What's New">&#x1F4CB;</button>
+    </div>
+  </div>
+
+  <!-- Accessibility Panel (rendered by JS) -->
+  <div id="a11yPanel"></div>
+
+  <script type="module" src="lib/app.js"></script>
+  <script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
