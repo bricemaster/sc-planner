@@ -60,11 +60,11 @@
 
 .header__label {
   font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--md);
+  color: var(--sv);
   line-height: 1;
 }
 

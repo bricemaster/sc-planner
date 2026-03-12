@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const path = require('path');
 
 const URL = process.env.SC_URL || 'https://bricemaster.github.io/sc-planner/';
-const OUT_DIR = path.join(__dirname, 'v7-screenshots');
+const OUT_DIR = path.join(__dirname, 'v8-screenshots');
 
 (async () => {
   const fs = require('fs');
@@ -76,5 +76,5 @@ const OUT_DIR = path.join(__dirname, 'v7-screenshots');
   console.log('6/6 Mobile view');
 
   await browser.close();
-  console.log('\nDone! Screenshots saved to ./v7-screenshots/');
+  console.log('\nDone! Screenshots saved to ./v8-screenshots/');
 })();
