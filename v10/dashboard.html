@@ -1,0 +1,119 @@
+<!-- ============================================================
+     DASHBOARD CARDS — SC Planner v10
+     4 at-a-glance stat cards between hero and methods
+     ============================================================ -->
+<section class="dash" id="dashSection">
+  <div class="dash__grid">
+
+    <!-- Card 1: Your Ship -->
+    <div class="dash-card" id="cardShip">
+      <div class="dash-card__header">Your Ship</div>
+      <div class="dash-card__body">
+        <div class="dash-card__ship-name" id="dashShipName">Cutlass Black</div>
+        <div class="dash-card__ship-mfr" id="dashShipMfr">Drake Interplanetary</div>
+
+        <div class="dash-card__stat-grid">
+          <div class="dash-card__mini-stat">
+            <span class="dash-card__mini-label">Cargo</span>
+            <span class="dash-card__mini-value" id="dashShipCargo">46 SCU</span>
+          </div>
+          <div class="dash-card__mini-stat">
+            <span class="dash-card__mini-label">Combat</span>
+            <span class="dash-card__mini-value dash-card__mini-value--dots" id="dashShipCombat">
+              <span class="dot dot--filled"></span><span class="dot dot--filled"></span><span class="dot dot--filled"></span><span class="dot dot--empty"></span><span class="dot dot--empty"></span>
+            </span>
+          </div>
+          <div class="dash-card__mini-stat">
+            <span class="dash-card__mini-label">Mining</span>
+            <span class="dash-card__mini-value dash-card__mini-value--dots" id="dashShipMining">
+              <span class="dot dot--filled"></span><span class="dot dot--filled"></span><span class="dot dot--empty"></span><span class="dot dot--empty"></span>
+            </span>
+          </div>
+          <div class="dash-card__mini-stat">
+            <span class="dash-card__mini-label">Crew</span>
+            <span class="dash-card__mini-value" id="dashShipCrew">1</span>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card__footer">
+        <button class="btn btn--ghost btn--sm" id="btnChangeShip">Change Ship</button>
+      </div>
+    </div>
+
+    <!-- Card 2: Goal Tracker -->
+    <div class="dash-card" id="cardGoal">
+      <div class="dash-card__header">Goal Tracker</div>
+      <div class="dash-card__body">
+        <div class="dash-card__goal-name" id="dashGoalName">Constellation Andromeda</div>
+        <div class="dash-card__progress-wrap">
+          <div class="progress progress--sm">
+            <div class="progress__fill" id="dashGoalFill" style="width: 34%"></div>
+          </div>
+        </div>
+        <div class="dash-card__goal-meta" id="dashGoalMeta">
+          <span class="dash-card__goal-pct">34%</span>
+          <span class="dash-card__goal-sep">&mdash;</span>
+          <span class="dash-card__goal-eta">~12h to go</span>
+        </div>
+        <div class="dash-card__milestones" id="dashGoalMilestones">
+          <span class="milestone" data-at="25"><span class="milestone__dot milestone__dot--reached"></span><span class="milestone__label">25%</span></span>
+          <span class="milestone" data-at="50"><span class="milestone__dot"></span><span class="milestone__label">50%</span></span>
+          <span class="milestone" data-at="75"><span class="milestone__dot"></span><span class="milestone__label">75%</span></span>
+          <span class="milestone" data-at="100"><span class="milestone__dot"></span><span class="milestone__label">100%</span></span>
+        </div>
+      </div>
+      <div class="dash-card__footer">
+        <select class="select select--sm dash-card__goal-select" id="goalShip">
+          <option value="">Pick goal ship&hellip;</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Card 3: Session Plan -->
+    <div class="dash-card" id="cardSession">
+      <div class="dash-card__header">Session Plan</div>
+      <div class="dash-card__body">
+        <div class="dash-card__session-earn">
+          <span class="dash-card__session-label">Expected Earnings</span>
+          <span class="dash-card__session-value" id="dashSessionEarn">~900k</span>
+        </div>
+        <div class="dash-card__session-mix">
+          <span class="dash-card__session-label">Method Mix</span>
+          <span class="dash-card__session-mix-text" id="dashSessionMix">Bounties 60%, Cargo 40%</span>
+        </div>
+        <div class="dash-card__timeline" id="dashSessionTimeline">
+          <div class="dash-card__timeline-seg dash-card__timeline-seg--a" style="width: 60%" title="Bounties 60%"></div>
+          <div class="dash-card__timeline-seg dash-card__timeline-seg--b" style="width: 40%" title="Cargo 40%"></div>
+        </div>
+      </div>
+      <div class="dash-card__footer">
+        <button class="btn btn--gold btn--sm" id="btnStartTimer">Start Timer</button>
+      </div>
+    </div>
+
+    <!-- Card 4: Alternatives -->
+    <div class="dash-card" id="cardAlts">
+      <div class="dash-card__header">Alternatives</div>
+      <div class="dash-card__body">
+        <ul class="dash-card__alt-list" id="dashAltList">
+          <li class="dash-card__alt">
+            <span class="dash-card__alt-name">Cargo Hauling</span>
+            <span class="dash-card__alt-rate">~420k/hr</span>
+          </li>
+          <li class="dash-card__alt">
+            <span class="dash-card__alt-name">ROC Mining</span>
+            <span class="dash-card__alt-rate">~310k/hr</span>
+          </li>
+          <li class="dash-card__alt">
+            <span class="dash-card__alt-name">Box Delivery</span>
+            <span class="dash-card__alt-rate">~180k/hr</span>
+          </li>
+        </ul>
+      </div>
+      <div class="dash-card__footer">
+        <button class="btn btn--ghost btn--sm" id="btnCompareShips">Compare All</button>
+      </div>
+    </div>
+
+  </div>
+</section>

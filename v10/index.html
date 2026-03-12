@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Star Citizen Earnings Optimizer — find the best money-making methods for your ship, budget, and play style.">
+  <meta name="theme-color" content="#06060a">
+  <title>SC Planner — Star Citizen Earnings Optimizer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS (order matters) -->
+  <link rel="stylesheet" href="v10/tokens.css">
+  <link rel="stylesheet" href="v10/base.css">
+  <link rel="stylesheet" href="v10/header.css">
+  <link rel="stylesheet" href="v10/hero.css">
+  <link rel="stylesheet" href="v10/methods.css">
+  <link rel="stylesheet" href="v10/ships.css">
+  <link rel="stylesheet" href="v10/dashboard.css">
+  <link rel="stylesheet" href="v10/livedata.css">
+  <link rel="stylesheet" href="v10/onboarding.css">
+  <link rel="stylesheet" href="v10/overlays.css">
+  <link rel="stylesheet" href="v10/layout.css">
+</head>
+<body>
+
+<a href="#heroSection" class="sr-only">Skip to main content</a>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════════ -->
+<header class="header">
+  <span class="header__title">SC Planner</span>
+
+  <!-- Ship picker -->
+  <div class="ship-picker" data-open="false">
+    <button id="myShip" class="ship-picker__btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+      <span class="ship-picker__btn-name">Select Ship</span>
+      <span class="ship-picker__btn-price"></span>
+      <span class="ship-picker__chevron">&#9662;</span>
+    </button>
+    <div class="ship-picker__dropdown" role="listbox" aria-label="Ship selection">
+      <div class="ship-picker__search">
+        <input type="text" placeholder="Search ships…" aria-label="Search ships">
+      </div>
+      <div class="ship-picker__list"></div>
+    </div>
+  </div>
+
+  <!-- Desktop controls -->
+  <div class="header__controls">
+    <div class="header-field">
+      <label class="header-field__label" for="myBudget">Budget</label>
+      <input id="myBudget" class="header-field__input" type="text" inputmode="numeric" placeholder="0" aria-label="Budget in aUEC">
+    </div>
+
+    <div class="header-field">
+      <label class="header-field__label" for="sessionLen">Session</label>
+      <select id="sessionLen" class="header-field__select" aria-label="Session length">
+        <option value="1">1h</option>
+        <option value="2" selected>2h</option>
+        <option value="3">3h</option>
+        <option value="4">4h</option>
+        <option value="6">6h</option>
+        <option value="8">8h</option>
+      </select>
+    </div>
+
+    <div class="header-field">
+      <span class="header-field__label">Style</span>
+      <div id="soloToggle" class="toggle-group" role="radiogroup" aria-label="Play style">
+        <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="solo" type="button">Solo</button>
+        <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="group" type="button">Group</button>
+      </div>
+    </div>
+
+    <div class="header-field">
+      <span class="header-field__label">Skill</span>
+      <div id="skillToggle" class="toggle-group" role="radiogroup" aria-label="Skill level">
+        <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="new" type="button">New</button>
+        <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="mid" type="button">Mid</button>
+        <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="vet" type="button">Vet</button>
+      </div>
+    </div>
+
+    <div class="header-field">
+      <span class="header-field__label">Risk</span>
+      <div id="riskToggle" class="toggle-group" role="radiogroup" aria-label="Risk tolerance">
+        <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="safe" type="button">Safe</button>
+        <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="med" type="button">Med</button>
+        <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="high" type="button">High</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hamburger (mobile) -->
+  <button id="settingsToggle" class="header__hamburger" type="button" aria-expanded="false" aria-controls="settingsDrawer" aria-label="Open settings">&#9776;</button>
+</header>
+
+<!-- Settings drawer (mobile) -->
+<div id="settingsDrawer" class="settings-drawer" data-open="false">
+  <div class="settings-drawer__inner">
+    <div class="settings-drawer__row">
+      <div class="header-field">
+        <label class="header-field__label" for="myBudgetMobile">Budget</label>
+        <input id="myBudgetMobile" class="header-field__input" type="text" inputmode="numeric" placeholder="0" aria-label="Budget in aUEC">
+      </div>
+      <div class="header-field">
+        <label class="header-field__label" for="sessionLenMobile">Session</label>
+        <select id="sessionLenMobile" class="header-field__select" aria-label="Session length">
+          <option value="1">1h</option>
+          <option value="2" selected>2h</option>
+          <option value="3">3h</option>
+          <option value="4">4h</option>
+          <option value="6">6h</option>
+          <option value="8">8h</option>
+        </select>
+      </div>
+    </div>
+    <div class="settings-drawer__toggles">
+      <div class="settings-drawer__toggle-col">
+        <span class="header-field__label">Style</span>
+        <div class="toggle-group" role="radiogroup" aria-label="Play style">
+          <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="solo" data-sync="soloToggle" type="button">Solo</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="group" data-sync="soloToggle" type="button">Group</button>
+        </div>
+      </div>
+      <div class="settings-drawer__toggle-col">
+        <span class="header-field__label">Skill</span>
+        <div class="toggle-group" role="radiogroup" aria-label="Skill level">
+          <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="new" data-sync="skillToggle" type="button">New</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="mid" data-sync="skillToggle" type="button">Mid</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="vet" data-sync="skillToggle" type="button">Vet</button>
+        </div>
+      </div>
+      <div class="settings-drawer__toggle-col">
+        <span class="header-field__label">Risk</span>
+        <div class="toggle-group" role="radiogroup" aria-label="Risk tolerance">
+          <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="safe" data-sync="riskToggle" type="button">Safe</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="med" data-sync="riskToggle" type="button">Med</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="high" data-sync="riskToggle" type="button">High</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HERO RECOMMENDATION
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="hero" id="heroSection">
+    <div class="hero__inner">
+      <div class="hero__rec">
+        <span class="hero__label">Recommended Method</span>
+        <h2 class="hero__method" id="heroMethod">&mdash;</h2>
+        <p class="hero__reasoning" id="heroReasoning">Select a ship and configure your settings to get a personalized earning recommendation.</p>
+        <div class="hero__actions">
+          <button class="btn btn--ghost btn--sm" id="btnFullGuide">Full Guide</button>
+          <button class="btn btn--ghost btn--sm" id="btnAlts">Alternatives</button>
+          <button class="btn btn--ghost btn--sm" id="btnShare">Share</button>
+        </div>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-label">Rate</span>
+          <span class="hero__stat-value hero__stat-value--mono" id="heroRate">&mdash;</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-label">Range</span>
+          <span class="hero__stat-value hero__stat-value--sub" id="heroRange">&mdash;</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-label">Confidence</span>
+          <span class="hero__stat-value" id="heroConfidence">&mdash;</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-label">Risk</span>
+          <span class="hero__stat-value" id="heroRisk">&mdash;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       DASHBOARD CARDS
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="dash" id="dashSection">
+    <div class="dash__grid">
+
+      <!-- Card 1: Your Ship -->
+      <div class="dash-card" id="cardShip">
+        <div class="dash-card__header">Your Ship</div>
+        <div class="dash-card__body">
+          <div class="dash-card__ship-name" id="dashShipName">&mdash;</div>
+          <div class="dash-card__ship-mfr" id="dashShipMfr"></div>
+          <div class="dash-card__stat-grid">
+            <div class="dash-card__mini-stat">
+              <span class="dash-card__mini-label">Cargo</span>
+              <span class="dash-card__mini-value" id="dashShipCargo">&mdash;</span>
+            </div>
+            <div class="dash-card__mini-stat">
+              <span class="dash-card__mini-label">Combat</span>
+              <span class="dash-card__mini-value dash-card__mini-value--dots" id="dashShipCombat"></span>
+            </div>
+            <div class="dash-card__mini-stat">
+              <span class="dash-card__mini-label">Mining</span>
+              <span class="dash-card__mini-value dash-card__mini-value--dots" id="dashShipMining"></span>
+            </div>
+            <div class="dash-card__mini-stat">
+              <span class="dash-card__mini-label">Crew</span>
+              <span class="dash-card__mini-value" id="dashShipCrew">&mdash;</span>
+            </div>
+          </div>
+        </div>
+        <div class="dash-card__footer">
+          <button class="btn btn--ghost btn--sm" id="btnChangeShip">Change Ship</button>
+        </div>
+      </div>
+
+      <!-- Card 2: Goal Tracker -->
+      <div class="dash-card" id="cardGoal">
+        <div class="dash-card__header">Goal Tracker</div>
+        <div class="dash-card__body">
+          <div class="dash-card__goal-name" id="dashGoalName">&mdash;</div>
+          <div class="dash-card__progress-wrap">
+            <div class="progress progress--sm">
+              <div class="progress__fill" id="dashGoalFill" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="dash-card__goal-meta" id="dashGoalMeta">
+            <span class="dash-card__goal-pct">0%</span>
+            <span class="dash-card__goal-sep">&mdash;</span>
+            <span class="dash-card__goal-eta">Select a goal</span>
+          </div>
+          <div class="dash-card__milestones" id="dashGoalMilestones">
+            <span class="milestone" data-at="25"><span class="milestone__dot"></span><span class="milestone__label">25%</span></span>
+            <span class="milestone" data-at="50"><span class="milestone__dot"></span><span class="milestone__label">50%</span></span>
+            <span class="milestone" data-at="75"><span class="milestone__dot"></span><span class="milestone__label">75%</span></span>
+            <span class="milestone" data-at="100"><span class="milestone__dot"></span><span class="milestone__label">100%</span></span>
+          </div>
+        </div>
+        <div class="dash-card__footer">
+          <select class="select select--sm dash-card__goal-select" id="goalShip">
+            <option value="">Pick goal ship&hellip;</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Card 3: Session Plan -->
+      <div class="dash-card" id="cardSession">
+        <div class="dash-card__header">Session Plan</div>
+        <div class="dash-card__body">
+          <div class="dash-card__session-earn">
+            <span class="dash-card__session-label">Expected Earnings</span>
+            <span class="dash-card__session-value" id="dashSessionEarn">&mdash;</span>
+          </div>
+          <div class="dash-card__session-mix">
+            <span class="dash-card__session-label">Method Mix</span>
+            <span class="dash-card__session-mix-text" id="dashSessionMix">&mdash;</span>
+          </div>
+          <div class="dash-card__timeline" id="dashSessionTimeline"></div>
+        </div>
+        <div class="dash-card__footer">
+          <button class="btn btn--gold btn--sm" id="btnStartTimer">Start Timer</button>
+        </div>
+      </div>
+
+      <!-- Card 4: Alternatives -->
+      <div class="dash-card" id="cardAlts">
+        <div class="dash-card__header">Alternatives</div>
+        <div class="dash-card__body">
+          <ul class="dash-card__alt-list" id="dashAltList"></ul>
+        </div>
+        <div class="dash-card__footer">
+          <button class="btn btn--ghost btn--sm" id="btnCompareShips">Compare All</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       METHODS EXPLORER
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="methodsSection">
+    <div class="methods__header">
+      <h2 class="section-title">Methods</h2>
+      <span class="methods__count" id="methodsCount">24 methods</span>
+    </div>
+
+    <div class="methods__toolbar">
+      <div id="methodsFilter" role="tablist" aria-label="Filter by category">
+        <button class="methods__pill active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="methods__pill" data-filter="combat" role="tab" aria-selected="false">Combat</button>
+        <button class="methods__pill" data-filter="cargo" role="tab" aria-selected="false">Cargo</button>
+        <button class="methods__pill" data-filter="mining" role="tab" aria-selected="false">Mining</button>
+        <button class="methods__pill" data-filter="salvage" role="tab" aria-selected="false">Salvage</button>
+        <button class="methods__pill" data-filter="delivery" role="tab" aria-selected="false">Delivery</button>
+        <button class="methods__pill" data-filter="trading" role="tab" aria-selected="false">Trading</button>
+        <button class="methods__pill" data-filter="bounty" role="tab" aria-selected="false">Bounty</button>
+        <button class="methods__pill" data-filter="mission" role="tab" aria-selected="false">Mission</button>
+      </div>
+      <div class="methods__sort-wrap">
+        <label for="methodsSort" class="sr-only">Sort methods</label>
+        <select id="methodsSort">
+          <option value="rate" selected>Sort by: Rate</option>
+          <option value="risk">Sort by: Risk</option>
+          <option value="budget">Sort by: Budget</option>
+          <option value="name">Sort by: Name</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="methodsGrid">
+      <!-- Method cards rendered by app.js -->
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SPLIT: SHIPS + LIVE DATA (side by side on desktop)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="split-section">
+
+    <!-- SHIPS BROWSER -->
+    <section class="ships" id="shipsSection">
+      <div class="ships__header">
+        <div class="ships__title-row">
+          <h3 class="section-title">Ships</h3>
+          <span class="ships__badge">85+ ships</span>
+        </div>
+        <input type="text" class="ships__search" id="shipSearch" placeholder="Search ships..." autocomplete="off" spellcheck="false">
+        <div class="ships__view-toggle">
+          <button class="ships__view-btn ships__view-btn--active" data-view="grid" aria-label="Grid view">Grid</button>
+          <button class="ships__view-btn" data-view="list" aria-label="List view">List</button>
+        </div>
+      </div>
+      <div class="ships__list" id="shipList">
+        <!-- Manufacturer accordion groups rendered by app.js -->
+      </div>
+    </section>
+
+    <!-- LIVE DATA -->
+    <section class="livedata" id="liveDataSection">
+      <div class="livedata__header">
+        <div class="livedata__title-group">
+          <h3 class="section-title" style="margin-bottom:0; border-bottom:none; padding-bottom:0;">Live Prices</h3>
+          <div class="livedata__meta">
+            <span class="livedata__age" id="priceAge">Fetching prices...</span>
+            <span class="pill pill--cyan livedata__source" id="priceSource">UEX Live</span>
+          </div>
+        </div>
+        <button class="btn btn--ghost btn--icon btn--sm" id="btnRefreshPrices" aria-label="Refresh prices" title="Refresh prices">
+          <svg class="livedata__refresh-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1.5 6.5A6.5 6.5 0 0 1 13.3 4"/>
+            <polyline points="14 1 14 4.5 10.5 4.5"/>
+            <path d="M14.5 9.5A6.5 6.5 0 0 1 2.7 12"/>
+            <polyline points="2 15 2 11.5 5.5 11.5"/>
+          </svg>
+        </button>
+      </div>
+      <div class="livedata__grid">
+        <div class="livedata__prices">
+          <div class="livedata__table-wrap">
+            <table class="livedata__table" id="priceTable">
+              <thead>
+                <tr>
+                  <th class="livedata__th livedata__th--sortable" data-sort="name">Commodity</th>
+                  <th class="livedata__th livedata__th--sortable livedata__th--num" data-sort="buyAvg">Buy</th>
+                  <th class="livedata__th livedata__th--sortable livedata__th--num" data-sort="sellAvg">Sell</th>
+                  <th class="livedata__th livedata__th--sortable livedata__th--num livedata__th--margin" data-sort="margin">Margin</th>
+                  <th class="livedata__th livedata__th--sortable livedata__th--center" data-sort="trend">Trend</th>
+                </tr>
+              </thead>
+              <tbody id="priceTableBody">
+                <!-- Rows injected by app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="livedata__routes" id="routesList">
+          <h4 class="livedata__routes-title">Best Trade Routes</h4>
+          <!-- Route cards injected by app.js -->
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /.split-section -->
+
+</main>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="app-footer">
+  <span>SC Planner v10.0</span>
+  <span>85+ ships &middot; 24 methods &middot; 3 systems</span>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     ONBOARDING OVERLAY
+     ═══════════════════════════════════════════════════════════ -->
+<div id="onboarding" class="onboarding-overlay" hidden>
+  <div class="onboarding__panel">
+    <div class="onboard__step active" data-step="1">
+      <h2 class="onboard__title">Welcome, Citizen</h2>
+      <p class="onboard__desc">Let's set up your planner. Pick your current ship to get started.</p>
+      <div class="onboard__field">
+        <label for="onboardShip">Your Ship</label>
+        <select id="onboardShip" class="select">
+          <option value="">Select your ship...</option>
+        </select>
+      </div>
+      <div id="onboardShipPreview" class="onboard__ship-preview"></div>
+    </div>
+
+    <div class="onboard__step" data-step="2">
+      <h2 class="onboard__title">Your Budget</h2>
+      <p class="onboard__desc">How much aUEC do you currently have?</p>
+      <div class="onboard__field">
+        <label for="onboardBudget">Current aUEC</label>
+        <input id="onboardBudget" class="input" type="text" inputmode="numeric" placeholder="0">
+      </div>
+    </div>
+
+    <div class="onboard__step" data-step="3">
+      <h2 class="onboard__title">Play Style</h2>
+      <p class="onboard__desc">Customize recommendations to match how you play.</p>
+      <div class="onboard__field">
+        <label>Solo or Group?</label>
+        <div id="onboardSolo" class="toggle-group" role="radiogroup" aria-label="Play style">
+          <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="solo" type="button">Solo</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="group" type="button">Group</button>
+        </div>
+      </div>
+      <div class="onboard__field">
+        <label>Skill Level</label>
+        <div id="onboardSkill" class="toggle-group" role="radiogroup" aria-label="Skill level">
+          <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="beginner" type="button">New</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="intermediate" type="button">Mid</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="advanced" type="button">Vet</button>
+        </div>
+      </div>
+      <div class="onboard__field">
+        <label>Risk Tolerance</label>
+        <div id="onboardRisk" class="toggle-group" role="radiogroup" aria-label="Risk tolerance">
+          <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="low" type="button">Safe</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="medium" type="button">Med</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="high" type="button">High</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="onboard__step" data-step="4">
+      <h2 class="onboard__title">You're All Set</h2>
+      <p class="onboard__desc">Your planner is ready. We'll recommend the best earning methods based on your setup.</p>
+    </div>
+
+    <div class="onboard__nav">
+      <div class="onboard__dots">
+        <span class="onboard__dot active" data-step="1"></span>
+        <span class="onboard__dot" data-step="2"></span>
+        <span class="onboard__dot" data-step="3"></span>
+        <span class="onboard__dot" data-step="4"></span>
+      </div>
+      <div class="onboard__btns">
+        <button class="btn btn--ghost btn--sm" id="onboardBack" type="button">Back</button>
+        <button class="btn btn--gold btn--sm" id="onboardNext" type="button">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     MODAL
+     ═══════════════════════════════════════════════════════════ -->
+<div id="modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal__panel">
+    <button class="modal__close" type="button" aria-label="Close modal">&times;</button>
+    <div class="modal__header">
+      <h3 id="modalTitle" class="modal__title"></h3>
+    </div>
+    <div id="modalContent" class="modal__body"></div>
+    <div class="modal__footer" id="modalFooter" hidden></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     GLOBAL SEARCH (Ctrl+K)
+     ═══════════════════════════════════════════════════════════ -->
+<div id="globalSearch" class="gsearch-backdrop" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="gsearch__container">
+    <div class="gsearch__input-wrap">
+      <svg class="gsearch__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="8.5" cy="8.5" r="5.5"/>
+        <line x1="13" y1="13" x2="18" y2="18"/>
+      </svg>
+      <input id="gsearchInput" class="gsearch__input" type="text" placeholder="Search ships, methods, locations…" autocomplete="off" spellcheck="false" aria-label="Search">
+      <span class="gsearch__kbd" aria-hidden="true">Esc</span>
+    </div>
+    <div id="gsearchResults" class="gsearch__results" role="listbox" aria-label="Search results"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SESSION TIMER
+     ═══════════════════════════════════════════════════════════ -->
+<div id="sessionTimer" class="session-timer">
+  <span id="timerDisplay" class="session-timer__time">00:00:00</span>
+  <span class="session-timer__earnings" id="timerEarnings"></span>
+  <span class="session-timer__divider" aria-hidden="true"></span>
+  <div class="session-timer__controls">
+    <button id="timerStart" class="session-timer__btn" type="button" aria-label="Start timer" title="Start">&#9654;</button>
+    <button id="timerPause" class="session-timer__btn" type="button" aria-label="Pause timer" title="Pause">&#9208;</button>
+    <button id="timerReset" class="session-timer__btn" type="button" aria-label="Reset timer" title="Reset">&#9209;</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOASTS
+     ═══════════════════════════════════════════════════════════ -->
+<div id="toastContainer" class="toast-container" aria-live="polite" aria-relevant="additions"></div>
+
+<!-- Autosave indicator -->
+<span id="autosaveIndicator" class="autosave" role="status" aria-live="polite">Saved &#10003;</span>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS (ES modules)
+     ═══════════════════════════════════════════════════════════ -->
+<script type="module" src="data/ships.js"></script>
+<script type="module" src="data/methods.js"></script>
+<script type="module" src="data/routes.js"></script>
+<script type="module" src="lib/utils.js"></script>
+<script type="module" src="lib/advisor.js"></script>
+<script type="module" src="lib/planner.js"></script>
+<script type="module" src="lib/renderer.js"></script>
+<script type="module" src="lib/livedata.js"></script>
+<script type="module" src="lib/favorites.js"></script>
+<script type="module" src="lib/gsearch.js"></script>
+<script type="module" src="lib/powertools.js"></script>
+<script type="module" src="lib/effects.js"></script>
+<script type="module" src="v10/app.js"></script>
+
+</body>
+</html>

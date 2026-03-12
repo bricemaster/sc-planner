@@ -1,0 +1,71 @@
+<!-- ═══ MODAL ═══ -->
+<div id="modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal__panel">
+    <button class="modal__close" type="button" aria-label="Close modal">&times;</button>
+    <div class="modal__header">
+      <h3 id="modalTitle" class="modal__title"></h3>
+    </div>
+    <div id="modalContent" class="modal__body">
+      <!-- Content injected via innerHTML -->
+    </div>
+    <div class="modal__footer" id="modalFooter" hidden>
+      <!-- Optional action buttons -->
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ GLOBAL SEARCH (Ctrl+K) ═══ -->
+<div id="globalSearch" class="gsearch-backdrop" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="gsearch__container">
+    <div class="gsearch__input-wrap">
+      <svg class="gsearch__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="8.5" cy="8.5" r="5.5"/>
+        <line x1="13" y1="13" x2="18" y2="18"/>
+      </svg>
+      <input id="gsearchInput" class="gsearch__input" type="text" placeholder="Search ships, methods, locations…" autocomplete="off" spellcheck="false" aria-label="Search">
+      <span class="gsearch__kbd" aria-hidden="true">Esc</span>
+    </div>
+
+    <div id="gsearchResults" class="gsearch__results" role="listbox" aria-label="Search results">
+      <!-- Results injected by JS. Example structure:
+      <div class="gsearch__result" role="option" tabindex="-1">
+        <span class="gsearch__result-icon">🚀</span>
+        <div class="gsearch__result-body">
+          <div class="gsearch__result-name">Prospector</div>
+          <div class="gsearch__result-sub">MISC — Mining vessel</div>
+        </div>
+        <span class="gsearch__result-badge gsearch__result-badge--ship">Ship</span>
+      </div>
+      -->
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ SESSION TIMER ═══ -->
+<div id="sessionTimer" class="session-timer">
+  <span id="timerDisplay" class="session-timer__time">00:00:00</span>
+  <span class="session-timer__earnings" id="timerEarnings"></span>
+  <span class="session-timer__divider" aria-hidden="true"></span>
+  <div class="session-timer__controls">
+    <button id="timerStart" class="session-timer__btn" type="button" aria-label="Start timer" title="Start">&#9654;</button>
+    <button id="timerPause" class="session-timer__btn" type="button" aria-label="Pause timer" title="Pause">&#9208;</button>
+    <button id="timerReset" class="session-timer__btn" type="button" aria-label="Reset timer" title="Reset">&#9209;</button>
+  </div>
+</div>
+
+
+<!-- ═══ TOAST CONTAINER ═══ -->
+<div id="toastContainer" class="toast-container" aria-live="polite" aria-relevant="additions">
+  <!-- Toasts injected by JS. Example structure:
+  <div class="toast toast--success">
+    <span class="toast__icon" aria-hidden="true">✓</span>
+    <span class="toast__text">Session saved successfully</span>
+  </div>
+  -->
+</div>
+
+
+<!-- ═══ AUTOSAVE INDICATOR ═══ -->
+<span id="autosaveIndicator" class="autosave" role="status" aria-live="polite">Saved &#10003;</span>

@@ -1,0 +1,529 @@
+<!-- ═══════════════════════════════════════════════════════════
+     ONBOARDING WIZARD — 4-step first-time setup
+     Collects: ship, budget, play style, skill, risk
+     Requires: tokens.css, onboarding.css, data/ships.js
+     ═══════════════════════════════════════════════════════════ -->
+
+<div id="onboarding"
+     class="onboarding-overlay"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Setup wizard">
+
+  <div class="onboarding-panel">
+
+    <!-- Step Dots -->
+    <div class="onboarding-dots" role="tablist" aria-label="Wizard steps">
+      <div class="onboarding-dot is-current" aria-label="Step 1" role="tab" aria-selected="true"></div>
+      <div class="onboarding-dot" aria-label="Step 2" role="tab" aria-selected="false"></div>
+      <div class="onboarding-dot" aria-label="Step 3" role="tab" aria-selected="false"></div>
+      <div class="onboarding-dot" aria-label="Step 4" role="tab" aria-selected="false"></div>
+    </div>
+
+    <!-- Step Content -->
+    <div class="onboarding-body">
+
+      <!-- ──── STEP 1: Welcome ──── -->
+      <div class="onboarding-step is-active" data-step="1">
+        <h2 class="onboarding-step__title">Welcome, Citizen</h2>
+        <p class="onboarding-step__subtitle">
+          SC Planner finds the fastest way to earn aUEC for your ship and budget.
+        </p>
+        <div class="onboarding-welcome-cta">
+          <button class="btn btn--gold" id="onboardStart" type="button">Get Started</button>
+        </div>
+      </div>
+
+      <!-- ──── STEP 2: Ship ──── -->
+      <div class="onboarding-step" data-step="2">
+        <h2 class="onboarding-step__title">What do you fly?</h2>
+        <p class="onboarding-step__subtitle">Pick your primary ship.</p>
+
+        <div class="ship-selector" id="onboardShip">
+          <!-- Search -->
+          <div class="ship-selector__search">
+            <svg class="ship-selector__search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="7" cy="7" r="4.5"/>
+              <line x1="10.5" y1="10.5" x2="14" y2="14"/>
+            </svg>
+            <input type="text"
+                   class="input"
+                   id="onboardShipSearch"
+                   placeholder="Search ships..."
+                   autocomplete="off"
+                   spellcheck="false">
+          </div>
+
+          <!-- Ship list (populated by JS) -->
+          <div class="ship-selector__list" id="onboardShipList" role="listbox" aria-label="Ships"></div>
+
+          <!-- Selected ship display -->
+          <div class="ship-selector__selected" id="onboardShipSelected">
+            <div class="ship-selector__selected-info">
+              <div class="ship-selector__selected-name" id="onboardShipName"></div>
+              <div class="ship-selector__selected-price" id="onboardShipPrice"></div>
+            </div>
+            <button class="ship-selector__selected-clear"
+                    id="onboardShipClear"
+                    type="button"
+                    aria-label="Clear selection"
+                    title="Clear selection">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <line x1="3" y1="3" x2="11" y2="11"/>
+                <line x1="11" y1="3" x2="3" y2="11"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ──── STEP 3: Settings ──── -->
+      <div class="onboarding-step" data-step="3">
+        <h2 class="onboarding-step__title">How do you play?</h2>
+        <p class="onboarding-step__subtitle">Tailor your recommendations.</p>
+
+        <div class="onboarding-fields">
+          <!-- Budget -->
+          <div class="onboarding-field">
+            <label class="onboarding-field__label" for="onboardBudget">Starting budget in aUEC</label>
+            <input type="text"
+                   class="input"
+                   id="onboardBudget"
+                   placeholder="e.g. 500,000"
+                   inputmode="numeric"
+                   autocomplete="off">
+          </div>
+
+          <!-- Play Style -->
+          <div class="onboarding-field">
+            <span class="onboarding-field__label">Play style</span>
+            <div class="onboarding-toggle" id="onboardSolo" role="radiogroup" aria-label="Play style">
+              <button class="onboarding-toggle__btn is-active"
+                      type="button"
+                      role="radio"
+                      aria-checked="true"
+                      data-value="solo">Solo</button>
+              <button class="onboarding-toggle__btn"
+                      type="button"
+                      role="radio"
+                      aria-checked="false"
+                      data-value="group">Group</button>
+            </div>
+          </div>
+
+          <!-- Session Length -->
+          <div class="onboarding-field">
+            <label class="onboarding-field__label" for="onboardSession">Session length</label>
+            <select class="select" id="onboardSession">
+              <option value="1">1 hour</option>
+              <option value="2" selected>2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+              <option value="5">5 hours</option>
+              <option value="6">6 hours</option>
+              <option value="7">7 hours</option>
+              <option value="8">8 hours</option>
+            </select>
+          </div>
+
+          <!-- Skill -->
+          <div class="onboarding-field">
+            <span class="onboarding-field__label">Skill level</span>
+            <div class="onboarding-toggle" id="onboardSkill" role="radiogroup" aria-label="Skill level">
+              <button class="onboarding-toggle__btn is-active"
+                      type="button"
+                      role="radio"
+                      aria-checked="true"
+                      data-value="beginner">Beginner</button>
+              <button class="onboarding-toggle__btn"
+                      type="button"
+                      role="radio"
+                      aria-checked="false"
+                      data-value="intermediate">Intermediate</button>
+              <button class="onboarding-toggle__btn"
+                      type="button"
+                      role="radio"
+                      aria-checked="false"
+                      data-value="advanced">Advanced</button>
+            </div>
+          </div>
+
+          <!-- Risk -->
+          <div class="onboarding-field">
+            <span class="onboarding-field__label">Risk tolerance</span>
+            <div class="onboarding-toggle" id="onboardRisk" role="radiogroup" aria-label="Risk tolerance">
+              <button class="onboarding-toggle__btn"
+                      type="button"
+                      role="radio"
+                      aria-checked="false"
+                      data-value="low">Low</button>
+              <button class="onboarding-toggle__btn is-active"
+                      type="button"
+                      role="radio"
+                      aria-checked="true"
+                      data-value="medium">Medium</button>
+              <button class="onboarding-toggle__btn"
+                      type="button"
+                      role="radio"
+                      aria-checked="false"
+                      data-value="high">High</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ──── STEP 4: Summary & Launch ──── -->
+      <div class="onboarding-step" data-step="4">
+        <h2 class="onboarding-step__title">Ready to earn</h2>
+        <p class="onboarding-step__subtitle">Here's your setup at a glance.</p>
+
+        <div class="onboarding-summary" id="onboardSummary">
+          <div class="onboarding-summary__row">
+            <span class="onboarding-summary__label">Ship</span>
+            <span class="onboarding-summary__value onboarding-summary__value--gold" id="sumShip">--</span>
+          </div>
+          <div class="onboarding-summary__row">
+            <span class="onboarding-summary__label">Budget</span>
+            <span class="onboarding-summary__value" id="sumBudget">--</span>
+          </div>
+          <div class="onboarding-summary__row">
+            <span class="onboarding-summary__label">Style</span>
+            <span class="onboarding-summary__value" id="sumStyle">--</span>
+          </div>
+          <div class="onboarding-summary__row">
+            <span class="onboarding-summary__label">Session</span>
+            <span class="onboarding-summary__value" id="sumSession">--</span>
+          </div>
+          <div class="onboarding-summary__row">
+            <span class="onboarding-summary__label">Skill</span>
+            <span class="onboarding-summary__value" id="sumSkill">--</span>
+          </div>
+          <div class="onboarding-summary__row">
+            <span class="onboarding-summary__label">Risk</span>
+            <span class="onboarding-summary__value" id="sumRisk">--</span>
+          </div>
+        </div>
+
+        <div class="onboarding-launch">
+          <button class="btn btn--gold" id="onboardLaunch" type="button">Launch Dashboard</button>
+        </div>
+      </div>
+
+    </div><!-- /onboarding-body -->
+
+    <!-- Navigation -->
+    <nav class="onboarding-nav" id="onboardNav">
+      <button class="btn btn--ghost" id="onboardBack" type="button" style="display:none;">Back</button>
+      <div class="onboarding-nav__spacer"></div>
+      <button class="btn btn--gold" id="onboardNext" type="button" style="display:none;">Next</button>
+    </nav>
+
+  </div><!-- /onboarding-panel -->
+</div><!-- /onboarding-overlay -->
+
+
+<script>
+/* ============================================================
+   ONBOARDING WIZARD — Controller
+   ============================================================ */
+(function () {
+  'use strict';
+
+  // ---- Ship data (inline subset from data/ships.js) ----
+  // We reference the global SHIPS if available, otherwise define inline
+  const SHIP_DATA = (typeof SHIPS !== 'undefined') ? SHIPS : [];
+
+  // ---- DOM refs ----
+  const overlay     = document.getElementById('onboarding');
+  const dots        = Array.from(overlay.querySelectorAll('.onboarding-dot'));
+  const steps       = Array.from(overlay.querySelectorAll('.onboarding-step'));
+  const btnBack     = document.getElementById('onboardBack');
+  const btnNext     = document.getElementById('onboardNext');
+  const btnStart    = document.getElementById('onboardStart');
+  const btnLaunch   = document.getElementById('onboardLaunch');
+  const shipSearch  = document.getElementById('onboardShipSearch');
+  const shipList    = document.getElementById('onboardShipList');
+  const shipSelected = document.getElementById('onboardShipSelected');
+  const shipNameEl  = document.getElementById('onboardShipName');
+  const shipPriceEl = document.getElementById('onboardShipPrice');
+  const shipClear   = document.getElementById('onboardShipClear');
+  const budgetInput = document.getElementById('onboardBudget');
+
+  let currentStep = 1;
+  let selectedShip = null;
+
+  // ---- Helpers ----
+  function fmtAuec(n) {
+    return Number(n).toLocaleString('en-US') + ' aUEC';
+  }
+
+  function capitalize(s) {
+    return s ? s.charAt(0).toUpperCase() + s.slice(1) : '--';
+  }
+
+  function getToggleValue(id) {
+    const el = document.getElementById(id);
+    if (!el) return '--';
+    const active = el.querySelector('.is-active');
+    return active ? active.dataset.value : '--';
+  }
+
+  // ---- Step Navigation ----
+  function goToStep(n) {
+    if (n < 1 || n > 4) return;
+    currentStep = n;
+
+    // Update steps
+    steps.forEach(s => s.classList.remove('is-active'));
+    const target = steps[n - 1];
+    target.classList.add('is-active');
+
+    // Update dots
+    dots.forEach((d, i) => {
+      d.classList.remove('is-current', 'is-visited');
+      d.setAttribute('aria-selected', 'false');
+      if (i + 1 === n) {
+        d.classList.add('is-current');
+        d.setAttribute('aria-selected', 'true');
+      } else if (i + 1 < n) {
+        d.classList.add('is-visited');
+      }
+    });
+
+    // Update nav buttons
+    updateNav();
+
+    // If entering step 4, populate summary
+    if (n === 4) populateSummary();
+  }
+
+  function updateNav() {
+    const n = currentStep;
+    // Step 1: hide back/next (only "Get Started" in body)
+    // Step 2-3: show back + next
+    // Step 4: show back, hide next (Launch is in body)
+    btnBack.style.display = (n === 1) ? 'none' : '';
+    btnNext.style.display = (n >= 1 && n <= 3 && n !== 1) ? '' : 'none';
+
+    // Step 1 has its own CTA, no nav next
+    if (n === 1) {
+      btnNext.style.display = 'none';
+    }
+  }
+
+  // ---- Ship Selector ----
+  function buildShipList(filter) {
+    const ships = SHIP_DATA.length ? SHIP_DATA : [];
+    const q = (filter || '').toLowerCase().trim();
+
+    // Group by manufacturer
+    const grouped = {};
+    ships.forEach(s => {
+      if (q && !s.name.toLowerCase().includes(q) && !s.mfr.toLowerCase().includes(q)) return;
+      if (!grouped[s.mfr]) grouped[s.mfr] = [];
+      grouped[s.mfr].push(s);
+    });
+
+    // Sort manufacturers alphabetically
+    const mfrs = Object.keys(grouped).sort();
+
+    if (mfrs.length === 0) {
+      shipList.innerHTML = '<div class="ship-selector__empty">No ships found</div>';
+      return;
+    }
+
+    let html = '';
+    mfrs.forEach(mfr => {
+      const ships = grouped[mfr];
+      const isOpen = q.length > 0; // auto-expand when searching
+      html += `<div class="ship-mfr${isOpen ? ' is-open' : ''}">`;
+      html += `<button class="ship-mfr__trigger" type="button" aria-expanded="${isOpen}">`;
+      html += `<span>${mfr}</span>`;
+      html += `<span class="ship-mfr__count">${ships.length}</span>`;
+      html += `<svg class="ship-mfr__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>`;
+      html += `</button>`;
+      html += `<div class="ship-mfr__ships">`;
+      ships.forEach(s => {
+        const sel = selectedShip && selectedShip.id === s.id ? ' is-selected' : '';
+        html += `<button class="ship-mfr__ship${sel}" type="button" data-ship-id="${s.id}" role="option" aria-selected="${sel ? 'true' : 'false'}">`;
+        html += `<span>${s.name}</span>`;
+        html += `<span class="ship-mfr__ship-price">${fmtAuec(s.price)}</span>`;
+        html += `</button>`;
+      });
+      html += `</div></div>`;
+    });
+
+    shipList.innerHTML = html;
+
+    // Bind manufacturer toggles
+    shipList.querySelectorAll('.ship-mfr__trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mfr = btn.closest('.ship-mfr');
+        const open = mfr.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    });
+
+    // Bind ship selection
+    shipList.querySelectorAll('.ship-mfr__ship').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.shipId;
+        const ship = ships.find(s => s.id === id) || SHIP_DATA.find(s => s.id === id);
+        if (ship) selectShip(ship);
+      });
+    });
+  }
+
+  function selectShip(ship) {
+    selectedShip = ship;
+
+    // Update selected display
+    shipNameEl.textContent = ship.name;
+    shipPriceEl.textContent = fmtAuec(ship.price);
+    shipSelected.classList.add('is-visible');
+
+    // Highlight in list
+    shipList.querySelectorAll('.ship-mfr__ship').forEach(btn => {
+      const isSel = btn.dataset.shipId === ship.id;
+      btn.classList.toggle('is-selected', isSel);
+      btn.setAttribute('aria-selected', String(isSel));
+    });
+  }
+
+  function clearShip() {
+    selectedShip = null;
+    shipSelected.classList.remove('is-visible');
+    shipNameEl.textContent = '';
+    shipPriceEl.textContent = '';
+    shipList.querySelectorAll('.ship-mfr__ship').forEach(btn => {
+      btn.classList.remove('is-selected');
+      btn.setAttribute('aria-selected', 'false');
+    });
+  }
+
+  // ---- Toggle Groups ----
+  function initToggles() {
+    overlay.querySelectorAll('.onboarding-toggle').forEach(group => {
+      group.querySelectorAll('.onboarding-toggle__btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          group.querySelectorAll('.onboarding-toggle__btn').forEach(b => {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-checked', 'false');
+          });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-checked', 'true');
+        });
+      });
+    });
+  }
+
+  // ---- Budget formatting ----
+  function initBudget() {
+    budgetInput.addEventListener('input', () => {
+      let raw = budgetInput.value.replace(/[^0-9]/g, '');
+      if (raw) {
+        budgetInput.value = Number(raw).toLocaleString('en-US');
+      }
+    });
+  }
+
+  // ---- Summary ----
+  function populateSummary() {
+    document.getElementById('sumShip').textContent = selectedShip ? selectedShip.name : '--';
+    const budgetRaw = budgetInput.value.replace(/[^0-9]/g, '');
+    document.getElementById('sumBudget').textContent = budgetRaw ? Number(budgetRaw).toLocaleString('en-US') + ' aUEC' : '--';
+    document.getElementById('sumStyle').textContent = capitalize(getToggleValue('onboardSolo'));
+    const sessionEl = document.getElementById('onboardSession');
+    const hrs = sessionEl.value;
+    document.getElementById('sumSession').textContent = hrs + (hrs === '1' ? ' hour' : ' hours');
+    document.getElementById('sumSkill').textContent = capitalize(getToggleValue('onboardSkill'));
+    document.getElementById('sumRisk').textContent = capitalize(getToggleValue('onboardRisk'));
+  }
+
+  // ---- Dismiss ----
+  function dismiss() {
+    overlay.classList.add('is-dismissing');
+
+    // Gather selections for localStorage / app handoff
+    const settings = {
+      ship: selectedShip ? selectedShip.id : null,
+      budget: budgetInput.value.replace(/[^0-9]/g, ''),
+      style: getToggleValue('onboardSolo'),
+      session: document.getElementById('onboardSession').value,
+      skill: getToggleValue('onboardSkill'),
+      risk: getToggleValue('onboardRisk'),
+      onboarded: true
+    };
+
+    try {
+      localStorage.setItem('sc_onboarding', JSON.stringify(settings));
+    } catch (e) { /* silent */ }
+
+    // Dispatch custom event for the app to consume
+    window.dispatchEvent(new CustomEvent('onboarding:complete', { detail: settings }));
+
+    setTimeout(() => {
+      overlay.hidden = true;
+      overlay.classList.remove('is-dismissing');
+      document.body.style.overflow = '';
+    }, 400);
+  }
+
+  // ---- Init ----
+  function init() {
+    // Check if already onboarded
+    try {
+      const saved = JSON.parse(localStorage.getItem('sc_onboarding'));
+      if (saved && saved.onboarded) {
+        overlay.hidden = true;
+        return;
+      }
+    } catch (e) { /* continue */ }
+
+    // Lock body scroll
+    document.body.style.overflow = 'hidden';
+
+    // Build ship list
+    buildShipList('');
+
+    // Search
+    shipSearch.addEventListener('input', () => {
+      buildShipList(shipSearch.value);
+    });
+
+    // Clear ship
+    shipClear.addEventListener('click', clearShip);
+
+    // Toggles
+    initToggles();
+
+    // Budget formatting
+    initBudget();
+
+    // Navigation
+    btnStart.addEventListener('click', () => goToStep(2));
+    btnNext.addEventListener('click', () => goToStep(currentStep + 1));
+    btnBack.addEventListener('click', () => goToStep(currentStep - 1));
+    btnLaunch.addEventListener('click', dismiss);
+
+    // Keyboard: Escape to go back
+    overlay.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (currentStep > 1) {
+          goToStep(currentStep - 1);
+        }
+      }
+    });
+
+    // Initial nav state
+    updateNav();
+  }
+
+  // Run on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

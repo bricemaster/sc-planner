@@ -1,0 +1,57 @@
+<!-- ============================================================
+     LIVE DATA — SC Planner v10
+     Live commodity prices + best trade routes
+     ============================================================ -->
+<section class="livedata" id="liveDataSection">
+
+  <!-- Section Header -->
+  <div class="livedata__header">
+    <div class="livedata__title-group">
+      <h3 class="section-title" style="margin-bottom:0; border-bottom:none; padding-bottom:0;">Live Prices</h3>
+      <div class="livedata__meta">
+        <span class="livedata__age" id="priceAge">Updated 5 min ago</span>
+        <span class="pill pill--cyan livedata__source" id="priceSource">UEX Live</span>
+      </div>
+    </div>
+    <button class="btn btn--ghost btn--icon btn--sm" id="btnRefreshPrices" aria-label="Refresh prices" title="Refresh prices">
+      <svg class="livedata__refresh-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1.5 6.5A6.5 6.5 0 0 1 13.3 4"/>
+        <polyline points="14 1 14 4.5 10.5 4.5"/>
+        <path d="M14.5 9.5A6.5 6.5 0 0 1 2.7 12"/>
+        <polyline points="2 15 2 11.5 5.5 11.5"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Two-Column Layout -->
+  <div class="livedata__grid">
+
+    <!-- Left: Commodity Prices Table -->
+    <div class="livedata__prices">
+      <div class="livedata__table-wrap">
+        <table class="livedata__table" id="priceTable">
+          <thead>
+            <tr>
+              <th class="livedata__th livedata__th--sortable" data-sort="name">Commodity</th>
+              <th class="livedata__th livedata__th--sortable livedata__th--num" data-sort="buyAvg">Buy</th>
+              <th class="livedata__th livedata__th--sortable livedata__th--num" data-sort="sellAvg">Sell</th>
+              <th class="livedata__th livedata__th--sortable livedata__th--num livedata__th--margin" data-sort="margin">Margin</th>
+              <th class="livedata__th livedata__th--sortable livedata__th--center" data-sort="trend">Trend</th>
+            </tr>
+          </thead>
+          <tbody id="priceTableBody">
+            <!-- Rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Right: Best Trade Routes -->
+    <div class="livedata__routes" id="routesList">
+      <h4 class="livedata__routes-title">Best Trade Routes</h4>
+      <!-- Route cards injected by JS -->
+    </div>
+
+  </div>
+
+</section>

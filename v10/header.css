@@ -1,0 +1,409 @@
+/* ═══════════════════════════════════════════════
+   HEADER — SC Planner v10
+   ═══════════════════════════════════════════════ */
+
+/* ── Header bar ── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 var(--side-pad, clamp(12px, 2vw, 24px));
+  background: rgba(6, 6, 10, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── App title ── */
+.header__title {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--wh, #f0f0f0);
+  white-space: nowrap;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* ── Ship picker ── */
+.ship-picker {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ship-picker__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--ab, #0f1114);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm, 4px);
+  color: var(--lt, #d0d0d0);
+  font-family: var(--font);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease);
+  white-space: nowrap;
+}
+
+.ship-picker__btn:hover,
+.ship-picker__btn:focus-visible {
+  border-color: rgba(201, 170, 110, 0.25);
+  outline: none;
+}
+
+.ship-picker__btn-price {
+  color: var(--g, #c9aa6e);
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+}
+
+.ship-picker__chevron {
+  font-size: 10px;
+  color: var(--mt, #8a8a8a);
+  transition: transform 0.2s var(--ease);
+}
+
+.ship-picker[data-open="true"] .ship-picker__chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Ship picker dropdown ── */
+.ship-picker__dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 320px;
+  max-height: 400px;
+  background: var(--ab, #0f1114);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 910;
+}
+
+.ship-picker[data-open="true"] .ship-picker__dropdown {
+  display: flex;
+}
+
+.ship-picker__search {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.ship-picker__search input {
+  width: 100%;
+  padding: 8px 10px;
+  background: var(--dp, #0a0b0d);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm, 4px);
+  color: var(--lt, #d0d0d0);
+  font-family: var(--font);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+}
+
+.ship-picker__search input::placeholder {
+  color: var(--mt, #8a8a8a);
+}
+
+.ship-picker__search input:focus {
+  border-color: rgba(201, 170, 110, 0.3);
+}
+
+.ship-picker__list {
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Manufacturer accordion */
+.ship-mfr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.ship-mfr:last-child {
+  border-bottom: none;
+}
+
+.ship-mfr__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  color: var(--dm, #a0a0a0);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.15s var(--ease), background 0.15s var(--ease);
+}
+
+.ship-mfr__head:hover {
+  color: var(--wh, #f0f0f0);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ship-mfr__head-arrow {
+  font-size: 9px;
+  transition: transform 0.2s var(--ease);
+}
+
+.ship-mfr[data-expanded="true"] .ship-mfr__head-arrow {
+  transform: rotate(90deg);
+}
+
+.ship-mfr[data-expanded="true"] .ship-mfr__head {
+  color: var(--g, #c9aa6e);
+}
+
+.ship-mfr__ships {
+  display: none;
+}
+
+.ship-mfr[data-expanded="true"] .ship-mfr__ships {
+  display: block;
+}
+
+.ship-mfr__ship {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px 8px 24px;
+  background: none;
+  border: none;
+  color: var(--lt, #d0d0d0);
+  font-family: var(--font);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.12s var(--ease);
+}
+
+.ship-mfr__ship:hover {
+  background: rgba(201, 170, 110, 0.06);
+}
+
+.ship-mfr__ship-price {
+  color: var(--g, #c9aa6e);
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+}
+
+/* ── Header control group ── */
+.header__controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+}
+
+/* ── Labeled field ── */
+.header-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header-field__label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mt, #8a8a8a);
+  line-height: 1;
+}
+
+/* ── Budget input ── */
+.header-field__input {
+  width: 110px;
+  padding: 4px 8px;
+  background: var(--dp, #0a0b0d);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm, 4px);
+  color: var(--g, #c9aa6e);
+  font-family: var(--mono, monospace);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+}
+
+.header-field__input:focus {
+  border-color: rgba(201, 170, 110, 0.3);
+}
+
+/* ── Session select ── */
+.header-field__select {
+  padding: 4px 24px 4px 8px;
+  background: var(--dp, #0a0b0d);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm, 4px);
+  color: var(--lt, #d0d0d0);
+  font-family: var(--font);
+  font-size: 13px;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6' fill='%238a8a8a'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  transition: border-color 0.2s var(--ease);
+}
+
+.header-field__select:focus {
+  border-color: rgba(201, 170, 110, 0.3);
+}
+
+/* ── Toggle group ── */
+.toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.toggle-group__btn {
+  padding: 4px 10px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--mt, #8a8a8a);
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+  white-space: nowrap;
+}
+
+.toggle-group__btn:hover {
+  color: var(--dm, #a0a0a0);
+}
+
+.toggle-group__btn[aria-checked="true"] {
+  color: var(--g, #c9aa6e);
+  border-bottom-color: var(--g, #c9aa6e);
+}
+
+/* ── Hamburger / settings toggle (mobile) ── */
+.header__hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--lt, #d0d0d0);
+  font-size: 22px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ── Settings drawer (mobile) ── */
+.settings-drawer {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  z-index: 899;
+  max-height: 0;
+  overflow: hidden;
+  background: rgba(6, 6, 10, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: max-height 0.35s var(--ease);
+}
+
+.settings-drawer[data-open="true"] {
+  max-height: 400px;
+}
+
+.settings-drawer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px var(--side-pad, clamp(12px, 2vw, 24px));
+}
+
+.settings-drawer__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.settings-drawer__row .header-field {
+  flex: 1;
+}
+
+.settings-drawer__row .header-field__input,
+.settings-drawer__row .header-field__select {
+  width: 100%;
+}
+
+.settings-drawer__toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.settings-drawer__toggle-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .header {
+    height: 48px;
+    gap: 12px;
+  }
+
+  .header__controls {
+    display: none;
+  }
+
+  .header__hamburger {
+    display: flex;
+  }
+
+  .settings-drawer {
+    top: 48px;
+  }
+
+  .toggle-group__btn {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Desktop: hide mobile-only elements */
+@media (min-width: 769px) {
+  .settings-drawer {
+    display: none;
+  }
+}

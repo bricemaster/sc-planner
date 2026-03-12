@@ -1,0 +1,353 @@
+/* ============================================================
+   SHIP BROWSER — SC Planner v10
+   ============================================================ */
+
+.ships {
+  width: 100%;
+  padding: var(--sp-6) var(--sp-8);
+}
+
+/* ---- Header ---- */
+
+.ships__header {
+  max-width: 1200px;
+  margin: 0 auto var(--sp-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.ships__title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-right: auto;
+}
+
+.ships__title-row .section-title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  line-height: 1;
+  margin: 0;
+}
+
+.ships__badge {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--text-3);
+  background: var(--surface-2);
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  letter-spacing: 0.5px;
+}
+
+/* Search */
+
+.ships__search {
+  flex: 1 1 100%;
+  order: 3;
+  height: 40px;
+  padding: 0 var(--sp-4);
+  font-size: var(--fs-md);
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition: border-color var(--fast) var(--ease);
+}
+
+.ships__search::placeholder {
+  color: var(--text-3);
+}
+
+.ships__search:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+}
+
+/* View Toggle */
+
+.ships__view-toggle {
+  display: flex;
+  gap: 2px;
+  background: var(--surface);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  padding: 2px;
+}
+
+.ships__view-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--text-3);
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: 3px;
+  transition: color var(--fast) var(--ease),
+              background var(--fast) var(--ease);
+}
+
+.ships__view-btn:hover {
+  color: var(--text-2);
+}
+
+.ships__view-btn--active {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+
+/* ============================================================
+   MANUFACTURER ACCORDION
+   ============================================================ */
+
+.ships__list {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ---- Group ---- */
+
+.ships__group {
+  border-bottom: 1px solid var(--border);
+}
+
+.ships__group:last-child {
+  border-bottom: none;
+}
+
+/* ---- Group Header ---- */
+
+.ships__group-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  padding: var(--sp-3) var(--sp-4);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background var(--fast) var(--ease);
+  gap: var(--sp-3);
+}
+
+.ships__group-header:hover {
+  background: var(--surface-2);
+}
+
+.ships__mfr-name {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  color: var(--gold);
+  line-height: 1;
+}
+
+.ships__mfr-count {
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+  margin-right: auto;
+}
+
+/* Chevron */
+
+.ships__chevron {
+  color: var(--text-3);
+  transition: transform var(--med) var(--ease);
+  flex-shrink: 0;
+}
+
+.ships__group--open .ships__chevron {
+  transform: rotate(180deg);
+}
+
+/* ---- Group Content ---- */
+
+.ships__group-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--med) var(--ease);
+}
+
+.ships__group--open .ships__group-content {
+  grid-template-rows: 1fr;
+}
+
+.ships__group-content > * {
+  overflow: hidden;
+}
+
+/* Workaround: wrap rows so 0fr collapse works */
+.ships__group-content {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--med) var(--ease);
+}
+
+.ships__group--open .ships__group-content {
+  max-height: 2000px;
+  transition: max-height var(--slow) var(--ease);
+}
+
+
+/* ============================================================
+   SHIP ROW
+   ============================================================ */
+
+.ship-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4) var(--sp-2) var(--sp-6);
+  min-height: 40px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background var(--fast) var(--ease),
+              border-color var(--fast) var(--ease);
+}
+
+.ship-row:hover {
+  background: var(--surface-2);
+}
+
+.ship-row--active {
+  border-left-color: var(--gold);
+  background: var(--gold-glow);
+}
+
+.ship-row--active:hover {
+  background: var(--gold-glow);
+}
+
+/* Name */
+
+.ship-row__name {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-normal);
+  color: var(--text);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Role */
+
+.ship-row__role {
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+/* Price */
+
+.ship-row__price {
+  font-size: var(--fs-md);
+  font-family: var(--font-mono);
+  color: var(--text);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Tier pill */
+
+.ship-row__tier {
+  font-size: 10px;
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 1px 8px;
+  border-radius: var(--r-full);
+  white-space: nowrap;
+  text-align: center;
+}
+
+.ship-row__tier--starter {
+  color: var(--text-3);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ship-row__tier--mid {
+  color: var(--text-2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ship-row__tier--heavy {
+  color: var(--cyan);
+  background: var(--cyan-dim);
+}
+
+.ship-row__tier--endgame {
+  color: var(--gold);
+  background: var(--gold-glow);
+}
+
+
+/* ============================================================
+   FLAT SEARCH RESULTS
+   ============================================================ */
+
+.ships__list--flat .ship-row {
+  border-bottom: 1px solid var(--border);
+}
+
+.ships__list--flat .ship-row:last-child {
+  border-bottom: none;
+}
+
+.ships__empty {
+  padding: var(--sp-8) var(--sp-4);
+  text-align: center;
+  font-size: var(--fs-md);
+  color: var(--text-3);
+}
+
+
+/* ============================================================
+   MOBILE — 768px
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .ships {
+    padding: var(--sp-4) var(--sp-4);
+  }
+
+  .ships__header {
+    gap: var(--sp-2);
+  }
+
+  .ships__search {
+    height: 44px;
+  }
+
+  /* Group header — 44px touch target */
+  .ships__group-header {
+    min-height: 44px;
+    padding: var(--sp-3);
+  }
+
+  /* Ship rows — 2 columns on mobile */
+  .ship-row {
+    grid-template-columns: 1fr auto;
+    gap: var(--sp-2);
+    padding: var(--sp-3) var(--sp-3) var(--sp-3) var(--sp-5);
+    min-height: 44px;
+  }
+
+  .ship-row__role {
+    display: none;
+  }
+
+  .ship-row__tier {
+    display: none;
+  }
+
+  .ship-row__price {
+    font-size: var(--fs-sm);
+  }
+}

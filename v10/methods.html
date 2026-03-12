@@ -1,0 +1,259 @@
+<!-- ============================================================
+     METHODS EXPLORER — SC Planner v10
+     Filterable, sortable grid of all earning methods
+     ============================================================ -->
+<section id="methodsSection">
+
+  <!-- Header -->
+  <div class="methods__header">
+    <h2 class="section-title">Methods</h2>
+    <span class="methods__count" id="methodsCount">24 methods</span>
+  </div>
+
+  <!-- Toolbar: Filters + Sort -->
+  <div class="methods__toolbar">
+    <div id="methodsFilter" role="tablist" aria-label="Filter by category">
+      <button class="methods__pill active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="methods__pill" data-filter="combat" role="tab" aria-selected="false">Combat</button>
+      <button class="methods__pill" data-filter="cargo" role="tab" aria-selected="false">Cargo</button>
+      <button class="methods__pill" data-filter="mining" role="tab" aria-selected="false">Mining</button>
+      <button class="methods__pill" data-filter="salvage" role="tab" aria-selected="false">Salvage</button>
+      <button class="methods__pill" data-filter="delivery" role="tab" aria-selected="false">Delivery</button>
+      <button class="methods__pill" data-filter="trading" role="tab" aria-selected="false">Trading</button>
+      <button class="methods__pill" data-filter="bounty" role="tab" aria-selected="false">Bounty</button>
+      <button class="methods__pill" data-filter="mission" role="tab" aria-selected="false">Mission</button>
+    </div>
+    <div class="methods__sort-wrap">
+      <label for="methodsSort" class="sr-only">Sort methods</label>
+      <select id="methodsSort">
+        <option value="rate" selected>Sort by: Rate</option>
+        <option value="risk">Sort by: Risk</option>
+        <option value="budget">Sort by: Budget</option>
+        <option value="name">Sort by: Name</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div id="methodsGrid">
+    <!-- Cards rendered by JS via renderMethodCards() -->
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     METHODS — Logic & Data
+     ============================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ---- Data ---- */
+  const METHODS = [
+    { id: 'ert-bounty', name: 'ERT Bounty Hunting', category: 'combat', aUEChr: 450000, aUEChrLow: 350000, aUEChrHigh: 600000, risk: 'high', minBudget: 2000000, skillLevel: 'advanced', soloFriendly: true, desc: 'Eliminate Very Hard Threat (ERT) bounty targets in monitored space. High-value contracts against Hammerheads and other capital-class targets.', tips: ['Use a heavy fighter like the Vanguard Sentinel for EMP capability', 'Chain ERTs without returning to station for maximum efficiency', 'Stay mobile — capital ships hit hard if you sit still'], confidence: 'high', consistency: 'high', gear: ['Heavy Fighter', 'Size 5 weapons', 'EMP (optional)'], ships: ['Vanguard Sentinel', 'Eclipse', 'Ares Inferno', 'Constellation Andromeda'] },
+    { id: 'vhrt-bounty', name: 'VHRT Bounty Hunting', category: 'combat', aUEChr: 350000, aUEChrLow: 280000, aUEChrHigh: 450000, risk: 'medium', minBudget: 1000000, skillLevel: 'intermediate', soloFriendly: true, desc: 'Very High Risk Target contracts. A reliable step below ERTs with more forgiving enemies.', tips: ['Hurricanes and Vanguards are common targets', 'Upgrade to ERTs once comfortable'], confidence: 'high', consistency: 'high', gear: ['Medium Fighter'], ships: ['Vanguard Warden', 'Hornet Mk II', 'Gladius'] },
+    { id: 'hrt-bounty', name: 'HRT Bounty Hunting', category: 'bounty', aUEChr: 200000, aUEChrLow: 150000, aUEChrHigh: 280000, risk: 'medium', minBudget: 500000, skillLevel: 'beginner', soloFriendly: true, desc: 'High Risk Target contracts. Good entry point into combat earnings with moderate risk.', tips: ['Great for learning combat mechanics', 'Use Crusader space for easier spawns'], confidence: 'high', consistency: 'high', gear: ['Light/Medium Fighter'], ships: ['Gladius', 'Arrow', 'Hornet Mk II'] },
+    { id: 'quant-mining', name: 'Quantanium Mining', category: 'mining', aUEChr: 500000, aUEChrLow: 300000, aUEChrHigh: 800000, risk: 'medium', minBudget: 3000000, skillLevel: 'intermediate', soloFriendly: true, desc: 'Mine Quantanium ore from asteroids in the Aaron Halo belt. Extremely lucrative but time-sensitive — Quantanium is volatile and must be refined quickly.', tips: ['Head to the Aaron Halo belt for best rocks', 'Timer starts when you crack — move fast', 'Sell at refineries, not TDDs', 'Use a Lancet mining head for better results'], confidence: 'high', consistency: 'medium', gear: ['Mining Ship', 'Lancet Head', 'Surge Module'], ships: ['MOLE', 'Prospector'] },
+    { id: 'gem-mining', name: 'Gem & Hadanite Mining (Hand)', category: 'mining', aUEChr: 120000, aUEChrLow: 80000, aUEChrHigh: 180000, risk: 'low', minBudget: 50000, skillLevel: 'beginner', soloFriendly: true, desc: 'Hand-mine gems and Hadanite from caves and surface deposits. Low barrier to entry and relaxing gameplay.', tips: ['Aberdeen and Daymar have great cave deposits', 'Bring a multi-tool with mining attachment', 'Fill your backpack, not your ship'], confidence: 'medium', consistency: 'medium', gear: ['Multi-tool', 'Mining Attachment', 'Backpack'], ships: ['Any small ship', 'ROC (optional)'] },
+    { id: 'roc-mining', name: 'ROC Mining', category: 'mining', aUEChr: 180000, aUEChrLow: 120000, aUEChrHigh: 250000, risk: 'low', minBudget: 200000, skillLevel: 'beginner', soloFriendly: true, desc: 'Use a ROC ground vehicle to mine Hadanite from surface deposits on moons. Reliable and low risk.', tips: ['Daymar and Aberdeen are the best moons', 'Fly low and slow to spot deposits', 'Park your ship nearby for quick loading'], confidence: 'high', consistency: 'medium', gear: ['ROC', 'Cargo Ship'], ships: ['Cutlass Black', 'Nomad', 'Freelancer'] },
+    { id: 'cargo-hauling', name: 'Commodity Trading', category: 'cargo', aUEChr: 300000, aUEChrLow: 150000, aUEChrHigh: 600000, risk: 'high', minBudget: 5000000, skillLevel: 'intermediate', soloFriendly: true, desc: 'Buy low, sell high. Purchase commodities at outposts and sell at stations for profit. Scales with cargo capacity and capital.', tips: ['Use trade route tools to find best margins', 'Laranite and Titanium are solid staples', 'Never invest more than you can afford to lose', 'Server crashes can destroy cargo'], confidence: 'medium', consistency: 'medium', gear: ['Cargo Ship', 'Starting Capital'], ships: ['Caterpillar', 'C2 Hercules', 'Freelancer MAX'] },
+    { id: 'salvage-hull', name: 'Hull Scraping (Salvage)', category: 'salvage', aUEChr: 250000, aUEChrLow: 180000, aUEChrHigh: 350000, risk: 'low', minBudget: 1500000, skillLevel: 'beginner', soloFriendly: true, desc: 'Scrape hull materials from derelict ships and wrecks. Consistent money with low risk.', tips: ['Check for wrecks near combat zones', 'Reclaimer can process entire ships', 'Sell materials at TDDs for best prices'], confidence: 'high', consistency: 'high', gear: ['Salvage Ship'], ships: ['Vulture', 'Reclaimer'] },
+    { id: 'salvage-munitions', name: 'Munitions Salvage', category: 'salvage', aUEChr: 180000, aUEChrLow: 120000, aUEChrHigh: 280000, risk: 'low', minBudget: 1500000, skillLevel: 'beginner', soloFriendly: true, desc: 'Salvage weapons, components, and munitions from wrecked ships. Pairs well with hull scraping.', tips: ['Use tractor beams to collect loose items', 'FPS salvage tools work on smaller wrecks', 'Combine with hull scraping for maximum profit'], confidence: 'medium', consistency: 'medium', gear: ['Salvage Ship', 'Tractor Beam'], ships: ['Vulture', 'Reclaimer'] },
+    { id: 'box-delivery', name: 'Box Delivery Missions', category: 'delivery', aUEChr: 60000, aUEChrLow: 40000, aUEChrHigh: 90000, risk: 'low', minBudget: 0, skillLevel: 'beginner', soloFriendly: true, desc: 'Pick up and deliver packages between locations. The bread-and-butter starter mission with zero investment needed.', tips: ['Stack multiple deliveries going the same direction', 'Use a fast ship for efficiency', 'Avoid bunker deliveries until comfortable with FPS'], confidence: 'high', consistency: 'high', gear: ['Any Ship'], ships: ['Pisces', 'Avenger Titan', '100i'] },
+    { id: 'cargo-delivery', name: 'Cargo Delivery Contracts', category: 'delivery', aUEChr: 100000, aUEChrLow: 70000, aUEChrHigh: 150000, risk: 'low', minBudget: 0, skillLevel: 'beginner', soloFriendly: true, desc: 'Accept contracts to deliver cargo between stations. Better pay than box missions with slightly larger ships needed.', tips: ['Check contract board at major stations', 'Some contracts chain for bonus pay'], confidence: 'high', consistency: 'high', gear: ['Cargo Ship'], ships: ['Avenger Titan', 'Cutlass Black', 'Freelancer'] },
+    { id: 'bunker-clear', name: 'Bunker Clearance', category: 'combat', aUEChr: 250000, aUEChrLow: 180000, aUEChrHigh: 350000, risk: 'medium', minBudget: 100000, skillLevel: 'intermediate', soloFriendly: true, desc: 'Clear hostile NPCs from underground bunkers. Combines FPS combat with decent pay and lootable gear.', tips: ['Bring medpens and extra ammo', 'Don\'t shoot the friendlies — check your HUD', 'Loot weapons and armor for extra profit', 'Watch for mines near the entrance'], confidence: 'high', consistency: 'high', gear: ['FPS Weapons', 'Medium Armor', 'Medpens'], ships: ['Any ship with weapons storage'] },
+    { id: 'group-ert', name: 'Group ERT Farming', category: 'combat', aUEChr: 700000, aUEChrLow: 500000, aUEChrHigh: 1000000, risk: 'high', minBudget: 3000000, skillLevel: 'advanced', soloFriendly: false, desc: 'Coordinate with a group to chain ERT bounties rapidly. One of the highest earning methods in the game.', tips: ['Designate roles: DPS, support, logistics', 'Use Discord for coordination', 'Split earnings or rotate contracts'], confidence: 'high', consistency: 'high', gear: ['Heavy Fighters', 'Coordinated Loadouts'], ships: ['Vanguard Sentinel', 'Redeemer', 'Constellation Andromeda', 'Hammerhead'] },
+    { id: 'trading-drugs', name: 'Narcotics Trading', category: 'trading', aUEChr: 400000, aUEChrLow: 200000, aUEChrHigh: 700000, risk: 'high', minBudget: 2000000, skillLevel: 'advanced', soloFriendly: true, desc: 'Buy and sell illegal commodities for massive margins. High profit potential but losing cargo means losing everything.', tips: ['Learn the drug lab locations', 'Avoid scan-heavy areas', 'Consider a fast ship for evasion', 'Never carry more than you can afford to lose'], confidence: 'medium', consistency: 'low', gear: ['Fast Cargo Ship', 'Capital'], ships: ['Mercury Star Runner', 'Cutlass Black', 'Freelancer MIS'] },
+    { id: 'comm-array', name: 'CommArray Missions', category: 'mission', aUEChr: 80000, aUEChrLow: 50000, aUEChrHigh: 120000, risk: 'low', minBudget: 0, skillLevel: 'beginner', soloFriendly: true, desc: 'Reset or repair comm arrays in space. Quick, simple missions great for building reputation.', tips: ['Fast to complete, good for rep grinding', 'Watch for ambushes at popular arrays'], confidence: 'high', consistency: 'high', gear: ['Any Ship'], ships: ['Any Fighter', 'Pisces'] },
+    { id: 'research-missions', name: 'Research Missions', category: 'mission', aUEChr: 90000, aUEChrLow: 60000, aUEChrHigh: 130000, risk: 'low', minBudget: 0, skillLevel: 'beginner', soloFriendly: true, desc: 'Collect samples and data for research contracts. Low intensity missions with decent payouts.', tips: ['Explore cave systems for rare samples', 'Some require specific planetary conditions'], confidence: 'medium', consistency: 'medium', gear: ['Multi-tool', 'Sampling Attachment'], ships: ['Any small ship'] },
+    { id: 'group-mining', name: 'Group Quantanium Mining', category: 'mining', aUEChr: 600000, aUEChrLow: 400000, aUEChrHigh: 900000, risk: 'medium', minBudget: 4000000, skillLevel: 'advanced', soloFriendly: false, desc: 'Multi-crew mining operation using a MOLE with dedicated operators. Maximizes extraction speed and ore quality.', tips: ['Assign head and tail laser operators', 'Use Discord for callouts on rock composition', 'One pilot, two miners is ideal'], confidence: 'high', consistency: 'medium', gear: ['MOLE', 'Mining Heads x3'], ships: ['MOLE', 'Prospector (scout)'] },
+    { id: 'arena-commander', name: 'Arena Commander', category: 'combat', aUEChr: 100000, aUEChrLow: 60000, aUEChrHigh: 150000, risk: 'low', minBudget: 0, skillLevel: 'beginner', soloFriendly: true, desc: 'Earn aUEC in Arena Commander game mode. Safe environment to practice combat and earn simultaneously.', tips: ['Pirate Swarm pays well for the time', 'Great for practicing combat without risk', 'REC earnings can fund rental ships'], confidence: 'high', consistency: 'high', gear: ['Any Fighter'], ships: ['Gladius', 'Arrow', 'Hornet'] },
+    { id: 'illegal-monitor', name: 'Illegal Monitor Destruction', category: 'combat', aUEChr: 280000, aUEChrLow: 200000, aUEChrHigh: 380000, risk: 'medium', minBudget: 500000, skillLevel: 'intermediate', soloFriendly: true, desc: 'Destroy illegal surveillance monitors placed around stations and comm arrays. Fast-paced combat missions.', tips: ['Chain missions for best efficiency', 'Monitors are fragile — one pass each', 'Use a fast, maneuverable fighter'], confidence: 'high', consistency: 'high', gear: ['Medium Fighter'], ships: ['Gladius', 'Arrow', 'Buccaneer'] },
+    { id: 'cave-investigation', name: 'Cave Investigation', category: 'mission', aUEChr: 70000, aUEChrLow: 40000, aUEChrHigh: 110000, risk: 'medium', minBudget: 50000, skillLevel: 'beginner', soloFriendly: true, desc: 'Investigate caves for missing persons or collect evidence. Atmospheric FPS gameplay with moderate pay.', tips: ['Bring a flashlight and medpens', 'Watch for hostile NPCs in deeper caves', 'Can combine with hand mining'], confidence: 'medium', consistency: 'medium', gear: ['FPS Loadout', 'Flashlight', 'Medpens'], ships: ['Any small ship'] },
+    { id: 'piracy', name: 'Piracy (PvP)', category: 'combat', aUEChr: 500000, aUEChrLow: 0, aUEChrHigh: 2000000, risk: 'high', minBudget: 1000000, skillLevel: 'advanced', soloFriendly: false, desc: 'Intercept and loot other players\' cargo. Extremely high variance — some sessions are massive, others are empty.', tips: ['Reputation matters — don\'t burn bridges', 'Use interdiction tools', 'A group makes this vastly more effective', 'Know the trade routes'], confidence: 'low', consistency: 'low', gear: ['Interdiction Ship', 'Cargo Ship'], ships: ['Mantis', 'Cutlass Blue', 'Caterpillar'] },
+    { id: 'refinery-jobs', name: 'Refinery Deck Jobs', category: 'mission', aUEChr: 110000, aUEChrLow: 80000, aUEChrHigh: 160000, risk: 'low', minBudget: 0, skillLevel: 'beginner', soloFriendly: true, desc: 'Complete work orders at refinery decks on stations. Simple station-based gameplay with steady income.', tips: ['Quick to complete between other activities', 'Build refinery rep for better contracts'], confidence: 'high', consistency: 'high', gear: ['None'], ships: ['Any'] },
+    { id: 'security-missions', name: 'Security Detail', category: 'mission', aUEChr: 150000, aUEChrLow: 100000, aUEChrHigh: 220000, risk: 'medium', minBudget: 100000, skillLevel: 'intermediate', soloFriendly: true, desc: 'Guard locations, escort NPCs, or provide security for events. Mixed FPS and ship combat.', tips: ['Pair with bunker missions for rep', 'Keep your crime stat clean', 'Good gear makes a big difference'], confidence: 'medium', consistency: 'medium', gear: ['FPS Weapons', 'Medium Armor'], ships: ['Cutlass Black', 'Vanguard Warden'] },
+    { id: 'med-rescue', name: 'Medical Rescue Beacons', category: 'mission', aUEChr: 130000, aUEChrLow: 80000, aUEChrHigh: 200000, risk: 'medium', minBudget: 200000, skillLevel: 'intermediate', soloFriendly: true, desc: 'Respond to medical beacons from downed players or NPCs. Rewarding gameplay loop that helps others.', tips: ['Carry medical supplies and a med-gun', 'Be cautious of trap beacons in PvP zones', 'Cutlass Red has a medical bay'], confidence: 'medium', consistency: 'low', gear: ['Med-gun', 'Medical Supplies'], ships: ['Cutlass Red', 'Apollo (future)', 'Any'] }
+  ];
+
+  /* ---- Category color map (for dynamic use) ---- */
+  const CAT_COLORS = {
+    combat: 'var(--red)', cargo: 'var(--cyan)', mining: 'var(--amber)',
+    salvage: 'var(--green)', delivery: '#a78bfa', trading: 'var(--cyan)',
+    bounty: 'var(--red)', mission: '#e0a060'
+  };
+
+  /* ---- Formatters ---- */
+  function fmtRate(n) {
+    if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    if (n >= 1000)    return Math.round(n / 1000) + 'k';
+    return String(n);
+  }
+
+  /* ---- State ---- */
+  let activeFilter = 'all';
+  let activeSort   = 'rate';
+  let expandedId   = null;
+
+  /* ---- DOM refs ---- */
+  const grid      = document.getElementById('methodsGrid');
+  const filterBar = document.getElementById('methodsFilter');
+  const sortSel   = document.getElementById('methodsSort');
+  const countBadge= document.getElementById('methodsCount');
+
+  /* ---- Filter & Sort ---- */
+  function getFiltered() {
+    let list = METHODS;
+    if (activeFilter !== 'all') {
+      list = list.filter(m => m.category === activeFilter);
+    }
+    const sortFns = {
+      rate:   (a, b) => b.aUEChr - a.aUEChr,
+      risk:   (a, b) => { const o = { low: 0, medium: 1, high: 2 }; return o[a.risk] - o[b.risk]; },
+      budget: (a, b) => a.minBudget - b.minBudget,
+      name:   (a, b) => a.name.localeCompare(b.name)
+    };
+    list = [...list].sort(sortFns[activeSort] || sortFns.rate);
+    return list;
+  }
+
+  /* ---- Render ---- */
+  function renderMethodCards() {
+    const methods = getFiltered();
+    countBadge.textContent = methods.length + ' method' + (methods.length !== 1 ? 's' : '');
+
+    if (methods.length === 0) {
+      grid.innerHTML = '<div class="methods__empty">No methods match this filter.</div>';
+      return;
+    }
+
+    grid.innerHTML = methods.map(m => {
+      const isExpanded = expandedId === m.id;
+      const rateStr  = fmtRate(m.aUEChr) + '/hr';
+      const rangeStr = fmtRate(m.aUEChrLow) + ' — ' + fmtRate(m.aUEChrHigh) + '/hr';
+
+      // Heart SVG
+      const heartOutline = '<svg class="method-card__fav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>';
+      const heartFilled = '<svg class="method-card__fav-icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>';
+
+      const favSet = getFavorites();
+      const isFav  = favSet.has(m.id);
+
+      return `
+        <article class="method-card${isExpanded ? ' expanded' : ''}" data-id="${m.id}" data-category="${m.category}">
+          <div class="method-card__head">
+            <span class="method-card__name">${m.name}</span>
+            <span class="method-card__risk" data-risk="${m.risk}">${m.risk}</span>
+          </div>
+          <span class="method-card__rate">${rateStr}</span>
+          <span class="method-card__range">${rangeStr}</span>
+          <div class="method-card__tags">
+            <span class="method-card__tag">${m.category}</span>
+            <span class="method-card__tag">${m.soloFriendly ? 'Solo' : 'Group'}</span>
+            <span class="method-card__tag">${m.skillLevel}</span>
+          </div>
+
+          ${isExpanded ? `
+          <div class="method-card__details">
+            <p class="method-card__desc">${m.desc}</p>
+
+            ${m.tips && m.tips.length ? `
+            <div>
+              <div class="method-card__tips-title">Tips</div>
+              <div class="method-card__tips">
+                ${m.tips.map(t => `<div class="method-card__tip">${t}</div>`).join('')}
+              </div>
+            </div>` : ''}
+
+            ${m.gear && m.gear.length ? `
+            <div>
+              <div class="method-card__gear-title">Required Gear</div>
+              <div class="method-card__gear">
+                ${m.gear.map(g => `<span class="method-card__gear-item">${g}</span>`).join('')}
+              </div>
+            </div>` : ''}
+
+            ${m.ships && m.ships.length ? `
+            <div>
+              <div class="method-card__ships-title">Best Ships</div>
+              <div class="method-card__ships">
+                ${m.ships.map(s => `<span class="method-card__ship-item">${s}</span>`).join('')}
+              </div>
+            </div>` : ''}
+
+            <div class="method-card__meta">
+              <span class="method-card__meta-item">Confidence: <span>${m.confidence}</span></span>
+              <span class="method-card__meta-item">Consistency: <span>${m.consistency}</span></span>
+            </div>
+
+            <button class="method-card__fav${isFav ? ' favorited' : ''}" data-fav="${m.id}">
+              ${isFav ? heartFilled : heartOutline}
+              ${isFav ? 'Favorited' : 'Add to Favorites'}
+            </button>
+          </div>` : ''}
+        </article>`;
+    }).join('');
+  }
+
+  /* ---- Favorites (localStorage) ---- */
+  function getFavorites() {
+    try {
+      return new Set(JSON.parse(localStorage.getItem('sc_fav_methods') || '[]'));
+    } catch { return new Set(); }
+  }
+
+  function toggleFavorite(id) {
+    const favs = getFavorites();
+    if (favs.has(id)) favs.delete(id); else favs.add(id);
+    localStorage.setItem('sc_fav_methods', JSON.stringify([...favs]));
+  }
+
+  /* ---- Events ---- */
+
+  // Filter pills
+  filterBar.addEventListener('click', function(e) {
+    const pill = e.target.closest('.methods__pill');
+    if (!pill) return;
+    filterBar.querySelectorAll('.methods__pill').forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('aria-selected', 'false');
+    });
+    pill.classList.add('active');
+    pill.setAttribute('aria-selected', 'true');
+    activeFilter = pill.dataset.filter;
+    expandedId = null;
+    renderMethodCards();
+  });
+
+  // Sort
+  sortSel.addEventListener('change', function() {
+    activeSort = this.value;
+    renderMethodCards();
+  });
+
+  // Card click — expand/collapse
+  grid.addEventListener('click', function(e) {
+    // Handle favorite button
+    const favBtn = e.target.closest('.method-card__fav');
+    if (favBtn) {
+      e.stopPropagation();
+      const id = favBtn.dataset.fav;
+      toggleFavorite(id);
+      renderMethodCards();
+      return;
+    }
+
+    // Handle card expand
+    const card = e.target.closest('.method-card');
+    if (!card) return;
+    const id = card.dataset.id;
+    expandedId = expandedId === id ? null : id;
+    renderMethodCards();
+  });
+
+  /* ---- Init ---- */
+  renderMethodCards();
+
+})();
+</script>

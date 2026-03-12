@@ -1,0 +1,132 @@
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <!-- App title -->
+  <span class="header__title">SC Planner</span>
+
+  <!-- Ship picker -->
+  <div class="ship-picker" data-open="false">
+    <button id="myShip" class="ship-picker__btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+      <span class="ship-picker__btn-name">Select Ship</span>
+      <span class="ship-picker__btn-price"></span>
+      <span class="ship-picker__chevron">&#9662;</span>
+    </button>
+    <div class="ship-picker__dropdown" role="listbox" aria-label="Ship selection">
+      <div class="ship-picker__search">
+        <input type="text" placeholder="Search ships…" aria-label="Search ships">
+      </div>
+      <div class="ship-picker__list">
+        <!-- Manufacturer groups injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop controls -->
+  <div class="header__controls">
+    <!-- Budget -->
+    <div class="header-field">
+      <label class="header-field__label" for="myBudget">Budget</label>
+      <input id="myBudget" class="header-field__input" type="text" inputmode="numeric" placeholder="0" aria-label="Budget in aUEC">
+    </div>
+
+    <!-- Session length -->
+    <div class="header-field">
+      <label class="header-field__label" for="sessionLen">Session</label>
+      <select id="sessionLen" class="header-field__select" aria-label="Session length">
+        <option value="1">1h</option>
+        <option value="2" selected>2h</option>
+        <option value="3">3h</option>
+        <option value="4">4h</option>
+        <option value="6">6h</option>
+        <option value="8">8h</option>
+      </select>
+    </div>
+
+    <!-- Play style -->
+    <div class="header-field">
+      <span class="header-field__label">Style</span>
+      <div id="soloToggle" class="toggle-group" role="radiogroup" aria-label="Play style">
+        <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="solo" type="button">Solo</button>
+        <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="group" type="button">Group</button>
+      </div>
+    </div>
+
+    <!-- Skill level -->
+    <div class="header-field">
+      <span class="header-field__label">Skill</span>
+      <div id="skillToggle" class="toggle-group" role="radiogroup" aria-label="Skill level">
+        <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="new" type="button">New</button>
+        <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="mid" type="button">Mid</button>
+        <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="vet" type="button">Vet</button>
+      </div>
+    </div>
+
+    <!-- Risk -->
+    <div class="header-field">
+      <span class="header-field__label">Risk</span>
+      <div id="riskToggle" class="toggle-group" role="radiogroup" aria-label="Risk tolerance">
+        <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="safe" type="button">Safe</button>
+        <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="med" type="button">Med</button>
+        <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="high" type="button">High</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hamburger (mobile only) -->
+  <button id="settingsToggle" class="header__hamburger" type="button" aria-expanded="false" aria-controls="settingsDrawer" aria-label="Open settings">&#9776;</button>
+</header>
+
+<!-- ═══ SETTINGS DRAWER (mobile) ═══ -->
+<div id="settingsDrawer" class="settings-drawer" data-open="false">
+  <div class="settings-drawer__inner">
+    <div class="settings-drawer__row">
+      <!-- Budget (mobile) -->
+      <div class="header-field">
+        <label class="header-field__label" for="myBudgetMobile">Budget</label>
+        <input id="myBudgetMobile" class="header-field__input" type="text" inputmode="numeric" placeholder="0" aria-label="Budget in aUEC">
+      </div>
+      <!-- Session (mobile) -->
+      <div class="header-field">
+        <label class="header-field__label" for="sessionLenMobile">Session</label>
+        <select id="sessionLenMobile" class="header-field__select" aria-label="Session length">
+          <option value="1">1h</option>
+          <option value="2" selected>2h</option>
+          <option value="3">3h</option>
+          <option value="4">4h</option>
+          <option value="6">6h</option>
+          <option value="8">8h</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="settings-drawer__toggles">
+      <!-- Play style (mobile) -->
+      <div class="settings-drawer__toggle-col">
+        <span class="header-field__label">Style</span>
+        <div class="toggle-group" role="radiogroup" aria-label="Play style">
+          <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="solo" data-sync="soloToggle" type="button">Solo</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="group" data-sync="soloToggle" type="button">Group</button>
+        </div>
+      </div>
+
+      <!-- Skill (mobile) -->
+      <div class="settings-drawer__toggle-col">
+        <span class="header-field__label">Skill</span>
+        <div class="toggle-group" role="radiogroup" aria-label="Skill level">
+          <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="new" data-sync="skillToggle" type="button">New</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="mid" data-sync="skillToggle" type="button">Mid</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="vet" data-sync="skillToggle" type="button">Vet</button>
+        </div>
+      </div>
+
+      <!-- Risk (mobile) -->
+      <div class="settings-drawer__toggle-col">
+        <span class="header-field__label">Risk</span>
+        <div class="toggle-group" role="radiogroup" aria-label="Risk tolerance">
+          <button class="toggle-group__btn" role="radio" aria-checked="true" data-value="safe" data-sync="riskToggle" type="button">Safe</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="med" data-sync="riskToggle" type="button">Med</button>
+          <button class="toggle-group__btn" role="radio" aria-checked="false" data-value="high" data-sync="riskToggle" type="button">High</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

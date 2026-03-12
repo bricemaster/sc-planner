@@ -1,0 +1,295 @@
+/* ============================================================
+   SC PLANNER — DESIGN TOKENS & FOUNDATION
+   v10.0 | Dark luxury aesthetic
+   ============================================================ */
+
+/* ---- Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap');
+
+/* ---- Design Tokens ---- */
+:root {
+  /* Colors — Core */
+  --bg:          #06060a;
+  --surface:     #0d0e12;
+  --surface-2:   #14151a;
+  --surface-3:   #1a1b21;
+
+  /* Borders */
+  --border:      rgba(255, 255, 255, 0.06);
+  --border-hover:rgba(255, 255, 255, 0.10);
+  --border-gold: rgba(201, 170, 110, 0.15);
+
+  /* Accent — Gold (use sparingly) */
+  --gold:        #c9aa6e;
+  --gold-dim:    rgba(201, 170, 110, 0.5);
+  --gold-glow:   rgba(201, 170, 110, 0.08);
+  --gold-border: rgba(201, 170, 110, 0.25);
+
+  /* Text */
+  --text:        #e8e8e8;
+  --text-2:      #b0b0b0;
+  --text-3:      #8a8a8a;
+
+  /* Semantic */
+  --green:       #6eb88a;
+  --green-dim:   rgba(110, 184, 138, 0.12);
+  --red:         #e57373;
+  --red-dim:     rgba(229, 115, 115, 0.12);
+  --amber:       #f0b060;
+  --amber-dim:   rgba(240, 176, 96, 0.12);
+  --cyan:        #6ec0c9;
+  --cyan-dim:    rgba(110, 192, 201, 0.12);
+
+  /* Typography */
+  --font:        'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono:   'DM Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* Type scale */
+  --fs-xs:   0.6875rem;  /* 11px */
+  --fs-sm:   0.75rem;    /* 12px */
+  --fs-md:   0.8125rem;  /* 13px */
+  --fs-base: 0.875rem;   /* 14px */
+  --fs-lg:   1rem;       /* 16px */
+  --fs-xl:   1.25rem;    /* 20px */
+  --fs-2xl:  1.5rem;     /* 24px */
+  --fs-3xl:  2rem;       /* 32px */
+
+  /* Font weights */
+  --fw-light:    300;
+  --fw-normal:   400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* Spacing scale */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+
+  /* Radius */
+  --r-sm:  4px;
+  --r-md:  8px;
+  --r-lg:  12px;
+  --r-xl:  16px;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-gold:0 0 20px rgba(201, 170, 110, 0.06);
+
+  /* Transitions */
+  --ease:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --fast:    150ms;
+  --med:     250ms;
+  --slow:    400ms;
+}
+
+
+/* ============================================================
+   CSS RESET — Minimal & Modern
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* ============================================================
+   BASE — Body & Global Styles
+   ============================================================ */
+
+body {
+  font-family: var(--font);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-normal);
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+h1, h2, h3, h4 {
+  line-height: 1.25;
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--fs-2xl);
+}
+
+h3 {
+  font-size: var(--fs-xl);
+}
+
+h4 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+}
+
+p {
+  color: var(--text-2);
+  line-height: 1.65;
+}
+
+p + p {
+  margin-top: var(--sp-3);
+}
+
+small {
+  font-size: var(--fs-sm);
+  color: var(--text-3);
+}
+
+strong {
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+}
+
+code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+
+/* ============================================================
+   SCROLLBAR — Subtle, 6px
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+}
+
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+
+::selection {
+  background: rgba(201, 170, 110, 0.25);
+  color: var(--text);
+}
+
+::-moz-selection {
+  background: rgba(201, 170, 110, 0.25);
+  color: var(--text);
+}
+
+
+/* ============================================================
+   FOCUS — Gold outline for keyboard users
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--gold-dim);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+
+/* Screen-reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

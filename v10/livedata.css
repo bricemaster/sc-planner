@@ -1,0 +1,339 @@
+/* ============================================================
+   SC PLANNER — LIVE DATA SECTION
+   v10.0 | Commodity prices + trade routes
+   Requires: tokens.css, base.css loaded first
+   ============================================================ */
+
+
+/* ---- Section Container ---- */
+
+.livedata {
+  padding: var(--sp-6) 0;
+}
+
+
+/* ---- Header ---- */
+
+.livedata__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+}
+
+.livedata__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.livedata__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.livedata__age {
+  font-size: var(--fs-sm);
+  color: var(--text-3);
+}
+
+.livedata__source {
+  font-size: var(--fs-xs);
+}
+
+/* Refresh button spin animation */
+.livedata__refresh-icon {
+  transition: transform var(--med) var(--ease);
+}
+
+#btnRefreshPrices.is-loading .livedata__refresh-icon {
+  animation: livedata-spin 0.8s linear infinite;
+}
+
+@keyframes livedata-spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ---- Two-Column Grid ---- */
+
+.livedata__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-5);
+  align-items: start;
+}
+
+
+/* ---- Commodity Prices Table ---- */
+
+.livedata__prices {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.livedata__table-wrap {
+  overflow-x: auto;
+}
+
+.livedata__table {
+  width: 100%;
+  min-width: 380px;
+}
+
+/* Header row */
+.livedata__th {
+  padding: var(--sp-3) var(--sp-4);
+  font-family: var(--font);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+
+.livedata__th--num {
+  text-align: right;
+}
+
+.livedata__th--center {
+  text-align: center;
+}
+
+/* Sortable headers */
+.livedata__th--sortable {
+  cursor: pointer;
+  transition: color var(--fast) var(--ease);
+  position: relative;
+}
+
+.livedata__th--sortable:hover {
+  color: var(--text-2);
+}
+
+.livedata__th--sortable.is-sorted-asc::after,
+.livedata__th--sortable.is-sorted-desc::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  vertical-align: middle;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+}
+
+.livedata__th--sortable.is-sorted-asc::after {
+  border-bottom: 4px solid var(--gold);
+}
+
+.livedata__th--sortable.is-sorted-desc::after {
+  border-top: 4px solid var(--gold);
+}
+
+/* Data rows */
+.livedata__table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background var(--fast) var(--ease);
+}
+
+.livedata__table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Alternating rows */
+.livedata__table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.livedata__table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Data cells */
+.livedata__td {
+  padding: var(--sp-2) var(--sp-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  color: var(--text);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.livedata__td--name {
+  font-family: var(--font);
+  font-weight: var(--fw-medium);
+  color: var(--text);
+}
+
+.livedata__td--num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.livedata__td--center {
+  text-align: center;
+}
+
+/* Margin highlight */
+.livedata__td--margin-high {
+  color: var(--green);
+  font-weight: var(--fw-medium);
+}
+
+/* Trend indicators */
+.livedata__trend--up {
+  color: var(--green);
+}
+
+.livedata__trend--down {
+  color: var(--red);
+}
+
+.livedata__trend--neutral {
+  color: var(--text-3);
+}
+
+
+/* ---- Trade Routes ---- */
+
+.livedata__routes-title {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--sp-3);
+}
+
+/* Route card */
+.livedata__route {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--sp-3) var(--sp-4);
+  transition: border-color var(--fast) var(--ease);
+}
+
+.livedata__route + .livedata__route {
+  margin-top: var(--sp-2);
+}
+
+.livedata__route:hover {
+  border-color: var(--border-hover);
+}
+
+/* Route header: name + risk pill */
+.livedata__route-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-1);
+}
+
+.livedata__route-name {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.livedata__route-arrow {
+  color: var(--text-3);
+  margin: 0 2px;
+}
+
+/* Commodity label */
+.livedata__route-commodity {
+  font-size: var(--fs-sm);
+  color: var(--text-3);
+  margin-bottom: var(--sp-2);
+}
+
+/* Route stats row */
+.livedata__route-stats {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.livedata__route-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.livedata__route-stat-label {
+  font-size: 10px;
+  font-weight: var(--fw-medium);
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.livedata__route-stat-value {
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.livedata__route-stat-value--profit {
+  color: var(--green);
+  font-weight: var(--fw-medium);
+}
+
+/* Risk pills */
+.livedata__risk--low    { /* use pill--green */ }
+.livedata__risk--medium { /* use pill--amber */ }
+.livedata__risk--high   { /* use pill--red   */ }
+
+/* Time estimate */
+.livedata__route-time {
+  font-size: var(--fs-sm);
+  color: var(--text-3);
+  margin-left: auto;
+}
+
+
+/* ============================================================
+   RESPONSIVE — Mobile (<=768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .livedata__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hide margin column on mobile */
+  .livedata__th--margin,
+  .livedata__td--margin {
+    display: none;
+  }
+
+  /* Let table scroll horizontally */
+  .livedata__table {
+    min-width: 320px;
+  }
+
+  .livedata__route-stats {
+    gap: var(--sp-3);
+  }
+
+  .livedata__route-time {
+    margin-left: 0;
+  }
+}

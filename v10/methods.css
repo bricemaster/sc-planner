@@ -1,0 +1,440 @@
+/* ============================================================
+   METHODS EXPLORER — SC Planner v10
+   Filterable, sortable grid of all earning methods
+   ============================================================ */
+
+/* ---- Section ---- */
+#methodsSection {
+  padding: var(--sp-8) var(--sp-6);
+}
+
+/* ---- Section Header ---- */
+.methods__header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+}
+
+.methods__header .section-title {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.methods__count {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  color: var(--text-3);
+  background: var(--surface-2);
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  border: 1px solid var(--border);
+  letter-spacing: 0.02em;
+}
+
+/* ---- Toolbar: Filters + Sort ---- */
+.methods__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-5);
+}
+
+/* Filter pills */
+#methodsFilter {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex: 1;
+  min-width: 0;
+}
+
+#methodsFilter::-webkit-scrollbar {
+  display: none;
+}
+
+.methods__pill {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-3);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  cursor: pointer;
+  transition: all var(--fast) var(--ease);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.methods__pill:hover {
+  color: var(--text-2);
+  border-color: var(--border-hover);
+  background: var(--surface-2);
+}
+
+.methods__pill.active {
+  color: var(--gold);
+  border-color: var(--gold-border);
+  background: var(--gold-glow);
+}
+
+/* Sort dropdown */
+.methods__sort-wrap {
+  flex-shrink: 0;
+}
+
+#methodsSort {
+  appearance: none;
+  -webkit-appearance: none;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-2);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 8px 32px 8px 12px;
+  cursor: pointer;
+  transition: border-color var(--fast) var(--ease);
+  min-height: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%238a8a8a' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+#methodsSort:hover,
+#methodsSort:focus-visible {
+  border-color: var(--border-hover);
+}
+
+#methodsSort option {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* ---- Grid ---- */
+#methodsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 12px;
+}
+
+/* ---- Method Card ---- */
+.method-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+  cursor: pointer;
+  transition:
+    transform var(--fast) var(--ease),
+    border-color var(--fast) var(--ease),
+    box-shadow var(--fast) var(--ease);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Category left accent border */
+.method-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: var(--r-md) 0 0 var(--r-md);
+  background: var(--border);
+  transition: background var(--fast) var(--ease);
+}
+
+.method-card[data-category="combat"]::before   { background: var(--red); }
+.method-card[data-category="cargo"]::before     { background: var(--cyan); }
+.method-card[data-category="mining"]::before    { background: var(--amber); }
+.method-card[data-category="salvage"]::before   { background: var(--green); }
+.method-card[data-category="delivery"]::before  { background: #a78bfa; }
+.method-card[data-category="trading"]::before   { background: var(--cyan); }
+.method-card[data-category="bounty"]::before    { background: var(--red); }
+.method-card[data-category="mission"]::before   { background: #e0a060; }
+
+/* Hover */
+.method-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* Expanded state — override grid auto-row height */
+.method-card.expanded {
+  grid-row: span 2;
+}
+
+/* ---- Card Header ---- */
+.method-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.method-card__name {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--text);
+  line-height: 1.3;
+}
+
+/* Risk pill */
+.method-card__risk {
+  flex-shrink: 0;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.method-card__risk[data-risk="low"] {
+  color: var(--green);
+  background: var(--green-dim);
+}
+
+.method-card__risk[data-risk="medium"] {
+  color: var(--amber);
+  background: var(--amber-dim);
+}
+
+.method-card__risk[data-risk="high"] {
+  color: var(--red);
+  background: var(--red-dim);
+}
+
+/* ---- Rate ---- */
+.method-card__rate {
+  font-size: var(--fs-lg);
+  font-family: var(--font-mono);
+  font-weight: var(--fw-medium);
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.method-card__range {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  color: var(--text-3);
+  margin-top: 2px;
+  margin-bottom: var(--sp-3);
+}
+
+/* ---- Tags ---- */
+.method-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.method-card__tag {
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  white-space: nowrap;
+}
+
+/* ---- Expanded Details ---- */
+.method-card__details {
+  display: none;
+  flex-direction: column;
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+  animation: methodDetailsFadeIn var(--med) var(--ease) both;
+}
+
+.method-card.expanded .method-card__details {
+  display: flex;
+}
+
+@keyframes methodDetailsFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.method-card__desc {
+  font-size: var(--fs-md);
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* Tips list */
+.method-card__tips-title,
+.method-card__gear-title,
+.method-card__ships-title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--sp-2);
+}
+
+.method-card__tips {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.method-card__tip {
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+  padding-left: var(--sp-4);
+  position: relative;
+  line-height: 1.5;
+}
+
+.method-card__tip::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 7px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-3);
+}
+
+/* Gear & Ships */
+.method-card__gear,
+.method-card__ships {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.method-card__gear-item,
+.method-card__ship-item {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  color: var(--text-2);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: var(--r-sm);
+}
+
+/* Favorite button */
+.method-card__fav {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-3);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all var(--fast) var(--ease);
+  align-self: flex-start;
+  min-height: 44px;
+}
+
+.method-card__fav:hover {
+  color: var(--red);
+  border-color: rgba(229, 115, 115, 0.3);
+  background: var(--red-dim);
+}
+
+.method-card__fav.favorited {
+  color: var(--red);
+  border-color: rgba(229, 115, 115, 0.3);
+  background: var(--red-dim);
+}
+
+.method-card__fav-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ---- Stats row (confidence + consistency) ---- */
+.method-card__meta {
+  display: flex;
+  gap: var(--sp-4);
+}
+
+.method-card__meta-item {
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+}
+
+.method-card__meta-item span {
+  color: var(--text-2);
+  font-weight: var(--fw-medium);
+}
+
+/* ---- Empty state ---- */
+.methods__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--sp-12) var(--sp-4);
+  color: var(--text-3);
+  font-size: var(--fs-md);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  #methodsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #methodsSection {
+    padding: var(--sp-6) var(--sp-4);
+  }
+
+  .methods__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--sp-3);
+  }
+
+  #methodsFilter {
+    padding-bottom: var(--sp-1);
+  }
+
+  #methodsGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .method-card.expanded {
+    grid-row: span 1;
+  }
+}
