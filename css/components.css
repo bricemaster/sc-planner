@@ -162,6 +162,7 @@
 .toggle-compact {
   display: flex;
   gap: 0;
+  align-items: stretch;
 }
 .tbtn {
   padding: 6px 10px;
@@ -176,11 +177,13 @@
   cursor: pointer;
   transition: all .25s cubic-bezier(.4,0,.2,1);
   line-height: 1;
+  display: flex;
+  align-items: center;
 }
 .tbtn + .tbtn { border-left: none; }
 .tbtn:first-child { border-radius: 0; }
 .tbtn:last-child { border-radius: 0; }
-.tbtn:hover { color: var(--lt); background: rgba(255,255,255,.04); }
+.tbtn:not(.active):hover { color: var(--lt); background: rgba(255,255,255,.04); }
 .tbtn.active {
   color: var(--bg);
   font-weight: 500;
@@ -299,6 +302,52 @@
   background: var(--v);
   position: sticky;
   top: 0;
+}
+
+/* Manufacturer accordion headers */
+.ship-picker__mfr-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  background: var(--v);
+  border-bottom: 1px solid var(--rl);
+  transition: background .15s, border-color .15s;
+  user-select: none;
+}
+.ship-picker__mfr-header:hover {
+  background: var(--c);
+}
+.ship-picker__mfr-header.expanded {
+  border-bottom-color: var(--g);
+  background: var(--c);
+}
+.ship-picker__mfr-name {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--lt);
+}
+.ship-picker__mfr-header.expanded .ship-picker__mfr-name {
+  color: var(--g);
+}
+.ship-picker__mfr-count {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: var(--dm);
+  margin-left: auto;
+}
+.ship-picker__mfr-chevron {
+  font-size: .55rem;
+  color: var(--dm);
+  transition: color .15s;
+}
+.ship-picker__mfr-header.expanded .ship-picker__mfr-chevron {
+  color: var(--g);
 }
 
 .ship-picker__option {

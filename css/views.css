@@ -466,6 +466,22 @@
   .ship-list-row { grid-template-columns: 1fr 1fr; gap: 4px; }
   .slr-mfr, .slr-stat { display: none; }
   .ship-stats-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Price table: collapse to 3 columns, hide margin on mobile */
+  .price-row {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    font-size: 11px;
+    padding: 4px 0;
+  }
+  .price-row span:nth-child(4) { display: none; }
+  .price-header {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+  .price-section-label {
+    font-size: 8px;
+    margin: 6px 0 2px;
+  }
 }
 
 /* ═══ PLAN ═══ */
