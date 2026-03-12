@@ -75,7 +75,7 @@
 }
 .rec-hero__risk {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   padding: 2px 8px;
@@ -90,7 +90,7 @@
   align-items: center;
   gap: 4px;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--dm);
@@ -172,7 +172,7 @@
 .dash-card__link::after { content: '\2192'; }
 .dash-card__meta {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   color: var(--mt, #404040);
   text-transform: uppercase;
@@ -202,8 +202,8 @@
   color: var(--dm);
 }
 .ship-card-name { font-family: var(--serif); font-size: 16px; color: var(--wh); margin-bottom: 2px; }
-.ship-card-mfr { font-family: var(--mono); font-size: 9px; color: var(--dm); letter-spacing: 1.5px; }
-.ship-unlocks-text { font-family: var(--mono); font-size: 9px; color: var(--dm); letter-spacing: 1px; margin-top: 8px; }
+.ship-card-mfr { font-family: var(--mono); font-size: 10px; color: var(--dm); letter-spacing: 1.5px; }
+.ship-unlocks-text { font-family: var(--mono); font-size: 10px; color: var(--dm); letter-spacing: 1px; margin-top: 8px; }
 
 /* ═══ GOAL TRACKER ═══ */
 .goal-ship-name { font-family: var(--serif); font-size: 16px; color: var(--wh); margin-bottom: 8px; }
@@ -267,13 +267,13 @@
 .price-row span:last-child { font-family: var(--mono); color: var(--g); font-size: 12px; }
 .source-tag {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   color: var(--mt);
   text-transform: uppercase;
   margin-left: 6px;
 }
-.loading-text { font-family: var(--mono); font-size: 9px; color: var(--dm); letter-spacing: 1.5px; }
+.loading-text { font-family: var(--mono); font-size: 10px; color: var(--dm); letter-spacing: 1.5px; }
 
 /* ═══ MINI STATS ═══ */
 .mini-stat { display: flex; flex-direction: column; gap: 2px; margin-bottom: 6px; }
@@ -283,7 +283,7 @@
 .session-earnings { display: flex; gap: 16px; margin-bottom: 8px; }
 .session-activity { font-size: 11px; color: var(--dm); line-height: 1.5; }
 .session-activity strong { color: var(--sv); }
-.session-goal { font-family: var(--mono); font-size: 9px; color: var(--g); letter-spacing: 1px; margin-top: 6px; }
+.session-goal { font-family: var(--mono); font-size: 10px; color: var(--g); letter-spacing: 1px; margin-top: 6px; }
 
 /* ═══ FILTERS ═══ */
 .filter-bar {
@@ -397,7 +397,7 @@
 }
 .methods-hidden {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--dm);
   letter-spacing: 1.5px;
   text-align: center;
@@ -473,13 +473,13 @@
 .ship-actions { display: flex; gap: 8px; }
 .ships-empty { font-size: 12px; color: var(--dm); padding: 16px; text-align: center; }
 @media (max-width: 768px) {
-  .ship-list-row { grid-template-columns: auto 1fr 1fr; gap: 4px; padding: 8px 10px; }
+  .ship-list-row { grid-template-columns: auto 1fr 1fr; gap: 4px; padding: 10px 10px; min-height: 44px; }
   .slr-role { font-size: 10px; }
   .slr-name { font-size: 14px; }
   .slr-price { font-size: 12px; }
   .mfr-group__header { padding: 12px 12px; min-height: 44px; }
   .mfr-group__name { font-size: 12px; letter-spacing: 3px; }
-  .mfr-group__count { font-size: 9px; }
+  .mfr-group__count { font-size: 10px; }
   .slr-mfr, .slr-stat { display: none; }
   .ship-stats-grid { grid-template-columns: repeat(3, 1fr); }
 
@@ -491,11 +491,11 @@
   }
   .price-row span:nth-child(4) { display: none; }
   .price-header {
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 1.5px;
   }
   .price-section-label {
-    font-size: 9px;
+    font-size: 10px;
     margin: 6px 0 2px;
   }
 }
@@ -518,7 +518,7 @@
 .plan-steps { margin-bottom: 16px; }
 .plan-steps h3, .plan-steps h4 {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--g);
@@ -587,7 +587,7 @@
 }
 .section-heading {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 5px;
   text-transform: uppercase;
   color: var(--g);
@@ -638,7 +638,7 @@
   border-color: var(--g);
   transform: translateY(-2px);
 }
-.btn--sm { padding: 6px 14px; font-size: 9px; }
+.btn--sm { padding: 6px 14px; font-size: 10px; }
 
 /* ═══ MODAL ═══ */
 .modal { position: fixed; inset: 0; z-index: 910; display: none; }
@@ -710,14 +710,14 @@
 .footer__logo span { color: var(--g); font-style: italic; }
 .footer__tagline {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--dm);
 }
 .footer__bottom {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--mt);
@@ -762,7 +762,7 @@
 }
 .patch-ticker__item {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--dm);
@@ -770,7 +770,7 @@
 }
 .patch-ticker__sep {
   color: var(--g);
-  font-size: 9px;
+  font-size: 10px;
   opacity: .4;
   padding: 0 4px;
 }
@@ -837,7 +837,7 @@
 }
 .ship-compare__label {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--g);
@@ -917,7 +917,7 @@
   background: var(--g);
 }
 @media (max-width: 600px) {
-  .qn-link { padding: 8px 12px; font-size: 9px; letter-spacing: 2px; }
+  .qn-link { padding: 8px 12px; font-size: 10px; letter-spacing: 2px; }
   .quick-nav { top: calc(var(--header-h-mobile) + 24px); }
 }
 
@@ -932,7 +932,7 @@
 }
 .upgrade-label {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--g);
@@ -944,7 +944,7 @@
 }
 .upgrade-meta {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--dm);
   letter-spacing: 1px;
 }
@@ -977,14 +977,14 @@
 .goal-ms:last-child { border-right: none; }
 .goal-ms__pct {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   color: var(--g);
   margin-bottom: 2px;
 }
 .goal-ms__time {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--dm);
   letter-spacing: 1px;
 }
@@ -992,7 +992,7 @@
 /* ═══ METHOD CATEGORY BADGE ═══ */
 .method-cat-badge {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--g);
@@ -1007,7 +1007,7 @@
 /* ═══ SHARE BUTTON ═══ */
 .btn-share {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--dm);
@@ -1073,7 +1073,7 @@
   padding: 20px;
   text-align: center;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   color: var(--dm);
   text-transform: uppercase;
@@ -1093,7 +1093,7 @@
 }
 .gsearch__type {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--g);
@@ -1128,7 +1128,7 @@
 }
 .gsearch__act {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--dm);
@@ -1147,13 +1147,13 @@
   padding: 8px 20px;
   border-top: 1px solid var(--rl);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1.5px;
   color: var(--mt);
 }
 .gsearch__hint kbd {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   background: var(--dp);
   border: 1px solid var(--dv);
   padding: 1px 4px;
@@ -1180,7 +1180,7 @@
 }
 .header__search-hint {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1.5px;
   color: var(--mt);
 }
@@ -1282,7 +1282,7 @@
 }
 .onboard__skip {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1.5px;
   color: var(--mt);
   text-align: center;
@@ -1335,7 +1335,7 @@
 
 /* Category badge with icon */
 .method-cat-badge {
-  font-size: 9px;
+  font-size: 10px;
   padding: 3px 8px;
   display: inline-flex;
   align-items: center;
@@ -1353,7 +1353,7 @@
 /* Ship badges */
 .slr-badge {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   padding: 2px 8px;
   margin-left: 8px;
@@ -1410,7 +1410,7 @@
 /* ═══ PRICE FIXES ═══ */
 .price-section-label {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--g);
@@ -1482,7 +1482,7 @@
   flex-shrink: 0;
 }
 .mfr-group__chevron {
-  font-size: 9px;
+  font-size: 10px;
   color: var(--dm);
   transition: transform .25s var(--ease, ease);
   flex-shrink: 0;
@@ -1514,7 +1514,7 @@
 }
 .filter-bar--mfr .sort-label {
   margin-right: 6px;
-  font-size: 9px;
+  font-size: 10px;
   color: var(--dm);
   letter-spacing: 2.5px;
 }
@@ -1540,7 +1540,7 @@
   color: var(--md);
 }
 .tab-context-bar__item { display: flex; align-items: center; gap: 6px; }
-.tab-context-bar__label { color: var(--md); text-transform: uppercase; letter-spacing: 2px; font-size: 9px; font-weight: 500; }
+.tab-context-bar__label { color: var(--md); text-transform: uppercase; letter-spacing: 2px; font-size: 10px; font-weight: 500; }
 .tab-context-bar__value { color: var(--wh); font-weight: 600; }
 
 /* ═══ SHIP BROWSER POLISH ═══ */

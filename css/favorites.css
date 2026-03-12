@@ -302,10 +302,7 @@
 }
 
 /* ─── Utility ─────────────────────────────────────────────────────────────── */
-
-.hidden {
-  display: none !important;
-}
+/* .hidden removed: already defined in polish-v2.css */
 
 /* ─── Method Detail Actions Row ───────────────────────────────────────────── */
 

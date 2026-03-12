@@ -41,7 +41,7 @@
   <div id="srAnnounce" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 
   <!-- Auto-save Indicator -->
-  <div class="autosave-indicator" id="autosaveIndicator">Saved &#x2713;</div>
+  <div class="autosave-indicator" id="autosaveIndicator" role="status" aria-live="polite">Saved &#x2713;</div>
 
   <!-- ═══ PERSISTENT HEADER ═══ -->
   <header class="header">
@@ -72,25 +72,25 @@
       </div>
 
       <div class="header__input-group">
-        <div class="toggle-compact" id="soloToggle">
-          <button class="tbtn active" data-val="solo">Solo</button>
-          <button class="tbtn" data-val="group">Group</button>
+        <div class="toggle-compact" id="soloToggle" role="radiogroup" aria-label="Play style">
+          <button class="tbtn active" data-val="solo" role="radio" aria-checked="true">Solo</button>
+          <button class="tbtn" data-val="group" role="radio" aria-checked="false">Group</button>
         </div>
       </div>
 
       <div class="header__input-group">
-        <div class="toggle-compact" id="skillToggle">
-          <button class="tbtn active" data-val="beginner">New</button>
-          <button class="tbtn" data-val="intermediate">Mid</button>
-          <button class="tbtn" data-val="advanced">Pro</button>
+        <div class="toggle-compact" id="skillToggle" role="radiogroup" aria-label="Skill level">
+          <button class="tbtn active" data-val="beginner" role="radio" aria-checked="true">New</button>
+          <button class="tbtn" data-val="intermediate" role="radio" aria-checked="false">Mid</button>
+          <button class="tbtn" data-val="advanced" role="radio" aria-checked="false">Pro</button>
         </div>
       </div>
 
       <div class="header__input-group">
-        <div class="toggle-compact" id="riskToggle">
-          <button class="tbtn active" data-val="low">Low</button>
-          <button class="tbtn" data-val="medium">Med</button>
-          <button class="tbtn" data-val="high">High</button>
+        <div class="toggle-compact" id="riskToggle" role="radiogroup" aria-label="Risk tolerance">
+          <button class="tbtn active" data-val="low" role="radio" aria-checked="true">Low</button>
+          <button class="tbtn" data-val="medium" role="radio" aria-checked="false">Med</button>
+          <button class="tbtn" data-val="high" role="radio" aria-checked="false">High</button>
         </div>
       </div>
     </div>
@@ -98,18 +98,18 @@
     <span class="header__clock" id="liveClock"></span>
 
     <button class="header__search-btn" id="globalSearchBtn" aria-label="Search">
-      <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 16l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 16l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       <span class="header__search-hint">Ctrl+K</span>
     </button>
 
     <!-- Mobile settings toggle -->
-    <button class="header__settings-toggle" id="settingsToggle" aria-label="Settings">
-      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    <button class="header__settings-toggle" id="settingsToggle" aria-label="Settings" aria-expanded="false" aria-controls="settingsDrawer">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
     </button>
   </header>
 
   <!-- Mobile settings drawer -->
-  <div class="settings-drawer" id="settingsDrawer">
+  <div class="settings-drawer" id="settingsDrawer" aria-hidden="true">
     <div class="settings-drawer__inner">
       <div class="header__input-group">
         <label class="header__label" for="myBudgetMobile">Budget</label>
@@ -129,23 +129,23 @@
         </select>
       </div>
       <div class="header__input-group">
-        <div class="toggle-compact" id="soloToggleMobile">
-          <button class="tbtn active" data-val="solo">Solo</button>
-          <button class="tbtn" data-val="group">Group</button>
+        <div class="toggle-compact" id="soloToggleMobile" role="radiogroup" aria-label="Play style">
+          <button class="tbtn active" data-val="solo" role="radio" aria-checked="true">Solo</button>
+          <button class="tbtn" data-val="group" role="radio" aria-checked="false">Group</button>
         </div>
       </div>
       <div class="header__input-group">
-        <div class="toggle-compact" id="skillToggleMobile">
-          <button class="tbtn active" data-val="beginner">New</button>
-          <button class="tbtn" data-val="intermediate">Mid</button>
-          <button class="tbtn" data-val="advanced">Pro</button>
+        <div class="toggle-compact" id="skillToggleMobile" role="radiogroup" aria-label="Skill level">
+          <button class="tbtn active" data-val="beginner" role="radio" aria-checked="true">New</button>
+          <button class="tbtn" data-val="intermediate" role="radio" aria-checked="false">Mid</button>
+          <button class="tbtn" data-val="advanced" role="radio" aria-checked="false">Pro</button>
         </div>
       </div>
       <div class="header__input-group">
-        <div class="toggle-compact" id="riskToggleMobile">
-          <button class="tbtn active" data-val="low">Low</button>
-          <button class="tbtn" data-val="medium">Med</button>
-          <button class="tbtn" data-val="high">High</button>
+        <div class="toggle-compact" id="riskToggleMobile" role="radiogroup" aria-label="Risk tolerance">
+          <button class="tbtn active" data-val="low" role="radio" aria-checked="true">Low</button>
+          <button class="tbtn" data-val="medium" role="radio" aria-checked="false">Med</button>
+          <button class="tbtn" data-val="high" role="radio" aria-checked="false">High</button>
         </div>
       </div>
     </div>
@@ -181,7 +181,7 @@
       <!-- Card 1: Alternatives -->
       <div class="dash-card" id="alt-card">
         <div class="dash-card__header">
-          <span class="sec">Alternatives</span>
+          <h2 class="sec">Alternatives</h2>
         </div>
         <div class="dash-card__body" id="altList">
           <div class="compact-row compact-row--empty">Configure your setup above</div>
@@ -194,7 +194,7 @@
       <!-- Card 2: Your Ship -->
       <div class="dash-card" id="ship-card">
         <div class="dash-card__header">
-          <span class="sec">Your Ship</span>
+          <h2 class="sec">Your Ship</h2>
         </div>
         <div class="dash-card__body" id="shipInfo">
           <div class="compact-row compact-row--empty">No ship selected</div>
@@ -209,7 +209,7 @@
       <!-- Card 3: Goal Tracker -->
       <div class="dash-card" id="goal-card">
         <div class="dash-card__header">
-          <span class="sec">Goal Tracker</span>
+          <h2 class="sec">Goal Tracker</h2>
         </div>
         <div class="dash-card__body">
           <div class="goal-picker-wrap">
@@ -228,7 +228,7 @@
       <!-- Card 4: Live Prices -->
       <div class="dash-card" id="prices-card">
         <div class="dash-card__header">
-          <span class="sec">Live Prices</span>
+          <h2 class="sec">Live Prices</h2>
         </div>
         <div class="dash-card__body" id="pricesList">
           <span class="skeleton skeleton--wide"></span><span class="skeleton skeleton--med"></span><span class="skeleton skeleton--short"></span>
@@ -243,7 +243,7 @@
       <!-- Card 5: Quick Intel -->
       <div class="dash-card" id="intel-card">
         <div class="dash-card__header">
-          <span class="sec">Quick Intel</span>
+          <h2 class="sec">Quick Intel</h2>
         </div>
         <div class="dash-card__body" id="intelSummary">
           <span class="skeleton skeleton--wide"></span><span class="skeleton skeleton--med"></span>
@@ -256,7 +256,7 @@
       <!-- Card 6: Session Planner -->
       <div class="dash-card" id="session-card">
         <div class="dash-card__header">
-          <span class="sec">Session Planner</span>
+          <h2 class="sec">Session Planner</h2>
         </div>
         <div class="dash-card__body" id="sessionPlan">
           <span class="skeleton skeleton--wide"></span><span class="skeleton skeleton--short"></span>
@@ -271,10 +271,10 @@
 
     <!-- Tab Bar -->
     <nav class="tab-bar" id="tabBar" role="tablist">
-      <button class="tab-bar__btn" data-tab="methods" role="tab" aria-selected="false">Methods</button>
-      <button class="tab-bar__btn" data-tab="ships" role="tab" aria-selected="false">Ships</button>
-      <button class="tab-bar__btn" data-tab="plan" role="tab" aria-selected="false">Plan</button>
-      <button class="tab-bar__btn" data-tab="intel" role="tab" aria-selected="false">Intel</button>
+      <button class="tab-bar__btn" id="tab-btn-methods" data-tab="methods" role="tab" aria-selected="false" aria-controls="tab-methods">Methods</button>
+      <button class="tab-bar__btn" id="tab-btn-ships" data-tab="ships" role="tab" aria-selected="false" aria-controls="tab-ships">Ships</button>
+      <button class="tab-bar__btn" id="tab-btn-plan" data-tab="plan" role="tab" aria-selected="false" aria-controls="tab-plan">Plan</button>
+      <button class="tab-bar__btn" id="tab-btn-intel" data-tab="intel" role="tab" aria-selected="false" aria-controls="tab-intel">Intel</button>
     </nav>
 
     <!-- Footer: thin single line -->
@@ -286,7 +286,7 @@
         <button class="footer-history-btn" id="btnChangelog">New</button>
       </div>
       <div class="footer__bottom">
-        <span>v8.0</span>
+        <span>v9.0</span>
         <span class="footer__sep">&middot;</span>
         <span>Not affiliated with CIG</span>
         <span class="footer__sep">&middot;</span>
@@ -299,13 +299,13 @@
   </main>
 
   <!-- ═══ TAB OVERLAY (Methods, Ships, Plan, Intel) ═══ -->
-  <div class="tab-modal-overlay" id="tabOverlay">
+  <div class="tab-modal-overlay" id="tabOverlay" role="dialog" aria-modal="true">
     <div class="tab-modal-panel" id="tabPanel">
       <!-- Methods tab content -->
-      <div class="tab-content-section" id="tab-methods" style="display:none">
+      <div class="tab-content-section" id="tab-methods" role="tabpanel" aria-labelledby="tab-btn-methods" style="display:none">
         <section id="methods-section" class="content-section">
           <div class="section-header">
-            <span class="sec">Method Explorer</span>
+            <h2 class="sec">Method Explorer</h2>
             <div class="section-header__filters" id="methodFilters"></div>
           </div>
           <div id="methodSort" class="mb-8"></div>
@@ -313,12 +313,12 @@
         </section>
       </div>
       <!-- Ships tab content -->
-      <div class="tab-content-section" id="tab-ships" style="display:none">
+      <div class="tab-content-section" id="tab-ships" role="tabpanel" aria-labelledby="tab-btn-ships" style="display:none">
         <section id="ships-section" class="content-section">
           <div class="section-header">
-            <span class="sec">Ship Browser</span>
+            <h2 class="sec">Ship Browser</h2>
             <div class="section-header__filters">
-              <input type="text" id="shipSearch" class="header-input header-input--search" placeholder="Search ships...">
+              <input type="text" id="shipSearch" class="header-input header-input--search" placeholder="Search ships..." aria-label="Search ships">
               <div id="shipFilters" class="inline-filters"></div>
             </div>
           </div>
@@ -326,10 +326,10 @@
         </section>
       </div>
       <!-- Plan tab content -->
-      <div class="tab-content-section" id="tab-plan" style="display:none">
+      <div class="tab-content-section" id="tab-plan" role="tabpanel" aria-labelledby="tab-btn-plan" style="display:none">
         <section id="plan-section" class="content-section">
           <div class="section-header">
-            <span class="sec">Progression Plan</span>
+            <h2 class="sec">Progression Plan</h2>
           </div>
           <div id="planResults">
             <div class="compact-row compact-row--empty">Set a goal ship in the Goal Tracker above to see your progression plan.</div>
@@ -337,7 +337,7 @@
         </section>
       </div>
       <!-- Intel tab content (challenges + data panel) -->
-      <div class="tab-content-section" id="tab-intel" style="display:none">
+      <div class="tab-content-section" id="tab-intel" role="tabpanel" aria-labelledby="tab-btn-intel" style="display:none">
         <div id="challengesWidget" class="challenges-widget"></div>
         <div id="dataPanel"></div>
       </div>
@@ -349,7 +349,7 @@
   <div id="globalSearch" class="gsearch">
     <div class="gsearch__backdrop"></div>
     <div class="gsearch__panel">
-      <input type="text" id="gsearchInput" class="gsearch__input" placeholder="Search ships, methods, locations..." autocomplete="off">
+      <input type="text" id="gsearchInput" class="gsearch__input" placeholder="Search ships, methods, locations..." autocomplete="off" aria-label="Global search">
       <div class="gsearch__results" id="gsearchResults"></div>
       <div class="gsearch__hint">
         <span><kbd>↑↓</kbd> Navigate</span>
@@ -360,7 +360,7 @@
   </div>
 
   <!-- ═══ MODAL ═══ -->
-  <div id="modal" class="modal">
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
     <div class="modal__backdrop"></div>
     <div class="modal__panel">
       <button class="modal__close" aria-label="Close">&times;</button>
@@ -369,16 +369,16 @@
   </div>
 
   <!-- ═══ ONBOARDING ═══ -->
-  <div id="onboarding" class="onboard">
+  <div id="onboarding" class="onboard" role="dialog" aria-modal="true" aria-label="Setup wizard">
     <div class="onboard__backdrop"></div>
     <div class="onboard__panel">
 
       <!-- Step indicator dots -->
       <div class="onboard__dots">
-        <span class="onboard__dot active" data-dot="1"></span>
-        <span class="onboard__dot" data-dot="2"></span>
-        <span class="onboard__dot" data-dot="3"></span>
-        <span class="onboard__dot" data-dot="4"></span>
+        <span class="onboard__dot active" data-dot="1" aria-label="Step 1"></span>
+        <span class="onboard__dot" data-dot="2" aria-label="Step 2"></span>
+        <span class="onboard__dot" data-dot="3" aria-label="Step 3"></span>
+        <span class="onboard__dot" data-dot="4" aria-label="Step 4"></span>
       </div>
 
       <!-- Step 1: Welcome -->
@@ -399,69 +399,113 @@
           <select id="onboardShip" class="onboard__select">
             <option value="" disabled selected>Choose your ship...</option>
             <optgroup label="RSI">
-              <option value="aurora-mr">Aurora MR — 186,120 aUEC</option>
-              <option value="aurora-cl">Aurora CL — 235,950 aUEC</option>
-              <option value="constellation-taurus">Constellation Taurus — 2,632,500 aUEC</option>
-              <option value="constellation-andromeda">Constellation Andromeda — 3,498,600 aUEC</option>
-              <option value="constellation-phoenix">Constellation Phoenix — 5,535,000 aUEC</option>
-              <option value="odyssey">Odyssey — 16,500,000 aUEC</option>
-              <option value="perseus">Perseus — 18,000,000 aUEC</option>
+              <option value="aurora-es">Aurora ES &mdash; 423,360 aUEC</option>
+              <option value="aurora-mr">Aurora MR &mdash; 680,400 aUEC</option>
+              <option value="aurora-ln">Aurora LN &mdash; 907,200 aUEC</option>
+              <option value="aurora-cl">Aurora CL &mdash; 1,020,600 aUEC</option>
+              <option value="mantis">Mantis &mdash; 3,402,000 aUEC</option>
+              <option value="zeus-mk2-es">Zeus Mk II ES &mdash; 4,422,600 aUEC</option>
+              <option value="scorpius">Scorpius &mdash; 5,443,200 aUEC</option>
+              <option value="zeus-mk2-cl">Zeus Mk II CL &mdash; 6,804,000 aUEC</option>
+              <option value="constellation-taurus">Constellation Taurus &mdash; 8,043,840 aUEC</option>
+              <option value="rsi-apollo">Apollo Medivac &mdash; 8,295,210 aUEC</option>
+              <option value="constellation-andromeda">Constellation Andromeda &mdash; 10,160,640 aUEC</option>
+              <option value="constellation-aquila">Constellation Aquila &mdash; 12,186,720 aUEC</option>
+              <option value="constellation-phoenix">Constellation Phoenix &mdash; 14,817,600 aUEC</option>
             </optgroup>
             <optgroup label="Aegis">
-              <option value="avenger-titan">Avenger Titan — 785,600 aUEC</option>
-              <option value="avenger-stalker">Avenger Stalker — 885,000 aUEC</option>
-              <option value="avenger-warlock">Avenger Warlock — 1,050,000 aUEC</option>
-              <option value="gladius">Gladius — 1,102,000 aUEC</option>
-              <option value="sabre">Sabre — 2,135,000 aUEC</option>
-              <option value="vanguard-warden">Vanguard Warden — 2,768,500 aUEC</option>
-              <option value="vanguard-sentinel">Vanguard Sentinel — 2,925,000 aUEC</option>
-              <option value="retaliator">Retaliator — 4,850,000 aUEC</option>
-              <option value="redeemer">Redeemer — 6,100,000 aUEC</option>
-              <option value="reclaimer">Reclaimer — 8,316,900 aUEC</option>
-              <option value="hammerhead">Hammerhead — 14,312,500 aUEC</option>
+              <option value="avenger-titan">Avenger Titan &mdash; 1,358,280 aUEC</option>
+              <option value="avenger-stalker">Avenger Stalker &mdash; 1,587,600 aUEC</option>
+              <option value="avenger-titan-renegade">Avenger Titan Renegade &mdash; 1,852,200 aUEC</option>
+              <option value="avenger-warlock">Avenger Warlock &mdash; 2,249,100 aUEC</option>
+              <option value="gladius">Gladius &mdash; 2,381,400 aUEC</option>
+              <option value="sabre">Sabre &mdash; 4,498,200 aUEC</option>
+              <option value="terrapin">Terrapin &mdash; 5,433,120 aUEC</option>
+              <option value="eclipse">Eclipse &mdash; 7,938,000 aUEC</option>
+              <option value="retaliator">Retaliator Bomber &mdash; 7,938,000 aUEC</option>
+              <option value="vanguard-hoplite">Vanguard Hoplite &mdash; 9,327,150 aUEC</option>
+              <option value="vanguard-warden">Vanguard Warden &mdash; 10,319,400 aUEC</option>
+              <option value="vanguard-sentinel">Vanguard Sentinel &mdash; 10,914,750 aUEC</option>
+              <option value="vanguard-harbinger">Vanguard Harbinger &mdash; 11,510,100 aUEC</option>
+              <option value="redeemer">Redeemer &mdash; 17,199,000 aUEC</option>
+              <option value="reclaimer">Reclaimer &mdash; 31,752,000 aUEC</option>
+              <option value="hammerhead">Hammerhead &mdash; 47,958,752 aUEC</option>
             </optgroup>
             <optgroup label="Drake">
-              <option value="buccaneer">Buccaneer — 1,272,000 aUEC</option>
-              <option value="cutlass-black">Cutlass Black — 1,385,300 aUEC</option>
-              <option value="cutlass-red">Cutlass Red — 1,465,000 aUEC</option>
-              <option value="vulture">Vulture — 1,471,200 aUEC</option>
-              <option value="drake-golem">Drake Golem — 2,500,000 aUEC</option>
-              <option value="drake-corsair">Drake Corsair — 3,375,000 aUEC</option>
-              <option value="caterpillar">Caterpillar — 4,684,800 aUEC</option>
+              <option value="cutter">Cutter &mdash; 635,040 aUEC</option>
+              <option value="drake-golem">Drake Golem &mdash; 1,058,400 aUEC</option>
+              <option value="herald">Herald &mdash; 1,285,200 aUEC</option>
+              <option value="buccaneer">Buccaneer &mdash; 1,663,200 aUEC</option>
+              <option value="cutlass-black">Cutlass Black &mdash; 2,116,800 aUEC</option>
+              <option value="vulture">Vulture &mdash; 2,646,000 aUEC</option>
+              <option value="cutlass-red">Cutlass Red &mdash; 2,857,680 aUEC</option>
+              <option value="cutlass-blue">Cutlass Blue &mdash; 3,704,400 aUEC</option>
+              <option value="drake-corsair">Corsair &mdash; 6,552,000 aUEC</option>
+              <option value="caterpillar">Caterpillar &mdash; 12,474,000 aUEC</option>
             </optgroup>
             <optgroup label="Origin">
-              <option value="100i">100i — 535,600 aUEC</option>
-              <option value="300i">300i — 590,000 aUEC</option>
-              <option value="315p">315p — 650,000 aUEC</option>
-              <option value="600i-explorer">600i Explorer — 6,678,500 aUEC</option>
-              <option value="890-jump">890 Jump — 32,418,700 aUEC</option>
+              <option value="100i">100i &mdash; 1,146,600 aUEC</option>
+              <option value="300i">300i &mdash; 1,375,920 aUEC</option>
+              <option value="135c">135c &mdash; 1,490,580 aUEC</option>
+              <option value="315p">315p &mdash; 1,490,580 aUEC</option>
+              <option value="125a">125a &mdash; 1,587,600 aUEC</option>
+              <option value="325a">325a &mdash; 1,852,200 aUEC</option>
+              <option value="400i">400i &mdash; 11,466,000 aUEC</option>
+              <option value="600i-explorer">600i Explorer &mdash; 27,231,750 aUEC</option>
+              <option value="890-jump">890 Jump &mdash; 65,356,200 aUEC</option>
             </optgroup>
             <optgroup label="MISC">
-              <option value="reliant-kore">Reliant Kore — 350,400 aUEC</option>
-              <option value="hull-a">Hull A — 1,250,000 aUEC</option>
-              <option value="freelancer">Freelancer — 1,659,200 aUEC</option>
-              <option value="freelancer-max">Freelancer MAX — 1,831,800 aUEC</option>
-              <option value="prospector">Prospector — 2,061,000 aUEC</option>
+              <option value="hull-a">Hull A &mdash; 1,615,950 aUEC</option>
+              <option value="reliant-kore">Reliant Kore &mdash; 1,719,900 aUEC</option>
+              <option value="misc-fortune">MISC Fortune &mdash; 1,890,000 aUEC</option>
+              <option value="prospector">Prospector &mdash; 2,929,500 aUEC</option>
+              <option value="freelancer">Freelancer &mdash; 2,962,575 aUEC</option>
+              <option value="freelancer-dur">Freelancer DUR &mdash; 3,151,103 aUEC</option>
+              <option value="freelancer-max">Freelancer MAX &mdash; 4,039,875 aUEC</option>
+              <option value="freelancer-mis">Freelancer MIS &mdash; 4,713,188 aUEC</option>
+              <option value="starlancer-max">Starlancer MAX &mdash; 8,820,000 aUEC</option>
+              <option value="starfarer">Starfarer &mdash; 12,568,500 aUEC</option>
+              <option value="hull-c">Hull C &mdash; 15,710,625 aUEC</option>
             </optgroup>
             <optgroup label="Anvil">
-              <option value="pisces">C8X Pisces — 406,000 aUEC</option>
-              <option value="arrow">Arrow — 950,000 aUEC</option>
-              <option value="hornet-f7a-mkii">Hornet F7A Mk II — 2,400,000 aUEC</option>
-              <option value="carrack">Carrack — 14,312,500 aUEC</option>
+              <option value="pisces">C8X Pisces Expedition &mdash; 515,970 aUEC</option>
+              <option value="arrow">Arrow &mdash; 1,984,500 aUEC</option>
+              <option value="hawk">Hawk &mdash; 2,646,000 aUEC</option>
+              <option value="gladiator">Gladiator &mdash; 4,365,900 aUEC</option>
+              <option value="hornet-f7c-mkii">Hornet F7C Mk II &mdash; 4,895,100 aUEC</option>
+              <option value="hurricane">Hurricane &mdash; 5,556,600 aUEC</option>
+              <option value="valkyrie">Valkyrie &mdash; 19,845,000 aUEC</option>
+              <option value="carrack">Carrack &mdash; 34,398,000 aUEC</option>
             </optgroup>
             <optgroup label="Crusader">
-              <option value="ares-inferno">Ares Inferno — 2,280,000 aUEC</option>
-              <option value="ares-ion">Ares Ion — 2,280,000 aUEC</option>
-              <option value="mercury-star-runner">Mercury Star Runner — 3,165,000 aUEC</option>
-              <option value="c2-hercules">C2 Hercules — 4,962,500 aUEC</option>
+              <option value="c1-spirit">C1 Spirit &mdash; 3,118,500 aUEC</option>
+              <option value="ares-inferno">Ares Inferno &mdash; 4,725,000 aUEC</option>
+              <option value="ares-ion">Ares Ion &mdash; 4,725,000 aUEC</option>
+              <option value="mercury-star-runner">Mercury Star Runner &mdash; 12,285,000 aUEC</option>
+              <option value="c2-hercules">C2 Hercules &mdash; 18,900,000 aUEC</option>
+              <option value="m2-hercules">M2 Hercules &mdash; 29,484,000 aUEC</option>
+              <option value="a2-hercules">A2 Hercules &mdash; 44,296,876 aUEC</option>
             </optgroup>
             <optgroup label="Consolidated Outland">
-              <option value="mustang-alpha">Mustang Alpha — 186,120 aUEC</option>
-              <option value="mustang-delta">Mustang Delta — 380,000 aUEC</option>
-              <option value="nomad">Nomad — 952,500 aUEC</option>
+              <option value="mustang-alpha">Mustang Alpha &mdash; 642,600 aUEC</option>
+              <option value="mustang-beta">Mustang Beta &mdash; 655,200 aUEC</option>
+              <option value="mustang-delta">Mustang Delta &mdash; 1,228,500 aUEC</option>
+              <option value="nomad">Nomad &mdash; 1,512,000 aUEC</option>
             </optgroup>
             <optgroup label="ARGO">
-              <option value="mole">MOLE — 5,130,500 aUEC</option>
+              <option value="raft">RAFT &mdash; 3,543,750 aUEC</option>
+              <option value="mole">MOLE &mdash; 8,930,250 aUEC</option>
+            </optgroup>
+            <optgroup label="Banu">
+              <option value="defender">Defender &mdash; 6,237,000 aUEC</option>
+            </optgroup>
+            <optgroup label="Esperia">
+              <option value="talon">Talon &mdash; 3,260,250 aUEC</option>
+              <option value="blade">Blade &mdash; 7,796,250 aUEC</option>
+              <option value="prowler">Prowler &mdash; 18,711,000 aUEC</option>
+            </optgroup>
+            <optgroup label="Gatac">
+              <option value="syulen">Syulen &mdash; 2,778,300 aUEC</option>
             </optgroup>
           </select>
         </div>
@@ -504,29 +548,29 @@
           <div class="onboard__field">
             <label class="onboard__label">Play Style</label>
             <p class="onboard__hint">Do you fly solo or with friends?</p>
-            <div class="onboard__toggle" id="onboardSolo">
-              <button class="onboard__tbtn active" data-val="solo">Solo</button>
-              <button class="onboard__tbtn" data-val="group">Group</button>
+            <div class="onboard__toggle" id="onboardSolo" role="radiogroup" aria-label="Play style">
+              <button class="onboard__tbtn active" data-val="solo" role="radio" aria-checked="true">Solo</button>
+              <button class="onboard__tbtn" data-val="group" role="radio" aria-checked="false">Group</button>
             </div>
           </div>
 
           <div class="onboard__field">
             <label class="onboard__label">Skill Level</label>
             <p class="onboard__hint">How experienced are you with money-making?</p>
-            <div class="onboard__toggle" id="onboardSkill">
-              <button class="onboard__tbtn active" data-val="beginner">New</button>
-              <button class="onboard__tbtn" data-val="intermediate">Mid</button>
-              <button class="onboard__tbtn" data-val="advanced">Pro</button>
+            <div class="onboard__toggle" id="onboardSkill" role="radiogroup" aria-label="Skill level">
+              <button class="onboard__tbtn active" data-val="beginner" role="radio" aria-checked="true">New</button>
+              <button class="onboard__tbtn" data-val="intermediate" role="radio" aria-checked="false">Mid</button>
+              <button class="onboard__tbtn" data-val="advanced" role="radio" aria-checked="false">Pro</button>
             </div>
           </div>
 
           <div class="onboard__field">
             <label class="onboard__label">Risk Tolerance</label>
             <p class="onboard__hint">Higher risk = higher potential earnings</p>
-            <div class="onboard__toggle" id="onboardRisk">
-              <button class="onboard__tbtn active" data-val="low">Low</button>
-              <button class="onboard__tbtn" data-val="medium">Med</button>
-              <button class="onboard__tbtn" data-val="high">High</button>
+            <div class="onboard__toggle" id="onboardRisk" role="radiogroup" aria-label="Risk tolerance">
+              <button class="onboard__tbtn active" data-val="low" role="radio" aria-checked="true">Low</button>
+              <button class="onboard__tbtn" data-val="medium" role="radio" aria-checked="false">Med</button>
+              <button class="onboard__tbtn" data-val="high" role="radio" aria-checked="false">High</button>
             </div>
           </div>
         </div>
@@ -584,26 +628,26 @@
   <div class="session-timer" id="sessionTimer">
     <div class="session-timer__display" id="timerDisplay">00:00</div>
     <div class="session-timer__controls">
-      <button class="session-timer__btn" id="timerStart" title="Start">&#x25B6;</button>
-      <button class="session-timer__btn" id="timerPause" title="Pause">&#x23F8;</button>
-      <button class="session-timer__btn" id="timerReset" title="Reset">&#x23F9;</button>
+      <button class="session-timer__btn" id="timerStart" title="Start" aria-label="Start">&#x25B6;</button>
+      <button class="session-timer__btn" id="timerPause" title="Pause" aria-label="Pause">&#x23F8;</button>
+      <button class="session-timer__btn" id="timerReset" title="Reset" aria-label="Reset">&#x23F9;</button>
     </div>
   </div>
 
   <!-- Floating Action Button -->
   <div class="fab" id="fab">
-    <button class="fab__main" aria-label="Quick actions" title="Quick Actions">
-      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    <button class="fab__main" aria-label="Quick actions">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
     </button>
     <div class="fab__menu">
-      <button class="fab__item" id="fabTimer" title="Session Timer">
-        <svg viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 9v4l3 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 5V3M10 3h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <button class="fab__item" id="fabTimer" aria-label="Session Timer">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 9v4l3 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 5V3M10 3h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
-      <button class="fab__item" id="fabA11y" title="Display Settings (Ctrl+Shift+A)">
-        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      <button class="fab__item" id="fabA11y" aria-label="Display Settings (Ctrl+Shift+A)">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
       </button>
-      <button class="fab__item" id="fabChangelog" title="What's New">
-        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M14 2v6h6M8 13h8M8 17h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <button class="fab__item" id="fabChangelog" aria-label="What's New">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M14 2v6h6M8 13h8M8 17h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
     </div>
   </div>

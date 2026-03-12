@@ -105,10 +105,15 @@
   background: none;
   border: 1px solid var(--dv);
   color: var(--dm);
-  padding: 6px;
+  padding: 10px;
   cursor: pointer;
   transition: color .22s, border-color .22s;
   margin-left: auto;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .header__settings-toggle:hover,
 .header__settings-toggle.active {
@@ -130,7 +135,7 @@
   overflow: hidden;
   transition: max-height .35s var(--ease);
 }
-.settings-drawer.open { max-height: 280px; }
+.settings-drawer.open { max-height: min(280px, 60vh); }
 
 .settings-drawer__inner {
   display: flex;

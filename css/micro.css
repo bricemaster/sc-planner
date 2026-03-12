@@ -15,7 +15,7 @@
 }
 .dash-card:hover {
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, .18),
+    0 4px 16px rgba(0, 0, 0, .08),
     0 0 0 1px rgba(201, 170, 110, .08);
 }
 
@@ -684,34 +684,13 @@ input.header-input:focus {
 }
 
 /* ─── Scrollbar polish ─── */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--dp, #0a0a0a);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--rl, #202020);
-  border-radius: 3px;
-  transition: background .2s;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--dv, #2a2a2a);
-}
+/* Removed: superseded by polish-v2.css global scrollbar rules */
 
 /* ─── Selection color ─── */
-::selection {
-  background: rgba(201, 170, 110, .2);
-  color: var(--wh, #f2f2f2);
-}
+/* Removed: superseded by tokens.css ::selection */
 
 /* ─── Smooth transitions for theme switching ─── */
-body {
-  transition:
-    background-color .4s var(--ease),
-    color .4s var(--ease);
-}
+/* body transition removed: superseded by polish-v2.css */
 .header {
   transition: background .4s var(--ease), border-color .3s;
 }

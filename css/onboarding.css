@@ -493,6 +493,28 @@
   margin-top: -2px;
 }
 
+/* ── Mobile touch targets (44px minimum) ─────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .onboard__tbtn {
+    min-height: 44px;
+    padding: 12px 0;
+  }
+  .onboard__select {
+    min-height: 44px;
+  }
+  .onboard__btn {
+    min-height: 44px;
+    padding: 12px 24px;
+  }
+  .onboard__cta {
+    min-height: 44px;
+  }
+  .onboard__input {
+    min-height: 44px;
+  }
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 
 @media (max-width: 560px) {

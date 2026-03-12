@@ -287,6 +287,10 @@ export function getBestRouteForCargo(scuCapacity, budget) {
     if (scuCapacity < route.minSCU) continue;
 
     // How many SCU can we actually fill? Limited by ship capacity and budget.
+    // Guard against zero buySCU or zero route time to prevent division by zero
+    if (!route.buySCU || route.buySCU <= 0) continue;
+    if (!route.time || route.time <= 0) continue;
+
     const affordableSCU = Math.floor(budget / route.buySCU);
     const scuUsed = Math.min(scuCapacity, affordableSCU);
 

@@ -400,3 +400,27 @@
 .mt-16 { margin-top: 16px; }
 .mb-8 { margin-bottom: 8px; }
 .mb-12 { margin-bottom: 12px; }
+
+/* ─── Mobile touch targets (44px minimum) ─── */
+@media (max-width: 768px) {
+  .tbtn {
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+  .ship-picker__mfr-header {
+    min-height: 44px;
+  }
+  .ship-picker__option {
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+  .fbtn {
+    min-height: 44px;
+    padding: 10px 12px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .ship-picker__search {
+    min-height: 44px;
+  }
+}

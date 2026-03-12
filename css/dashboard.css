@@ -57,8 +57,8 @@ html, body {
 }
 .rec-hero__label {
   margin-bottom: 0;
-  font-size: 9px;
-  letter-spacing: 3px;
+  font-size: 10px;
+  letter-spacing: 2.5px;
 }
 .rec-hero__label::before { width: 14px; height: 2px; border-radius: 1px; }
 .rec-hero__method {
@@ -87,7 +87,7 @@ html, body {
 }
 .rec-hero__actions .btn-action {
   padding: 8px 16px;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   border-radius: 4px;
 }
@@ -100,7 +100,7 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1.3fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 1px;
+  gap: 2px;
   background: var(--rl);
   margin-bottom: 0;
   overflow: hidden;
@@ -167,9 +167,9 @@ html, body {
   scrollbar-color: var(--dv) transparent;
   scroll-behavior: smooth;
 }
-.dash-card__body::-webkit-scrollbar { width: 3px; }
+.dash-card__body::-webkit-scrollbar { width: 5px; }
 .dash-card__body::-webkit-scrollbar-thumb {
-  background: var(--dv);
+  background: rgba(255,255,255,0.1);
   border-radius: 3px;
 }
 .dash-card__body::-webkit-scrollbar-thumb:hover {
@@ -178,7 +178,7 @@ html, body {
 .dash-card__body::-webkit-scrollbar-track { background: transparent; }
 
 .dash-card__footer {
-  padding: 8px 16px;
+  padding: 8px 16px 10px;
   flex-shrink: 0;
   border-top: 1px solid var(--rl);
   display: flex;
@@ -191,7 +191,7 @@ html, body {
 .dash-card__meta { font-size: 10px; }
 .dash-card__action {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--dm);
@@ -227,7 +227,7 @@ html, body {
 .cr-rate { font-size: 13px; font-weight: 500; }
 .stat-grid { gap: 4px; margin: 4px 0; }
 .sg-val { font-size: 16px; }
-.sg-lbl { font-size: 9px; letter-spacing: 2px; }
+.sg-lbl { font-size: 10px; letter-spacing: 2px; }
 .ship-card-name { font-size: 15px; }
 .ship-card-mfr { font-size: 10px; }
 .ship-unlocks-text { font-size: 10px; margin-top: 4px; }
@@ -240,25 +240,25 @@ html, body {
 .goal-picker-wrap { margin-bottom: 6px; }
 .goal-milestones { margin: 4px 0; }
 .goal-ms { padding: 3px 2px; }
-.goal-ms__pct { font-size: 9px; }
-.goal-ms__time { font-size: 9px; }
+.goal-ms__pct { font-size: 10px; }
+.goal-ms__time { font-size: 10px; }
 .mini-stat { margin-bottom: 3px; }
-.ms-label { font-size: 9px; letter-spacing: 2px; }
+.ms-label { font-size: 10px; letter-spacing: 2px; }
 .ms-value { font-size: 13px; }
 .session-header { font-size: 13px; margin-bottom: 4px; }
 .session-earnings { gap: 8px; margin-bottom: 4px; }
 .session-activity { font-size: 11px; }
-.session-goal { font-size: 9px; margin-top: 3px; }
+.session-goal { font-size: 10px; margin-top: 3px; }
 .price-row { padding: 2px 0; font-size: 12px; }
-.price-header { font-size: 9px; padding-bottom: 3px; }
-.price-section-label { font-size: 9px; margin: 4px 0 2px; }
+.price-header { font-size: 10px; padding-bottom: 3px; }
+.price-section-label { font-size: 10px; margin: 4px 0 2px; }
 .price-tip { font-size: 10px; padding: 3px 6px; margin-top: 3px; }
 .ship-card-caps { gap: 2px; margin: 4px 0; }
 .ship-cap { font-size: 10px; }
 .ship-upgrade-hint { margin-top: 6px; padding-top: 6px; }
-.upgrade-label { font-size: 9px; }
+.upgrade-label { font-size: 10px; }
 .upgrade-name { font-size: 12px; }
-.upgrade-meta { font-size: 9px; }
+.upgrade-meta { font-size: 10px; }
 
 /* ─── Tab bar ─── */
 .tab-bar {
@@ -287,8 +287,8 @@ html, body {
   border-right: 1px solid var(--rl);
   color: var(--dm);
   font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 3px;
+  font-size: 10px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
   transition: color 0.2s, background 0.2s;
@@ -368,7 +368,7 @@ html, body {
   cursor: pointer;
   opacity: 0;
   transform: translateX(8px);
-  transition: color .22s, border-color .22s, opacity 0.2s ease 0.1s, transform 0.2s ease 0.1s;
+  transition: color .22s, border-color .22s, opacity 0.2s ease, transform 0.2s ease;
 }
 .tab-modal-close.visible {
   opacity: 1;
@@ -381,7 +381,7 @@ html, body {
   grid-area: footer;
   padding: 4px 16px;
   text-align: center;
-  font-size: 9px;
+  font-size: 10px;
   color: var(--mt);
   font-family: var(--mono);
   letter-spacing: 0.5px;
@@ -406,12 +406,12 @@ html, body {
   margin: 0;
 }
 .footer__actions .footer-history-btn {
-  font-size: 9px;
+  font-size: 10px;
   padding: 2px 8px;
   letter-spacing: 1px;
 }
 .footer__bottom {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1.5px;
   gap: 4px;
   margin: 0;
@@ -499,11 +499,11 @@ html, body {
   .rec-hero__stats { gap: 6px; font-size: 12px; flex-wrap: wrap; }
   .rec-hero__rate { font-size: 12px; }
   .hero-rate-big { font-size: 20px !important; }
-  .hero-rate-range { font-size: 9px !important; margin-left: 4px; }
+  .hero-rate-range { font-size: 10px !important; margin-left: 4px; }
   .rec-hero__actions { flex-direction: row; margin-top: 4px; }
-  .rec-hero__actions .btn-action { padding: 6px 12px; font-size: 9px; }
+  .rec-hero__actions .btn-action { padding: 6px 12px; font-size: 10px; }
   .rec-hero__reasoning { display: none; }
-  .rec-hero__label { font-size: 9px; letter-spacing: 2px; }
+  .rec-hero__label { font-size: 10px; letter-spacing: 2px; }
 
   /* ── 3. Cards: single-column, visible headers, contained bodies ── */
   .dashboard-grid {
@@ -524,14 +524,14 @@ html, body {
     position: relative;
     z-index: 1;
   }
-  .dash-card__header .sec { font-size: 9px; letter-spacing: 2px; }
+  .dash-card__header .sec { font-size: 10px; letter-spacing: 2px; }
 
   /* ── 4. Card bodies: max-height with smooth internal scroll ── */
   .dash-card__body {
     padding: 8px 12px;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 160px;
+    max-height: 200px;
     -webkit-overflow-scrolling: touch;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -543,7 +543,7 @@ html, body {
     margin: 4px 0;
   }
   .sg-val { font-size: 14px; }
-  .sg-lbl { font-size: 9px; letter-spacing: 1.5px; }
+  .sg-lbl { font-size: 10px; letter-spacing: 1.5px; }
 
   /* Card footer: wraps cleanly, always separated from body */
   .dash-card__footer {
@@ -555,13 +555,13 @@ html, body {
     background: var(--ab);
   }
   .dash-card__footer .dash-card__action {
-    font-size: 9px;
+    font-size: 10px;
     padding: 4px 8px;
     white-space: nowrap;
     flex-shrink: 0;
   }
   .dash-card__footer .dash-card__link {
-    font-size: 9px;
+    font-size: 10px;
     white-space: nowrap;
     flex-shrink: 0;
   }
@@ -591,9 +591,10 @@ html, body {
     right: 0;
     z-index: 900;
     height: 48px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   .tab-bar__btn {
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 2px;
     padding: 0 8px;
     min-height: 48px;
@@ -607,7 +608,7 @@ html, body {
 
   /* Toast: push above FAB + tab bar on mobile */
   .pt-toast-container {
-    bottom: 120px;
+    bottom: calc(60px + env(safe-area-inset-bottom, 0px) + 48px);
     right: 12px;
     max-width: calc(100vw - 24px);
   }
@@ -636,7 +637,7 @@ html, body {
   .tab-context-bar {
     margin: -12px -12px 12px;
     padding: 6px 12px;
-    font-size: 9px;
+    font-size: 10px;
     gap: 10px;
     flex-wrap: wrap;
   }
@@ -660,7 +661,7 @@ html, body {
   .dash-card {
     min-height: 0;
   }
-  .tab-bar__btn { font-size: 9px; letter-spacing: 1.5px; padding: 0 6px; min-height: 48px; }
+  .tab-bar__btn { font-size: 10px; letter-spacing: 1.5px; padding: 0 6px; min-height: 48px; }
   .header__ship { max-width: 140px; }
   .rec-hero__method { font-size: 16px; }
   .hero-rate-big { font-size: 18px !important; }
@@ -669,7 +670,7 @@ html, body {
 /* ─── Intel modal button ─── */
 .btn-intel-modal {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--dm);

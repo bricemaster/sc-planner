@@ -647,7 +647,7 @@ body.theme-mfr-argo .rec-hero__inner::after {
 @media (max-width: 768px) {
   .rec-hero__inner::before,
   .rec-hero__inner::after {
-    animation-duration: 999s !important;
+    animation: none !important;
     opacity: 0.5;
   }
 }

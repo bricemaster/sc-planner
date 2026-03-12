@@ -5,7 +5,7 @@
 
 /* ─── 1-10: ROOT TYPOGRAPHY ─── */
 /* 1 */ :root { --radius: 6px; --radius-sm: 3px; --radius-lg: 10px; }
-/* 2 */ body { font-size: 13px; line-height: 1.5; letter-spacing: 0.01em; }
+/* 2 */ body { letter-spacing: 0.01em; }
 /* 3 */ h1, h2, h3, h4 { font-weight: 500; }
 /* 4 */ .sec { font-weight: 600; text-transform: uppercase; }
 /* 5 */ strong, b { font-weight: 500; color: var(--wh); }
@@ -17,15 +17,15 @@
 
 /* ─── 11-20: GLOBAL TRANSITIONS ─── */
 /* 11 */ * { transition-timing-function: var(--fast); }
-/* 12 */ a, button { transition: all 0.18s var(--fast); }
+/* 12 */ a, button { transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.15s ease, box-shadow 0.18s ease, opacity 0.18s ease; }
 /* 13 */ .dash-card { transition: box-shadow 0.18s ease, background 0.18s ease; }
 /* 14 */ input, select { transition: border-color 0.2s, box-shadow 0.2s; }
 /* 15 */ .pill, .tbtn, .sort-opt { transition: all 0.15s; }
-/* 16 */ body { transition: background-color 0.5s ease, color 0.3s ease; }
+/* 16 */ body { transition: background-color 0.4s ease, color 0.4s ease; }
 /* 17 */ .theme-dropdown { transition: opacity 0.2s, transform 0.2s; }
 /* 18 */ .modal__panel { transition: transform 0.25s var(--ease), opacity 0.25s; }
 /* 19 */ .tab-modal-panel { transition: transform 0.2s var(--ease); }
-/* 20 */ .onboard__step { transition: opacity 0.35s; }
+/* 20 */ .onboard__step { transition: opacity 0.2s; }
 
 /* ─── 21-40: HEADER REFINEMENTS ─── */
 /* 21 */ .header { padding: 0 16px; gap: 12px; backdrop-filter: blur(12px); background: rgba(3,3,3,0.88); border-bottom: 1px solid var(--rl); }
@@ -438,7 +438,7 @@
 /* 271 */ ::-webkit-scrollbar-thumb { background: var(--mt); border-radius: 2px; }
 /* 272 */ ::-webkit-scrollbar-thumb:hover { background: var(--dm); }
 /* 273 */ * { scrollbar-width: thin; scrollbar-color: var(--mt) transparent; }
-/* 274 */ ::selection { background: var(--g); color: var(--v); }
+/* 274 — removed: duplicate of tokens.css ::selection */
 
 /* ─── 291-300: MISC POLISH ─── */
 /* 275 */ .autosave-indicator { position: fixed; top: 10px; left: 50%; transform: translateX(-50%) translateY(-40px); font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); background: var(--dp); border: 1px solid var(--green); border-radius: var(--radius-sm); padding: 4px 12px; z-index: 9999; opacity: 0; transition: transform 0.3s var(--ease), opacity 0.3s; pointer-events: none; }
@@ -536,8 +536,8 @@
 }
 
 /* Skeleton loading shimmer */
-@keyframes shimmer { 0% { background-position: -200px 0; } 100% { background-position: 200px 0; } }
-.skeleton { display: block; height: 14px; margin: 6px 0; border-radius: 4px; background: linear-gradient(90deg, var(--dp) 25%, var(--rl) 50%, var(--dp) 75%); background-size: 400px 100%; animation: shimmer 1.5s infinite linear; }
+@keyframes skeleton-shimmer { 0% { background-position: -200px 0; } 100% { background-position: 200px 0; } }
+.skeleton { display: block; height: 14px; margin: 6px 0; border-radius: 4px; background: linear-gradient(90deg, var(--dp) 25%, var(--rl) 50%, var(--dp) 75%); background-size: 400px 100%; animation: skeleton-shimmer 1.5s infinite linear; }
 .skeleton--wide { width: 80%; }
 .skeleton--med { width: 55%; }
 .skeleton--short { width: 35%; }
@@ -1243,10 +1243,7 @@ html, body {
   outline-offset: -1px;
 }
 
-/* Sort option active: border-bottom instead of just color */
-.sort-opt--active {
-  border-bottom: 1px solid var(--g);
-}
+/* Sort option active: consolidated into sort-bar block above */
 
 /* Active/pressed states: micro scale for tactile feel */
 .pill:active,
