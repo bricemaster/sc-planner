@@ -1,5 +1,5 @@
 // sw.js — Service Worker for offline support
-const CACHE_NAME = 'sc-planner-v17';
+const CACHE_NAME = 'sc-planner-v18';
 
 const ASSETS_TO_CACHE = [
   './',

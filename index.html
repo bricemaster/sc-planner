@@ -589,11 +589,19 @@
 
   <!-- Floating Action Button -->
   <div class="fab" id="fab">
-    <button class="fab__main" aria-label="Quick actions" title="Quick Actions">+</button>
+    <button class="fab__main" aria-label="Quick actions" title="Quick Actions">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
     <div class="fab__menu">
-      <button class="fab__item" id="fabTimer" title="Session Timer">&#x23F1;</button>
-      <button class="fab__item" id="fabA11y" title="Accessibility (Ctrl+Shift+A)">&#x267F;</button>
-      <button class="fab__item" id="fabChangelog" title="What's New">&#x1F4CB;</button>
+      <button class="fab__item" id="fabTimer" title="Session Timer">
+        <svg viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 9v4l3 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 5V3M10 3h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <button class="fab__item" id="fabA11y" title="Accessibility (Ctrl+Shift+A)">
+        <svg viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="4" r="2" fill="currentColor"/><path d="M4 8l8 2 8-2M12 10v5M8 21l4-6 4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="fab__item" id="fabChangelog" title="What's New">
+        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M14 2v6h6M8 13h8M8 17h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
     </div>
   </div>
 

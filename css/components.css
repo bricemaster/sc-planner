@@ -180,12 +180,13 @@
 .tbtn + .tbtn { border-left: none; }
 .tbtn:first-child { border-radius: 0; }
 .tbtn:last-child { border-radius: 0; }
-.tbtn:hover { color: var(--lt); background: rgba(255,255,255,.03); }
+.tbtn:hover { color: var(--lt); background: rgba(255,255,255,.04); }
 .tbtn.active {
-  color: var(--g);
+  color: var(--bg);
+  font-weight: 500;
   border-color: var(--g);
-  background: var(--gd);
-  box-shadow: 0 0 8px rgba(201,170,110,.1), inset 0 0 6px rgba(201,170,110,.05);
+  background: var(--g);
+  box-shadow: 0 0 12px rgba(201,170,110,.2);
 }
 
 /* ─── Legacy filter buttons ─── */

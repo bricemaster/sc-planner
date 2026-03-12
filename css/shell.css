@@ -61,10 +61,10 @@
 .header__label {
   font-family: var(--mono);
   font-size: 9px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--dm);
+  color: var(--md);
   line-height: 1;
 }
 
