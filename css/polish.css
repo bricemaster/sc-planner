@@ -104,7 +104,7 @@
 /* ─── 5. Live Clock ───────────────────────────────────────────────────────── */
 .header__clock {
   font-family: 'DM Mono', 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   color: var(--t3, rgba(255,255,255,0.35));
   letter-spacing: 0.5px;
   white-space: nowrap;

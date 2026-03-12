@@ -621,9 +621,9 @@
   justify-content: center;
   flex-direction: column;
   gap: 12px;
-  animation: fadeIn .2s ease-out;
+  animation: disconnectFadeIn .2s ease-out;
 }
-@keyframes fadeIn {
+@keyframes disconnectFadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }

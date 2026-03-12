@@ -7,62 +7,132 @@
 .onboard__dots {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 28px;
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
 .onboard__dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--dv, #2a2a2a);
-  transition: background .3s var(--fast), transform .3s var(--fast), box-shadow .3s var(--fast);
+  border: 1px solid rgba(201, 170, 110, .08);
+  transition: background .35s ease, transform .35s ease, box-shadow .35s ease, border-color .35s ease;
   cursor: default;
+}
+
+.onboard__dot.visited {
+  background: rgba(201, 170, 110, .3);
+  border-color: rgba(201, 170, 110, .2);
 }
 
 .onboard__dot.active {
   background: var(--g, #c9aa6e);
-  transform: scale(1.25);
-  box-shadow: 0 0 10px rgba(201, 170, 110, .4);
+  transform: scale(1.35);
+  box-shadow: 0 0 12px rgba(201, 170, 110, .45), 0 0 4px rgba(201, 170, 110, .2);
+  border-color: var(--g, #c9aa6e);
 }
 
 /* ── Step transitions ────────────────────────────────────────────────────── */
 
 .onboard__step {
   display: none;
-  opacity: 1;
-  transform: none;
+  opacity: 0;
+  transform: translateY(8px);
 }
 
 .onboard__step.active {
   display: block;
-  opacity: 1;
-  transform: none;
-  animation: onboard-fade-in .35s ease-out forwards;
+  animation: onboard-step-in .4s cubic-bezier(.16, 1, .3, 1) forwards;
 }
 
-@keyframes onboard-fade-in {
+@keyframes onboard-step-in {
   from {
     opacity: 0;
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
+}
+
+@keyframes onboard-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* ── Panel overrides for wizard ──────────────────────────────────────────── */
 
 .onboard__panel {
-  max-width: 560px;
+  max-width: 520px;
   width: 92vw;
+  animation: onboard-panel-in .5s cubic-bezier(.16, 1, .3, 1) forwards;
+}
+
+@keyframes onboard-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Overlay entrance & dismissal ─────────────────────────────────────── */
+
+.onboard__backdrop {
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.onboard.open .onboard__backdrop {
+  opacity: 1;
+}
+
+.onboard.closing {
+  pointer-events: none;
+}
+
+.onboard.closing .onboard__backdrop {
+  opacity: 0;
+  transition: opacity .35s ease .05s;
+}
+
+.onboard.closing .onboard__panel {
+  animation: onboard-panel-out .35s cubic-bezier(.4, 0, 1, 1) forwards;
+}
+
+@keyframes onboard-panel-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-12px) scale(.98);
+  }
 }
 
 /* ── Title & text ────────────────────────────────────────────────────────── */
 
+.onboard__step[data-step="1"] .onboard__title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.onboard__step[data-step="1"] .onboard__text {
+  text-align: center;
+}
+
 .onboard__text--sub {
   font-size: 13px;
   color: var(--dm, #5c5c5c);
-  margin-top: 8px;
+  margin-top: -16px;
+  margin-bottom: 8px;
   font-family: var(--mono, monospace);
   letter-spacing: .3px;
 }
@@ -225,10 +295,21 @@
 
 .onboard__summary {
   background: var(--dp, #0a0a0a);
-  border: 1px solid var(--dv, #2a2a2a);
+  border: 1px solid rgba(201, 170, 110, .12);
   border-radius: 8px;
   padding: 20px 24px;
   margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.onboard__summary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--g, #c9aa6e), transparent);
 }
 
 .onboard__summary-row {
@@ -319,6 +400,17 @@
 
 .onboard__step .onboard__cta {
   min-width: 180px;
+  border-radius: 6px;
+}
+
+/* Step 1 welcome CTA: centered, not full-width */
+.onboard__step[data-step="1"] .onboard__cta {
+  width: auto;
+  padding: 14px 48px;
+}
+
+.onboard__step[data-step="1"] .onboard__actions {
+  justify-content: center;
 }
 
 /* Theme picker removed — single theme */
@@ -326,13 +418,18 @@
 /* ── Ship preview in step 2 ──────────────────────────────────────────────── */
 
 .onboard__ship-preview {
-  margin-top: 12px;
-  padding: 12px 16px;
+  margin-top: 16px;
+  padding: 16px 20px;
   border: 1px solid var(--dv, #2a2a2a);
   border-radius: 6px;
   background: var(--dp, #0a0a0a);
   min-height: 48px;
-  transition: all 0.3s var(--fast);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.onboard__ship-preview:has(.ship-preview-stats) {
+  border-color: rgba(201, 170, 110, .15);
+  background: rgba(201, 170, 110, .03);
 }
 
 .onboard__ship-preview:not(:empty) {
@@ -349,13 +446,14 @@
 
 .onboard__ship-preview .ship-preview-stats {
   display: flex;
-  gap: 16px;
+  gap: 24px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .onboard__ship-preview .sp-stat {
   text-align: center;
+  min-width: 52px;
 }
 
 .onboard__ship-preview .sp-val {
@@ -376,11 +474,14 @@
 }
 
 .onboard__ship-preview .sp-caps {
-  margin-top: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(201, 170, 110, .1);
   font-size: 11px;
   color: var(--md, #848484);
   text-align: center;
   font-family: var(--mono, monospace);
+  letter-spacing: .5px;
 }
 
 /* ── Field hints ─────────────────────────────────────────────────────────── */
@@ -395,17 +496,44 @@
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 
 @media (max-width: 560px) {
+  /* 10. Onboarding: properly centered, not cut off on 390px screens */
+  .onboard {
+    align-items: flex-start;
+    padding: 12px 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .onboard__panel {
+    width: 94vw;
+    max-width: 94vw;
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+    padding: 24px 16px;
+    margin: auto;
+    border-radius: 8px;
+  }
+
   .onboard__profile-grid {
     grid-template-columns: 1fr;
   }
 
-  .onboard__panel {
-    width: 96vw;
-    padding: 28px 20px;
+  .onboard__title {
+    font-size: 24px;
+  }
+
+  .onboard__step[data-step="1"] .onboard__title {
+    font-size: 26px;
+  }
+
+  .onboard__text {
+    font-size: 13px;
+    line-height: 1.6;
   }
 
   .onboard__summary {
-    padding: 16px;
+    padding: 14px;
   }
 
   .onboard__actions--split {
@@ -419,6 +547,22 @@
     text-align: center;
   }
 
+  .onboard__step[data-step="1"] .onboard__cta {
+    width: 100%;
+  }
+
+  .onboard__cta {
+    padding: 12px 20px;
+    font-size: 10px;
+  }
+
+  .onboard__dots {
+    margin-bottom: 20px;
+  }
+
+  .onboard__ship-preview .ship-preview-stats {
+    gap: 16px;
+  }
 }
 
 /* End of onboarding styles */

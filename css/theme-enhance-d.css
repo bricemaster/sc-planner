@@ -207,7 +207,7 @@ body.theme-mfr-origin .sg-lbl {
   font-style: italic !important;
   font-weight: 400 !important;
   letter-spacing: 1px !important;
-  font-size: 0.58rem !important;
+  font-size: 0.7rem !important;
   color: #9a9088 !important;
   text-transform: uppercase !important;
 }
@@ -496,7 +496,7 @@ body.theme-mfr-misc .dash-card__header .sec {
   font-family: 'Share Tech Mono', monospace !important;
   font-weight: 400 !important;
   letter-spacing: 2px !important;
-  font-size: 8px !important;
+  font-size: 9px !important;
   color: #728292 !important;
   text-transform: uppercase !important;
 }
@@ -524,7 +524,7 @@ body.theme-mfr-misc .dash-card__link {
   font-family: 'Share Tech Mono', monospace !important;
   font-weight: 400 !important;
   letter-spacing: 2px !important;
-  font-size: 8px !important;
+  font-size: 9px !important;
   color: #5a6878 !important;
 }
 
@@ -563,7 +563,7 @@ body.theme-mfr-misc .tab-bar {
 }
 body.theme-mfr-misc .tab-bar__btn {
   font-family: 'Share Tech Mono', monospace !important;
-  font-size: 8px !important;
+  font-size: 9px !important;
   letter-spacing: 2px !important;
   color: #5a6878 !important;
   border-right: 1px solid #252b34 !important;
@@ -601,7 +601,7 @@ body.theme-mfr-misc .sg-val {
 }
 body.theme-mfr-misc .sg-lbl {
   font-family: 'Share Tech Mono', monospace !important;
-  font-size: 0.5rem !important;
+  font-size: 0.7rem !important;
   letter-spacing: 1px !important;
   color: #5a6878 !important;
 }
@@ -625,12 +625,12 @@ body.theme-mfr-misc .goal-ms {
 }
 body.theme-mfr-misc .goal-ms__pct {
   font-family: 'Share Tech Mono', monospace !important;
-  font-size: 8px !important;
+  font-size: 9px !important;
   color: #e07020 !important;
 }
 body.theme-mfr-misc .goal-ms__time {
   font-family: 'Share Tech Mono', monospace !important;
-  font-size: 7px !important;
+  font-size: 9px !important;
 }
 body.theme-mfr-misc .goal-ship-name {
   font-family: 'Share Tech Mono', monospace !important;
@@ -660,7 +660,7 @@ body.theme-mfr-misc .price-row:not(.price-header):hover {
 }
 body.theme-mfr-misc .price-header {
   font-family: 'Share Tech Mono', monospace !important;
-  font-size: 8px !important;
+  font-size: 9px !important;
   letter-spacing: 2px !important;
   color: #5a6878 !important;
   border-bottom: 1px solid #363e48 !important;
@@ -682,7 +682,7 @@ body.theme-mfr-misc .session-mix {
 }
 body.theme-mfr-misc .session-mix__label {
   font-family: 'Share Tech Mono', monospace !important;
-  font-size: 7px !important;
+  font-size: 9px !important;
   letter-spacing: 2px !important;
   color: #5a6878 !important;
   margin-bottom: 2px !important;
@@ -760,7 +760,7 @@ body.theme-mfr-misc .ship-card-name {
 }
 body.theme-mfr-misc .ship-card-mfr {
   font-family: 'Share Tech Mono', monospace !important;
-  font-size: 7px !important;
+  font-size: 9px !important;
   letter-spacing: 2px !important;
   color: #5a6878 !important;
 }
@@ -776,7 +776,7 @@ body.theme-mfr-misc .cr-rate {
 body.theme-mfr-misc .mini-stat .ms-label {
   font-family: 'Share Tech Mono', monospace !important;
   letter-spacing: 1px !important;
-  font-size: 7px !important;
+  font-size: 9px !important;
 }
 body.theme-mfr-misc .mini-stat .ms-value {
   font-family: 'Share Tech Mono', monospace !important;
@@ -1006,7 +1006,7 @@ body.theme-mfr-crusader .sg-val {
 body.theme-mfr-crusader .sg-lbl {
   font-family: 'Inter', sans-serif !important;
   font-weight: 500 !important;
-  font-size: 0.55rem !important;
+  font-size: 0.7rem !important;
   color: #7888a8 !important;
   text-transform: uppercase !important;
   letter-spacing: .5px !important;
@@ -1652,7 +1652,7 @@ body.theme-mfr-argo .dash-card::after {
   bottom: 4px !important;
   right: 6px !important;
   font-family: 'Share Tech Mono', monospace !important;
-  font-size: 6px !important;
+  font-size: 9px !important;
   letter-spacing: 2px !important;
   color: rgba(255,204,0,.08) !important;
   text-transform: uppercase !important;
@@ -1706,7 +1706,7 @@ body.theme-mfr-argo .dash-card__link {
   font-family: 'Oswald', sans-serif !important;
   font-weight: 500 !important;
   letter-spacing: 3px !important;
-  font-size: 8px !important;
+  font-size: 9px !important;
   color: #ffcc00 !important;
 }
 
@@ -1777,7 +1777,7 @@ body.theme-mfr-argo .sg-val {
 body.theme-mfr-argo .sg-lbl {
   font-family: 'Oswald', sans-serif !important;
   font-weight: 400 !important;
-  font-size: 0.5rem !important;
+  font-size: 0.7rem !important;
   letter-spacing: 2px !important;
   color: #56565e !important;
   text-transform: uppercase !important;
@@ -1836,7 +1836,7 @@ body.theme-mfr-argo .price-row:not(.price-header):hover {
 body.theme-mfr-argo .price-header {
   font-family: 'Oswald', sans-serif !important;
   font-weight: 600 !important;
-  font-size: 8px !important;
+  font-size: 9px !important;
   letter-spacing: 3px !important;
   color: #ffcc00 !important;
   border-bottom: 2px solid #2c2c32 !important;
@@ -1860,7 +1860,7 @@ body.theme-mfr-argo .session-mix__label {
   font-family: 'Oswald', sans-serif !important;
   font-weight: 500 !important;
   letter-spacing: 3px !important;
-  font-size: 7px !important;
+  font-size: 9px !important;
   color: #ffcc00 !important;
   text-transform: uppercase !important;
 }
@@ -1970,7 +1970,7 @@ body.theme-mfr-argo .ship-card-name {
 }
 body.theme-mfr-argo .ship-card-mfr {
   font-family: 'Share Tech Mono', monospace !important;
-  font-size: 7px !important;
+  font-size: 9px !important;
   letter-spacing: 3px !important;
   color: #56565e !important;
   text-transform: uppercase !important;
@@ -1990,7 +1990,7 @@ body.theme-mfr-argo .cr-rate {
 body.theme-mfr-argo .mini-stat .ms-label {
   font-family: 'Oswald', sans-serif !important;
   letter-spacing: 2px !important;
-  font-size: 7px !important;
+  font-size: 9px !important;
   color: #56565e !important;
 }
 body.theme-mfr-argo .mini-stat .ms-value {

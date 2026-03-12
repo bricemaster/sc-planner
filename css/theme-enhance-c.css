@@ -150,7 +150,7 @@ body.theme-mfr-rsi .sg-item::before {
 body.theme-mfr-rsi .sg-lbl {
   color: #5ca0e0 !important;
   text-shadow: 0 0 6px rgba(68,136,204,.1) !important;
-  font-size: 0.55rem !important;
+  font-size: 0.7rem !important;
   letter-spacing: 1.5px !important;
 }
 body.theme-mfr-rsi .sg-val {

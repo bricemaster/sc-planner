@@ -40,7 +40,7 @@
   background: var(--dp);
   border-color: var(--dv);
 }
-.header__ship .ship-picker__display-meta { font-size: 6.5px; }
+.header__ship .ship-picker__display-meta { font-size: 9px; }
 .header__ship .ship-picker__display-price { font-size: .75rem; }
 
 /* Controls row */
@@ -130,7 +130,7 @@
   overflow: hidden;
   transition: max-height .35s var(--ease);
 }
-.settings-drawer.open { max-height: 200px; }
+.settings-drawer.open { max-height: 280px; }
 
 .settings-drawer__inner {
   display: flex;

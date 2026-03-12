@@ -76,7 +76,7 @@
 
 /* Better card header line */
 .dash-card__header .sec {
-  font-size: 0.65rem !important;
+  font-size: 0.7rem !important;
   letter-spacing: 1.5px !important;
 }
 .dash-card__header .sec::before {
@@ -103,7 +103,7 @@
   font-weight: 600 !important;
 }
 .sg-lbl {
-  font-size: 0.6rem !important;
+  font-size: 0.7rem !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
   color: var(--dm) !important;
@@ -143,7 +143,7 @@
 .session-header {
   font-family: var(--mono) !important;
   text-transform: uppercase !important;
-  font-size: 0.65rem !important;
+  font-size: 0.7rem !important;
   letter-spacing: 1px !important;
   color: var(--dm) !important;
   margin-bottom: 6px !important;
@@ -176,7 +176,7 @@
   border: 1px solid var(--rl) !important;
   border-radius: var(--radius-sm, 3px) !important;
   padding: 2px 6px !important;
-  font-size: 0.68rem !important;
+  font-size: 0.7rem !important;
   font-family: var(--mono) !important;
 }
 .goal-ms__pct {
@@ -198,7 +198,7 @@
 .session-mix__label {
   font-family: var(--mono) !important;
   text-transform: uppercase !important;
-  font-size: 0.6rem !important;
+  font-size: 0.7rem !important;
   letter-spacing: 1px !important;
   color: var(--dm) !important;
   margin-bottom: 4px !important;
@@ -284,7 +284,7 @@
 .upgrade-label {
   font-family: var(--mono) !important;
   text-transform: uppercase !important;
-  font-size: 0.58rem !important;
+  font-size: 0.7rem !important;
   letter-spacing: 1px !important;
   color: var(--dm) !important;
   display: block !important;
@@ -296,7 +296,7 @@
   display: block !important;
 }
 .upgrade-meta {
-  font-size: 0.68rem !important;
+  font-size: 0.7rem !important;
   color: var(--sv) !important;
   font-family: var(--mono) !important;
   display: block !important;
@@ -733,7 +733,7 @@ body.theme-mfr-origin .dash-card__header .sec {
 /* ── MISC — Utilitarian, technical, dense data ── */
 body.theme-mfr-misc .dash-card__action {
   border-radius: 2px !important;
-  font-size: 0.62rem !important;
+  font-size: 0.7rem !important;
   padding: 2px 6px !important;
 }
 body.theme-mfr-misc .sg-item {
@@ -960,7 +960,7 @@ body.theme-mfr-argo .price-tip {
    ═══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 600px) {
   .dash-card__action {
-    font-size: 0.62rem !important;
+    font-size: 0.7rem !important;
     padding: 2px 6px !important;
   }
   .dash-card__footer {

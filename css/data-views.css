@@ -40,7 +40,7 @@
 
 .data-section-title::before {
   content: '\25B6';
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   transition: transform 0.2s ease;
   color: var(--mt, #404040);
 }
@@ -186,7 +186,7 @@
 
 .hotspot-danger {
   text-align: right;
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   letter-spacing: 1px;
 }
 
@@ -299,7 +299,7 @@
 .spark-val {
   position: absolute;
   top: -16px;
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   font-variant-numeric: tabular-nums;
   color: var(--dm, #5c5c5c);
   white-space: nowrap;
@@ -316,7 +316,7 @@
 }
 
 .spark-day {
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   color: var(--mt, #404040);
   margin-top: 4px;
   text-transform: uppercase;

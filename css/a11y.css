@@ -434,7 +434,7 @@ textarea:focus-visible,
 
 /* Keyboard shortcut hints */
 .a11y-shortcut {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   color: var(--dm, #5c5c5c);
   margin-left: 4px;
 }

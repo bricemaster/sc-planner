@@ -40,6 +40,7 @@ html, body {
   border-bottom: 1px solid var(--rl);
   position: relative;
   overflow: hidden;
+  padding-bottom: 2px;
 }
 .rec-hero::before {
   content: '';
@@ -125,18 +126,22 @@ html, body {
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--g), transparent);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.18s ease;
 }
 
 .dash-card:hover::before {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .dash-card__header {
-  padding: 8px 16px 6px;
+  padding: 10px 16px 8px;
   flex-shrink: 0;
   border-bottom: 1px solid var(--rl);
   background: rgba(201,170,110,.02);
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 }
 .dash-card__header .sec {
   font-size: 11px;
@@ -154,24 +159,33 @@ html, body {
   border-radius: 1px;
 }
 .dash-card__body {
-  padding: 8px 16px;
+  padding: 10px 16px;
   flex: 1;
   overflow-y: auto;
   min-height: 0;
   scrollbar-width: thin;
   scrollbar-color: var(--dv) transparent;
+  scroll-behavior: smooth;
 }
 .dash-card__body::-webkit-scrollbar { width: 3px; }
-.dash-card__body::-webkit-scrollbar-thumb { background: var(--dv); }
+.dash-card__body::-webkit-scrollbar-thumb {
+  background: var(--dv);
+  border-radius: 3px;
+}
+.dash-card__body::-webkit-scrollbar-thumb:hover {
+  background: var(--dm);
+}
 .dash-card__body::-webkit-scrollbar-track { background: transparent; }
 
 .dash-card__footer {
-  padding: 6px 16px 8px;
+  padding: 8px 16px;
   flex-shrink: 0;
   border-top: 1px solid var(--rl);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  min-height: 36px;
+  box-sizing: border-box;
 }
 .dash-card__link { font-size: 10px; letter-spacing: 2px; font-weight: 600; }
 .dash-card__meta { font-size: 10px; }
@@ -180,16 +194,18 @@ html, body {
   font-size: 9px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--md);
+  color: var(--dm);
   background: none;
-  border: 1px solid var(--rl);
-  padding: 3px 8px;
+  border: none;
+  padding: 2px 6px;
   cursor: pointer;
-  transition: all .2s;
+  transition: color .18s;
+  font-weight: 500;
 }
 .dash-card__action:hover {
   color: var(--g);
-  border-color: var(--g);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .dash-card__refresh {
   background: none;
@@ -224,8 +240,8 @@ html, body {
 .goal-picker-wrap { margin-bottom: 6px; }
 .goal-milestones { margin: 4px 0; }
 .goal-ms { padding: 3px 2px; }
-.goal-ms__pct { font-size: 8px; }
-.goal-ms__time { font-size: 7px; }
+.goal-ms__pct { font-size: 9px; }
+.goal-ms__time { font-size: 9px; }
 .mini-stat { margin-bottom: 3px; }
 .ms-label { font-size: 9px; letter-spacing: 2px; }
 .ms-value { font-size: 13px; }
@@ -240,9 +256,9 @@ html, body {
 .ship-card-caps { gap: 2px; margin: 4px 0; }
 .ship-cap { font-size: 10px; }
 .ship-upgrade-hint { margin-top: 6px; padding-top: 6px; }
-.upgrade-label { font-size: 7px; }
+.upgrade-label { font-size: 9px; }
 .upgrade-name { font-size: 12px; }
-.upgrade-meta { font-size: 8px; }
+.upgrade-meta { font-size: 9px; }
 
 /* ─── Tab bar ─── */
 .tab-bar {
@@ -279,18 +295,27 @@ html, body {
   position: relative;
 }
 .tab-bar__btn:last-child { border-right: none; }
-.tab-bar__btn:hover { color: var(--lt); background: var(--c); }
-.tab-bar__btn--active {
-  color: var(--g);
-  background: rgba(201,170,110,.06);
-  font-weight: 500;
-}
-.tab-bar__btn--active::after {
+.tab-bar__btn::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 2px;
   background: var(--g);
+  transform: scaleX(0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tab-bar__btn:hover { color: var(--lt); background: rgba(255,255,255,.03); }
+.tab-bar__btn:hover::after {
+  transform: scaleX(0.4);
+  box-shadow: none;
+}
+.tab-bar__btn--active {
+  color: var(--g);
+  background: rgba(201,170,110,.06);
+  font-weight: 600;
+}
+.tab-bar__btn--active::after {
+  transform: scaleX(1);
   box-shadow: 0 0 8px rgba(201,170,110,.3);
 }
 
@@ -299,11 +324,22 @@ html, body {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 40px;
   z-index: 850;
-  display: none;
+  display: flex;
+  background: rgba(3,3,3,0);
+  backdrop-filter: blur(0px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, background 0.25s ease, backdrop-filter 0.3s ease, visibility 0s linear 0.25s;
+}
+.tab-modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
   background: rgba(3,3,3,.92);
   backdrop-filter: blur(8px);
+  pointer-events: auto;
+  transition: opacity 0.25s ease, background 0.25s ease, backdrop-filter 0.3s ease, visibility 0s linear 0s;
 }
-.tab-modal-overlay.open { display: flex; }
 .tab-modal-panel {
   position: absolute;
   top: var(--header-h);
@@ -311,6 +347,13 @@ html, body {
   background: var(--ab);
   overflow-y: auto;
   padding: 16px clamp(16px, 3vw, 48px);
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.tab-modal-overlay.open .tab-modal-panel {
+  transform: translateY(0);
+  opacity: 1;
 }
 .tab-modal-close {
   position: fixed;
@@ -323,7 +366,13 @@ html, body {
   font-size: 18px;
   padding: 4px 10px;
   cursor: pointer;
-  transition: color .22s, border-color .22s;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: color .22s, border-color .22s, opacity 0.2s ease 0.1s, transform 0.2s ease 0.1s;
+}
+.tab-modal-close.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 .tab-modal-close:hover { color: var(--g); border-color: var(--g); }
 
@@ -357,12 +406,12 @@ html, body {
   margin: 0;
 }
 .footer__actions .footer-history-btn {
-  font-size: 8px;
+  font-size: 9px;
   padding: 2px 8px;
   letter-spacing: 1px;
 }
 .footer__bottom {
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 1.5px;
   gap: 4px;
   margin: 0;
@@ -414,44 +463,49 @@ html, body {
     max-height: none;
     overflow: visible;
     padding-top: var(--header-h-mobile);
-    padding-bottom: 48px;
+    padding-bottom: 52px; /* clear fixed 48px tab bar */
   }
+
+  /* ── 1. Header: "Corsair ▼" + 🔍 + ⚙ — no brand title crowding ── */
   .header {
     height: var(--header-h-mobile);
     padding: 0 10px;
     gap: 8px;
   }
-  .header__brand { flex-shrink: 0; }
-  .header__title { font-size: 14px; letter-spacing: 1px; }
-  .header__ship { flex: 1 1 auto; min-width: 100px; max-width: 150px; }
+  .header__brand { display: none; } /* hide "SC & Planner" on mobile */
+  .header__title { display: none; }
+  .header__ship { flex: 1 1 auto; min-width: 100px; max-width: 170px; }
   .header__ship .ship-picker__display { padding: 4px 8px; font-size: 11px; }
   .header__ship .ship-picker__display-meta { display: none; }
   .header__ship .ship-picker__display-price { display: none; }
   .header__controls { display: none; }
   .header__clock { display: none; }
-  .header__search-btn { padding: 4px; }
+  .header__search-btn { padding: 6px; flex-shrink: 0; }
   .header__settings-toggle {
     display: flex !important;
-    margin-left: 0;
+    margin-left: auto;
     flex-shrink: 0;
   }
   .settings-drawer {
     display: block !important;
     top: var(--header-h-mobile);
   }
-  /* Hero: tighter on mobile */
+
+  /* ── 2. Hero: readable at 390px, no overlap ── */
   .rec-hero { order: 1; }
-  .rec-hero__inner { padding: 12px 16px; flex-direction: column; gap: 6px; }
-  .rec-hero__method { font-size: 18px; line-height: 1.2; }
+  .rec-hero__inner { padding: 10px 14px; flex-direction: column; gap: 4px; }
+  .rec-hero__method { font-size: 17px; line-height: 1.2; }
   .rec-hero__stats .stat-detail { display: none; }
-  .rec-hero__stats { gap: 6px; font-size: 12px; }
+  .rec-hero__stats { gap: 6px; font-size: 12px; flex-wrap: wrap; }
   .rec-hero__rate { font-size: 12px; }
   .hero-rate-big { font-size: 20px !important; }
+  .hero-rate-range { font-size: 9px !important; margin-left: 4px; }
   .rec-hero__actions { flex-direction: row; margin-top: 4px; }
-  .rec-hero__actions .btn-action { padding: 6px 12px; font-size: 8px; }
+  .rec-hero__actions .btn-action { padding: 6px 12px; font-size: 9px; }
   .rec-hero__reasoning { display: none; }
-  .rec-hero__label { font-size: 8px; }
-  /* Cards: single-column on mobile, scrollable */
+  .rec-hero__label { font-size: 9px; letter-spacing: 2px; }
+
+  /* ── 3. Cards: single-column, visible headers, contained bodies ── */
   .dashboard-grid {
     order: 2;
     grid-template-columns: 1fr;
@@ -462,50 +516,73 @@ html, body {
     margin-bottom: 0;
   }
   .dash-card {
-    min-height: 80px;
+    min-height: 0;
     overflow: hidden;
   }
-  .dash-card__header { padding: 8px 12px 4px; }
+  .dash-card__header {
+    padding: 8px 12px 6px;
+    position: relative;
+    z-index: 1;
+  }
   .dash-card__header .sec { font-size: 9px; letter-spacing: 2px; }
-  /* Stat grid: tighter on mobile */
+
+  /* ── 4. Card bodies: max-height with smooth internal scroll ── */
+  .dash-card__body {
+    padding: 8px 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 160px;
+    -webkit-overflow-scrolling: touch;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Ship card stat grid: prevent overlap with footer links */
   .stat-grid {
     gap: 4px;
     margin: 4px 0;
   }
   .sg-val { font-size: 14px; }
-  .sg-lbl { font-size: 8px; letter-spacing: 1.5px; }
-  .dash-card__body {
-    padding: 8px 12px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-height: 150px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
+  .sg-lbl { font-size: 9px; letter-spacing: 1.5px; }
+
+  /* Card footer: wraps cleanly, always separated from body */
   .dash-card__footer {
     padding: 6px 12px 8px;
     flex-wrap: wrap;
     gap: 6px;
     row-gap: 4px;
+    border-top: 1px solid var(--rl);
+    background: var(--ab);
   }
   .dash-card__footer .dash-card__action {
-    font-size: 8px;
+    font-size: 9px;
     padding: 4px 8px;
     white-space: nowrap;
     flex-shrink: 0;
   }
   .dash-card__footer .dash-card__link {
-    font-size: 8px;
+    font-size: 9px;
     white-space: nowrap;
     flex-shrink: 0;
   }
+
+  /* ── 5. Live Prices: hide MARGIN (4th column) on mobile ── */
+  .price-row {
+    grid-template-columns: 1.5fr 1fr 1fr !important;
+  }
+  .price-row span:nth-child(4) { display: none !important; }
+  .price-header {
+    grid-template-columns: 1.5fr 1fr 1fr !important;
+  }
+  .price-header span:nth-child(4) { display: none !important; }
 
   /* Hide less critical elements on mobile */
   .ship-card-caps { display: none; }
   .ship-upgrade-hint { display: none; }
   .goal-milestones { display: none; }
   .goal-verdict-text { display: none; }
-  /* Tab bar: stays sticky at bottom */
+
+  /* ── 6. Tab bar: fixed bottom, 48px tall, clearly tappable ── */
   .tab-bar {
     order: 3;
     position: fixed;
@@ -513,8 +590,18 @@ html, body {
     left: 0;
     right: 0;
     z-index: 900;
+    height: 48px;
   }
-  .tab-bar__btn { font-size: 9px; letter-spacing: 2px; padding: 10px 8px; }
+  .tab-bar__btn {
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 0 8px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   /* Footer: hidden on mobile */
   .footer { display: none; }
 
@@ -531,10 +618,13 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  /* Mobile tab overlay fixes */
+  /* ── 7. Tab overlays: fill screen ABOVE 48px tab bar ── */
+  .tab-modal-overlay {
+    bottom: 48px;
+  }
   .tab-modal-panel {
     top: var(--header-h-mobile);
-    bottom: 48px;
+    bottom: 0; /* relative to overlay which stops at 48px */
     padding: 12px 12px;
   }
   .tab-modal-close {
@@ -566,19 +656,20 @@ html, body {
 }
 
 @media (max-width: 480px) {
-  /* Small phone refinements */
+  /* Small phone refinements (390px target) */
   .dash-card {
-    min-height: 80px;
+    min-height: 0;
   }
-  .tab-bar__btn { font-size: 8px; letter-spacing: 1.5px; padding: 8px 6px; }
-  .header__title { font-size: 12px; }
-  .header__ship { max-width: 130px; }
+  .tab-bar__btn { font-size: 9px; letter-spacing: 1.5px; padding: 0 6px; min-height: 48px; }
+  .header__ship { max-width: 140px; }
+  .rec-hero__method { font-size: 16px; }
+  .hero-rate-big { font-size: 18px !important; }
 }
 
 /* ─── Intel modal button ─── */
 .btn-intel-modal {
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--dm);
@@ -598,6 +689,11 @@ html, body {
   max-width: 1200px;
   margin: 0 auto;
   overflow-y: auto;
+  animation: tabContentFadeIn 0.18s ease both;
+}
+@keyframes tabContentFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .tab-content-section .section-header {
   padding-bottom: 10px;
@@ -605,4 +701,9 @@ html, body {
 }
 .tab-content-section .methods-grid {
   gap: 1px;
+}
+
+/* ─── Context bar smooth persistence ─── */
+.tab-context-bar {
+  animation: tabContentFadeIn 0.15s ease both;
 }

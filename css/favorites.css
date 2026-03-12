@@ -121,7 +121,7 @@
 }
 
 .notes-save-hint {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   color: var(--t3, #666);
   margin-top: 4px;
   text-align: right;
@@ -163,12 +163,7 @@
   padding-left: calc(var(--ship-row-pl, 12px) - 3px);
 }
 
-/* Inject bookmark into ship row */
-.ship-list-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+/* Bookmark alignment handled by grid layout in dashboard.css/polish-v2.css */
 
 /* ─── Favorites Filter Pill ───────────────────────────────────────────────── */
 
@@ -235,7 +230,7 @@
 
 .history-entry__time span {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   opacity: 0.7;
 }
 
@@ -278,7 +273,7 @@
 }
 
 .history-entry__budget {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   color: var(--t3, #888);
 }
 

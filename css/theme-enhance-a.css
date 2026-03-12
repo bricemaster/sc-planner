@@ -1024,7 +1024,7 @@ body.theme-corporate .sg-item:hover {
 body.theme-corporate .sg-lbl {
   text-transform: uppercase !important;
   letter-spacing: 1.5px !important;
-  font-size: 0.55rem !important;
+  font-size: 0.7rem !important;
   color: #7882a0 !important;
 }
 
@@ -1040,7 +1040,7 @@ body.theme-corporate .session-mix__label {
   font-weight: 600 !important;
   letter-spacing: 1.5px !important;
   text-transform: uppercase !important;
-  font-size: 0.58rem !important;
+  font-size: 0.7rem !important;
 }
 
 /* ── Corporate: Card footer — structured ── */
@@ -1277,7 +1277,7 @@ body.theme-corporate ::selection {
   /* Arctic: Tighter pills on mobile */
   body.theme-arctic .tab-bar__btn {
     padding: 5px 8px !important;
-    font-size: 7px !important;
+    font-size: 9px !important;
     border-radius: 8px !important;
   }
   body.theme-arctic .tab-bar {
@@ -1288,7 +1288,7 @@ body.theme-corporate ::selection {
   /* Corporate: Compact tabs on mobile */
   body.theme-corporate .tab-bar__btn {
     padding: 6px 8px !important;
-    font-size: 7px !important;
+    font-size: 9px !important;
   }
 
   /* All themes: Reduce card hover lift on mobile (touch devices) */

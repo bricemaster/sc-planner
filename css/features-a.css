@@ -369,7 +369,7 @@
   background: var(--c);
   border: 1px solid var(--rl);
   padding: 10px 16px;
-  z-index: 900;
+  z-index: 895;
   display: flex; align-items: center; gap: 12px;
   font-family: var(--mono);
   font-size: 13px;

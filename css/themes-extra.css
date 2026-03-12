@@ -481,7 +481,7 @@ body.theme-tactical .header::after {
   top: 50%;
   transform: translateY(-50%);
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 4px;
   color: #586848;
   pointer-events: none;
@@ -500,7 +500,7 @@ body.theme-tactical .header__title span { color: #9ccc65; font-style: normal; }
 body.theme-tactical .header__label {
   font-family: 'Share Tech Mono', monospace;
   letter-spacing: 3px;
-  font-size: 8px;
+  font-size: 9px;
   color: #586848;
 }
 
@@ -701,8 +701,8 @@ body.theme-tactical .pill--active {
 
 /* Tactical: Stats with green glow */
 body.theme-tactical .sg-val { font-family: 'Share Tech Mono', monospace; color: #9ccc65; text-shadow: 0 0 4px rgba(124,179,66,.2); }
-body.theme-tactical .sg-lbl { font-family: 'Share Tech Mono', monospace; font-size: 8px; }
-body.theme-tactical .ms-label { font-family: 'Share Tech Mono', monospace; font-size: 8px; color: #586848; }
+body.theme-tactical .sg-lbl { font-family: 'Share Tech Mono', monospace; font-size: 9px; }
+body.theme-tactical .ms-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: #586848; }
 body.theme-tactical .ms-value { font-family: 'Share Tech Mono', monospace; color: #9ccc65; }
 body.theme-tactical .cr-rate { font-family: 'Share Tech Mono', monospace; color: #9ccc65; }
 body.theme-tactical .goal-ship-name { font-family: 'Share Tech Mono', monospace; font-size: 14px; letter-spacing: 2px; }
@@ -725,8 +725,8 @@ body.theme-tactical .footer__logo {
   text-shadow: 0 0 4px rgba(124,179,66,.3);
 }
 body.theme-tactical .footer__logo span { font-style: normal; color: #9ccc65; }
-body.theme-tactical .footer__tagline { font-family: 'Share Tech Mono', monospace; font-size: 8px; letter-spacing: 3px; }
-body.theme-tactical .footer__bottom { font-family: 'Share Tech Mono', monospace; font-size: 8px; }
+body.theme-tactical .footer__tagline { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 3px; }
+body.theme-tactical .footer__bottom { font-family: 'Share Tech Mono', monospace; font-size: 9px; }
 
 /* Tactical: Modals */
 body.theme-tactical .modal__panel {
