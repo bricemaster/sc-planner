@@ -32,8 +32,9 @@
 
 
 /* ---- Panel ---- */
+/* HTML: <div class="onboarding__panel"> */
 
-.onboarding-panel {
+.onboarding__panel {
   position: relative;
   width: 100%;
   max-width: 480px;
@@ -48,17 +49,94 @@
 }
 
 
-/* ---- Step Dots ---- */
+/* ---- Step Content ---- */
+/* HTML: <div class="onboard__step active" data-step="1"> */
 
-.onboarding-dots {
+.onboard__step {
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--med) var(--ease),
+              transform var(--med) var(--ease);
+}
+
+.onboard__step.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* HTML: <h2 class="onboard__title"> */
+.onboard__title {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  text-align: center;
+  margin-bottom: var(--sp-2);
+  line-height: 1.3;
+}
+
+/* HTML: <p class="onboard__desc"> */
+.onboard__desc {
+  font-size: var(--fs-base);
+  color: var(--text-2);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: var(--sp-6);
+}
+
+
+/* ---- Fields ---- */
+/* HTML: <div class="onboard__field"> */
+
+.onboard__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+}
+
+.onboard__field label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-2);
+}
+
+/* HTML: <div id="onboardShipPreview" class="onboard__ship-preview"> */
+.onboard__ship-preview {
+  margin-top: var(--sp-3);
+}
+
+
+/* ---- Navigation Footer ---- */
+/* HTML: <div class="onboard__nav"> */
+
+.onboard__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-6) var(--sp-6);
+  border-top: 1px solid var(--border);
+}
+
+.onboard__nav .btn {
+  min-width: 100px;
+}
+
+
+/* ---- Step Dots ---- */
+/* HTML: <div class="onboard__dots"> */
+
+.onboard__dots {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: var(--sp-5) var(--sp-5) 0;
 }
 
-.onboarding-dot {
+/* HTML: <span class="onboard__dot active" data-step="1"> */
+.onboard__dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -69,92 +147,29 @@
   cursor: default;
 }
 
-.onboarding-dot.is-visited {
+.onboard__dot.visited {
   border-color: var(--gold);
   background: transparent;
 }
 
-.onboarding-dot.is-current {
+.onboard__dot.active {
   border-color: var(--gold);
   background: var(--gold);
 }
 
 
-/* ---- Step Content Area ---- */
+/* ---- Buttons container ---- */
+/* HTML: <div class="onboard__btns"> */
 
-.onboarding-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--sp-6) var(--sp-6) var(--sp-4);
-  position: relative;
-}
-
-.onboarding-step {
-  display: none;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity var(--med) var(--ease),
-              transform var(--med) var(--ease);
-}
-
-.onboarding-step.is-active {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.onboarding-step__title {
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-semibold);
-  color: var(--text);
-  text-align: center;
-  margin-bottom: var(--sp-2);
-  line-height: 1.3;
-}
-
-.onboarding-step__subtitle {
-  font-size: var(--fs-base);
-  color: var(--text-2);
-  text-align: center;
-  line-height: 1.6;
-  margin-bottom: var(--sp-6);
-}
-
-
-/* ---- Navigation Footer ---- */
-
-.onboarding-nav {
+.onboard__btns {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--sp-3);
-  padding: var(--sp-4) var(--sp-6) var(--sp-6);
-  border-top: 1px solid var(--border);
-}
-
-.onboarding-nav .btn {
-  min-width: 100px;
-}
-
-/* Spacer to push single buttons */
-.onboarding-nav__spacer {
-  flex: 1;
 }
 
 
 /* ============================================================
-   STEP 1 — Welcome
-   ============================================================ */
-
-.onboarding-welcome-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: var(--sp-4);
-}
-
-
-/* ============================================================
-   STEP 2 — Ship Selector
+   STEP 2 — Ship Selector (used inside onboard__field)
    ============================================================ */
 
 .ship-selector {
@@ -349,69 +364,6 @@
 
 
 /* ============================================================
-   STEP 3 — Settings
-   ============================================================ */
-
-.onboarding-fields {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-5);
-}
-
-.onboarding-field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
-}
-
-.onboarding-field__label {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  color: var(--text-2);
-}
-
-/* Toggle group */
-.onboarding-toggle {
-  display: flex;
-  gap: 0;
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  overflow: hidden;
-  background: var(--bg);
-}
-
-.onboarding-toggle__btn {
-  flex: 1;
-  padding: 10px 12px;
-  font-family: var(--font);
-  font-size: var(--fs-md);
-  font-weight: var(--fw-medium);
-  color: var(--text-3);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  transition: all var(--fast) var(--ease);
-  position: relative;
-}
-
-.onboarding-toggle__btn + .onboarding-toggle__btn {
-  border-left: 1px solid var(--border);
-}
-
-.onboarding-toggle__btn:hover {
-  color: var(--text-2);
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.onboarding-toggle__btn.is-active {
-  color: var(--gold);
-  background: rgba(201, 170, 110, 0.08);
-  font-weight: var(--fw-semibold);
-}
-
-
-/* ============================================================
    STEP 4 — Summary
    ============================================================ */
 
@@ -470,28 +422,24 @@
    ============================================================ */
 
 @media (max-width: 540px) {
-  .onboarding-panel {
+  .onboarding__panel {
     max-width: calc(100vw - 32px);
     max-height: calc(100dvh - 32px);
   }
 
-  .onboarding-body {
-    padding: var(--sp-5) var(--sp-4) var(--sp-3);
-  }
-
-  .onboarding-nav {
-    padding: var(--sp-3) var(--sp-4) var(--sp-5);
-  }
-
-  .onboarding-step__title {
+  .onboard__title {
     font-size: var(--fs-xl);
   }
 
-  .onboarding-step__subtitle {
+  .onboard__desc {
     font-size: var(--fs-md);
   }
 
-  .onboarding-nav .btn {
+  .onboard__nav {
+    padding: var(--sp-3) var(--sp-4) var(--sp-5);
+  }
+
+  .onboard__nav .btn {
     flex: 1;
   }
 

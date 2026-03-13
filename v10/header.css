@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 0 var(--side-pad, clamp(12px, 2vw, 24px));
+  padding: 0 clamp(12px, 2vw, 24px);
   background: rgba(6, 6, 10, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -26,7 +26,7 @@
   font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--wh, #f0f0f0);
+  color: var(--text);
   white-space: nowrap;
   user-select: none;
   flex-shrink: 0;
@@ -43,10 +43,10 @@
   align-items: center;
   gap: 8px;
   padding: 6px 12px;
-  background: var(--ab, #0f1114);
+  background: var(--surface);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-sm, 4px);
-  color: var(--lt, #d0d0d0);
+  border-radius: var(--r-sm);
+  color: var(--text-2);
   font-family: var(--font);
   font-size: 13px;
   cursor: pointer;
@@ -61,14 +61,14 @@
 }
 
 .ship-picker__btn-price {
-  color: var(--g, #c9aa6e);
-  font-family: var(--mono, monospace);
+  color: var(--gold);
+  font-family: var(--font-mono);
   font-size: 12px;
 }
 
 .ship-picker__chevron {
   font-size: 10px;
-  color: var(--mt, #8a8a8a);
+  color: var(--text-3);
   transition: transform 0.2s var(--ease);
 }
 
@@ -83,9 +83,9 @@
   left: 0;
   width: 320px;
   max-height: 400px;
-  background: var(--ab, #0f1114);
+  background: var(--surface);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md, 8px);
+  border-radius: var(--r-md);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
   display: none;
   flex-direction: column;
@@ -106,10 +106,10 @@
 .ship-picker__search input {
   width: 100%;
   padding: 8px 10px;
-  background: var(--dp, #0a0b0d);
+  background: var(--surface-2);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-sm, 4px);
-  color: var(--lt, #d0d0d0);
+  border-radius: var(--r-sm);
+  color: var(--text-2);
   font-family: var(--font);
   font-size: 13px;
   outline: none;
@@ -117,7 +117,7 @@
 }
 
 .ship-picker__search input::placeholder {
-  color: var(--mt, #8a8a8a);
+  color: var(--text-3);
 }
 
 .ship-picker__search input:focus {
@@ -146,7 +146,7 @@
   padding: 10px 12px;
   background: none;
   border: none;
-  color: var(--dm, #a0a0a0);
+  color: var(--text-3);
   font-family: var(--font);
   font-size: 12px;
   font-weight: 500;
@@ -157,7 +157,7 @@
 }
 
 .ship-mfr__head:hover {
-  color: var(--wh, #f0f0f0);
+  color: var(--text);
   background: rgba(255, 255, 255, 0.02);
 }
 
@@ -171,7 +171,7 @@
 }
 
 .ship-mfr[data-expanded="true"] .ship-mfr__head {
-  color: var(--g, #c9aa6e);
+  color: var(--gold);
 }
 
 .ship-mfr__ships {
@@ -190,7 +190,7 @@
   padding: 8px 12px 8px 24px;
   background: none;
   border: none;
-  color: var(--lt, #d0d0d0);
+  color: var(--text-2);
   font-family: var(--font);
   font-size: 13px;
   cursor: pointer;
@@ -202,8 +202,8 @@
 }
 
 .ship-mfr__ship-price {
-  color: var(--g, #c9aa6e);
-  font-family: var(--mono, monospace);
+  color: var(--gold);
+  font-family: var(--font-mono);
   font-size: 12px;
 }
 
@@ -227,7 +227,7 @@
   font-weight: 500;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--mt, #8a8a8a);
+  color: var(--text-3);
   line-height: 1;
 }
 
@@ -235,11 +235,11 @@
 .header-field__input {
   width: 110px;
   padding: 4px 8px;
-  background: var(--dp, #0a0b0d);
+  background: var(--surface-2);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-sm, 4px);
-  color: var(--g, #c9aa6e);
-  font-family: var(--mono, monospace);
+  border-radius: var(--r-sm);
+  color: var(--gold);
+  font-family: var(--font-mono);
   font-size: 13px;
   outline: none;
   transition: border-color 0.2s var(--ease);
@@ -252,10 +252,10 @@
 /* ── Session select ── */
 .header-field__select {
   padding: 4px 24px 4px 8px;
-  background: var(--dp, #0a0b0d);
+  background: var(--surface-2);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-sm, 4px);
-  color: var(--lt, #d0d0d0);
+  border-radius: var(--r-sm);
+  color: var(--text-2);
   font-family: var(--font);
   font-size: 13px;
   outline: none;
@@ -283,7 +283,7 @@
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
-  color: var(--mt, #8a8a8a);
+  color: var(--text-3);
   font-family: var(--font);
   font-size: 11px;
   font-weight: 500;
@@ -295,12 +295,12 @@
 }
 
 .toggle-group__btn:hover {
-  color: var(--dm, #a0a0a0);
+  color: var(--text-3);
 }
 
 .toggle-group__btn[aria-checked="true"] {
-  color: var(--g, #c9aa6e);
-  border-bottom-color: var(--g, #c9aa6e);
+  color: var(--gold);
+  border-bottom-color: var(--gold);
 }
 
 /* ── Hamburger / settings toggle (mobile) ── */
@@ -313,7 +313,7 @@
   margin-left: auto;
   background: none;
   border: none;
-  color: var(--lt, #d0d0d0);
+  color: var(--text-2);
   font-size: 22px;
   cursor: pointer;
   flex-shrink: 0;
@@ -343,7 +343,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 16px var(--side-pad, clamp(12px, 2vw, 24px));
+  padding: 16px clamp(12px, 2vw, 24px);
 }
 
 .settings-drawer__row {
