@@ -427,7 +427,7 @@ function updateShipBrowser() {
     const sortedMfrs = [...grouped.keys()].sort();
     listEl.innerHTML = sortedMfrs.map(mfr => {
       const ships = grouped.get(mfr);
-      const isOpen = !state.shipMfrCollapsed[mfr];
+      const isOpen = state.shipMfrCollapsed[mfr] === true;
       return `
         <div class="ships__group${isOpen ? ' ships__group--open' : ''}">
           <button class="ships__group-header" aria-expanded="${isOpen}" data-mfr="${mfr}">
@@ -776,7 +776,7 @@ function initShipBrowserEvents() {
       if (header) {
         const mfr = header.dataset.mfr;
         state.shipMfrCollapsed[mfr] = !state.shipMfrCollapsed[mfr];
-        header.setAttribute('aria-expanded', !state.shipMfrCollapsed[mfr] ? 'true' : 'false');
+        header.setAttribute('aria-expanded', state.shipMfrCollapsed[mfr] ? 'true' : 'false');
         updateShipBrowser();
         return;
       }
